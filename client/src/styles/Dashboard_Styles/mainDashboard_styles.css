@@ -1,0 +1,106 @@
+/* FOR DASHBOARD */
+.windowDashboard_main_wrap{
+ display: var(--windowDashboard-display);
+}
+.dashboard_draggable_area{
+  background: none;
+  /*opacity: 0.5;*/
+  height: 25px;
+  width: calc(var(--max-width) - 10vw);
+  touch-action: none;
+  position: absolute;
+  top: var(--top);
+  left: var(--left);
+  display: var(--display-b);
+  cursor: move;
+  z-index: 2;
+}
+.dashboard_window{
+  margin: 0;
+  padding: 0;
+  /*width: 98.45vw;*/
+  max-width: var(--max-width);
+  max-height: var(--max-height);
+  border: 2px solid black;
+  border-radius: var(--border-radius);
+  box-shadow: 5px 5px 10px rgba(0 , 0, 0, 0.25);
+  background: #E2E1E5;
+  overflow: hidden;
+  position: absolute;
+  top: var(--top);
+  left: var(--left);
+  touch-action: none;
+  /*transform: translate3d(var(--left), var(--top), 0px);*/
+  /*display: var(--display);*/
+  transition: max-width 200ms ease-in-out, max-height 200ms ease-in-out, top 200ms ease-in-out, left 200ms ease-in-out;
+}
+
+.dashboard_window_topbar{
+  margin: 0;
+  background:#FFD056;
+  height: 20px;
+  max-width: var(--max-width);
+  font-size: 16px;
+  font-weight: 700;
+  padding: 3px 0 2px 20px;
+  border-bottom: 2px solid black;
+  border-radius: var(--border-radius-b);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+#dashboard_minmax{
+  font-size: 25px;
+  color: black;
+  padding-right: 20px;
+  transform: translateY(7px);
+  opacity: 1;
+}
+
+#dashboard_close{
+  font-size: 25px;
+  color: black;
+  padding-right: 10px;
+  transform: translateY(7px);
+  opacity: 1;
+}
+
+.main_container{
+  /*margin:2vw 0.75vw;*/
+  padding: 0;
+  max-width: var(--max-width-b);
+  max-height: var(--max-height-b);
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 0;
+  /*background: #E2E1E5;*/
+  overflow-y: scroll;
+  overflow-x: auto;
+  transition: all 200ms ease-in-out;
+}
+
+.top_wrap{
+  width: 100vw;
+  min-width: 1040px;
+  display: flex;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+@media only screen and (max-width: 500px){
+  .top_wrap{
+    width: 100vw;
+    display: grid;
+    min-width: 80%;
+  }
+  .dashboard_draggable_area{
+    width: calc(var(--max-width) - 25vw);
+  }
+  .main_container{
+    width: calc(100vw - 4px);
+    min-width: 80%;
+  }
+}

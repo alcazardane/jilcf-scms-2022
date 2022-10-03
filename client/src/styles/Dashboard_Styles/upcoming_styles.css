@@ -1,0 +1,232 @@
+/*FOR UPCOMMING SCHEDULE*/
+.upcoming_container{
+  background: white;
+  width: 48vw;
+  height: 33.6vw;
+  /*margin: 2vw 0  0 1.25vw;*/
+  margin-top: var(--dashboard-margin-top);
+  margin-left: var(--dashboard-margin-left);
+  /*min-width: 334px;*/
+  width: var(--upcoming-width);
+  border-radius: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  overflow: none;
+  position: relative;
+  z-index: 2;
+  transition: all 200ms ease-in-out;
+}
+
+.container_labels{
+  width: 100%;
+  font-size: 1.46vw;
+  font-weight: 700;
+  padding: 0.73vw 0 1.09vw 1.46vw;
+  display: flex;
+  justify-content: space-between;
+}
+
+.view_calendar{
+  margin: 10px 20px 0 0;
+  font-size: 1vw;
+  font-weight: 600;
+  transition: opacity 200ms ease-in, margin-left 200ms ease-in;
+  display: var(--view-calendar-display);
+  cursor: pointer;
+}
+
+.class_scheds_wrap{
+  margin: 0;
+  padding: 0;
+  scroll-behavior: smooth;
+}
+
+.class_scheds{
+  width: 21.2vw;
+  height: 5.5vw;
+  background: #F3F3F3;
+  border-radius: 5px;
+  /*margin: 0 0 23px 20px;*/
+  margin-bottom: 1.7vw;
+  margin-left: 1.45vw;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
+  border-left: 5px solid #03256C;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: auto;
+}
+
+.class_scheds_time{
+  font-size: 1vw;
+  font-weight: 700;
+  padding: 10px 0 0 10px;
+}
+
+.class_scheds_section{
+  font-size: 0.9vw;
+  font-weight: 400;
+  padding: 0 0 0 10px;
+  color: #AAAAAA;
+}
+
+.class_scheds_room{
+  font-size: 0.9vw;
+  font-weight: 400;
+  padding: 0 0 0 10px;
+  color: #AAAAAA;
+}
+
+.class_scheds_wrap_2{
+  margin:0;
+  padding:0;
+  width: 17.5vw;
+}
+
+.arrow_forward{
+  list-style-type: none;
+  font-size: 1.61vw;
+  margin-top: var(--dashboard-margin-right);
+  margin-left: var(--dashboard-margin-right);
+  cursor: pointer;
+}
+
+/* FOR CALENDAR */
+.calendar_header_wrap{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.month_year {
+  width: 10vw;
+  text-align: center;
+  font-size: 1vw;
+}
+.button{
+  background: transparent;
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+}
+.calendar_weekdays{
+  width: 2.9vw;
+  height: 1.46vw;
+  font-size: 0.9vw;
+  font-weight: 600;
+}
+.calendar_weekdays_header{
+  display: flex;
+  justify-content: space-around;
+  text-align: center;
+  margin-top: 1.09vw;
+  margin-bottom: 0.73vw;
+}
+.table_calendar{
+  width: 100%;
+  text-align: center;
+}
+.calendar_days{
+  display: flex;
+  justify-content: space-around;
+}
+
+#days{
+  width: 1.61vw;
+  height: 1.61vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.9vw;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  margin-bottom: 1.09vw;
+  cursor: pointer;
+}
+
+#days:hover{
+  border-color: #17A1FA;
+}
+
+.in-prev-month, .in-next-month{
+  opacity: 0.5;
+}
+
+.today{
+  font-weight: 600;
+  border-radius: 3px;
+  background: #FFD056;
+  color: white;
+}
+
+.calendar{
+  width: 20.5vw;
+  height: 26.3vw;
+  background: #FFFFFF;
+  border-radius: 5px;
+  margin-left: 1.5vw;
+  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
+  border-top: 0.73vw solid #000000;
+  /*display: flex;*/
+  justify-content: center;
+  display: var(--calendar-display);
+}
+.calendar_wrap{
+  width: 22vw;
+  height: 26.3vw;
+  /*transform: translate(22vw, 3.8vw);*/
+  /*transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;*/
+  transition: opacity 200ms ease-out, transform 200ms ease-out, display 200ms ease-out;
+  z-index: -1;
+}
+.calendar_inside_wrap{
+  width: 19vw;
+  height: 24vw;
+  margin-top: 0.46vw;
+  margin-left: 0.73vw;
+}
+
+@media only screen and (max-width: 500px){
+  .upcoming_container{
+    /*min-width: 200px;*/
+    width: var(--upcoming-width-b);
+    height: 35vh;
+    max-width: max-content;
+  }
+  .container_labels{
+    font-size: 15px;
+  }
+  .class_scheds{
+    height: 5.6vh;
+    margin-top: 5px;
+    margin-bottom: 20px;
+    margin-left: 15px;
+  }
+  .class_scheds_time{
+    font-size: 10px;
+  }
+  .class_scheds_room{
+    font-size: 8px;
+  }
+  .class_scheds_section{
+    font-size: 8px;
+  }
+  .arrow_forward{
+    font-size: 15px;
+    margin-top: 12px;
+  }
+  .view_calendar{
+    margin: 7px 15px 0 0;
+    font-size: 12px;
+  }
+  .calendar{
+    display: none;
+  }
+  .class_scheds{
+    min-width: 200px;
+    width: calc(var(--upcoming-width-b) - 10vw);
+  }
+  .class_scheds_wrap_2{
+    min-width: 200px;
+    width: calc(var(--upcoming-width-b) - 21vw);
+  }
+}

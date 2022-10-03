@@ -1,0 +1,137 @@
+/*FOR RED AND YELLOW NOTICE*/
+.notice_container{
+  background: white;
+  width: 48vw;
+  height: 33.6vw;
+  width: 47vw;
+  /*min-width: 600px;*/
+  /*transition: width 200ms ease-in;*/
+  border-radius: 5px;
+  /*margin: 2vw 1.25vw 0 1.5vw;*/
+  margin-top: var(--dashboard-margin-top);
+  margin-left: var(--dashboard-margin-left);
+  margin-right: var(--dashboard-margin-right);
+  position: relative;
+}
+
+.container_labels-c{
+  width: 75%;
+  font-size: 1.46vw;
+  font-weight: 700;
+  padding: 0.73vw 0 1.09vw 0px;
+}
+
+.notice_header{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 47vw;
+  /*min-width: 460px;*/
+}
+
+.view_list_red{
+  font-size: 1vw;
+  font-weight: 600;
+  cursor: pointer;
+}
+.view_list_yellow{
+  font-size: 1vw;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.notice_table {
+  border-collapse: collapse;
+  width: 44.5vw;
+  /*min-width: 600px;*/
+  /*transition: width 200ms ease-in;*/
+  margin-left: 1.46vw;
+}
+td {
+  font-size: 1vw;
+  text-align: left;
+  padding: 0.29vw;
+  font-weight: 700;
+}
+.td_notify{
+  text-align: center;
+}
+tr:nth-child(even) {
+  background-color: #F3F3F3;
+}
+tr:nth-child(odd) {
+  background-color: #E2E1E5;
+}
+/* Will limit the displayed table rows to 5. Not srollable */
+.redyellownotice_limiter tr:nth-child(n + 6) {
+  display: none;
+}
+
+.red_notice_table{
+  border-left: 0.36vw solid #F14668;
+  margin-left: 1.46vw;
+}
+.yellow_notice_table{
+  border-left: 0.36vw solid #FFD056;
+  margin-left: 1.46vw;
+}
+
+.notify_button{
+  height: 1.46vw;
+  width: 4.75vw;
+  font-size: 0.73vw;
+  font-weight: 600;
+  background: #F14668;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+#notif_active{
+  font-size: 0.9vw;
+  color: white;
+  opacity: 1;
+  margin-right: 0.22vw;
+}
+
+@media only screen and (max-width: 500px){
+  .notice_container{
+    min-width: 200px;
+    width: var(--upcoming-width-b);
+    height: 31vh;
+  }
+  .notice_table{
+    min-width: 200px;
+    width: calc(var(--upcoming-width-b) - 8vw);
+    margin-left: 15px;
+  }
+  td{
+    font-size: 10px;
+    padding: 3px;
+  }
+  .notice_header{
+    min-width: 200px;
+    width: var(--upcoming-width-b);
+  }
+  .container_labels-c{
+    width: 55%;
+    font-size: 15px;
+  }
+  .view_list_red{
+    font-size: 12px;
+  }
+  .view_list_yellow{
+    font-size: 12px;
+  }
+  td:nth-child(2) {
+    display: none;
+  }
+  .notify_button{
+    width: 40px;
+    height: 15px;
+    font-size: 5px;
+  }
+  #notif_active{
+    font-size: 8px;
+  }
+}

@@ -1,0 +1,77 @@
+/*All the stylings in the whole app are all right here for now*/
+
+@import url('http://fonts.cdnfonts.com/css/segoe-ui-variable');
+
+*::before,
+*::after{
+    box-sizing: border-box;
+}
+
+body{
+  margin:0;
+  padding:0;
+  background: #03256C;
+  font-family: 'Segoe UI Variable';
+  overflow: hidden;
+  user-select: none;
+}
+
+:root{
+  /* for main windows */
+  /*--max-width: 77.5vw;
+  --max-width-b: 77.5vw;*/
+  --windowDashboard-display: none;
+  --max-width: 77.5vw;
+  --max-width-b: 77.5vw;
+  --max-height: 86.5vh;
+  --max-height-b: 78.4vh;
+  --border-radius: 7px;
+  --border-radius-b: 7px 7px 0 0;
+  --top: 15px;
+  --left: 30px;
+  --dashboard-margin-top: 1.8vw;
+  --dashboard-margin-left: 1.46vw;
+  --dashboard-margin-right: 1.46vw;
+  --dashboard-bottom-container-width: 73.3vw;
+
+
+  /* for upcoming */
+  --upcoming-width: 25vw;
+  --upcoming-width-b: 75vw;
+
+  /* for calendar */
+  --calendar-display: none;
+  --view-calendar-display: block;
+
+  /* for assessment and attendance wrappers */
+  --wrappers-width: 68.3vw;
+
+  /* for closing */
+  --display: none;
+  --display-b: none;
+
+  --menu-height: 0;
+  --menu-opacity: 0;
+
+  --view-calendar-height: 0;
+  --view-calendar-opacity: 0;
+
+
+  --windowAttendance-display: none;
+  --windowAttendance-drag-display: block;
+  /*--windowAttendance-width: 1060px;*/
+  /*--windowAttendance-height: 565px;*/
+  --windowAttendance-width: 77vw;
+  --windowAttendance-height: 80vh;
+  --windowAttendance-table-height: 45vh;
+  --windowAttendance-top: 10px;
+  --windowAttendance-left: 10px;
+  --windowAttendance-border-radius: 7px;
+  --windowAttendance-td-height: 3.2vh;
+  --windowAttendance-buttons-width: 8vw;
+  --windowAttendance-buttons-height: 6vh;
+  --windowAttendance-buttons-font: 0.8vw;
+  --windowAttendance-search-width: 30vw;
+}
+
+/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
