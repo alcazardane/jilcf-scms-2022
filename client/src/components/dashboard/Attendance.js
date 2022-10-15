@@ -1,4 +1,5 @@
 import { useEffect, useState} from 'react'
+import { Link } from 'react-router-dom'
 
 
 //Components
@@ -37,7 +38,7 @@ const Attendance = () => {
         <div className="attendance_container">
         <div className="attendance_header">
             <div className="container_labels-b">ATTENDANCE PER CLASSROOM</div>
-            <div className="view_attendance">View Attendance &#10095;</div>
+            <div className="view_attendance"><Link to={"/attendance"}>View Attendance &#10095; </Link></div>
         </div>
             <div className="slide_buttons_wrap">
                 <div className="slide_button_wrap_left-b">

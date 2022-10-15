@@ -9,6 +9,10 @@ import { Outlet } from 'react-router-dom';
 import Create from "./components/create";
 import Login from "./components/login/login";
 import MainWindow from "./components/main_window/main_window";
+import Attendance from "./components/attendance_window/attendance_window";
+import Assessment from "./components/assessment_window/assessment_window";
+import Calendar from "./components/calendar_window/calendar_window";
+
 
 export function Loginfunc(){
   return(
@@ -31,5 +35,23 @@ export function CreateUser(){
 export function App(){
   return (
     <Outlet />
-  );
-};
+  )
+}
+
+export function AssessmentWindow(){
+    return(
+      <Assessment/>
+    )
+  }
+export function AttendanceWindow(){
+    return(
+      <Attendance/>
+    )
+  }
+  
+export function CalendarWindow(){
+    return(
+      <Calendar/>
+    )
+  };
+
