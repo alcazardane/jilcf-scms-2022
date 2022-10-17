@@ -1,5 +1,5 @@
 import { useEffect, useState} from 'react'
-
+import { Link } from 'react-router-dom'
 //Components
 import RedNoticeDetails from './dashboard_details/Red_NoticeDetails'
 import YellowNoticeDetails from './dashboard_details/Yellow_NoticeDetails'
@@ -45,7 +45,7 @@ const RedYellowNotice = () => {
         <div className="notice_container">
           <div className="notice_header">
             <div className="container_labels-c">RED NOTICE</div>
-            <span className="view_list_red">View Full List &#10095;</span>
+            <span className="view_list_red"><Link to={"/attendance"}>View Full List &#10095; </Link></span>
           </div>
             <table className="red_notice_table notice_table">
               <tbody className="redyellownotice_limiter">
@@ -56,7 +56,7 @@ const RedYellowNotice = () => {
             </table>
           <div className="notice_header">
             <div className="container_labels-c">YELLOW NOTICE</div>
-            <span className="view_list_yellow">View Full List &#10095;</span>
+            <span className="view_list_yellow"><Link to={"/attendance"}>View Full List &#10095; </Link></span>
           </div>
             <table className="yellow_notice_table notice_table">
               <tbody className="redyellownotice_limiter">

@@ -1,4 +1,5 @@
 import { useEffect, useState} from 'react'
+import { Link } from 'react-router-dom'
 
 //Components
 import MyCalendar from './Calendar'
@@ -24,17 +25,15 @@ const Upcoming = () => {
 
     return (
         <div className="upcoming_container" id="upcoming_container">
-        <div className="container_labels">UPCOMING<span className="view_calendar" id="view_calendar">View Calendar &#10095;</span></div>
-            <div className="upcoming_container_wrap">
-                <div className="class_scheds_wrap">
-                    {upcomings && upcomings.map((upcoming) => (
-                        <UpcomingDetails key={upcoming._id} upcoming={upcoming} />
-                    ))}
-                </div>
-                <div className="calendar_wrap">
-                    <MyCalendar />
-                </div> 
+        <div className="container_labels">UPCOMING<span className="view_calendar" id="view_calendar"><Link to={"/calendar"}>View Calendar &#10095; </Link></span></div>
+            <div className="class_scheds_wrap">
+                {upcomings && upcomings.map((upcoming) => (
+                    <UpcomingDetails key={upcoming._id} upcoming={upcoming} />
+                ))}
             </div>
+            <div className="calendar_wrap">
+                <MyCalendar />
+            </div> 
         </div>
     )
 }
