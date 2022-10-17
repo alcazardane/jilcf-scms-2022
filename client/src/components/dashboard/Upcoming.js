@@ -25,7 +25,7 @@ const Upcoming = () => {
 
     return (
         <div className="upcoming_container" id="upcoming_container">
-        <div className="container_labels">UPCOMING<span className="view_calendar" id="view_calendar"><Link to={"/Calendar"}>View Calendar &#10095; </Link></span></div>
+        <div className="container_labels">UPCOMING<span className="view_calendar" id="view_calendar">View Calendar &#10095;</span></div>
             <div className="class_scheds_wrap">
                 {upcomings && upcomings.map((upcoming) => (
                     <UpcomingDetails key={upcoming._id} upcoming={upcoming} />

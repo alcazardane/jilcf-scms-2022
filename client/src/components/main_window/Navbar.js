@@ -82,21 +82,14 @@ const Navbar = () => {
     </div>
     <div className="main_Navbar">
         <button className="menu_btn" ref={menuBtnRef} onClick={() => setMenuIsOpen((menuIsOpen) => !menuIsOpen)}>MENU</button>
-        <button className="navbar_item"></button>
-        <button className="navbar_item"></button>
-        <button className="navbar_item"></button>
-        <button className="navbar_item"></button>
-        <button className="navbar_item"></button>
-        <button className="navbar_item"></button>
-        <button className="navbar_item"></button>
 
         <div className="navbar_notification">
             <div className="notif_wrap">
                 <span className="navbar_notification_text">
-                =-= Notification will display here =-=● 
+                =-= Notification will display here =- 
                 </span>
                 <span className="navbar_notification_text_2">
-                =-= Notification will display here =-=●
+                =-= Notification will display here =-
                 </span>
             </div>
         </div>
@@ -114,6 +107,7 @@ const Navbar = () => {
         <div className="navbar_DateTime" ref={navCalendarBtnRef} onClick={() => setNavCalendarIsOpen((navCalendarIsOpen) => !navCalendarIsOpen)}>
             <div className="navbar_datetime_text">{timeState}</div>
             <div className="navbar_datetime_text">{dateState}</div>
+            <img className="navbar_datetime_icon" src="calendar_month_FILL0_wght400_GRAD0_opsz48.png" alt="datetime_icon"></img>
         </div>
     </div>
     </>
