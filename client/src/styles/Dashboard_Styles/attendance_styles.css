@@ -1,15 +1,17 @@
 /*FOR ATTENDANCE*/
 .attendance_container{
   /*width: 95.6vw;*/
-  width: var(--dashboard-bottom-container-width);
-  height: 22.18vw;
+  /*width: var(--dashboard-bottom-container-width);*/
+  width: 97%;
+  /*height: 22.18vw;*/
+  height: 330px;
   /*min-width: 997px;*/
   border-radius: 5px;
   background: white;
   /*margin: 1.5vw 1.25vw 0 1.25vw;*/
-  margin-top: var(--dashboard-margin-top);
-  margin-left: var(--dashboard-margin-left);
-  margin-right: var(--dashboard-margin-right);
+  /*margin-top: var(--dashboard-margin-top);*/
+  /*margin-left: var(--dashboard-margin-left);
+  margin-right: var(--dashboard-margin-right);*/
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -17,75 +19,90 @@
 }
 
 .container_labels-b{
-  width: 85%;
-  font-size: 1.46vw;
+  width: 100%;
+  /* width: 85%; */
+  /*font-size: 1.46vw;*/
+  font-size: 20px;
   font-weight: 700;
-  padding: 0.73vw 0 1.09vw 0px;
+  /* padding: 0.73vw 0 1.09vw 0px; */
+  height: 30px;
 }
 
 .view_attendance{
-  font-size: 1vw;
+  /*font-size: 1vw;*/
+  font-size: 14px;
   font-weight: 600;
-  margin-right: 1vw;
+  /*margin-right: 1vw;*/
   cursor: pointer;
+  white-space: nowrap;
 }
 .attendance_header{
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 97vw;
+  /*width: 97vw;*/
   /*min-width: 970px;*/
-  margin: 0 0.73vw;
+  /*margin: 0 0.73vw;*/
+  width: 100%;
+  padding: 0 1vw;
 }
 .attendance_sub_container_wrap{
   display: flex;
   overflow-x: hidden;
   /*width: 92.3vw;*/
-  max-width: var(--wrappers-width);
+  /* max-width: var(--wrappers-width); */
+  max-width: 93%;
   /*min-width: 915px;*/
   scroll-behavior: smooth;
   padding: 0.73vw;
 }
 .attendance_sub_container{
   background: #3DB5F9;
-  min-width: 21.5vw;
+  min-width: 21vw;
   /*min-width: 295px;*/
-  height: 16vw;
+  /* height: 16vw; */
+  height: 220px;
   border-radius: 5px;
   box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.25);
   margin: 0 2vw 0 0;
 }
 .material-symbols-outlined{
-  font-size: 3.66vw;
+  /* font-size: 3.66vw; */
+  font-size: 50px;
   color: #a1a1a3;
   cursor: pointer;
   opacity: 0.5;
 }
 .material-symbols-outlined:hover{
-  font-size: 3.67vw;
+  /* font-size: 3.67vw; */
+  font-size: 55px;
   opacity: 0.75;
 }
 .attendance_subject{
   text-align: center;
-  font-size: 2.34vw;
+  /* font-size: 2.34vw; */
+  font-size: 32px;
   color: white;
   font-weight: 700;
   margin-top: 1.83vw;
 }
 .attendance_date{
   text-align: center;
-  font-size: 1.09vw;
+  /* font-size: 1.09vw; */
+  font-size: 15px;
   color: white;
   font-weight: 500;
   margin-bottom: 1.83vw;
 }
 .present_ratio{
-  font-size: 1.17vw;
+  /* font-size: 1.17vw; */
+  font-size: 16px;
   color: white;
   font-weight: 500;
 }
 .absent_ratio{
-  font-size: 1.17vw;
+  /* font-size: 1.17vw; */
+  font-size: 16px;
   color: white;
   font-weight: 500;
 }
@@ -95,7 +112,8 @@
   margin: 0 1.46vw 0.36vw 1.46vw;
 }
 .ratio{
-  font-size: 2.92vw;
+  /* font-size: 2.92vw; */
+  font-size: 40px;
   font-weight: 700;
 }
 
@@ -107,20 +125,53 @@
   justify-content: space-between;
 }
 
-@media only screen and (max-width: 500px){
-  .attendance_container{
-    min-width: var(--upcoming-width-b);
-    height: 25vh;
+@media only screen and (max-width: 1000px){
+  .container_labels-b{
+    font-size: 17px;
+    height: 25px;
   }
-  .attendance_header{
-    min-width: 300px;
+  .view_attendance{
+    font-size: 12px;
+  }
+  .attendance_container{
+    height: 250px;
   }
   .attendance_sub_container{
-    min-width: 65vw;
-    height: 150px;
+    height: 170px;
   }
-  .attendance_sub_container_wrap{
-    max-width: 66vw;
+  .attendance_subject{
+    font-size: 22px;
+  }
+  .attendance_date{
+    font-size: 11px;
+  }
+  .present_ratio{
+    font-size: 12px;
+  }
+  .absent_ratio{
+    font-size: 12px;
+    text-align: right;
+  }
+  .ratio{
+    font-size: 30px;
+  }
+}
+
+@media only screen and (max-width: 750px){
+  .attendance_sub_container{
+    min-width: 48.5%;
+  }
+}
+
+@media only screen and (max-width: 500px){
+  .attendance_container{
+    /* min-width: var(--upcoming-width-b);
+    height: 25vh; */
+    height: 300px;
+  }
+  .attendance_sub_container{
+    min-width: 99%;
+    height: 200px;
   }
   .container_labels-b{
     width: 55%;
@@ -131,16 +182,18 @@
     font-size: 12px;
   }
   .material-symbols-outlined{
-    font-size: 30px;
+    font-size: 35px;
   }
   .material-symbols-outlined:hover{
-    font-size: 32px;
+    font-size: 37px;
   }
   .attendance_subject{
-    font-size: 20px;
+    font-size: 25px;
+    margin-top: 25px;
   }
   .attendance_date{
     font-size: 15px;
+    margin-bottom: 15px;
   }
   .present_ratio{
     font-size: 15px;
@@ -149,6 +202,6 @@
     font-size: 15px;
   }
   .ratio{
-    font-size: 30px;
+    font-size: 35px;
   }
 }

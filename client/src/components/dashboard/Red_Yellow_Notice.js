@@ -54,7 +54,6 @@ const RedYellowNotice = () => {
                 ))}
               </tbody>
             </table>
-          <div className="container_labels"></div>
           <div className="notice_header">
             <div className="container_labels-c">YELLOW NOTICE</div>
             <span className="view_list_yellow">View Full List &#10095;</span>

@@ -56,7 +56,8 @@ export default function Login(){
             <img src="jilcf_logo_1.png" alt="JILCF Logo" />
             <form onSubmit={onFormSubmit} autoComplete="off">
                 <div className="input-container">
-                    <input 
+                    <input
+                        className="input_IDnumber" 
                         placeholder="ID Number" 
                         type="text" 
                         name="idnum"
@@ -68,6 +69,7 @@ export default function Login(){
                 
                 <div className="input-container">
                     <input 
+                        className="input_Password"
                         placeholder="Password" 
                         type="password" 
                         name="pass"
