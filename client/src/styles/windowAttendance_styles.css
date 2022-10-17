@@ -1,5 +1,4 @@
 /* FOR ATTENDANCE WINDOW */
-
 .windowAttendance_main_wrap{
     display: var(--windowAttendance-display);
 }
@@ -25,7 +24,7 @@
     background: none;
     /*opacity: 0.5;*/
     height: 25px;
-    width: calc(var(--windowAttendance-width) - 100px);
+    width: calc(var(--windowAttendance-width) - 80px);
     touch-action: none;
     position: absolute;
     /*top: var(--top);
@@ -35,7 +34,7 @@
     /*display: var(--display-b);*/
     display: var(--windowAttendance-drag-display);
     cursor: move;
-    z-index: 2;
+    z-index: 100;
 }
   
 .windowAttendance_topbar{
@@ -65,7 +64,7 @@
 }
   
 .attendance_search_wrap{
-    width: calc(var(--windowAttendance-search-width) + 40px);
+    width: calc(var(--windowAttendance-search-width) + 2vw);
     margin-top: 25px;
     display: flex;
     flex-wrap: wrap;
@@ -101,7 +100,7 @@
 }
 .attendance_search_input{
     padding: 7px;
-    width: calc(var(--windowAttendance-search-width) - 70px);
+    width: calc(var(--windowAttendance-search-width) - 5vw);
     font-size: 2vh;
     border-radius: 0 100px 100px 0;
     border: none;
@@ -117,7 +116,13 @@
     margin-top: 2px;
     filter: invert(69%) sepia(0%) saturate(0%) hue-rotate(155deg) brightness(102%) contrast(98%);
 }
-  
+
+
+.attendance_cbandbutton_wrap{
+    display: grid;
+    grid-auto-flow: column;
+    gap: 20px;
+}
 .attendance_cb_wrap{
     width: var(--windowAttendance-buttons-width);
     display: flex;
@@ -127,15 +132,18 @@
 }
 .attendance_cb_label{
     width: 100%;
-    font-size: calc(var(--windowAttendance-buttons-font) + 1px);
+    /*font-size: calc(var(--windowAttendance-buttons-font) + 1px);*/
+    font-size: 10px;
     font-weight: 700;
     margin-bottom: 5px;
+    white-space: nowrap;
     transition: all 200ms ease-in-out;
 }
 .attendance_cb{
     width: var(--windowAttendance-buttons-width);
     height: calc(var(--windowAttendance-buttons-height) - 5px);
-    font-size: calc(var(--windowAttendance-buttons-font) + 2px);
+    /*font-size: calc(var(--windowAttendance-buttons-font) + 2px);*/
+    font-size: 12px;
     font-family: 'Segoe UI Variable';
     background: white;
     border: none;
@@ -179,15 +187,18 @@
     width: var(--windowAttendance-buttons-width);
     height: var(--windowAttendance-buttons-height);
     padding: 0 var(--windowAttendance-buttons-font);
+    margin-top: 18px;
     background: #F14668;
     border: none;
     border-radius: 3px;
     box-shadow: 1px 4px 3px rgba(0 , 0, 0, 0.25);
-    font-size: var(--windowAttendance-buttons-font);
+    /*font-size: var(--windowAttendance-buttons-font);*/
+    font-size: 11px;
     text-align: left;
     cursor: pointer;
     display: flex;
     align-items: center;
+    justify-content: space-between;
     transition: all 200ms ease-in-out;
 }
 .record_attendance_button{
@@ -199,13 +210,16 @@
     width: var(--windowAttendance-buttons-width);
     height: var(--windowAttendance-buttons-height);
     margin-right: 20px;
+    margin-top: 18px;
     padding: 0 var(--windowAttendance-buttons-font);
     background: #17A1FA;
     border: none;
     border-radius: 3px;
     box-shadow: 1px 4px 3px rgba(0 , 0, 0, 0.25);
-    font-size: var(--windowAttendance-buttons-font);
+    /*font-size: var(--windowAttendance-buttons-font);*/
+    font-size: 11px;
     text-align: left;
+    justify-content: space-between;
     cursor: pointer;
     display: flex;
     align-items: center;
@@ -248,12 +262,12 @@
 }
 .windowAttendance_table_header td{
     background: #03256C;
-    font-size: calc(var(--windowAttendance-buttons-font) + 0.2vh);
+    font-size: 14px;
     font-weight: 600;
 }
 .windowAttendance_table_body td{
     height: var(--windowAttendance-td-height);
-    font-size: calc(var(--windowAttendance-buttons-font) + 0.2vh);
+    font-size: 12px;
     transition: height 200ms ease-in-out;
 }
   
@@ -288,6 +302,113 @@
     filter: invert(50%) sepia(47%) saturate(3682%) hue-rotate(181deg) brightness(104%) contrast(96%);
 }
 
+@media only screen and (max-width: 1000px){
+    .attendance_cb_label{
+        font-size: 8px;
+    }
+    .attendance_cbandbutton_wrap{
+        gap: 15px;
+    }
+    .attendance_record_attendance{
+        display: flex;
+        justify-content: center;
+        font-size: 0px;
+    }
+    .record_attendance_button{
+        width: 50%;
+    }
+    .attendance_download_attendance{
+        display: flex;
+        justify-content: center;
+        font-size: 0px;
+    }
+    .download_attendance_button{
+        width: 50%;
+    }
+    .attendance_search_suggestions{
+        width: 55px;
+        height: 15px;
+        font-size: 8px;
+    }
+}
+
+@media only screen and (max-width: 700px){
+    .attendance_top_wrap{
+        margin-bottom: 20px;
+    }
+
+    .attendance_search_wrap{
+        width: calc(var(--windowAttendance-search-width) + 7vw);
+        margin-top: 25px;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .attendance_search{
+        margin: 0 20px 0 10px;
+        width: calc(var(--windowAttendance-search-width) + 5vw);
+    }
+    .attendance_search_input{
+        padding: 5px;
+        width: calc(var(--windowAttendance-search-width) - 3vw);
+        font-size: 12px;
+    }
+    .attendance_search_icon{
+        width: 18px;
+    }
+    .attendance_search_label{
+        font-size: 8px;
+        margin:8px 0 0 10px;
+    }
+    .attendance_search_suggestions{
+        width: 40px;
+        height: 15px;
+        margin-left: 2px;
+        margin-top: 8px;
+        font-size: 6px;
+    }
+
+    .attendance_cbandbutton_wrap{
+        gap: 15px;
+        grid-auto-flow: row;
+        grid-template-columns: repeat(2, 80px);
+        grid-template-rows: repeat(2, 35px);
+        margin-right: 3.5vw;
+    }
+    .attendance_record_attendance{
+        width: 80px;
+        height: 35px;
+    }
+    .attendance_download_attendance{
+        width: 80px;
+        height: 35px;
+    }
+    .attendance_cb{
+        width: 80px;
+        height: 35px;
+    }
+    .windowAttendance_table_header td{
+        font-size: 10px;
+    }
+    .windowAttendance_table_body td{
+        font-size: 10px;
+    }
+    .windowAttendance_table_header td:nth-child(2) {
+        display: none;
+    }
+    .windowAttendance_table_body td:nth-child(2) {
+        display: none;
+    }
+    .windowAttendance_notify{
+        margin-right: 10px;
+        width: 15px;
+        height: 15px;
+    }
+    .windowAttendance_view{
+        width: 15px;
+        height: 15px;
+    }
+}
+
 @media only screen and (max-width: 500px){
     .attendance_top_wrap{
         justify-content: center;
@@ -305,17 +426,28 @@
         width: 100%;
     }
     .attendance_search_suggestions{
-        width: 16vw;
-        height: 2vh;
+        width: 55px;
+        height: 15px;
+        font-size: 8px;
     }
+
+    .attendance_cbandbutton_wrap{
+        gap: 20px;
+        grid-auto-flow: row;
+        grid-template-columns: repeat(2, var(--windowAttendance-500-button-width));
+        grid-template-rows: repeat(2, 6.5vh);
+        justify-content: center;
+        margin-right: 0;
+    }
+
     .attendance_cb_wrap{
-        width: 45%;
+        width: var(--windowAttendance-500-button-width);
         height: 60%;
     }
     .attendance_cb{
-        width: 135px;
-        height: 40px;
-        font-size: 14px;
+        width: var(--windowAttendance-500-button-width);
+        height: 6.5vh;
+        font-size: 12px;
     }
     .attendance_cb_label{
         font-size: 11px;
@@ -327,24 +459,26 @@
         width: 45%;
     }
     .attendance_record_attendance{
-        width: 135px;
-        height: 40px;
-        font-size: 10px;
+        width: var(--windowAttendance-500-button-width);
+        height: 6.5vh;
+        font-size: 12px;
+        justify-content: space-around;
     }
     .attendance_download_attendance{
-        width: 135px;
-        height: 40px;
-        font-size: 10px;
+        width: var(--windowAttendance-500-button-width);
+        height: 6.5vh;
+        font-size: 12px;
+        justify-content: space-around;
+    }
+    .record_attendance_button{
+        width: 7vw;
+    }
+    .download_attendance_button{
+        width: 7vw;
     }
     .windowAttendance_table_wrap{
-        margin-top: 120px;
-        height: var(--windowAttendance-table-height);
-    }
-    .windowAttendance_table_header td{
-        font-size: 10px;
-    }
-    .windowAttendance_table_body td{
-        font-size: 10px;
+        margin-top: 15vh;
+        height: calc(var(--windowAttendance-table-height) - 2vh);
     }
     .windowAttendance_notify{
         margin-right: 5px;

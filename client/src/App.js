@@ -13,7 +13,6 @@ import Attendance from "./components/attendance_window/attendance_window";
 import Assessment from "./components/assessment_window/assessment_window";
 import Calendar from "./components/calendar_window/calendar_window";
 
-
 export function Loginfunc(){
   return(
     <Login />
@@ -35,23 +34,22 @@ export function CreateUser(){
 export function App(){
   return (
     <Outlet />
-  )
+  );
 }
 
 export function AssessmentWindow(){
-    return(
-      <Assessment/>
-    )
-  }
+  return(
+    <Assessment/>
+  )
+}
 export function AttendanceWindow(){
-    return(
-      <Attendance/>
-    )
-  }
-  
-export function CalendarWindow(){
-    return(
-      <Calendar/>
-    )
-  };
+  return(
+    <Attendance/>
+  )
+}
 
+export function CalendarWindow(){
+  return(
+    <Calendar/>
+  )
+};

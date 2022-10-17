@@ -6,7 +6,7 @@
   background: none;
   /*opacity: 0.5;*/
   height: 25px;
-  width: calc(var(--max-width) - 10vw);
+  width: calc(var(--max-width) - 80px);
   touch-action: none;
   position: absolute;
   top: var(--top);
@@ -70,24 +70,34 @@
   /*margin:2vw 0.75vw;*/
   padding: 0;
   max-width: var(--max-width-b);
-  max-height: var(--max-height-b);
+  max-height: calc(var(--max-height-b) - 24px);
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.46vw;
   margin-top: 0;
   /*background: #E2E1E5;*/
   overflow-y: scroll;
-  overflow-x: auto;
+  /*overflow-x: none;*/
   transition: all 200ms ease-in-out;
 }
 
 .top_wrap{
-  width: 100vw;
-  min-width: 1040px;
+  width: var(--max-width-b);
+  /*min-width: 1040px;*/
   display: flex;
+  flex-wrap: nowrap;
   margin: 0;
   padding: 0;
   overflow-x: hidden;
   overflow-y: hidden;
+}
+
+@media only screen and (max-width: 750px){
+  .top_wrap{
+    width: 100%;
+    flex-direction: column;
+  }
 }
 
 @media only screen and (max-width: 500px){

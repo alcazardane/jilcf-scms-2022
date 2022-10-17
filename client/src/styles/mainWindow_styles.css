@@ -15,6 +15,8 @@
 .jilcf_logo{
   width: 25.5vw;
   height: 25.5vw;
+  min-width: 250px;
+  min-height: 250px;
   position: relative;
 }
 .jilcf_logo img{
@@ -31,6 +33,7 @@
   align-items: center;
   position: fixed;
   bottom: 0;
+  z-index: 9;
 }
 
 .main_window_wrap{
@@ -51,6 +54,7 @@
   border: none;
   border-right: 1px solid black;
   cursor: pointer;
+  z-index: 10;
 }
 .menu_btn:hover{
   background: #F3F3F3;
@@ -67,6 +71,7 @@
   bottom: 0;
   margin-bottom: 45px;
   transition: height 300ms ease-in-out, opacity 200ms ease-in-out;
+  z-index: 8;
 }
 .openMenuList{
   height: 400px;
@@ -132,18 +137,8 @@
   cursor: pointer;
 }
 
-.navbar_item{
-  margin-left: 20px;
-  width: 30px;
-  height: 30px;
-  background: #bababd;
-  border: none;
-  display: inline-block;
-  cursor: pointer;
-}
-
 .navbar_DateTime{
-  width: 170px;
+  width: 165px;
   height: 45px;
   display: flex;
   flex-direction: column;
@@ -152,6 +147,7 @@
   position: fixed;
   right: 0;
   cursor: pointer;
+  z-index: 10;
 }
 .navbar_DateTime:hover{
   background: #E2E1E5;
@@ -160,6 +156,12 @@
   margin: 0 20px 0 0;
   font-size: 14px;
   font-weight: 600;
+}
+.navbar_datetime_icon{
+  display: none;
+  width: 30px;
+  height: 30px;
+  margin-right: 10px;
 }
 .navbar_view_Calendar{
   width: 340px;
@@ -173,6 +175,7 @@
   bottom: 0;
   margin-bottom: 45px;
   transition: height 300ms ease-in-out, opacity 200ms ease-in-out;
+  z-index: 8;
 }
 .openNavCalendar{
   height: 470px;
@@ -214,9 +217,10 @@
 }
 
 .navbar_notification{
-  width: 250px;
+  /*width: calc(100% - 245px);*/
+  width: 200px;
   height: 45px;
-  margin-right: 170px;
+  margin-right: 165px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -243,24 +247,33 @@
 }
 
 .main_window_button_wrap{
-  margin-left: 2vw;
-  width: 100px;
+  margin-left: 25px;
+  width: 200px;
   position: absolute;
-  display: grid;
+  /*display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
+  align-items: flex-start;*/
+  display: grid;
 }
 
 .main_window_button_wrap_in{
-  width: 6.7vw;
-  height: 16.7vh;
+  width: 90px;
+  height: 110px;
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  /*flex-wrap: wrap;*/
+  /*justify-content: center;*/
+  align-items: center;
 }
 .main_window_button{
-  width: 3.2vw;
-  height: 3.2vw;
-  margin-top: 6vh;
+  /*width: 3.2vw;
+  height: 3.2vw;*/
+  width: 40px;
+  height: 40px;
+  margin-top: 40px;
   background: white;
   display: inline-block;
   border: none;
@@ -268,9 +281,11 @@
 }
 .button_label{
   color: white;
-  font-size: 2vh;
+  font-size: 1rem;
   font-weight: 500;
-  margin-top: 1.5vh;
+  text-shadow: 2px 2px 5px black;
+  margin-top: 10px;
+  white-space: nowrap;
 }
 
 @keyframes notification_carousel{
@@ -291,10 +306,45 @@
   }
 }
 
+
+@media only screen and (max-width: 700px){
+
+  .main_window_button{
+    width: 30px;
+    height: 30px;
+    margin-top: 30px;
+  }
+  .button_label{
+    font-size: 0.8rem;
+  }
+  .main_window_button_wrap_in{
+    width: 70px;
+    height: 90px;
+  }
+}
+
+@media only screen and (max-height: 500px){
+  .main_window_button_wrap{
+    grid-auto-flow: column;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+  }
+}
+@media only screen and (max-height: 380px){
+  .main_window_button_wrap{
+    grid-auto-flow: column;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+}
+
 @media only screen and (max-width: 500px){
   .jilcf_logo{
     width: 55vw;
     height: 55vw;
+    min-width: 200px;
+    min-height: 200px;
+    opacity: 0.7;
   }
   .main_window_button{
     width: 30px;
@@ -307,10 +357,82 @@
   .button-label{
     margin-top: 5px;
   }
-  .notif_wrap{
+  .navbar_notification{
+    width: calc(100% - 130px);
+    margin-right: 50px;
+  }
+  .menulist{
+    width: 200px;
+  }
+  .openMenuList{
+    height: 300px;
+  }
+  .menulist_item_wrap{
+    margin: 10px 0 10px 0;
+    height: 40px;
+  }
+  .menulist_item_wrap:hover{
+    background: #E2E1E5;
+  }
+  .menulist_item{
+    width: 30px;
+    height: 30px;
+  }
+  .menulist_item_label{
+    margin-left: 15px;
+    font-size: 12px;
+  }
+  .menulist_navbar{
+    width: 200px;
+    height: 30px;
+  }
+  .menulist_navbar_items_wrap{
+    width: 200px;
+    height: 30px;
+  }
+  .teacher_name{
+    font-size: 12px;
+  }
+  .menulist_navbar_icons{
+    width: 15px;
+    height: 15px;
+    margin: 0 10px 0 0;
+  }
+  .navbar_view_Calendar{
+    width: 250px;
+  }
+  .openNavCalendar{
+    height: 350px;
+  }
+  .calendar_datetime_wrap{
+    width: 250px;
+    height: 50px;
+    background: white;
+  }
+  .calendar_time{
+    font-size: 25px;
+  }
+  .calendar_date{
+    font-size: 15px;
+  }
+  .navbar_calendar{
+    width: 250px;
+  }
+  .navbar_calendar_wrap{
+    width: 250px;
+  }
+  .navbar_datetime_separator{
+    width: 250px;
+    height: 2px;
+    background: black;
+  }
+  .navbar_DateTime{
+    width: 50px;
+  }
+  .navbar_datetime_text{
     display: none;
   }
-  .navbar_item{
-    display: none;
+  .navbar_datetime_icon{
+    display: block;
   }
 }

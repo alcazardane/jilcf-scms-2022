@@ -1,6 +1,5 @@
 import { useEffect, useState} from 'react'
 import { Link } from 'react-router-dom'
-
 //Components
 import AssessmentDetails from './dashboard_details/AssessmentDetails'
 import useWindowDimensions from './hooks/useWindowDimensions'
@@ -42,7 +41,7 @@ const Assessment = () => {
         <div className="assessment_container">
         <div className="assessment_header">
             <div className="container_labels-b">ASSESSMENT RECORD</div>
-            <span className="view_assessment"><Link to={"/assessment"}>View Assessment &#10095; </Link></span>
+            <span className="view_assessment"><Link to={"/assessment"}>View Assessment &#10095;</Link></span>
         </div>
             <div className="slide_buttons_wrap">
             <div className="slide_button_wrap_left">

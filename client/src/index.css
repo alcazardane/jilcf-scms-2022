@@ -23,8 +23,8 @@ body{
   --windowDashboard-display: none;
   --max-width: 77.5vw;
   --max-width-b: 77.5vw;
-  --max-height: 86.5vh;
-  --max-height-b: 78.4vh;
+  --max-height: 81.5vh;
+  --max-height-b: 81.5vh;
   --border-radius: 7px;
   --border-radius-b: 7px 7px 0 0;
   --top: 15px;
@@ -36,12 +36,18 @@ body{
 
 
   /* for upcoming */
-  --upcoming-width: 25vw;
+  /*--upcoming-width: 25vw;*/
+  --upcoming-width: 340px;
+  --upcoming-width-1000: 250px;
+  --upcoming-container-wrap-width: 100%;
   --upcoming-width-b: 75vw;
 
   /* for calendar */
   --calendar-display: none;
   --view-calendar-display: block;
+
+  --calendar-opacity: 0;
+  --calendar-pointer-events: none;
 
   /* for assessment and attendance wrappers */
   --wrappers-width: 68.3vw;
@@ -64,14 +70,18 @@ body{
   --windowAttendance-width: 77vw;
   --windowAttendance-height: 80vh;
   --windowAttendance-table-height: 45vh;
-  --windowAttendance-top: 10px;
-  --windowAttendance-left: 10px;
+  --windowAttendance-top: 20px;
+  --windowAttendance-left: 20px;
   --windowAttendance-border-radius: 7px;
-  --windowAttendance-td-height: 3.2vh;
+  --windowAttendance-td-height: 3vh;
   --windowAttendance-buttons-width: 8vw;
-  --windowAttendance-buttons-height: 6vh;
+  --windowAttendance-buttons-height: 3vw;
   --windowAttendance-buttons-font: 0.8vw;
   --windowAttendance-search-width: 30vw;
+
+  /* screen 500px */
+  --windowAttendance-500-button-width: 32vw;
 }
 
 /* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
+

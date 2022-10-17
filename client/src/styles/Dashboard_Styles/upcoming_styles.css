@@ -1,13 +1,15 @@
 /*FOR UPCOMMING SCHEDULE*/
 .upcoming_container{
   background: white;
-  width: 48vw;
-  height: 33.6vw;
+  /*width: 48vw;*/
+  height: 460px;
   /*margin: 2vw 0  0 1.25vw;*/
   margin-top: var(--dashboard-margin-top);
   margin-left: var(--dashboard-margin-left);
   /*min-width: 334px;*/
   width: var(--upcoming-width);
+  /*width: 340px;*/
+  min-width: 300px;
   border-radius: 5px;
   display: flex;
   flex-wrap: wrap;
@@ -18,18 +20,33 @@
   transition: all 200ms ease-in-out;
 }
 
+.upcoming_container_wrap{
+  width: 100%;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-between;
+  padding: 0 20px;
+  z-index: -1;
+  height: 395px;
+}
+
 .container_labels{
   width: 100%;
-  font-size: 1.46vw;
+  /*font-size: 1.46vw;*/
+  font-size: 20px;
   font-weight: 700;
-  padding: 0.73vw 0 1.09vw 1.46vw;
+  /*padding: 0.73vw 0 1.09vw 1.46vw;*/
+  padding: 10px 0 15px 20px;
   display: flex;
   justify-content: space-between;
+  height: 30px;
 }
 
 .view_calendar{
   margin: 10px 20px 0 0;
-  font-size: 1vw;
+  /*font-size: 1vw;*/
+  font-size: 14px;
+  height: 30px;
   font-weight: 600;
   transition: opacity 200ms ease-in, margin-left 200ms ease-in;
   display: var(--view-calendar-display);
@@ -39,39 +56,49 @@
 .class_scheds_wrap{
   margin: 0;
   padding: 0;
-  scroll-behavior: smooth;
+  display: grid;
+  width: var(--upcoming-container-wrap-width);
 }
 
 .class_scheds{
-  width: 21.2vw;
-  height: 5.5vw;
+  /*width: 21.2vw;*/
+  /*width: 290px;*/
+  width: 95%;
+  /*min-width: 240px;*/
+  /*min-width: 292.5px;*/
+  /*height: 5.5vw;*/
+  height: 75px;
   background: #F3F3F3;
   border-radius: 5px;
-  /*margin: 0 0 23px 20px;*/
-  margin-bottom: 1.7vw;
-  margin-left: 1.45vw;
+  /*margin: 0 0 23px 0;*/
+  /*margin-bottom: 1.7vw;
+  margin-left: 1.45vw;*/
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
   border-left: 5px solid #03256C;
   display: flex;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
   overflow: auto;
+  justify-content: space-between;
 }
 
 .class_scheds_time{
-  font-size: 1vw;
+  /*font-size: 1vw;*/
+  font-size: 14px;
   font-weight: 700;
   padding: 10px 0 0 10px;
 }
 
 .class_scheds_section{
-  font-size: 0.9vw;
+  /*font-size: 0.9vw;*/
+  font-size: 11px;
   font-weight: 400;
   padding: 0 0 0 10px;
   color: #AAAAAA;
 }
 
 .class_scheds_room{
-  font-size: 0.9vw;
+  /*font-size: 0.9vw;*/
+  font-size: 11px;
   font-weight: 400;
   padding: 0 0 0 10px;
   color: #AAAAAA;
@@ -81,13 +108,19 @@
   margin:0;
   padding:0;
   width: 17.5vw;
+  min-width: 180px;
+  white-space: nowrap;
+  /*width: 240px;*/
 }
 
 .arrow_forward{
   list-style-type: none;
-  font-size: 1.61vw;
-  margin-top: var(--dashboard-margin-right);
-  margin-left: var(--dashboard-margin-right);
+  /*font-size: 1.61vw;*/
+  font-size: 22px;
+  /*margin-top: var(--dashboard-margin-right);
+  margin-left: var(--dashboard-margin-right);*/
+  /*margin: 20px 0 0 20px;*/
+  margin: 20px 20px 0 20px;
   cursor: pointer;
 }
 
@@ -99,8 +132,10 @@
 }
 .month_year {
   width: 10vw;
+  /*width: 135px;*/
   text-align: center;
-  font-size: 1vw;
+  /*font-size: 1vw;*/
+  font-size: 14px;
 }
 .button{
   background: transparent;
@@ -109,17 +144,21 @@
   cursor: pointer;
 }
 .calendar_weekdays{
-  width: 2.9vw;
-  height: 1.46vw;
-  font-size: 0.9vw;
+  /*width: 2.9vw;
+  height: 1.46vw;*/
+  width: 40px;
+  height: 20px;
+  /*font-size: 0.9vw;*/
+  font-size: 12px;
   font-weight: 600;
 }
 .calendar_weekdays_header{
   display: flex;
   justify-content: space-around;
   text-align: center;
-  margin-top: 1.09vw;
-  margin-bottom: 0.73vw;
+  /*margin-top: 1.09vw;
+  margin-bottom: 0.73vw;*/
+  margin: 15px 0 10px 0;
 }
 .table_calendar{
   width: 100%;
@@ -131,15 +170,19 @@
 }
 
 #days{
-  width: 1.61vw;
-  height: 1.61vw;
+  /*width: 1.61vw;
+  height: 1.61vw;*/
+  width: 22px;
+  height: 22px;
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 0.9vw;
+  /*font-size: 0.9vw;*/
+  font-size: 12px;
   border: 2px solid transparent;
   border-radius: 5px;
-  margin-bottom: 1.09vw;
+  /*margin-bottom: 1.09vw;*/
+  margin-bottom: 15px;
   cursor: pointer;
 }
 
@@ -159,60 +202,215 @@
 }
 
 .calendar{
-  width: 20.5vw;
-  height: 26.3vw;
+  /*width: 20.5vw;
+  height: 26.3vw;*/
+  /*width: 20.5vw;*/
+  width: 100%;
+  min-width: 240px;
+  /*width: 280px;*/
+  height: 360px;
   background: #FFFFFF;
   border-radius: 5px;
-  margin-left: 1.5vw;
+  /*margin-left: 1.5vw;*/
+  /*margin-left: 20px;*/
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
-  border-top: 0.73vw solid #000000;
+  /*border-top: 0.73vw solid #000000;*/
+  border-top: 10px solid #000000;
   /*display: flex;*/
   justify-content: center;
-  display: var(--calendar-display);
+  /*display: var(--calendar-display);*/
+  pointer-events: var(--calendar-pointer-events);
+  opacity: var(--calendar-opacity);
 }
 .calendar_wrap{
-  width: 22vw;
-  height: 26.3vw;
+  /*width: 22vw;
+  height: 26.3vw;*/
+  /*width: 300px;*/
+  /*width: 22vw;*/
+  min-width: 240px;
+  width: 50%;
+  display: var(--calendar-display);
+  /*height: 370px;*/
   /*transform: translate(22vw, 3.8vw);*/
   /*transition: opacity 200ms ease-in-out, transform 200ms ease-in-out;*/
   transition: opacity 200ms ease-out, transform 200ms ease-out, display 200ms ease-out;
   z-index: -1;
 }
 .calendar_inside_wrap{
-  width: 19vw;
-  height: 24vw;
+  /*width: 19vw;
+  height: 24vw;*/
+  /*width: 260px;*/
+  /*width: 19vw;*/
+  width: 95%;
+  min-width: 230px;
+  height: 330px;
   margin-top: 0.46vw;
   margin-left: 0.73vw;
+}
+
+@media only screen and (max-width: 1000px){
+  .upcoming_container{
+    height: 350px;
+    width: 230px;
+    min-width: var(--upcoming-width-1000);
+  }
+  .upcoming_container_wrap{
+    padding: 0 15px;
+    height: 300px;
+  }
+  .class_scheds_wrap{
+    height: 300px;
+  }
+  .container_labels{
+    font-size: 17px;
+    height: 25px;
+  }
+  .view_calendar{
+    font-size: 12px;
+  }
+  .class_scheds{
+    width: 200px;
+    min-width: 200px;
+    height: 60px;
+  }   
+  .class_scheds_time{
+    font-size: 12px;
+  }   
+  .class_scheds_section{
+    font-size: 10px;
+  }    
+  .class_scheds_room{
+    font-size: 10px;
+  }
+  .class_scheds_wrap_2{
+    min-width: 180px;
+  } 
+  .arrow_forward{
+    font-size: 20px;
+    margin: 18px 10px 0 0;
+  }
+
+  .calendar{
+    height: 275px;
+    width: 180px;
+    min-width: 180px;
+  }
+  .calendar_wrap{
+    width: 180px;
+    min-width: 180px;
+  }
+  .calendar_inside_wrap{
+    width: 170px;
+    min-width: 170px;
+  }
+  #days{
+    margin-bottom: 4px;
+  }
+}
+
+@media only screen and (max-width: 750px){
+  .upcoming_container{
+    width: 97%;
+    height: 370px;
+    justify-content: space-between;
+  }
+  .upcoming_container_wrap{
+    min-width: 100px;
+  }
+  .class_scheds_wrap{
+    width: 50%;
+    height: 300px;
+    min-width: 100px;
+  }
+  .class_scheds{
+    width: 90%;
+    min-width: 100px;
+  }
+  .class_scheds_wrap_2{
+    min-width: 100px;
+  }
+  .class_scheds_time{
+    font-size: 10px;
+    padding-left: 5px;
+  }   
+  .class_scheds_section{
+    font-size: 8px;
+    padding-left: 5px;
+  }    
+  .class_scheds_room{
+    font-size: 8px;
+    padding-left: 5px;
+  }
+  .arrow_forward{
+    font-size: 15px;
+    margin: 18px 10px 0 0;
+  }
+
+  .calendar_wrap{
+    width: 50%;
+    min-width: 100px;
+    display: block;
+  }
+  .calendar{
+    pointer-events: all;
+    opacity: 1;
+    margin: 0;
+    height: 280px;
+    width: 100%;
+    display: block;
+    min-width: 100px;
+  }
+  .calendar_inside_wrap{
+    width: 97%;
+    min-width: 100px;
+  }
+  #days{
+    margin-bottom: 5px;
+  }
 }
 
 @media only screen and (max-width: 500px){
   .upcoming_container{
     /*min-width: 200px;*/
-    width: var(--upcoming-width-b);
-    height: 35vh;
-    max-width: max-content;
+    /*width: var(--upcoming-width-b);*/
+    width: 96%;
+    min-width: 100px;
+    /*height: 35vh;*/
+    height: 370px;
+    justify-content: center;
+  }
+  .upcoming_container_wrap{
+    width: 100%;
+    height: auto;
   }
   .container_labels{
     font-size: 15px;
   }
+  .class_scheds_wrap{
+    width: 100%;
+    height: 320px;
+  }
   .class_scheds{
-    height: 5.6vh;
+    /*height: 5.6vh;
     margin-top: 5px;
     margin-bottom: 20px;
-    margin-left: 15px;
+    margin-left: 15px;*/
+    height: 65px;
+    width: 97%;
+    min-width: 100px;
   }
   .class_scheds_time{
-    font-size: 10px;
+    font-size: 13px;
   }
   .class_scheds_room{
-    font-size: 8px;
+    font-size: 11px;
   }
   .class_scheds_section{
-    font-size: 8px;
+    font-size: 11px;
   }
   .arrow_forward{
-    font-size: 15px;
-    margin-top: 12px;
+    font-size: 17px;
+    margin-top: 20px;
   }
   .view_calendar{
     margin: 7px 15px 0 0;
@@ -221,12 +419,35 @@
   .calendar{
     display: none;
   }
-  .class_scheds{
+  .calendar_wrap{
+    display: none;
+  }
+  /*.class_scheds{
     min-width: 200px;
     width: calc(var(--upcoming-width-b) - 10vw);
-  }
+  }*/
   .class_scheds_wrap_2{
     min-width: 200px;
     width: calc(var(--upcoming-width-b) - 21vw);
+  }
+
+  .month_year {
+    width: 120px;
+    font-size: 14px;
+  }
+  .calendar_weekdays{
+    width: 20px;
+    height: 25px;
+    font-size: 12px;
+  }
+  .calendar_weekdays_header{
+    margin-top: 15px;
+    margin-bottom: 10px;
+  }
+  #days{
+    width: 20px;
+    height: 20px;
+    font-size: 12px;
+    margin-bottom: 0;
   }
 }

@@ -1,13 +1,16 @@
 /*FOR ASSESSMENT RECORD*/
 .assessment_container{
-  width: var(--dashboard-bottom-container-width);
+  /*width: var(--dashboard-bottom-container-width);*/
+  width: 97%;
   /*width: 95.6vw;*/
-  height: 33.5vw;
+  /*height: 33.5vw;*/
+  height: 460px;
   /*min-width: 997px;*/
   background: white;
   border-radius: 5px;
   /*margin: 1.5vw 1.25vw 2vw 1.25vw;*/
-  margin: 1.83vw 1.46vw 3vw 1.46vw;
+  /*margin: 1.83vw 1.46vw 3vw 1.46vw;*/
+  margin-bottom: 2vw;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -16,38 +19,53 @@
   align-items: center;*/
 }
 .view_assessment{
-  font-size: 1vw;
+  /*font-size: 1vw;*/
+  font-size: 14px;
   font-weight: 600;
   cursor: pointer;
-  margin-right: 1vw;
+  /* margin-right: 1vw; */
+  white-space: nowrap;
 }
 .assessment_header{
   display: flex;
   justify-content: space-around;
   align-items: center;
-  width: 95.6vw;
+  /*width: 95.6vw;*/
+  width: 100%;
   /*min-width: 970px;*/
-  margin: 0 0.73vw;
+  /*margin: 0 0.73vw;*/
+  padding: 0 1vw;
 }
 
 .assessment_sub_container{
   /*width: 19vw;*/
   /*min-width: 275px;*/
   min-width: 20vw;
-  height: 23.8vw;
+  /* height: 23.8vw; */
+  height: 325px;
   background: white;
   border-radius: 5px;
   box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
-  border-top: 0.73vw solid #84DF3C;
+  /* border-top: 0.73vw solid #84DF3C; */
+  border-top: 10px solid #84DF3C;
   margin: 0 3.125vw 0 0;
 }
 .assessment_stud_name{
-  font-size: 1.75vw;
+  /*font-size: 1.75vw;*/
+  width: 87%;
+  font-size: 24px;
   font-weight: 700;
   margin: 1.09vw 1.46vw 0 1.46vw;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.assessment_stud_name:hover{
+  overflow: visible;
 }
 .assessment_dim{
-  font-size: 1.09vw;
+  /* font-size: 1.09vw; */
+  font-size: 15px;
   font-weight: 700;
   color: #B3B3B3;
   margin-left: 1.46vw;
@@ -61,9 +79,11 @@
 .final_grade_container{
   display: flex;
   width: 35%;
-  height: 3.66vw;
+  /*height: 3.66vw;*/
+  height: 50px;
   margin-top: 0.366vw;
-  border-radius: 7.32vw 0 0 7.32vw;
+  /* border-radius: 7.32vw 0 0 7.32vw; */
+  border-radius: 100px 0 0 100px;
   justify-content: center;
   align-items: center;
   background: green;
@@ -71,7 +91,8 @@
 }
 .final_grade{
   color: white;
-  font-size: 1.83vw;
+  /* font-size: 1.83vw; */
+  font-size: 25px;
   font-weight: 700;
 }
 .assessment_sub_container_wrap{
@@ -82,7 +103,8 @@
 .assessment_sub_container_wrap_out{
   display:flex;
   overflow-x: hidden;
-  max-width: var(--wrappers-width);
+  /*max-width: var(--wrappers-width);*/
+  max-width: 93%;
   /*min-width: 914px;*/
   /*max-width: var(--wrappers-width);*/
   scroll-behavior: smooth;
@@ -90,12 +112,14 @@
   padding: 0.73vw;
 }
 .activity_label{
-  font-size: 1.09vw;
+  /* font-size: 1.09vw; */
+  font-size: 15px;
   font-weight: 500;
   color: #B3B3B3;
 }
 .activity_score{
-  font-size: 1.09vw;
+  /* font-size: 1.09vw; */
+  font-size: 15px;
   font-weight: 600;
   color: #222222;
 }
@@ -103,35 +127,24 @@
   margin-bottom: 1.83vw;
 }
 
-@media only screen and (max-width: 500px){
-  .assessment_container{
-    width: var(--upcoming-width-b);
-    height: 40vh;
-  }
-  .assessment_sub_container{
-    min-width: 275px;
-    height: 30vh;
-    border-top: 10px solid #84DF3C;
-  }
-  .assessment_sub_container_wrap_out{
-    min-width: 210px;
-    width: 68.5vw;
-  }
-  .assessment_header{
-    min-width: 200px;
-    width: 96.5vw;
-  }
+@media only screen and (max-width: 1000px){
   .view_assessment{
     font-size: 12px;
   }
+  .assessment_container{
+    height: 350px;
+  }
+  .assessment_sub_container{
+    height: 250px;
+  }
   .assessment_stud_name{
-    font-size: 15px;
+    font-size: 20px;
   }
   .assessment_dim{
     font-size: 12px;
   }
   .final_grade_container{
-    height: 30px;
+    height: 40px;
   }
   .final_grade{
     font-size: 20px;
@@ -140,9 +153,53 @@
     font-size: 12px;
   }
   .activity_score{
+    font-size: 12px;;
+  }
+}
+
+@media only screen and (max-width: 750px){
+  .assessment_sub_container{
+    min-width: 47%;
+  }
+}
+
+@media only screen and (max-width: 500px){
+  .assessment_container{
+    /* width: var(--upcoming-width-b);
+    height: 40vh; */
+    height: 400px;
+  }
+  .assessment_sub_container{
+    /* min-width: 275px;
+    height: 30vh; */
+    min-width: 97.5%;
+    height: 320px;
+  }
+  .view_assessment{
     font-size: 12px;
   }
-  .assessment_stud_sy{
-    margin-bottom: 100px;
+  .assessment_stud_name{
+    margin-top: 20px;
+    font-size: 20px;
+  }
+  .assessment_dim{
+    font-size: 14px;
+  }
+  .final_grade_container{
+    height: 40px;
+  }
+  .final_grade{
+    font-size: 25px;
+  }
+  .activity_label{
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  .activity_score{
+    font-size: 14px;
+    margin-bottom: 5px;
+  }
+  .student_info_inside{
+    margin-bottom: 20px;
   }
 }
