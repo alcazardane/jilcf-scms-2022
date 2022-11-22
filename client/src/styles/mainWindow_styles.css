@@ -44,6 +44,16 @@
   position: absolute;
   display: flex;
 }
+.l1_background{
+  box-shadow: inset 10px 10px 100px 100px #021a4b;
+}
+.l3_background{
+  width: 100%;
+  height: 100%;
+  /* background: #FFD056; */
+  background: #E3B04B;
+  z-index: -1;
+}
 
 .menu_btn{
   width: 80px;

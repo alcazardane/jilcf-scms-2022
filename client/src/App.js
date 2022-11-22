@@ -8,7 +8,9 @@ import { Outlet } from 'react-router-dom';
 // import Edit from "./components/edit";
 import Create from "./components/create";
 import Login from "./components/login/login";
-import MainWindow from "./components/main_window/main_window";
+import MainWindowL1 from "./components/main_window/user_level_1/main_window_L1"
+import MainWindowL2 from "./components/main_window/user_level_2/main_window";
+import MainWindowL3 from "./components/main_window/user_level_3/main_window_L3"
 import Attendance from "./components/attendance_window/attendance_window";
 import Assessment from "./components/assessment_window/assessment_window";
 import Calendar from "./components/calendar_window/calendar_window";
@@ -19,9 +21,21 @@ export function Loginfunc(){
   )
 }
 
-export function Home(){
+export function HomeL1(){
   return(
-    <MainWindow />
+    <MainWindowL1 />
+  )
+}
+
+export function HomeL2(){
+  return(
+    <MainWindowL2 />
+  )
+}
+
+export function HomeL3(){
+  return(
+    <MainWindowL3 />
   )
 }
 

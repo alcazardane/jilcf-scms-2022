@@ -4,13 +4,16 @@ import React from "react";
  * import necessary scripts
  */
 import Navbar from './Navbar'
-import MainDashboard from './../dashboard/main_Dashboard'
-import WindowAttendance from './../window_attendance/windowAttendance'
+import MainDashboard from '../../dashboard/main_Dashboard'
+import WindowAttendance from '../../window_attendance/windowAttendance'
+
+// import images
+import jilcf_logo from "../../../images/jilcf_logo_1.png"
 
 /**
  * Styles
  */
-import '../../styles/mainWindow_styles.css'
+import '../../../styles/mainWindow_styles.css'
 
 export default function Home() {
     var root = document.querySelector(":root");
@@ -31,7 +34,7 @@ export default function Home() {
             <div className="main_window_wrap">
                 <div className="logo_wrap">
                     <div className="jilcf_logo">
-                      <img src="jilcf_logo_1.png" alt="school_logo" />
+                      <img src={jilcf_logo} alt="school_logo" />
                     </div>
                 </div>
                 <div className="main_window_button_wrap">
