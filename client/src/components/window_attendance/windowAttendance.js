@@ -16,6 +16,13 @@ import EditAttIntervention from './editAttIntervention_Modal'
 import MultiEditAttReason from './multiEditAttReasons_Modal'
 import '../../styles/windowAttendance_styles.css'
 
+// import images
+import search_icon from "../../images/search_FILL0_wght400_GRAD0_opsz48.png"
+import record_icon from "../../images/video_camera_front_FILL0_wght400_GRAD0_opsz48.png"
+import download_icon from "../../images/cloud_download_FILL0_wght400_GRAD0_opsz48.png"
+import refresh_icon from "../../images/refresh_FILL1_wght400_GRAD0_opsz48.png"
+import notify_icon from "../../images/notifications_active_FILL1_wght400_GRAD0_opsz48.png"
+
 const WindowAttendance = () => {
 
     const [studentInfo, setStudentInfo] = useState(null)
@@ -479,7 +486,7 @@ const WindowAttendance = () => {
             <div className="attendance_top_wrap">
                 <div className="attendance_search_wrap">
                     <div className="attendance_search">
-                        <img src="search_FILL0_wght400_GRAD0_opsz48.png" alt="search_icon" className="attendance_search_icon"></img>
+                        <img src={search_icon} alt="search_icon" className="attendance_search_icon"></img>
                         <input type="text" className="attendance_search_input" placeholder="Search student" onChange={e=> setQuery(e.target.value)}></input>
                     </div>
                     <span className="attendance_search_label">SUGGESTION/S:</span>
@@ -511,13 +518,13 @@ const WindowAttendance = () => {
                     <div className="attendance_record_attendance_wrap">
                         <button className="attendance_record_attendance">
                             <span className="attendance_button_label">Record<br></br>Attendance</span>
-                            <img src="video_camera_front_FILL0_wght400_GRAD0_opsz48.png" alt="record_attendance_button" className="record_attendance_button"></img>
+                            <img src={record_icon} alt="record_attendance_button" className="record_attendance_button"></img>
                         </button>
                     </div>
                     <div className="attendance_download_attendance_wrap">
                         <button className="attendance_download_attendance">
                             <span className="attendance_button_label">Download<br></br>Attendance</span>
-                            <img src="cloud_download_FILL0_wght400_GRAD0_opsz48.png" alt="download_attendance_button" className="download_attendance_button"></img>
+                            <img src={download_icon} alt="download_attendance_button" className="download_attendance_button"></img>
                         </button>
                     </div>
                 </div>
@@ -581,13 +588,13 @@ const WindowAttendance = () => {
                     <div className="winAtt_viewStudent_notifyButton_wrap">
                         <button className="winAtt_viewStudent_refdelButton"
                             onClick={refreshViewStudentTable}>
-                            <img src="refresh_FILL1_wght400_GRAD0_opsz48.png" 
+                            <img src={refresh_icon}
                                 alt="refresh" 
                                 className="winAtt_viewStudent_refdelIcon"/>
                         </button>
                         <button className="winAtt_viewStudent_notifyButton">
                             Notify
-                            <img src="notifications_active_FILL1_wght400_GRAD0_opsz48.png" 
+                            <img src={notify_icon}
                                 alt="notify" 
                                 className="winAtt_viewStudent_notifyIcon"/>
                         </button>

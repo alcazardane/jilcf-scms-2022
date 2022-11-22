@@ -10,7 +10,6 @@ body{
   padding:0;
   background: #03256C;
   font-family: 'Segoe UI Variable';
-  /* font-family: 'Poppins'; */
   overflow: hidden;
   user-select: none;
 }

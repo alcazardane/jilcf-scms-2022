@@ -1,7 +1,14 @@
 import React, {useEffect, useState, useRef} from 'react'
 
+// import components
 import NavbarViewDateTime from './Navbar_viewDateTime';
-import CalendarDetails from '../dashboard/dashboard_details/CalendarDetails';
+import CalendarDetails from '../../dashboard/dashboard_details/CalendarDetails';
+
+// import images
+import notification_icon from "../../../images/notifications_FILL1_wght400_GRAD0_opsz48.png"
+import settings_icon from "../../../images/settings_FILL0_wght400_GRAD0_opsz48.png"
+import power_icon from "../../../images/power_settings_new_FILL0_wght400_GRAD0_opsz48.png"
+import calendar_icon from "../../../images/calendar_month_FILL0_wght400_GRAD0_opsz48.png"
 
 const Navbar = () => {
 
@@ -73,9 +80,9 @@ const Navbar = () => {
             <div className="menulist_navbar_items_wrap">
                 <span className="teacher_name">Dela Cruz, Juan</span>
                 <div className="menulist_navbar_icons_wrap">
-                    <img className="menulist_navbar_icons" src="notifications_FILL1_wght400_GRAD0_opsz48.png" alt="notification_icon" />
-                    <img className="menulist_navbar_icons" src="settings_FILL0_wght400_GRAD0_opsz48.png" alt="settings_icon" />
-                    <img className="menulist_navbar_icons" src="power_settings_new_FILL0_wght400_GRAD0_opsz48.png" alt="power_icon" />
+                    <img className="menulist_navbar_icons" src={notification_icon} alt="notification_icon" />
+                    <img className="menulist_navbar_icons" src={settings_icon} alt="settings_icon" />
+                    <img className="menulist_navbar_icons" src={power_icon} alt="power_icon" />
                 </div>
             </div>
         </div>
@@ -107,7 +114,7 @@ const Navbar = () => {
         <div className="navbar_DateTime" ref={navCalendarBtnRef} onClick={() => setNavCalendarIsOpen((navCalendarIsOpen) => !navCalendarIsOpen)}>
             <div className="navbar_datetime_text">{timeState}</div>
             <div className="navbar_datetime_text">{dateState}</div>
-            <img className="navbar_datetime_icon" src="calendar_month_FILL0_wght400_GRAD0_opsz48.png" alt="datetime_icon"></img>
+            <img className="navbar_datetime_icon" src={calendar_icon} alt="datetime_icon"></img>
         </div>
     </div>
     </>

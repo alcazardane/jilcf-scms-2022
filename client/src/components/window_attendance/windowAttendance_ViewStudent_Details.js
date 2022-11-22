@@ -1,3 +1,7 @@
+// import images
+import edit_icon from "../../images/edit_FILL0_wght400_GRAD0_opsz48.png";
+
+
 const WinAttViewStudentDetails = ({ 
     viewstudatt, 
     editAttendanceReason, 
@@ -24,7 +28,7 @@ const WinAttViewStudentDetails = ({
             <td>{viewstudatt.status}</td>
             <td>{viewstudatt.reasons}</td>
             <td>
-                <img className="editButton" src="edit_FILL0_wght400_GRAD0_opsz48.png" alt="edit"
+                <img className="editButton" src={edit_icon} alt="edit"
                     onClick={event => 
                         {editAttendanceReason(event, viewstudatt._id); 
                         setOpenEditReason(true);
@@ -33,7 +37,7 @@ const WinAttViewStudentDetails = ({
             </td>
             <td>{viewstudatt.intervention}</td>
             <td>
-                <img className="editButton" src="edit_FILL0_wght400_GRAD0_opsz48.png" alt="edit"
+                <img className="editButton" src={edit_icon} alt="edit"
                     onClick={event =>
                         {editAttendanceIntervention(event, viewstudatt._id);
                         setOpenEditIntervention(true);
