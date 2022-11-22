@@ -2,6 +2,7 @@ import React, {useEffect, useState, useRef} from 'react'
 
 import NavbarViewDateTime from './Navbar_viewDateTime';
 import CalendarDetails from '../dashboard/dashboard_details/CalendarDetails';
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -61,8 +62,8 @@ const Navbar = () => {
             <span className="menulist_item_label">Calendar</span>
         </div>
         <div className="menulist_item_wrap">
-            <button className="menulist_item"></button>
-            <span className="menulist_item_label">Notes</span>
+            <button className="menulist_item"><Link to={"/Notes"}></Link></button>
+            <span className="menulist_item_label"><Link to={"/Notes"}>Notes</Link></span>
         </div>
         <div className="menulist_item_wrap">
             <button className="menulist_item"></button>

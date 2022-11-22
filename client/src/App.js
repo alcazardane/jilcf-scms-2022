@@ -12,7 +12,7 @@ import MainWindow from "./components/main_window/main_window";
 import Attendance from "./components/attendance_window/attendance_window";
 import Assessment from "./components/assessment_window/assessment_window";
 import Calendar from "./components/calendar_window/calendar_window";
-
+import Notes from "./components/main_window/notes_window/App"
 export function Loginfunc(){
   return(
     <Login />
@@ -52,4 +52,10 @@ export function CalendarWindow(){
   return(
     <Calendar/>
   )
-};
+}
+export function NotesWindow(){
+  return(
+    <Notes/>
+  )
+}
+;
