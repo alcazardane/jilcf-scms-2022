@@ -9,7 +9,7 @@
   /*min-width: 334px;*/
   width: var(--upcoming-width);
   /*width: 340px;*/
-  min-width: 300px;
+  /* min-width: 300px; */
   border-radius: 5px;
   display: flex;
   flex-wrap: wrap;
@@ -58,6 +58,8 @@
   padding: 0;
   display: grid;
   width: var(--upcoming-container-wrap-width);
+  justify-content: center;
+  gap: 5%;
 }
 
 .class_scheds{
@@ -205,7 +207,7 @@
   /*width: 20.5vw;
   height: 26.3vw;*/
   /*width: 20.5vw;*/
-  width: 100%;
+  width: 95%;
   min-width: 240px;
   /*width: 280px;*/
   height: 360px;
@@ -260,6 +262,7 @@
   }
   .class_scheds_wrap{
     height: 300px;
+    gap: 0.5%;
   }
   .container_labels{
     font-size: 17px;
@@ -320,14 +323,14 @@
   .class_scheds_wrap{
     width: 50%;
     height: 300px;
-    min-width: 100px;
+    /* min-width: 100px; */
   }
   .class_scheds{
-    width: 90%;
-    min-width: 100px;
+    width: 95%;
+    /* min-width: 10px; */
   }
   .class_scheds_wrap_2{
-    min-width: 100px;
+    min-width: 10px;
   }
   .class_scheds_time{
     font-size: 10px;
@@ -356,7 +359,7 @@
     opacity: 1;
     margin: 0;
     height: 280px;
-    width: 100%;
+    width: 95%;
     display: block;
     min-width: 100px;
   }

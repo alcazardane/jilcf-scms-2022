@@ -144,9 +144,10 @@ tr:nth-child(odd) {
 }
 
 @media only screen and (max-width: 900px){
-  td:nth-child(2) {
+  /* Change td name */
+  /* td:nth-child(2) {
     display: none;
-  }
+  } */
   .notify_button{
     font-size: 0;
     justify-content: center;
@@ -163,9 +164,10 @@ tr:nth-child(odd) {
   .notice_table {
     width: 95%;
   }
-  td:nth-child(2) {
+  /* Change td name */
+  /* td:nth-child(2) {
     display: block;
-  }
+  } */
 }
 
 @media only screen and (max-width: 500px){
@@ -200,9 +202,9 @@ tr:nth-child(odd) {
   .view_list_yellow{
     font-size: 12px;
   }
-  td:nth-child(2) {
+  /* td:nth-child(2) {
     display: none;
-  }
+  } */
   .notify_button{
     width: 40px;
     height: 15px;
