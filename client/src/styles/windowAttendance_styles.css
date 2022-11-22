@@ -36,7 +36,7 @@
     cursor: move;
     z-index: 100;
 }
-  
+
 .windowAttendance_topbar{
     margin: 0;
     background:#FFD056;
@@ -51,8 +51,9 @@
 }
   
 .attendance_top_wrap{
-    margin-top: 3vh;
-    margin-bottom: 1.5vh;
+    /* margin-top: 3vh;
+    margin-bottom: 1.5vh; */
+    margin: 2% 0 1% 0;
     width: 100%;
     height: 100px;
     /*background: pink;*/
@@ -64,8 +65,10 @@
 }
   
 .attendance_search_wrap{
-    width: calc(var(--windowAttendance-search-width) + 2vw);
-    margin-top: 25px;
+    /* width: calc(var(--windowAttendance-search-width) + 2vw); */
+    /* margin-top: 25px; */
+    width: 50%;
+    margin-top: 2%;
     display: flex;
     flex-wrap: wrap;
 }
@@ -90,8 +93,9 @@
 }
   
 .attendance_search{
-    margin: 0 40px 0 20px;
-    width: var(--windowAttendance-search-width);
+    margin: 0 0 0 4%;
+    /* width: var(--windowAttendance-search-width); */
+    width: 85%;
     border-radius: 100px;
     display: flex;
     align-items: center;
@@ -100,7 +104,8 @@
 }
 .attendance_search_input{
     padding: 7px;
-    width: calc(var(--windowAttendance-search-width) - 5vw);
+    /* width: calc(var(--windowAttendance-search-width) - 5vw); */
+    width: 95%;
     font-size: 2vh;
     border-radius: 0 100px 100px 0;
     border: none;
@@ -111,6 +116,7 @@
 }
 .attendance_search_icon{
     width: calc(var(--windowAttendance-buttons-font) + 12px);
+    /* width: 5%; */
     height: auto;
     margin-left: 10px;
     margin-top: 2px;
@@ -119,6 +125,7 @@
 
 
 .attendance_cbandbutton_wrap{
+    width: 50%;
     display: grid;
     grid-auto-flow: column;
     gap: 20px;
@@ -145,6 +152,7 @@
     /*font-size: calc(var(--windowAttendance-buttons-font) + 2px);*/
     font-size: 12px;
     font-family: 'Segoe UI Variable';
+    /* font-family: 'Poppins'; */
     background: white;
     border: none;
     border-radius: 3px;
@@ -182,7 +190,7 @@
     border-right: 5px solid transparent;
     border-top: 5px solid black;
 }
-  
+
 .attendance_record_attendance{
     width: var(--windowAttendance-buttons-width);
     height: var(--windowAttendance-buttons-height);
@@ -209,8 +217,9 @@
 .attendance_download_attendance{
     width: var(--windowAttendance-buttons-width);
     height: var(--windowAttendance-buttons-height);
-    margin-right: 20px;
-    margin-top: 18px;
+    /* margin-right: 20px;
+    margin-top: 18px; */
+    margin: 18px 2% 0 0;
     padding: 0 var(--windowAttendance-buttons-font);
     background: #17A1FA;
     border: none;
@@ -244,7 +253,9 @@
     overflow: auto;
 }
 .windowAttendance_table{
-    width: calc(var(--windowAttendance-width) - 40px);
+    /* width: calc(var(--windowAttendance-width) - 40px); */
+    width: 98%;
+    margin-left: 2%;
     border-collapse: collapse;
     transition: all 200ms ease-in-out;
 }
@@ -302,6 +313,387 @@
     filter: invert(50%) sepia(47%) saturate(3682%) hue-rotate(181deg) brightness(104%) contrast(96%);
 }
 
+/* Window Attendance default content */
+.windowAttendance_default_wrap{
+    /* display: none; */
+    /* display: var(--winAtt-Default-Display); */
+
+    margin: 0;
+    width: 100%;
+    position: absolute;
+    pointer-events: var(--winAtt-Default-PointerEvents);
+    opacity: var(--winAtt-Default-Opacity);
+    transform: translateX(var(--winAtt-Default-Transform));
+    transition: all 300ms ease-in-out;
+}
+
+/* Window Attendance view student content */
+.windowAttendance_view_wrap{
+    /* display: block; */
+    /* display: var(--winAtt-ViewStudent-Display); */
+
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    pointer-events: var(--winAtt-ViewStudent-PointerEvents);
+    opacity: var(--winAtt-ViewStudent-Opacity);
+    transform: translateX(var(--winAtt-ViewStudent-Transform));
+    transition: all 300ms ease-in-out;
+}
+
+.winAtt_viewStudent_wrap{
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-wrap: wrap;
+    background: #F3F3F3;
+}
+
+.winAtt_viewStudent_back_button{
+    font-size: 16px;
+    font-weight: 600;
+    margin: 2% 2% 0 2%;
+    cursor: pointer;
+}
+
+.winAtt_viewStudent_top_wrap{
+    width: 100%;
+    height: 30%;
+    margin: 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.winAtt_viewStudent_profile_wrap{
+    width: 70%;
+    margin: 0;
+    display: flex;
+    padding: 2%;
+}
+.winAtt_viewStudent_profile_picture{
+    width: 130px;
+    height: 130px;
+    background: #E2E1E5;
+}
+.winAtt_viewStudent_info_wrap{
+    margin-left: 3%;
+}
+.winAtt_viewStudent_stud_name{
+    font-size: 14px;
+    font-weight: 600;
+}
+.winAtt_viewStudent_stud_id{
+    font-size: 12px;
+    font-weight: 600;
+    opacity: 0.5;
+}
+.winAtt_viewStudent_stud_section{
+    font-size: 12px;
+    font-weight: 600;
+    opacity: 0.5;
+    margin-bottom: 10%;
+}
+
+.winAtt_viewStudent_sortCB_label{
+    font-size: 12px;
+    font-weight: 600;
+}
+.winAtt_viewStudent_sortCB{
+    width: 150px;
+    height: 35px;
+    border: none;
+    box-shadow: 1px 4px 3px rgba(0 , 0, 0, 0.25);
+    border-radius: 2px;
+    font-family: 'Segoe UI Variable';
+}
+
+.winAtt_viewStudent_notifyButton_wrap{
+    width: 30%;
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+    gap: 2%;
+    padding: 2%;
+}
+.winAtt_viewStudent_notifyButton{
+    width: 100px;
+    height: 35px;
+    background: #F14668;
+    color: white;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+    box-shadow: 1px 4px 3px rgba(0 , 0, 0, 0.25);
+    cursor: pointer;
+}
+.winAtt_viewStudent_notifyIcon{
+    width: 20%;
+    height: auto;
+    filter: invert(100%) sepia(50%) saturate(47%) hue-rotate(216deg) brightness(113%) contrast(101%);
+}
+.winAtt_viewStudent_refdelButton{
+    width: 35px;
+    height: 35px;
+    background: #17A1FA;
+    border: none;
+    border-radius: 3px;box-shadow: 1px 4px 3px rgba(0 , 0, 0, 0.25);
+    cursor: pointer;
+}
+.winAtt_viewStudent_refdelIcon{
+    width: 100%;
+    height: auto;
+    filter: invert(100%) sepia(50%) saturate(47%) hue-rotate(216deg) brightness(113%) contrast(101%);
+}
+
+.winAtt_viewStudent_table_wrap{
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: auto;
+}
+.winAtt_viewStudent_table{
+    width: 96%;
+    border-collapse: collapse;
+}
+.winAtt_viewStudent_table thead{
+    position: sticky;
+    top: 0px;
+    margin: 0 0 0 0;
+    z-index: 1;
+}
+.winAtt_viewStudent_table_header{
+    height: 40px;
+    color: white;
+}
+.winAtt_viewStudent_table_header td{
+    background: #03256C;
+    font-size: 14px;
+    font-weight: 600;
+    padding-left: 2%;
+}
+.winAtt_viewStudent_table_header td:nth-child(1){
+    width: 5%;
+    padding: 0;
+    text-align: center;
+}
+.winAtt_viewStudent_table_header td:nth-child(2){
+    width: 15%;
+    padding: 0;
+}
+.winAtt_viewStudent_table_header td:nth-child(3){
+    width: 10%;
+    padding: 0;
+    text-align: center;
+    border-left: 2px solid white;
+}
+.winAtt_viewStudent_table_header td:nth-child(4){
+    width: 30%;
+    border-left: 2px solid white;
+}
+.winAtt_viewStudent_table_header td:nth-child(5){
+    width: 5%;
+}
+.winAtt_viewStudent_table_header td:nth-child(6){
+    width: 30%;
+    border-left: 2px solid white;
+}
+.winAtt_viewStudent_table_header td:nth-child(7){
+    width: 5%;
+}
+
+.winAtt_viewStudent_table_body td:nth-child(1){
+    width: 5%;
+    text-align: center;
+}
+.winAtt_viewStudent_table_body td:nth-child(2){
+    width: 15%;
+}
+.winAtt_viewStudent_table_body td:nth-child(3){
+    width: 10%;
+    border-left: 2px solid #73777B;
+    text-align: center;
+}
+.winAtt_viewStudent_table_body td:nth-child(4){
+    width: 30%;
+    border-left: 2px solid #73777B;
+    padding-left: 2%;
+}
+.winAtt_viewStudent_table_body td:nth-child(5){
+    width: 5%;
+}
+.winAtt_viewStudent_table_body td:nth-child(6){
+    width: 30%;
+    border-left: 2px solid #73777B;
+    padding-left: 2%;
+}
+.winAtt_viewStudent_table_body td:nth-child(7){
+    width: 5%;
+}
+
+.editButton{
+    width: 50%;
+    opacity: 0.7;
+    cursor: pointer;
+}
+
+.editReason_modal_wrap{
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    pointer-events: var(--editAttendance-Modals-PointerEvents);
+    opacity: var(--editAttendance-Modals-Opacity);
+    transition: all 200ms ease-in-out;
+}
+.editIntervention_modal_wrap{
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    pointer-events: var(--editAttendanceInt-Modals-PointerEvents);
+    opacity: var(--editAttendanceInt-Modals-Opacity);
+    transition: all 200ms ease-in-out;
+}
+.multiEditReasons_modal_wrap{
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    pointer-events: var(--MultiEditAttendanceRes-Modals-PointerEvents);
+    opacity: var(--MultiEditAttendanceRes-Modals-Opacity);
+    transition: all 200ms ease-in-out;
+}
+.confirmDelete_modal_wrap{
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    pointer-events: var(--ConfirmDelete-Modal-PointerEvents);
+    opacity: var(--ConfirmDelete-Modal-Opacity);
+    transition: all 200ms ease-in-out;
+}
+
+.editAtt_Modal_Container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 50%;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 1px 4px 3px rgba(0 , 0, 0, 0.25);
+    text-align: center;
+    gap: 2%;
+}
+.MultiEditAtt_Modal_Container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    width: 60%;
+    height: 70%;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 1px 4px 3px rgba(0 , 0, 0, 0.25);
+    text-align: center;
+    gap: 2%;
+}
+
+.editAtt_input{
+    width: 80%;
+    height: 50px;
+    margin: 0 5% 0 5%;
+    border: 2px solid #B3B3B3;
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 20px;
+}
+.editAtt_cancel_button{
+    width: 20%;
+    height: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    background: #F14668;
+    color: white;
+    box-shadow: 1px 4px 3px rgba(0 , 0, 0, 0.25);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.editAtt_update_button{
+    width: 20%;
+    height: 50px;
+    font-size: 16px;
+    font-weight: 600;
+    background: #17A1FA;
+    color: white;
+    box-shadow: 1px 4px 3px rgba(0 , 0, 0, 0.25);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.editAtt_Modal_label{
+    font-size: 20px;
+    font-weight: 600;
+    margin-top: 5%;
+    margin-bottom: -5%;
+    width: 100%;
+}
+
+.winAtt_viewStudent_bottom_wrap{
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: center;
+    gap: 2%;
+}
+.winAtt_viewStudent_edit_multiRecord{
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    background: #17A1FA;
+    color: white;
+    box-shadow: 1px 4px 3px rgba(0 , 0, 0, 0.25);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.winAtt_viewStudent_del_multiRecord{
+    width: 100px;
+    height: 40px;
+    font-size: 16px;
+    font-weight: 600;
+    background: #F14668;
+    color: white;
+    box-shadow: 1px 4px 3px rgba(0 , 0, 0, 0.25);
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+
 @media only screen and (max-width: 1000px){
     .attendance_cb_label{
         font-size: 8px;
@@ -329,6 +721,12 @@
         width: 55px;
         height: 15px;
         font-size: 8px;
+    }
+    
+    /* VIEW STUDENT ATTENDANCE*/
+    .editButton{
+        width: 15px;
+        height: auto;
     }
 }
 
@@ -406,6 +804,123 @@
     .windowAttendance_view{
         width: 15px;
         height: 15px;
+    }
+
+    /* VIEW STUDENT ATTENDANCE */
+
+    .winAtt_viewStudent_back_button{
+        font-size: 14px;
+    }
+    .winAtt_viewStudent_profile_picture{
+        width: 100px;
+        height: 100px;
+    }
+    .winAtt_viewStudent_stud_name{
+        font-size: 11px;
+    }
+    .winAtt_viewStudent_stud_id{
+        font-size: 10px;
+    }
+    .winAtt_viewStudent_stud_section{
+        font-size: 10px;
+    }
+    
+    .winAtt_viewStudent_sortCB_label{
+        font-size: 10px;
+    }
+    .winAtt_viewStudent_sortCB{
+        width: 120px;
+        height: 25px;
+        font-size: 10px;
+    }
+    .winAtt_viewStudent_notifyButton{
+        width: 80px;
+        height: 30px;
+        font-size: 12px;
+        padding: 4px;
+    }
+    .winAtt_viewStudent_notifyIcon{
+        width: 20%;
+        height: auto;
+    }
+    .winAtt_viewStudent_refdelButton{
+        width: 30px;
+        height: 30px;
+    }
+    .winAtt_viewStudent_table_header{
+        height: 30px;
+    }
+    .winAtt_viewStudent_table_header td{
+        font-size: 12px;
+    }
+    .winAtt_viewStudent_table_header td:nth-child(2){
+        max-width: 80px;
+    }
+    .winAtt_viewStudent_table_header td:nth-child(4){
+        max-width: 80px;
+    }
+    .winAtt_viewStudent_table_header td:nth-child(6){
+        max-width: 80px;
+    }
+    .winAtt_viewStudent_table_body td{
+        font-size: 10px;
+    }
+    .winAtt_viewStudent_table_body td:nth-child(2){
+        max-width: 80px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .winAtt_viewStudent_table_body td:nth-child(4){
+        max-width: 80px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .winAtt_viewStudent_table_body td:nth-child(6){
+        max-width: 80px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .winAtt_viewStudent_edit_multiRecord{
+        width: 80px;
+        height: 30px;
+        font-size: 12px;
+    }
+    .winAtt_viewStudent_del_multiRecord{
+        width: 80px;
+        height: 30px;
+        font-size: 12px;
+    }
+    
+    .editAtt_Modal_Container{
+        width: 60%;
+        height: 40%;
+    }
+    .MultiEditAtt_Modal_Container{
+        width: 60%;
+        height: 55%;
+    }
+    
+    .editAtt_input{
+        width: 80%;
+        height: 30px;
+        padding: 3px;
+        font-size: 14px;
+    }
+    .editAtt_cancel_button{
+        width: 80px;
+        height: 30px;
+        font-size: 12px;
+    }
+    .editAtt_update_button{
+        width: 80px;
+        height: 30px;
+        font-size: 12px;
+    }
+    .editAtt_Modal_label{
+        font-size: 14px;
     }
 }
 
@@ -488,5 +1003,20 @@
     .windowAttendance_view{
         width: 12px;
         height: 12px;
+    }
+
+    /* VIEW STUDENT ATTENDANCE */
+    .winAtt_viewStudent_notifyButton{
+        width: 30px;
+        height: 30px;
+        font-size: 0;
+    }
+    .winAtt_viewStudent_notifyIcon{
+        width: 80%;
+        height: auto;
+        padding: 0;
+    }
+    .winAtt_viewStudent_sortCB{
+        width: 100px;
     }
 }

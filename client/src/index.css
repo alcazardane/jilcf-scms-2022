@@ -1,5 +1,3 @@
-/*All the stylings in the whole app are all right here for now*/
-
 @import url('http://fonts.cdnfonts.com/css/segoe-ui-variable');
 
 *::before,
@@ -12,6 +10,7 @@ body{
   padding:0;
   background: #03256C;
   font-family: 'Segoe UI Variable';
+  /* font-family: 'Poppins'; */
   overflow: hidden;
   user-select: none;
 }
@@ -81,7 +80,28 @@ body{
 
   /* screen 500px */
   --windowAttendance-500-button-width: 32vw;
+
+
+  /* --winAtt-Default-Display: none; */
+  --winAtt-Default-PointerEvents: all;
+  --winAtt-Default-Opacity: 1;
+  --winAtt-Default-Transform: 0;
+
+  /* --winAtt-ViewStudent-Display: block; */
+  --winAtt-ViewStudent-PointerEvents: none;
+  --winAtt-ViewStudent-Opacity: 0;
+  --winAtt-ViewStudent-Transform: 100%;
+
+
+  --editAttendance-Modals-PointerEvents: none;
+  --editAttendance-Modals-Opacity: 0;
+
+  --editAttendanceInt-Modals-PointerEvents: none;
+  --editAttendanceInt-Modals-Opacity: 0;
+
+  --MultiEditAttendanceRes-Modals-PointerEvents: none;
+  --MultiEditAttendanceRes-Modals-Opacity: 0;
+
+  --ConfirmDelete-Modal-PointerEvents: none;
+  --ConfirmDelete-Modal-Opacity: 0;
 }
-
-/* =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-= */
-

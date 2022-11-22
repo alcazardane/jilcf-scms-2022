@@ -15,6 +15,11 @@ app.use(require("./routes/record"));
 app.use(require("./routes/upcoming_schedule"));
 app.use(require("./routes/attendance_per_classroom"));
 app.use(require("./routes/assessment_record"));
+app.use(require("./routes/camera_module"));
+app.use(require("./routes/student_info"));
+app.use(require("./routes/student_grades"));
+app.use(require("./routes/student_attendance"));
+app.use(require("./routes/deleted_records"));
 
 // get driver connection
 const dbo = require("./db/conn");

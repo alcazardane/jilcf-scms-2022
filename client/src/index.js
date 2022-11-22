@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {Loginfunc, Home, CreateUser, App, AssessmentWindow,AttendanceWindow,CalendarWindow} from "./App";
+import {Loginfunc, Home, CreateUser, App, AssessmentWindow, AttendanceWindow, CalendarWindow} from "./App";
 
 import './index.css'
 
