@@ -19,6 +19,12 @@ body{
   /*--max-width: 77.5vw;
   --max-width-b: 77.5vw;*/
   --windowDashboard-display: none;
+  --windowDashboard-L1-display: none;
+  --windowDashboard-L3-display: none;
+
+  --dashboard-L1-window-width: 60%;
+  --dashboard-L1-window-height: 70%;
+
   --max-width: 77.5vw;
   --max-width-b: 77.5vw;
   --max-height: 81.5vh;

@@ -20,6 +20,9 @@ app.use(require("./routes/student_info"));
 app.use(require("./routes/student_grades"));
 app.use(require("./routes/student_attendance"));
 app.use(require("./routes/deleted_records"));
+app.use(require("./routes/schedule"));
+app.use(require("./routes/student_activities"));
+app.use(require("./routes/announcements"));
 
 // get driver connection
 const dbo = require("./db/conn");

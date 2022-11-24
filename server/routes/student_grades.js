@@ -20,4 +20,16 @@ recordRoutes.route("/student_grades").get(function (req, res) {
    });
 });
 
+recordRoutes.route("/student_grades/:grade_id").get(function (req, res) {
+  let db_connect = dbo.getDb();
+  let myquery = { grade_id: req.params.grade_id }
+  db_connect
+    .collection("student_grades")
+    .find(myquery)
+    .toArray(function (err, result) {
+      if (err) throw err;
+      res.json(result);
+    });
+ });
+
 module.exports = recordRoutes;

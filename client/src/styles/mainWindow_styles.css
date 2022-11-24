@@ -46,6 +46,7 @@
 }
 .l1_background{
   box-shadow: inset 10px 10px 100px 100px #021a4b;
+  z-index: -1;
 }
 .l3_background{
   width: 100%;
