@@ -6,7 +6,7 @@ import React from "react";
 import Navbar from './navbar_L1'
 
 // IMPORT MAIN DASHBOARD AND ATTENDANCE MODULE FOR USER LEVEL 1 HERE
-// import MainDashboard from './../dashboard/main_Dashboard'
+import MainDashboardL1 from '../../dashboard/dashboard_L1/main_Dashboard_L1'
 // import WindowAttendance from './../window_attendance/windowAttendance'
 
 // import image
@@ -18,12 +18,12 @@ import jilcf_logo from "../../../images/jilcf_logo_1.png"
 import '../../../styles/mainWindow_styles.css'
 
 export default function Home_L1() {
-    // var root = document.querySelector(":root");
+    var root = document.querySelector(":root");
   
     // For opening the dashboard window
     const openDashboard = () => {
-        // root.style.setProperty('--windowDashboard-display', "block")
-        // root.style.setProperty('--display-b', "block")
+        root.style.setProperty('--windowDashboard-L1-display', "block")
+        root.style.setProperty('--display-b', "block")
 
         // Put codes to open Dashboard for User Level 1 here
     }
@@ -65,8 +65,8 @@ export default function Home_L1() {
                         <div className="button_label">Analytics</div>
                     </div> 
                 </div>
-                <div className="windowDashboard_main_wrap">
-                  {/* <MainDashboard /> */}
+                <div className="windowDashboard_L1_main_wrap">
+                  <MainDashboardL1 />
                 </div>
                 <div className="windowAttendance_main_wrap">
                   {/* <WindowAttendance /> */}
