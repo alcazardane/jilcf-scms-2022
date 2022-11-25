@@ -9,6 +9,7 @@ import notification_icon from "../../../images/notifications_FILL1_wght400_GRAD0
 import settings_icon from "../../../images/settings_FILL0_wght400_GRAD0_opsz48.png"
 import power_icon from "../../../images/power_settings_new_FILL0_wght400_GRAD0_opsz48.png"
 import calendar_icon from "../../../images/calendar_month_FILL0_wght400_GRAD0_opsz48.png"
+import { Link } from 'react-router-dom';
 
 const Navbar = () => {
 
@@ -69,7 +70,7 @@ const Navbar = () => {
         </div>
         <div className="menulist_item_wrap">
             <button className="menulist_item"></button>
-            <span className="menulist_item_label">Notes</span>
+            <span className="menulist_item_label"><Link to = {"/home/notes"}>Notes</Link></span>
         </div>
         <div className="menulist_item_wrap">
             <button className="menulist_item"></button>
