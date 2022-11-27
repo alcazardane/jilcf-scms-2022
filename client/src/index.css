@@ -25,6 +25,18 @@ body{
   --dashboard-L1-window-width: 60%;
   --dashboard-L1-window-height: 70%;
 
+  --windowAttendance-L1-display: none;
+  --windowAttendance-L3-display: none;
+
+  --adminModule_L1_display: none;
+  --adminModule-L1-window-width: 60%;
+  --adminModule-L1-window-width: 70%;
+  --adminModule-display-b: none;
+  --adminModule-top: 15px;
+  --adminModule-left: 30px;
+  --adminModule_create_modal-pointer-events: none;
+  --adminModule_create_modal-opacity: 0;
+
   --max-width: 77.5vw;
   --max-width-b: 77.5vw;
   --max-height: 81.5vh;
@@ -109,4 +121,9 @@ body{
 
   --ConfirmDelete-Modal-PointerEvents: none;
   --ConfirmDelete-Modal-Opacity: 0;
+
+  --viewStudent_edit_multiRecord-pointer-events: none;
+  --viewStudent_edit_multiRecord-opacity: 0.5;
+
+  --viewStudent_multiEdit_warning-opacity: 1;
 }

@@ -7,6 +7,8 @@ import Navbar from './navbar_L1'
 
 // IMPORT MAIN DASHBOARD AND ATTENDANCE MODULE FOR USER LEVEL 1 HERE
 import MainDashboardL1 from '../../dashboard/dashboard_L1/main_Dashboard_L1'
+import WindowAttendanceL1 from "../../window_attendance/window_attendance_L1";
+import AdminModule from "../../admin_module/admin_module";
 // import WindowAttendance from './../window_attendance/windowAttendance'
 
 // import image
@@ -30,9 +32,14 @@ export default function Home_L1() {
 
     // For opening the attendance window
     const openAttendance = () => {
-        // root.style.setProperty('--windowAttendance-display', "block")
+        root.style.setProperty('--windowAttendance-L1-display', "block")
 
         // Put codes to open Attendance Module for User Level 1 here
+    }
+
+    const openAdminModule = () => {
+        root.style.setProperty('--adminModule_L1_display', "block")
+        root.style.setProperty('--adminModule-display-b', "block")
     }
     
     return (
@@ -45,7 +52,7 @@ export default function Home_L1() {
                 </div>
                 <div className="main_window_button_wrap">
                     <div className="main_window_button_wrap_in">
-                        <button className="main_window_button"></button>
+                        <button className="main_window_button" onClick={openAdminModule}></button>
                         <div className="button_label">Admin</div>
                     </div>
                     <div className="main_window_button_wrap_in">
@@ -68,9 +75,15 @@ export default function Home_L1() {
                 <div className="windowDashboard_L1_main_wrap">
                   <MainDashboardL1 />
                 </div>
-                <div className="windowAttendance_main_wrap">
-                  {/* <WindowAttendance /> */}
+
+                <div className="windowAttendance_L1_main_wrap">
+                  <WindowAttendanceL1 />
                 </div>
+
+                <div className="adminModule_L1_main_wrap">
+                  <AdminModule />
+                </div>
+
             </div>
             <Navbar />
         </div>

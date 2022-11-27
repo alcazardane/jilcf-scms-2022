@@ -9,8 +9,8 @@ import useWindowDimensions from '../dashboard/hooks/useWindowDimensions'
 
 
 //Components
-import WindowAttendanceDetails from './windowAttendanceDetails'
-import WinAttViewStudentDetails from './windowAttendance_ViewStudent_Details'
+import WindowAttendanceDetails from './window_attendance_L1_details'
+import WinAttViewStudentDetailsL1 from './window_attendance_L1_viewstudent_details'
 import EditAttReason from './editAttReason_Modal'
 import EditAttIntervention from './editAttIntervention_Modal'
 import MultiEditAttReason from './multiEditAttReasons_Modal'
@@ -23,13 +23,13 @@ import download_icon from "../../images/cloud_download_FILL0_wght400_GRAD0_opsz4
 import refresh_icon from "../../images/refresh_FILL1_wght400_GRAD0_opsz48.png"
 import notify_icon from "../../images/notifications_active_FILL1_wght400_GRAD0_opsz48.png"
 
-const WindowAttendance = () => {
+const WindowAttendanceL1 = () => {
 
     const [studentInfo, setStudentInfo] = useState(null)
 
     useEffect(() => {
         const fetchStudentInfo = async () => {
-            const response = await fetch('http://localhost:5000/student_info')
+            const response = await fetch('http://localhost:5000/teacher_info')
             const json = await response.json()
     
             if (response.ok){
@@ -37,7 +37,7 @@ const WindowAttendance = () => {
             }
         }
         fetchStudentInfo()
-    }, [])
+    }, [])  
 
 
     var root = document.querySelector(":root");
@@ -76,7 +76,7 @@ const WindowAttendance = () => {
 
     // For closing window_Attendance
     const closeAttendance = () => {
-        root.style.setProperty('--windowAttendance-display', "none")
+        root.style.setProperty('--windowAttendance-L1-display', "none")
 
         root.style.setProperty('--windowAttendance-width', "77vw")
         root.style.setProperty('--windowAttendance-height', "80vh")
@@ -145,7 +145,7 @@ const WindowAttendance = () => {
 
     // For searching
     const [query, setQuery] = useState("");
-    const keys = ["lname", "fname", "mname", "grade_level", "track", "strand"]
+    const keys = ["lname", "fname", "mname", "track"]
 
 
 //======================================================================================================================
@@ -158,7 +158,6 @@ const WindowAttendance = () => {
     // Will get the userID of the student to be viewed
     const [viewStudentID, setViewStudentID] = useState()
 
-
     const sortDate = (dateSort) =>{
         if (dateSort === "e"){
             viewStudentAttendance.sort((a, b) => (a.timestamp < b.timestamp ? -1 : 1));
@@ -170,18 +169,17 @@ const WindowAttendance = () => {
             return
         }
     }
-    
 
     // if the view student button is clicked, the window attendance will display student's attendance record
     const goToViewStudent = (event, studentID) => {
 
         event.preventDefault();
 
-        fetch('http://localhost:5000/student_info/' + studentID).then(res => res.json()).then(result => {
+        fetch('http://localhost:5000/teacher_info/' + studentID).then(res => res.json()).then(result => {
             setViewStudentInfo(result)
         })
 
-        fetch('http://localhost:5000/student_attendance/' + studentID).then(res => res.json()).then(result => {
+        fetch('http://localhost:5000/teacher_attendance/' + studentID).then(res => res.json()).then(result => {
             setViewStudentAttendance(result)
         })
 
@@ -220,7 +218,7 @@ const WindowAttendance = () => {
 
     // Will get the attendance reason the user wants to edit
     const editAttendanceReason = (event, editID) => {
-        fetch('http://localhost:5000/student_attendance/edit_reason/' + editID).then(res => res.json()).then(result => {
+        fetch('http://localhost:5000/teacher_attendance/edit_reason/' + editID).then(res => res.json()).then(result => {
             setEditReason(result)
         })
 
@@ -240,7 +238,7 @@ const WindowAttendance = () => {
         refreshViewStudentTable();
         
         let databody = {"reasons": newReason}
-        fetch('http://localhost:5000/student_attendance/update_reason/' + updateReasonID, {
+        fetch('http://localhost:5000/teacher_attendance/update_reason/' + updateReasonID, {
             method: 'POST',
             body: JSON.stringify(databody),
             headers: {
@@ -267,7 +265,7 @@ const WindowAttendance = () => {
 
     // Will get the attendance intervention the user wants to edit
     const editAttendanceIntervention = (event, editID) => {
-        fetch('http://localhost:5000/student_attendance/edit_intervention/' + editID).then(res => res.json()).then(result => {
+        fetch('http://localhost:5000/teacher_attendance/edit_intervention/' + editID).then(res => res.json()).then(result => {
             setEditIntervention(result)
         })
 
@@ -287,7 +285,7 @@ const WindowAttendance = () => {
         refreshViewStudentTable();
 
         let databody = {"intervention": newIntervention}
-        fetch('http://localhost:5000/student_attendance/update_intervention/' + updateInterventionID, {
+        fetch('http://localhost:5000/teacher_attendance/update_intervention/' + updateInterventionID, {
             method: 'POST',
             body: JSON.stringify(databody),
             headers: {
@@ -362,7 +360,7 @@ const WindowAttendance = () => {
         // Update Reasons
         let databody = {"reasons": newReason}
         for (let i = 0; i < multiID.length; i++) {
-            fetch('http://localhost:5000/student_attendance/update_reason/' + multiID[i], {
+            fetch('http://localhost:5000/teacher_attendance/update_reason/' + multiID[i], {
                 method: 'POST',
                 body: JSON.stringify(databody),
                 headers: {
@@ -375,7 +373,7 @@ const WindowAttendance = () => {
         //Update Interventions
         let databodyB = {"intervention": newIntervention}
         for (let j = 0; j < multiID.length; j++) {
-            fetch('http://localhost:5000/student_attendance/update_intervention/' + multiID[j], {
+            fetch('http://localhost:5000/teacher_attendance/update_intervention/' + multiID[j], {
                 method: 'POST',
                 body: JSON.stringify(databodyB),
                 headers: {
@@ -402,7 +400,7 @@ const WindowAttendance = () => {
     const attRecordsToBeDeleted = () => {
         // Will get the ID from the useState array multiID to get the data to be deleted
         for (let j = 0; j < multiID.length; j++){
-            fetch('http://localhost:5000/student_attendance/to_be_deleted/' + multiID[j]).then(res => res.json()).then(result => {
+            fetch('http://localhost:5000/teacher_attendance/to_be_deleted/' + multiID[j]).then(res => res.json()).then(result => {
                 setSelectedAttRecord(arr => [...arr, result]);
             })
         }
@@ -429,7 +427,7 @@ const WindowAttendance = () => {
             })
             .then(response => response.json());
 
-            fetch('http://localhost:5000/student_attendance/delete_attendance/' + selectedAttRecord[i]._id, {
+            fetch('http://localhost:5000/teacher_attendance/delete_attendance/' + selectedAttRecord[i]._id, {
                 method: 'DELETE'
             })
             .then(response => response.json());             
@@ -467,7 +465,7 @@ const WindowAttendance = () => {
 //======================================================================================================================
     // Use to refresh the view student table
     const refreshViewStudentTable = () => {
-        fetch('http://localhost:5000/student_attendance/' + viewStudentID).then(res => res.json()).then(result => {
+        fetch('http://localhost:5000/teacher_attendance/' + viewStudentID).then(res => res.json()).then(result => {
             setViewStudentAttendance(result)
         })
     }
@@ -496,24 +494,24 @@ const WindowAttendance = () => {
                 <div className="attendance_search_wrap">
                     <div className="attendance_search">
                         <img src={search_icon} alt="search_icon" className="attendance_search_icon"></img>
-                        <input type="text" className="attendance_search_input" placeholder="Search student" onChange={e=> setQuery(e.target.value)}></input>
+                        <input type="text" className="attendance_search_input" placeholder="Search teacher" onChange={e=> setQuery(e.target.value)}></input>
                     </div>
                     <span className="attendance_search_label">SUGGESTION/S:</span>
-                    <span className="attendance_search_suggestions">12 STEM B</span>
-                    <span className="attendance_search_suggestions">12 TVL B</span>
+                    <span className="attendance_search_suggestions">ACADEMIC</span>
+                    <span className="attendance_search_suggestions">TVL</span>
                 </div>
                 <div className="attendance_cbandbutton_wrap">
                     <div className="attendance_cb_wrap">
-                        <label className="attendance_cb_label">Grade Level</label>
+                        <label className="attendance_cb_label">Department</label>
                         <div className="attendance_grade_level_wrap">
                             <select name="attendance_grade_level" id="attendance_grade_level" className="attendance_cb" onChange={e => setQuery(e.target.value)}>
-                                <option value="11">11</option>
-                                <option value="12">12</option>
+                                <option value="tvl">TVL</option>
+                                <option value="academic">ACADEMIC</option>
                             </select>
                             <span className="attendance_cb_custom_arrow"></span>
                         </div>
                     </div>
-                    <div className="attendance_cb_wrap">
+                    {/* <div className="attendance_cb_wrap">
                         <label className="attendance_cb_label">Strand / Track</label>
                         <div className="attendance_strand_track_wrap">
                             <select name="attendance_strand_track" id="attendance_strand_track" className="attendance_cb" onChange={e => setQuery(e.target.value)}>
@@ -523,7 +521,7 @@ const WindowAttendance = () => {
                             </select>
                             <span className="attendance_cb_custom_arrow"></span>
                         </div>
-                    </div>
+                    </div> */}
                     <div className="attendance_record_attendance_wrap">
                         <button className="attendance_record_attendance">
                             <span className="attendance_button_label">Record<br></br>Attendance</span>
@@ -545,9 +543,9 @@ const WindowAttendance = () => {
                         <table className="windowAttendance_table">
                             <thead>
                                 <tr className="windowAttendance_table_header">
-                                    <td>Student Name</td>
-                                    <td>Student ID</td>
-                                    <td>Student Section</td>
+                                    <td>Teacher Name</td>
+                                    <td>Teacher ID</td>
+                                    <td>Teacher Department</td>
                                     <td>Present/s</td>
                                     <td>Absent/s</td>
                                     <td>Actions</td>
@@ -581,7 +579,7 @@ const WindowAttendance = () => {
                             <div>
                                 <div className="winAtt_viewStudent_stud_name"> {viewStudentInfo.lname + ", " + viewStudentInfo.fname}</div>
                                 <div className="winAtt_viewStudent_stud_id">{viewStudentInfo.userID}</div>
-                                <div className="winAtt_viewStudent_stud_section">{viewStudentInfo.strand + "-" + viewStudentInfo.section}</div>
+                                <div className="winAtt_viewStudent_stud_section">{viewStudentInfo.track}</div>
                             </div>
 
                             <div className="winAtt_viewStudent_sortCB_label">Sort by:</div>
@@ -614,9 +612,7 @@ const WindowAttendance = () => {
                     <table className="winAtt_viewStudent_table">
                         <thead>
                             <tr className="winAtt_viewStudent_table_header">
-                                <td>
-                                    {/* <input type="checkbox"></input> */}
-                                </td>
+                                <td></td>
                                 <td>Date</td>
                                 <td>Status</td>
                                 <td>Reasons</td>
@@ -630,7 +626,7 @@ const WindowAttendance = () => {
                             (viewstudatt=>
                                 studAttKeys.some(key=>viewstudatt[key].toLowerCase().includes(studentAttQuery))
                             ).map((viewstudatt) => (
-                                <WinAttViewStudentDetails key={viewstudatt._id} 
+                                <WinAttViewStudentDetailsL1 key={viewstudatt._id} 
                                 viewstudatt={viewstudatt}
                                 editAttendanceReason={editAttendanceReason}                                
                                 setOpenEditReason={setOpenEditReason}
@@ -639,7 +635,6 @@ const WindowAttendance = () => {
                                 setUpdateInterventionID={setUpdateInterventionID}
                                 editAttendanceIntervention={editAttendanceIntervention}
                                 setDataToBeDeleted={setDataToBeDeleted}
-                                // attRecordsToBeDeleted={attRecordsToBeDeleted}
                                 />
                                 ))
                             }
@@ -658,7 +653,7 @@ const WindowAttendance = () => {
                             className="winAtt_viewStudent_del_multiRecord"
                             onClick={checkIfDelete}>Delete
                         </button>
-                    </div>                   
+                    </div>  
                 </div>
             </div>
         </div>
@@ -703,4 +698,4 @@ const WindowAttendance = () => {
     )
 }
 
-export default WindowAttendance
+export default WindowAttendanceL1
