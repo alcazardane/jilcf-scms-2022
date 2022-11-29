@@ -1,10 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {Loginfunc, HomeL1, HomeL2, HomeL3, CreateUser, App, AssessmentWindow, AttendanceWindow, CalendarWindow} from "./App";
+import {Loginfunc, HomeL1, HomeL2, HomeL3, CreateUser, App, AssessmentWindow, AttendanceWindow, CalendarWindow, NotesWindow, AboutWindow} from "./App";
 
 import './index.css'
 
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -20,6 +21,8 @@ root.render(
           <Route path="/assessment"  element={<AssessmentWindow/>}/>
           <Route path="/attendance" element={<AttendanceWindow/>}/>
           <Route path="/Calendar" element={<CalendarWindow/>}/>
+          <Route path="/notes" element={<NotesWindow/>}/>
+          <Route path="/about" element={<AboutWindow/>}/>
         </Route>
       </Routes>
 

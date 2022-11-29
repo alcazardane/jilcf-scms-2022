@@ -14,6 +14,9 @@ import MainWindowL3 from "./components/main_window/user_level_3/main_window_L3"
 import Attendance from "./components/attendance_window/attendance_window";
 import Assessment from "./components/assessment_window/assessment_window";
 import Calendar from "./components/calendar_window/calendar_window";
+import Notes from "./components/main_window/user_level_2/notes_window/App";
+import About from "./components/main_window/user_level_2/about_window/about_window"
+
 
 export function Loginfunc(){
   return(
@@ -65,5 +68,15 @@ export function AttendanceWindow(){
 export function CalendarWindow(){
   return(
     <Calendar/>
+  )
+}
+export function NotesWindow(){
+  return(
+    <Notes/>
+  )
+}
+export function AboutWindow(){
+  return(
+    <About/>
   )
 };

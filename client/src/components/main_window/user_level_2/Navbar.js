@@ -3,14 +3,15 @@ import React, {useEffect, useState, useRef} from 'react'
 // import components
 import NavbarViewDateTime from './Navbar_viewDateTime';
 import CalendarDetails from '../../dashboard/dashboard_details/CalendarDetails';
-
 // import images
+
 import notification_icon from "../../../images/notifications_FILL1_wght400_GRAD0_opsz48.png"
 import settings_icon from "../../../images/settings_FILL0_wght400_GRAD0_opsz48.png"
 import power_icon from "../../../images/power_settings_new_FILL0_wght400_GRAD0_opsz48.png"
 import calendar_icon from "../../../images/calendar_month_FILL0_wght400_GRAD0_opsz48.png"
+import { Link } from 'react-router-dom';
 
-const Navbar = () => {
+const Navbar = ({openAbout, openNotes}) => {
 
     const [timeState, setTimeState] = useState();
     const [dateState, setDateState] = useState();
@@ -54,8 +55,8 @@ const Navbar = () => {
         document.addEventListener("mousedown", closeNavCalendar);
         return () => {document.removeEventListener("mousedown", closeNavCalendar)};
     }, []);
-
-
+  
+    
   return (
     <>
     <div ref={menuListRef} className={"menulist " + (menuIsOpen ? "openMenuList" : "closeMenuList")}>
@@ -67,20 +68,20 @@ const Navbar = () => {
             <button className="menulist_item"></button>
             <span className="menulist_item_label">Calendar</span>
         </div>
-        <div className="menulist_item_wrap">
+        <div className="menulist_item_wrap"onClick={openNotes}>
             <button className="menulist_item"></button>
-            <span className="menulist_item_label">Notes</span>
+            <span className="menulist_item_label"><Link to={"/notes"}>Notes</Link></span>
+           
         </div>
-        <div className="menulist_item_wrap">
+        <div className="menulist_item_wrap" onClick={openAbout}>
             <button className="menulist_item"></button>
-            <span className="menulist_item_label">About</span>
+            <span className="menulist_item_label"><Link to={"/about"}>About</Link></span>
         </div>
-        
         <div className="menulist_navbar">
             <div className="menulist_navbar_items_wrap">
                 <span className="teacher_name">Dela Cruz, Juan</span>
                 <div className="menulist_navbar_icons_wrap">
-                    <img className="menulist_navbar_icons" src={notification_icon} alt="notification_icon" />
+                  <img className="menulist_navbar_icons" src={notification_icon} alt="notification_icon" />
                     <img className="menulist_navbar_icons" src={settings_icon} alt="settings_icon" />
                     <img className="menulist_navbar_icons" src={power_icon} alt="power_icon" />
                 </div>

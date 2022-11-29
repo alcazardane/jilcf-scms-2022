@@ -6,18 +6,20 @@ import React from "react";
 import Navbar from './Navbar'
 import MainDashboard from '../../dashboard/main_Dashboard'
 import WindowAttendance from '../../window_attendance/windowAttendance'
-
+import AboutWindow from '../user_level_2/about_window/about_window'
+import NotesWindow from '../user_level_2/notes_window/App'
 // import images
 import jilcf_logo from "../../../images/jilcf_logo_1.png"
 
 /**
  * Styles
  */
+import '../user_level_2/notes_window/App.css'
 import '../../../styles/mainWindow_styles.css'
-
+import '../user_level_2/about_window/about_window.css'
 export default function Home() {
     var root = document.querySelector(":root");
-  
+   
     // For opening the dashboard window
     const openDashboard = () => {
         root.style.setProperty('--windowDashboard-display', "block")
@@ -28,7 +30,14 @@ export default function Home() {
     const openAttendance = () => {
         root.style.setProperty('--windowAttendance-display', "block")
     }
-    
+    const openAbout = () =>{
+        root.style.setProperty('--windowAbout-display', "block")
+            
+    }
+    const openNotes = () =>{
+        root.style.setProperty('--windowNotes-display', "block")
+            
+    }
     return (
         <div>
             <div className="main_window_wrap">
@@ -61,8 +70,16 @@ export default function Home() {
                 <div className="windowAttendance_main_wrap">
                   <WindowAttendance />
                 </div>
-            </div>
-            <Navbar />
+                <div className="about_main_wrap">
+                  <AboutWindow />
+                </div>
+                <div className="window_notes_main_wrap">
+                    <NotesWindow/>
+                </div>
+               
+             </div>
+             <Navbar openAbout={openAbout}/>   
+             <Navbar openNotes={openNotes}/>
         </div>
     )
 }

@@ -37,8 +37,10 @@ body{
   --dashboard-margin-left: 1.46vw;
   --dashboard-margin-right: 1.46vw;
   --dashboard-bottom-container-width: 73.3vw;
-
-
+  /*for notes window*/
+  /*for about window*/
+  --windowAbout-display: none;
+  --windowNotes-display: none;
   /* for upcoming */
   /*--upcoming-width: 25vw;*/
   --upcoming-width: 340px;

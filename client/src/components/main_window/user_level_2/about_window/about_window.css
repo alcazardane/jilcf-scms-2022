@@ -1,0 +1,28 @@
+.about_main_wrap{
+    display: var(--windowAbout-display);
+    position: inherit;
+}
+.about_container{
+    width: 60%;
+    height: 70%;
+    background: white;
+ 
+
+}
+.abheader{
+    justify-content: center;
+    display: flex;
+    background-color: lightgray;
+    font-size: 25px;
+    font-weight: bold;
+    font-family: 'Times New Roman', Times, serif;
+    
+}
+.pContainer{
+    padding: 10px;    
+}
+.sub-container{
+    border-radius: 5px;
+    background-color:gray;
+}
+
