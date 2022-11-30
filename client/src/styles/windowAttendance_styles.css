@@ -564,9 +564,15 @@
     padding-left: 2%;
     z-index: 1;
 }
+.winAtt_viewStudent_table_body-b{
+    border-collapse: collapse;
+}
 .winAtt_viewStudent_table_body-b td{
     border-left: 2px solid #73777B;
     padding-left: 2%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .winAtt_viewStudent_table_header-b td:nth-child(1){
     border-left: none;

@@ -64,7 +64,7 @@
 }
 .adminModule_L1_Main_Container{
     width: 100%;
-    height: 100%;
+    height: calc(100% - 29px);
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
@@ -75,20 +75,58 @@
     width: 100%;
     height: 100%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
 }
 .adminModule_L1_Accounts{
     width: 96%;
     height: 80%;
     margin-top: 2%;
+    overflow: hidden;
     background: white;
     border-radius: 10px;
 }
+
+.adminModule_L1_Accounts_top_wrap{
+    width: 100%;
+    height: 55px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.adminModule_L1_Create_Search{
+    width: 40%;
+    height: 30px;
+    margin-left: 2%;
+    border: 2px solid #B3B3B3;
+    border-radius: 100px;
+    display: flex;
+    align-items: center;
+}
+.adminModule_create_search_icon{
+    width: 25px;
+    height: 25px;
+    margin-left: 5px;
+    filter: invert(69%) sepia(0%) saturate(0%) hue-rotate(155deg) brightness(102%) contrast(98%);
+}
+.adminModule_create_search_input{
+    width: calc(100% - 30px);
+    height: 90%;
+    border: none;
+    background: transparent;
+    outline: none;
+}
+.adminModule_button_wrap{
+    display: flex;
+    justify-content: space-between;
+    gap: 5%;
+    margin-right: 2%;
+}
 .adminModule_create_button{
-    width: 20%;
-    height: 40px;
-    background: #3DB5F9;
-    font-size: 16px;
+    width: 120px;
+    height: 35px;
+    background: #84DF3C;
+    font-size: 14px;
     font-weight: 600;
     color: white;
     border: none;
@@ -96,8 +134,20 @@
     box-shadow: 2px 2px 5px rgba(0 , 0, 0, 0.25);
     cursor: pointer;
 }
+.adminModule_table_main_wrap{
+    width: 100%;
+    height: var(--table-admin-height);
+    display: flex;
+    justify-content: center;
+}
+.table-admin-wrap{
+    height: 100%;
+    width: 96%;
+    border-radius: 5px;
+}
 .table-admin{
-    height: 60%;
+    /* height: 100%; */
+    width: 100%;
 }
 
 .adminModule_create_account_modal{
@@ -113,6 +163,19 @@
     transition: all 200ms ease-in-out;
     z-index: 2;
 }
+.adminModule_edit_account_modal{
+    width: 100%;
+    height: 100%;
+    background: rgba(0 , 0, 0, 0.25);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: var(--adminModule_edit_modal-pointer-events);
+    opacity: var(--adminModule_edit_modal-opacity);
+    transition: all 200ms ease-in-out;
+    z-index: 2;
+}
 .adminModule_create_account_con{
     width: 70%;
     height: 80%;
@@ -122,6 +185,7 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
+    gap: 2%;
 }
 .adminModule_create_input_wrap{
     width: 96%;
@@ -133,18 +197,34 @@
     display: flex;
     flex-wrap: wrap;
 }
-.editAtt_input-b{
+.adminModule_create_input_inside-b{
+    width: 96%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.create_input{
     width: 100%;
+    height: 30px;
+    border: 2px solid #B3B3B3;
+    border-radius: 10px;
     font-size: 14px;
     padding: 5px;
 }
+.create_select{
+    width: 100%;
+    height: 44px;
+    border: 2px solid #B3B3B3;
+    border-radius: 10px;
+    font-size: 14px;
+}
+
 .editAtt_input-c{
     width: 94%;
     font-size: 14px;
     padding: 5px;
 }
 .adminModule_create_label{
-    font-size: 12px;
+    font-size: 14px;
     font-weight: 600;
 }
 .editAtt_Modal_label-b{
@@ -152,4 +232,141 @@
     text-align: center;
     font-weight: 600;
     width: 100%;
+}
+
+.confirmDelete_modal_wrap-admin{
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    pointer-events: var(--ConfirmDelete-Modal-Admin-PointerEvents);
+    opacity: var(--ConfirmDelete-Modal-Admin-Opacity);
+    transition: all 200ms ease-in-out;
+    z-index: 2;
+}
+
+.confirmDelete_sched_modal_wrap-admin{
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    pointer-events: var(--ConfirmDelete-Sched-Modal-Admin-PointerEvents);
+    opacity: var(--ConfirmDelete-Sched-Modal-Admin-Opacity);
+    transition: all 200ms ease-in-out;
+    z-index: 2;
+}
+
+.adminModule_L1_Schedule{
+    width: 96%;
+    height: 80%;
+    margin-top: 2%;
+    overflow: hidden;
+    background: white;
+    border-radius: 10px;
+}
+.schedule-tb-header td:nth-child(1){
+    width: 15%;
+}
+.schedule-tb-header td:nth-child(2){
+    width: 12%;
+}
+.schedule-tb-header td:nth-child(3){
+    width: 20%;
+}
+.schedule-tb-header td:nth-child(4){
+    width: 25%;
+}
+.schedule-tb-header td:nth-child(5){
+    width: 15%;
+}
+.schedule-tb-header td:nth-child(6){
+    width: 13%;
+}
+.adminModule_create_sched_modal{
+    width: 100%;
+    height: 100%;
+    background: rgba(0 , 0, 0, 0.25);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: var(--adminModule_create_sched_modal-pointer-events);
+    opacity: var(--adminModule_create_sched_modal-opacity);
+    transition: all 200ms ease-in-out;
+    z-index: 2;
+}
+.adminModule_edit_sched_modal{
+    width: 100%;
+    height: 100%;
+    background: rgba(0 , 0, 0, 0.25);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: var(--adminModule_edit_sched_modal-pointer-events);
+    opacity: var(--adminModule_edit_sched_modal-opacity);
+    transition: all 200ms ease-in-out;
+    z-index: 2;
+}
+
+.adminModule_L1_Announcements_wrap{
+    width: 96%;
+    height: 90%;
+    margin-bottom: 2%;
+}
+.adminModule_L1_Announcements{
+    width: 100%;
+    height: 90%;
+    margin-top: 2%;
+    overflow: hidden;
+    background: white;
+    border-radius: 10px;
+}
+.adminModule_create_announce_modal{
+    width: 100%;
+    height: 100%;
+    background: rgba(0 , 0, 0, 0.25);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: var(--adminModule_create_announce_modal-pointer-events);
+    opacity: var(--adminModule_create_announce_modal-opacity);
+    transition: all 200ms ease-in-out;
+    z-index: 2;
+}
+.announce-input{
+    width: 48%;
+}
+.adminModule_edit_announce_modal{
+    width: 100%;
+    height: 100%;
+    background: rgba(0 , 0, 0, 0.25);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: var(--adminModule_edit_announce_modal-pointer-events);
+    opacity: var(--adminModule_edit_announce_modal-opacity);
+    transition: all 200ms ease-in-out;
+    z-index: 2;
+}
+.confirmDelete_announce_modal_wrap-admin{
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    pointer-events: var(--ConfirmDelete-Announce-Modal-Admin-PointerEvents);
+    opacity: var(--ConfirmDelete-Announce-Modal-Admin-Opacity);
+    transition: all 200ms ease-in-out;
+    z-index: 2;
 }

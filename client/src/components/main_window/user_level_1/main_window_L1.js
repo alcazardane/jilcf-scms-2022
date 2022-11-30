@@ -84,6 +84,7 @@ export default function Home_L1() {
                   <AdminModule />
                 </div>
 
+
             </div>
             <Navbar />
         </div>

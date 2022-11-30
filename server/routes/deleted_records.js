@@ -36,4 +36,54 @@ recordRoutes.route("/deleted_records/student_attendance").post(function (req, re
     });
    });
 
+recordRoutes.route("/deleted_records/accounts").post(function (req, response) {
+    let db_connect = dbo.getDb();
+    let myobj = {
+      userID: req.body.userID,
+      password: req.body.password,
+      level: req.body.level,
+      track: req.body.track,
+      strand: req.body.strand,
+      secAdv: req.body.secAdv,
+      name: req.body.name,
+      profilePic: req.body.profilePic,
+    };
+    db_connect.collection("deleted_records").insertOne(myobj, function (err, res) {
+      if (err) throw err;
+      response.json(res);
+    });
+   });
+
+recordRoutes.route("/deleted_records/schedules").post(function (req, response) {
+    let db_connect = dbo.getDb();
+    let myobj = {
+      userID: req.body.userID,
+      task: req.body.task,
+      time: req.body.time,
+      subj_id: req.body.subj_id,
+      sched_class: req.body.sched_class,
+      room: req.body.room,
+      repeat: req.body.repeat,
+    };
+    db_connect.collection("deleted_records").insertOne(myobj, function (err, res) {
+      if (err) throw err;
+      response.json(res);
+    });
+   });
+
+recordRoutes.route("/deleted_records/announcements").post(function (req, response) {
+    let db_connect = dbo.getDb();
+    let myobj = {
+      announcement_type: req.body.announcement_type,
+      announcement_name: req.body.announcement_name,
+      announcement_date: req.body.announcement_date,
+      announcement_time: req.body.announcement_time,
+      announcement_place: req.body.announcement_place,
+    };
+    db_connect.collection("deleted_records").insertOne(myobj, function (err, res) {
+      if (err) throw err;
+      response.json(res);
+    });
+   });
+
 module.exports = recordRoutes;

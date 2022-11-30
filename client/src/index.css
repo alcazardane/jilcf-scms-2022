@@ -29,13 +29,30 @@ body{
   --windowAttendance-L3-display: none;
 
   --adminModule_L1_display: none;
-  --adminModule-L1-window-width: 60%;
   --adminModule-L1-window-width: 70%;
+  --adminModule-L1-window-height: 70%;
   --adminModule-display-b: none;
   --adminModule-top: 15px;
   --adminModule-left: 30px;
+  --table-admin-height: 65%;
   --adminModule_create_modal-pointer-events: none;
   --adminModule_create_modal-opacity: 0;
+  --adminModule_edit_modal-pointer-events: none;
+  --adminModule_edit_modal-opacity: 0;
+  --ConfirmDelete-Modal-Admin-PointerEvents: none;
+  --ConfirmDelete-Modal-Admin-Opacity: 0;
+  --adminModule_create_sched_modal-pointer-events:none;
+  --adminModule_create_sched_modal-opacity: 0;
+  --adminModule_edit_sched_modal-pointer-events: none;
+  --adminModule_edit_sched_modal-opacity: 0;
+  --ConfirmDelete-Sched-Modal-Admin-PointerEvents: none;
+  --ConfirmDelete-Sched-Modal-Admin-Opacity: 0;
+  --adminModule_create_announce_modal-pointer-events: none;
+  --adminModule_create_announce_modal-opacity: 0;
+  --adminModule_edit_announce_modal-pointer-events: none;
+  --adminModule_edit_announce_modal-opacity: 0;
+  --ConfirmDelete-Announce-Modal-Admin-PointerEvents: none;
+  --ConfirmDelete-Announce-Modal-Admin-Opacity: 0;
 
   --max-width: 77.5vw;
   --max-width-b: 77.5vw;
