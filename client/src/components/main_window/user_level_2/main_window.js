@@ -7,6 +7,9 @@ import Navbar from './Navbar'
 import MainDashboard from '../../dashboard/main_Dashboard'
 import WindowAttendance from '../../window_attendance/windowAttendance'
 
+import AboutWindow from "../../about_module/about_module";
+import NotesModule from "../../notes_module/notes_module";
+
 // import images
 import jilcf_logo from "../../../images/jilcf_logo_1.png"
 
@@ -27,6 +30,16 @@ export default function Home() {
     // For opening the attendance window
     const openAttendance = () => {
         root.style.setProperty('--windowAttendance-display', "block")
+    }
+
+    const openAboutModule = () => {
+        root.style.setProperty('--aboutModule-L1-display', "block")
+        root.style.setProperty('--about-display-b', "block")
+    }
+
+    const openNotesModule = () => {
+        root.style.setProperty('--notesModule-L1-display', "block")
+        root.style.setProperty('--notes-display-b', "block")
     }
     
     return (
@@ -58,11 +71,24 @@ export default function Home() {
                 <div className="windowDashboard_main_wrap">
                   <MainDashboard />
                 </div>
+
                 <div className="windowAttendance_main_wrap">
                   <WindowAttendance />
                 </div>
+
+                <div className="aboutModule_main_wrap">
+                  <AboutWindow />
+                </div>
+
+                <div className="notesModule_main_wrap">
+                  <NotesModule />
+                </div>   
+
             </div>
-            <Navbar />
+            <Navbar 
+            openAboutModule={openAboutModule}
+            openNotesModule={openNotesModule}
+            />
         </div>
     )
 }

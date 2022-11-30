@@ -1,0 +1,271 @@
+/* @import url("https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css"); */
+
+/* .window_notes_main_wrap{
+  display: var(--windowNotes-display,"none");
+} */
+/* * {
+  box-sizing: border-box;
+} */
+
+/* body,
+.body{
+  width: inherit;
+  height: 90%;
+ 
+} */
+.App {
+  /* font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif; */
+    /*width: 92.3vw;*/
+    /* max-width: var(--wrappers-width); */
+    /*min-width: 915px;*/
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    /*background: #FFF6BF;*/
+    background: #E2E1E5;
+    /* min-height: 85%;
+    min-width: var(--max-width);
+    max-width: var(--max-width);
+    max-height: var(--max-height); */
+    /* border: 2px solid black; */
+    /* border-radius: var(--border-radius); */
+    /* box-shadow: 5px 5px 10px rgba(0 , 0, 0, 0.25); */
+    overflow-x: hidden;
+    position: absolute;
+    /* top: var(--top);
+    left: var(--left); */
+    touch-action: none;
+    transition: max-width 200ms ease-in-out, max-height 200ms ease-in-out, top 200ms ease-in-out, left 200ms ease-in-out;
+    scroll-behavior: smooth;
+    padding: 10px;
+    font-size: 16px;
+    display: flex;
+ 
+}
+/*.notes_window_topbar{
+  margin: 0;
+  background:#FFD056;
+  height: 20px;
+  max-width: var(--max-width);
+  font-size: 16px;
+  font-weight: 700;
+  padding: 3px 0 2px 20px;
+  border-bottom: 2px solid black;
+  border-radius: var(--border-radius-b);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}*/
+
+.delNote_btn {
+    background: none;
+    border: 1px;
+    margin: 0;
+    padding: 10;
+    font-size: inherit;
+    font-family: inherit;
+    cursor: pointer;
+    width: 80px;
+    height: 35px;
+    background: #3DB5F9;
+    border-radius: 5px;
+    color: white;
+}
+.delNote_btn:hover {
+  color: #04c;
+}
+
+.App {
+  display: flex;
+}
+
+/* SIDEBAR STYLES */
+
+.app-sidebar {
+
+  width: 40%;
+  /* max-height: inherit; */
+  height: 100%;
+  border-right: 2px solid black;
+  overflow-y: scroll;
+}
+
+.app-sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  padding: 25px;
+}
+.app-sidebar-header h1 {
+  margin: 0;
+
+}
+
+.app-sidebar-notes {
+  max-height: calc(100vh - 78px);
+}
+.app-sidebar-note {
+  padding: 25px;
+  cursor: pointer;
+}
+.sidebar-note-title {
+  display: flex;
+  justify-content: space-between;
+}
+.app-sidebar-note button {
+    width: 100px;
+    height: 35px;
+    background: #F14668;
+    border-radius: 5px;
+    color: white;
+}
+.app-sidebar-note p {
+  margin: 10px 0;
+}
+.app-sidebar-note small {
+  display: block;
+  color: #999;
+}
+
+.app-sidebar-note:hover {
+  background: #ddd;
+}
+.app-sidebar-note.active,
+.app-sidebar-note.active small {
+  background: white;
+  color: black;
+  border-radius: 10px;
+  
+}
+
+/* NOTE EDITOR/PREVIEW (MAIN) STYLES */
+
+.app-main {
+  width: 60%;
+  height: 100%;
+}
+
+/* .app-main-note-edit,
+.app-main-note-preview {
+  height: 50vh;
+  min-height: 50%;
+  max-height: 70%;
+} */
+
+.no-active-note {
+  width: 70%;
+  max-height: inherit;
+
+  text-align: center;
+  font-size: 2rem;
+  color: #999;
+}
+
+/* Editing */
+.app-main-note-edit {
+  padding: 25px;
+}
+
+.app-main-note-edit input,
+textarea {
+  display: block;
+  /* border: 1px solid #ddd; */
+  /* margin-bottom: 20px; */
+  width: 100%;
+  border: none;
+  border-radius: 5px;
+  height: calc(50vh - 130px);
+  margin-bottom: 2%;
+  background: white;
+  color: black;
+  /* padding: 10px; */
+  resize: none;
+  font-size: inherit;
+  font-family: inherit;
+}
+.app-main-note-edit input {
+  height: 50px;
+  font-size: 2rem;
+  overflow-y: auto;
+}
+
+/* Preview */
+.app-main-note-preview {
+  border-top: 2px solid black;
+  /* height: 290px; */
+  
+  max-height: 50%;
+  background: white;
+}
+
+.preview-title {
+  padding: 25px 25px 0 25px;
+  margin: 0;
+}
+
+.markdown-preview {
+  padding: 0 25px 25px 25px;
+  font-size: 1rem;
+  line-height: 2rem;
+  background: white;
+  max-width: 55vw;
+  max-height: 250px;
+  overflow-y: auto;
+}
+
+.notesModule_L1_main_wrap{
+    display: var(--notesModule-L1-display);
+}
+.notesModule_main_wrap{
+    display: var(--notesModule-L1-display);
+}
+.notesModule_L3_main_wrap{
+    display: var(--notesModule-L1-display);
+}
+.notes_L1_window{
+    margin: 0;
+    padding: 0;
+    /*width: 98.45vw;*/
+    width: var(--notesModule-L1-window-width);
+    height: var(--notesModule-L1-window-height);;
+    border: 2px solid black;
+    border-radius: var(--border-radius);
+    box-shadow: 5px 5px 10px rgba(0 , 0, 0, 0.25);
+    background: #E2E1E5;
+    overflow: hidden;
+    position: absolute;
+    top: var(--top);
+    left: var(--left);
+    touch-action: none;
+    /*transform: translate3d(var(--left), var(--top), 0px);*/
+    /*display: var(--display);*/
+    transition: max-width 200ms ease-in-out, max-height 200ms ease-in-out, top 200ms ease-in-out, left 200ms ease-in-out;
+}
+.notes_L1_window_topbar{
+    margin: 0;
+    background:#FFD056;
+    height: 20px;
+    /* max-width: var(--dashboard-L1-window-width); */
+    width: 100%;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 3px 0 2px 20px;
+    border-bottom: 2px solid black;
+    border-radius: var(--border-radius-b);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.notes_L1_draggable_area{
+    background: none;
+    height: 25px;
+    width: calc(var(--notesModule-L1-window-width) - 80px);
+    touch-action: none;
+    position: absolute;
+    top: var(--top);
+    left: var(--left);
+    display: var(--notes-display-b);
+    cursor: move;
+    z-index: 2;
+}

@@ -9,6 +9,8 @@ import Navbar from './navbar_L1'
 import MainDashboardL1 from '../../dashboard/dashboard_L1/main_Dashboard_L1'
 import WindowAttendanceL1 from "../../window_attendance/window_attendance_L1";
 import AdminModule from "../../admin_module/admin_module";
+import AboutWindow from "../../about_module/about_module";
+import NotesModule from "../../notes_module/notes_module";
 // import WindowAttendance from './../window_attendance/windowAttendance'
 
 // import image
@@ -41,7 +43,17 @@ export default function Home_L1() {
         root.style.setProperty('--adminModule_L1_display', "block")
         root.style.setProperty('--adminModule-display-b', "block")
     }
+
+    const openAboutModule = () => {
+        root.style.setProperty('--aboutModule-L1-display', "block")
+        root.style.setProperty('--about-display-b', "block")
+    }
     
+    const openNotesModule = () => {
+        root.style.setProperty('--notesModule-L1-display', "block")
+        root.style.setProperty('--notes-display-b', "block")
+    }
+
     return (
         <div>
             <div className="main_window_wrap l1_background">
@@ -84,9 +96,20 @@ export default function Home_L1() {
                   <AdminModule />
                 </div>
 
+                <div className="aboutModule_L1_main_wrap">
+                  <AboutWindow />
+                </div>
+
+                <div className="notesModule_L1_main_wrap">
+                  <NotesModule />
+                </div>
+
 
             </div>
-            <Navbar />
+            <Navbar 
+            openAboutModule={openAboutModule}
+            openNotesModule={openNotesModule}
+            />
         </div>
     )
 }

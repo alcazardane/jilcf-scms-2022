@@ -8,6 +8,8 @@ import Navbar from './navbar_L3'
 // IMPORT MAIN DASHBOARD AND ATTENDANCE MODULE FOR USER LEVEL 1 HERE
 import MainDashboardL3 from '../../dashboard/dashboard_L3/main_Dasboard_L3'
 import WindowAttendanceL3 from "../../window_attendance/window_attendance_L3";
+import AboutWindow from "../../about_module/about_module";
+import NotesModule from "../../notes_module/notes_module";
 
 // import image
 import jilcf_logo from "../../../images/jilcf_logo_1.png"
@@ -35,6 +37,16 @@ export default function Home_L3() {
         // Put codes to open Attendance Module for User Level 1 here
     }
     
+    const openAboutModule = () => {
+        root.style.setProperty('--aboutModule-L1-display', "block")
+        root.style.setProperty('--about-display-b', "block")
+    }
+
+    const openNotesModule = () => {
+        root.style.setProperty('--notesModule-L1-display', "block")
+        root.style.setProperty('--notes-display-b', "block")
+    }
+
     return (
         <div>
             <div className="main_window_wrap l3_background">
@@ -64,11 +76,24 @@ export default function Home_L3() {
                 <div className="windowDashboard_L3_main_wrap">
                   <MainDashboardL3 />
                 </div>
+
                 <div className="windowAttendance_L3_main_wrap">
                   <WindowAttendanceL3 />
                 </div>
+
+                <div className="aboutModule_L3_main_wrap">
+                  <AboutWindow />
+                </div>
+
+                <div className="notesModule_L3_main_wrap">
+                  <NotesModule />
+                </div>
+
             </div>
-            <Navbar />
+            <Navbar 
+            openAboutModule={openAboutModule}
+            openNotesModule={openNotesModule}
+            />
         </div>
     )
 }

@@ -10,7 +10,7 @@ import settings_icon from "../../../images/settings_FILL0_wght400_GRAD0_opsz48.p
 import power_icon from "../../../images/power_settings_new_FILL0_wght400_GRAD0_opsz48.png"
 import calendar_icon from "../../../images/calendar_month_FILL0_wght400_GRAD0_opsz48.png"
 
-const Navbar_L3 = () => {
+const Navbar_L3 = ({openAboutModule, openNotesModule}) => {
 
     const [timeState, setTimeState] = useState();
     const [dateState, setDateState] = useState();
@@ -63,11 +63,11 @@ const Navbar_L3 = () => {
             <button className="menulist_item"></button>
             <span className="menulist_item_label">Calendar</span>
         </div>
-        <div className="menulist_item_wrap">
+        <div className="menulist_item_wrap" onClick={openNotesModule}>
             <button className="menulist_item"></button>
             <span className="menulist_item_label">Notes</span>
         </div>
-        <div className="menulist_item_wrap">
+        <div className="menulist_item_wrap" onClick={openAboutModule}>
             <button className="menulist_item"></button>
             <span className="menulist_item_label">About</span>
         </div>

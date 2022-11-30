@@ -28,6 +28,16 @@ body{
   --windowAttendance-L1-display: none;
   --windowAttendance-L3-display: none;
 
+  --aboutModule-L1-display: none;
+  --aboutModule-L1-window-width: 40%;
+  --aboutModule-L1-window-height: 70%;
+  --about-display-b: none;
+
+  --notesModule-L1-display: none;
+  --notes-display-b: none;
+  --notesModule-L1-window-width: 60%;
+  --notesModule-L1-window-height: 70%;
+
   --adminModule_L1_display: none;
   --adminModule-L1-window-width: 70%;
   --adminModule-L1-window-height: 70%;
