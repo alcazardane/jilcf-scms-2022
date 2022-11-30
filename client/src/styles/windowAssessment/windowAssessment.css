@@ -1,0 +1,51 @@
+/* FOR ATTENDANCE WINDOW */
+.windowAssessment_main_wrap{
+    display: var(--windowAssessment-display);
+}
+  
+.assessment_window{
+    margin: 0;
+    padding: 0;
+    width: var(--windowAttendance-width);
+    height: var(--windowAttendance-height);
+    border: 2px solid black;
+    border-radius: var(--windowAttendance-border-radius);
+    box-shadow: 5px 5px 10px rgba(0 , 0, 0, 0.25);
+    background: white;
+    overflow: hidden;
+    position: absolute;
+    top: var(--windowAttendance-top);
+    left: var(--windowAttendance-left);
+    touch-action: none;
+    transition: width 200ms ease-in-out, height 200ms ease-in-out, top 200ms ease-in-out, left 200ms ease-in-out;
+}
+  
+.windowAssessment_draggable_area{
+    background: none;
+    /*opacity: 0.5;*/
+    height: 25px;
+    width: calc(var(--windowAttendance-width) - 80px);
+    touch-action: none;
+    position: absolute;
+    /*top: var(--top);
+    left: var(--left);*/
+    top: var(--windowAttendance-top);
+    left: var(--windowAttendance-left);
+    /*display: var(--display-b);*/
+    display: var(--windowAttendance-drag-display);
+    cursor: move;
+    z-index: 100;
+}
+
+.windowAssessment_topbar{
+    margin: 0;
+    background:#FFD056;
+    height: 20px;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 3px 0 2px 20px;
+    border-bottom: 2px solid black;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}

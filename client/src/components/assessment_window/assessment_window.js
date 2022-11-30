@@ -1,5 +1,7 @@
-import React from "react";
-export class assessment_window extends React.Component{
+import { useEffect, useState} from 'react'
+import { Link } from 'react-router-dom'
+
+export class assessment_window{
     render(){
         return(
             <div>

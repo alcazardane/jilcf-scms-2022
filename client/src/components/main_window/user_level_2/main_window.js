@@ -6,6 +6,7 @@ import React from "react";
 import Navbar from './Navbar'
 import MainDashboard from '../../dashboard/main_Dashboard'
 import WindowAttendance from '../../window_attendance/windowAttendance'
+import WindowAssessment from '../../assessment/assessment_window'
 
 // import images
 import jilcf_logo from "../../../images/jilcf_logo_1.png"
@@ -28,6 +29,11 @@ export default function Home() {
     const openAttendance = () => {
         root.style.setProperty('--windowAttendance-display', "block")
     }
+
+    // For opening the attendance window
+    const openAssessment = () => {
+        root.style.setProperty('--windowAssessment-display', "block")
+    }
     
     return (
         <div>
@@ -47,7 +53,7 @@ export default function Home() {
                         <div className="button_label" >Attendance</div>
                     </div>
                     <div className="main_window_button_wrap_in">
-                        <button className="main_window_button"></button>
+                        <button className="main_window_button" onClick={openAssessment}></button>
                         <div className="button_label">Assessment</div>
                     </div>
                     <div className="main_window_button_wrap_in">
@@ -60,6 +66,9 @@ export default function Home() {
                 </div>
                 <div className="windowAttendance_main_wrap">
                   <WindowAttendance />
+                </div>
+                <div className="windowAssessment_main_wrap">
+                  <WindowAssessment />
                 </div>
             </div>
             <Navbar />

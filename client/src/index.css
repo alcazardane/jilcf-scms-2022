@@ -116,6 +116,25 @@ body{
   --windowAttendance-500-button-width: 32vw;
 
 
+  --windowAssessment-display: none;
+  --windowAssessment-drag-display: block;
+  /*--windowAttendance-width: 1060px;*/
+  /*--windowAttendance-height: 565px;*/
+  --windowAssessment-width: 77vw;
+  --windowAssessment-height: 80vh;
+  --windowAssessment-table-height: 45vh;
+  --windowAssessment-top: 20px;
+  --windowAssessment-left: 20px;
+  --windowAssessment-border-radius: 7px;
+  --windowAssessment-td-height: 3vh;
+  --windowAssessment-buttons-width: 8vw;
+  --windowAssessment-buttons-height: 3vw;
+  --windowAssessment-buttons-font: 0.8vw;
+  --windowAssessment-search-width: 30vw;
+
+  /* screen 500px */
+  --windowAttendance-500-button-width: 32vw;
+
   /* --winAtt-Default-Display: none; */
   --winAtt-Default-PointerEvents: all;
   --winAtt-Default-Opacity: 1;
