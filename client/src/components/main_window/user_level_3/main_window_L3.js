@@ -7,7 +7,7 @@ import Navbar from './navbar_L3'
 
 // IMPORT MAIN DASHBOARD AND ATTENDANCE MODULE FOR USER LEVEL 1 HERE
 import MainDashboardL3 from '../../dashboard/dashboard_L3/main_Dasboard_L3'
-// import WindowAttendance from './../window_attendance/windowAttendance'
+import WindowAttendanceL3 from "../../window_attendance/window_attendance_L3";
 
 // import image
 import jilcf_logo from "../../../images/jilcf_logo_1.png"
@@ -30,7 +30,7 @@ export default function Home_L3() {
 
     // For opening the attendance window
     const openAttendance = () => {
-        // root.style.setProperty('--windowAttendance-display', "block")
+        root.style.setProperty('--windowAttendance-L3-display', "block")
 
         // Put codes to open Attendance Module for User Level 1 here
     }
@@ -64,8 +64,8 @@ export default function Home_L3() {
                 <div className="windowDashboard_L3_main_wrap">
                   <MainDashboardL3 />
                 </div>
-                <div className="windowAttendance_main_wrap">
-                  {/* <WindowAttendance /> */}
+                <div className="windowAttendance_L3_main_wrap">
+                  <WindowAttendanceL3 />
                 </div>
             </div>
             <Navbar />

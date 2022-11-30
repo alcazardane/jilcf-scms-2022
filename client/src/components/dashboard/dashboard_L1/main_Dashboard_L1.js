@@ -19,7 +19,7 @@ export default function MainDashboard_L1() {
 
     // For window snapping
     const { height, width } = useWindowDimensions();
-    var rightBound = width - (width * 0.50) - 38 + 4;
+    var rightBound = width - (width * 0.60) - 38 + 4;
     var bottomBound = height - (height * 0.70) - 18 - 50 + 4;
     var leftBound = 30;
     var topBound = 15;

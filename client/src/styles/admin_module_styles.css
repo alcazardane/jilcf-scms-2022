@@ -1,0 +1,155 @@
+.adminModule_L1_main_wrap{
+    display: var(--adminModule_L1_display);
+}
+
+.adminModule_L1_window{
+    margin: 0;
+    padding: 0;
+    /*width: 98.45vw;*/
+    width: var(--adminModule-L1-window-width);
+    height: var(--adminModule-L1-window-height);
+    border: 2px solid black;
+    border-radius: var(--border-radius);
+    box-shadow: 5px 5px 10px rgba(0 , 0, 0, 0.25);
+    background: #E2E1E5;
+    overflow: hidden;
+    position: absolute;
+    top: var(--adminModule-top);
+    left: var(--adminModule-left);
+    touch-action: none;
+    /*transform: translate3d(var(--left), var(--top), 0px);*/
+    /*display: var(--display);*/
+    transition: max-width 200ms ease-in-out, max-height 200ms ease-in-out, top 200ms ease-in-out, left 200ms ease-in-out;
+}
+
+.adminModule_L1_window_topbar{
+    margin: 0;
+    background:#FFD056;
+    height: 20px;
+    width: 100%;
+    font-size: 16px;
+    font-weight: 700;
+    padding: 3px 0 2px 20px;
+    border-bottom: 2px solid black;
+    border-radius: var(--border-radius-b);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+}
+.adminModule_L1_draggable_area{
+    background: none;
+    height: 25px;
+    width: calc(var(--adminModule-L1-window-width) - 80px);
+    touch-action: none;
+    position: absolute;
+    top: var(--top);
+    left: var(--left);
+    display: var(--adminModule-display-b);
+    cursor: move;
+    z-index: 2;
+}
+#adminModule_L1_minmax{
+    font-size: 25px;
+    color: black;
+    padding-right: 20px;
+    transform: translateY(7px);
+    opacity: 1;
+}
+#adminModule_L1_close{
+    font-size: 25px;
+    color: black;
+    padding-right: 30px;
+    transform: translateY(7px);
+    opacity: 1;
+}
+.adminModule_L1_Main_Container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    overflow: auto;
+}
+
+.adminModule_Main_Container_wrap{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+.adminModule_L1_Accounts{
+    width: 96%;
+    height: 80%;
+    margin-top: 2%;
+    background: white;
+    border-radius: 10px;
+}
+.adminModule_create_button{
+    width: 20%;
+    height: 40px;
+    background: #3DB5F9;
+    font-size: 16px;
+    font-weight: 600;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0 , 0, 0, 0.25);
+    cursor: pointer;
+}
+.table-admin{
+    height: 60%;
+}
+
+.adminModule_create_account_modal{
+    width: 100%;
+    height: 100%;
+    background: rgba(0 , 0, 0, 0.25);
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    pointer-events: var(--adminModule_create_modal-pointer-events);
+    opacity: var(--adminModule_create_modal-opacity);
+    transition: all 200ms ease-in-out;
+    z-index: 2;
+}
+.adminModule_create_account_con{
+    width: 70%;
+    height: 80%;
+    background: white;
+    border-radius: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+.adminModule_create_input_wrap{
+    width: 96%;
+    display: flex;
+    justify-content: space-between;
+}
+.adminModule_create_input_inside{
+    width: 32%;
+    display: flex;
+    flex-wrap: wrap;
+}
+.editAtt_input-b{
+    width: 100%;
+    font-size: 14px;
+    padding: 5px;
+}
+.editAtt_input-c{
+    width: 94%;
+    font-size: 14px;
+    padding: 5px;
+}
+.adminModule_create_label{
+    font-size: 12px;
+    font-weight: 600;
+}
+.editAtt_Modal_label-b{
+    font-size: 20px;
+    text-align: center;
+    font-weight: 600;
+    width: 100%;
+}

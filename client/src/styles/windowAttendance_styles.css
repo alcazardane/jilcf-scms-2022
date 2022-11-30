@@ -2,6 +2,14 @@
 .windowAttendance_main_wrap{
     display: var(--windowAttendance-display);
 }
+
+.windowAttendance_L1_main_wrap{
+    display: var(--windowAttendance-L1-display);
+}
+
+.windowAttendance_L3_main_wrap{
+    display: var(--windowAttendance-L3-display);
+}
   
 .attendance_window{
     margin: 0;
@@ -400,6 +408,15 @@
     font-size: 12px;
     font-weight: 600;
 }
+.winAtt_viewStudent_sortCB_wrap{
+    display: flex;
+    justify-content: space-around;
+}
+.winAtt_viewStudent_sortCB_inside{
+    margin-right: 10px;
+    display: flex;
+    flex-direction: column;
+}
 .winAtt_viewStudent_sortCB{
     width: 150px;
     height: 35px;
@@ -407,6 +424,9 @@
     box-shadow: 1px 4px 3px rgba(0 , 0, 0, 0.25);
     border-radius: 2px;
     font-family: 'Segoe UI Variable';
+}
+.sortCB-long{
+    width: 170px;
 }
 
 .winAtt_viewStudent_notifyButton_wrap{
@@ -472,12 +492,6 @@
     height: 40px;
     color: white;
 }
-.winAtt_viewStudent_table_header td{
-    background: #03256C;
-    font-size: 14px;
-    font-weight: 600;
-    padding-left: 2%;
-}
 .winAtt_viewStudent_table_header td:nth-child(1){
     width: 5%;
     padding: 0;
@@ -535,6 +549,36 @@
 }
 .winAtt_viewStudent_table_body td:nth-child(7){
     width: 5%;
+}
+
+
+.winAtt_viewStudent_table_header-b{
+    height: 40px;
+    color: white;
+}
+.winAtt_viewStudent_table_header-b td{
+    background: #03256C;
+    border-left: 2px solid white;
+    font-size: 14px;
+    font-weight: 600;
+    padding-left: 2%;
+    z-index: 1;
+}
+.winAtt_viewStudent_table_body-b td{
+    border-left: 2px solid #73777B;
+    padding-left: 2%;
+}
+.winAtt_viewStudent_table_header-b td:nth-child(1){
+    border-left: none;
+}
+.winAtt_viewStudent_table_body-b td:nth-child(1){
+    border-left: none;
+}
+.winAtt_viewStudent_table_header td{
+    background: #03256C;
+    font-size: 14px;
+    font-weight: 600;
+    padding-left: 2%;
 }
 
 .editButton{
@@ -663,10 +707,19 @@
 
 .winAtt_viewStudent_bottom_wrap{
     width: 100%;
-    height: 15%;
+    height: 10%;
     display: flex;
+    flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
+    margin-bottom: 4%;
     gap: 2%;
+}
+.winAtt_viewStudent_bottom_warning{
+    font-size: 12px;
+    font-weight: 600;
+    opacity: var(--viewStudent_multiEdit_warning-opacity);
+    transition: all 200ms ease-in-out;
 }
 .winAtt_viewStudent_edit_multiRecord{
     width: 100px;
@@ -679,6 +732,9 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    opacity: var(--viewStudent_edit_multiRecord-opacity);
+    pointer-events: var(--viewStudent_edit_multiRecord-pointer-events);
+    transition: all 200ms ease-in-out;
 }
 .winAtt_viewStudent_del_multiRecord{
     width: 100px;
@@ -691,6 +747,9 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    opacity: var(--viewStudent_edit_multiRecord-opacity);
+    pointer-events: var(--viewStudent_edit_multiRecord-pointer-events);
+    transition: all 200ms ease-in-out;
 }
 
 

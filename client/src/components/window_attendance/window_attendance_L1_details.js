@@ -6,9 +6,9 @@ const WindowAttendanceDetails = ({ studinfo, goToViewStudent }) => {
     return (
         <>
         <tr>
-            <td>{studinfo.lname + ", " + studinfo.fname + " " + studinfo.mname + "."}</td>
+            <td>{studinfo.lname + ", " + studinfo.fname + " " + studinfo.mname.substring(0,1) + "."}</td>
             <td>{studinfo.userID}</td>
-            <td>{studinfo.grade_level + " " + studinfo.strand + " " + studinfo.section}</td>
+            <td>{studinfo.track}</td>
             <td>0</td>
             <td>0</td>
             <td>
