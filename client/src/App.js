@@ -14,6 +14,7 @@ import MainWindowL3 from "./components/main_window/user_level_3/main_window_L3"
 import Attendance from "./components/attendance_window/attendance_window";
 import Assessment from "./components/assessment_window/assessment_window";
 import Calendar from "./components/calendar_window/calendar_window";
+import FaceRecog from "./components/samplefr";
 
 export function Loginfunc(){
   return(
@@ -36,6 +37,12 @@ export function HomeL2(){
 export function HomeL3(){
   return(
     <MainWindowL3 />
+  )
+}
+
+export function FaceRec(){
+  return(
+    <FaceRecog/>
   )
 }
 

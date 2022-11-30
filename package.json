@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "face-api.js": "^0.22.2",
     "mongoose": "^6.5.1",
     "react-spring": "^9.5.5"
   }
