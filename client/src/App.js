@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
  
 // We use Route in order to define the different routes of our application
 import { Outlet } from 'react-router-dom';
@@ -15,6 +15,7 @@ import Attendance from "./components/attendance_window/attendance_window";
 import Assessment from "./components/assessment_window/assessment_window";
 import Calendar from "./components/calendar_window/calendar_window";
 import FaceRecog from "./components/samplefr";
+import useToken from "./useToken";
 
 export function Loginfunc(){
   return(
@@ -52,7 +53,23 @@ export function CreateUser(){
   )
 }
 
+function setToken(userToken) {
+  sessionStorage.setItem('token', JSON.stringify(userToken));
+}
+
+function getToken() {
+  const tokenString = sessionStorage.getItem('token');
+  const userToken = JSON.parse(tokenString);
+  return userToken?.token
+}
+
 export function App(){
+  const { token, setToken } = useToken();
+
+  if(!token) {
+    return <Login setToken={setToken} />
+  }
+
   return (
     <Outlet />
   );

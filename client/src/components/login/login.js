@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router";
+import PropTypes from 'prop-types';
 
 import '../../styles/login.css'
 
@@ -13,79 +13,50 @@ import '../../styles/login.css'
  * ? After a successful login, users will be signed in.
  * ? When a signed in user attempted to access the login page, the user will be redirected back to the homepage
  */
+ async function loginUser(credentials) {
+    return fetch('http://localhost:8080/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(credentials)
+    })
+      .then(data => data.json())
+   }
 
 
-export default function Login(){
+export default function Login({ setToken }){
+    const [username, setUserName] = useState();
+  const [password, setPassword] = useState();
 
-    const [userRecord, setUserRecord] = useState(null)
-    const [first, setFirst] = useState('');
-    const [last, setLast] = useState('');
-
-    // Fetching the data from the collection "records" in the database
-    useEffect(() =>{
-        const fetchUserRecord = async () => {
-            const response = await fetch('http://localhost:5000/record')
-            const json = await response.json()
-
-            if (response.ok){
-                setUserRecord(json)
-            }
-        }
-
-        fetchUserRecord()
-    }, [])
-
-    const onFormSubmit = event  => {
-        event.preventDefault();
-        
-        // if(first === userRecord.userID && last === userRecord.password){
-        //     console.log("passed")
-        //     setFirst('');
-        //     setLast('');
-        // }
-        // else{
-        //     console.log("failed")
-        //     setFirst('');
-        //     setLast('');
-        // }
-    }
-
-    return(
-
-        <div className="container">
-            <img src="jilcf_logo_1.png" alt="JILCF Logo" />
-            <form onSubmit={onFormSubmit} autoComplete="off">
-                <div className="input-container">
-                    <input
-                        className="input_IDnumber" 
-                        placeholder="ID Number" 
-                        type="text" 
-                        name="idnum"
-                        value={first}
-                        onChange={event => setFirst(event.target.value)} 
-                        required 
-                    />
-                </div>
-                
-                <div className="input-container">
-                    <input 
-                        className="input_Password"
-                        placeholder="Password" 
-                        type="password" 
-                        name="pass"
-                        value={last}
-                        onChange={event => setLast(event.target.value)} 
-                        required 
-                    />
-                </div>
-                <div className="button-container">
-                    <small>
-                        <a href="#">Forgot Your Password?</a>
-                    </small>
-                </div>
-                <button type="submit" />
-            </form>
+  const handleSubmit = async e => {
+    e.preventDefault();
+    const token = await loginUser({
+      username,
+      password
+    });
+    setToken(token);
+  }
+  return(
+    <div className="login-wrapper">
+      <h1>Please Log In</h1>
+      <form onSubmit={handleSubmit}>
+        <label>
+          <p>Username</p>
+          <input type="text" onChange={e => setUserName(e.target.value)}/>
+        </label>
+        <label>
+          <p>Password</p>
+          <input type="password" onChange={e => setPassword(e.target.value)}/>
+        </label>
+        <div>
+          <button type="submit">Submit</button>
         </div>
+      </form>
+    </div>
+  )
+}
 
-    )
+Login.propTypes = {
+    setToken: PropTypes.func.isRequired
 }
