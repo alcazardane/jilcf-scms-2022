@@ -40,7 +40,6 @@ const WindowAttendance = () => {
         fetchStudentInfo()
     }, [])
 
-
     var root = document.querySelector(":root");
 
     // For window snapping
@@ -517,13 +516,13 @@ const WindowAttendance = () => {
                         </div>
                     </div>
                     <div className="attendance_record_attendance_wrap">
-                        <button className="attendance_record_attendance">
+                        <button className="attendance_record_attendance" onClick={FaceRec}>
                             <span className="attendance_button_label">Record<br></br>Attendance</span>
                             <img src={record_icon} alt="record_attendance_button" className="record_attendance_button"></img>
                         </button>
                     </div>
                     <div className="attendance_download_attendance_wrap">
-                        <button className="attendance_download_attendance" onClick={FaceRec}>
+                        <button className="attendance_download_attendance">
                             <span className="attendance_button_label">Download<br></br>Attendance</span>
                             <img src={download_icon} alt="download_attendance_button" className="download_attendance_button"></img>
                         </button>
