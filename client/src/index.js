@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {Loginfunc, HomeL1, HomeL2, HomeL3, CreateUser, App, AssessmentWindow, AttendanceWindow, CalendarWindow} from "./App";
+import {Loginfunc, HomeL1, HomeL2, HomeL3, CreateUser, App, AssessmentWindow, AttendanceWindow, CalendarWindow, FaceRec} from "./App";
 
 import './index.css'
 
@@ -20,6 +20,7 @@ root.render(
           <Route path="/assessment"  element={<AssessmentWindow/>}/>
           <Route path="/attendance" element={<AttendanceWindow/>}/>
           <Route path="/Calendar" element={<CalendarWindow/>}/>
+          <Route path="/facerecog" element={<FaceRec/>}/>
         </Route>
       </Routes>
 
