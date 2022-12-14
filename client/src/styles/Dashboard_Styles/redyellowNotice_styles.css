@@ -213,4 +213,8 @@ tr:nth-child(odd) {
   #notif_active{
     font-size: 10px;
   }
+
+  .notice_container{
+    width: 96%;
+  }
 }

@@ -15,7 +15,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  position: relative;
+  /* position: relative; */
 }
 
 .container_labels-b{
@@ -118,7 +118,8 @@
 }
 
 .slide_buttons_wrap{
-  position: absolute;
+  /* position: absolute; */
+  position: relative;
   width: 98.5%;
   top: 50%;
   display: flex;
@@ -203,5 +204,10 @@
   }
   .ratio{
     font-size: 35px;
+  }
+
+  .attendance_container{
+    width: 96%;
+    margin-bottom: 17%;
   }
 }

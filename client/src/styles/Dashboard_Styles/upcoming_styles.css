@@ -453,4 +453,9 @@
     font-size: 12px;
     margin-bottom: 0;
   }
+
+  .upcoming_container{
+    width: 96%;
+    min-width: 10px;
+  }
 }

@@ -1,6 +1,6 @@
 import { useDrag } from '@use-gesture/react'
 import { useSpring, animated } from 'react-spring'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 
 //dashboard components
@@ -13,7 +13,7 @@ import '../../../styles/Dashboard_Styles/mainDashboard_styles.css'
 
 import useWindowDimensions from '../hooks/useWindowDimensions'
 
-export default function MainDashboard_L1() {
+export default function MainDashboard_L1({dashUpRef, dashAccRef, dashAnaRef}) {
 
     var root = document.querySelector(":root");
 
@@ -123,9 +123,18 @@ export default function MainDashboard_L1() {
     }, [])
 
 
+    // const sampleRef = useRef(null);
+    
+    // const scrollDashSection = (elemRef) => {
+    //     window.scrollTo({
+    //         top: elemRef.current.offsetTop,
+    //         behavior: "smooth"
+    //     })
+    // }
+
     return (
     <>
-        <animated.div className="dashboard_L1_draggable_area"
+        {/* <animated.div className="dashboard_L1_draggable_area"
         {...bindDashboardPos()} style={{
           x, y
         }} />
@@ -138,12 +147,11 @@ export default function MainDashboard_L1() {
                 <span id="dashboard_L1_minmax" className="material-symbols-outlined" onClick={minmaxDashboard}>web_asset</span>
                 <span id="dashboard_L1_close" className="material-symbols-outlined" onClick={closeDashboard}>close</span>
             </div>
-        </div>
+        </div> */}
 
-        <div className="dashboard_L1_Main_Container">
-
+        <div className="dashboard_L1_Main_Container" id="dashboard_L1_Main_Container">
             <div className="dashboard_L1_Top_wrap">
-                <div className="dashboard_L1_Upcoming">
+                <div className="dashboard_L1_Upcoming" ref={dashUpRef}>
                     <div className="dashboard_L1_Upcoming_label">
                         <span>UPCOMING</span>
                         <span className="view_calendar_L1" id="view_calendar_L1" >View Calendar &#10095;</span>
@@ -155,17 +163,17 @@ export default function MainDashboard_L1() {
                     </div>
                 </div>
                 
-                <div className="dashboard_L1_Accounts">
+                <div className="dashboard_L1_Accounts" ref={dashAccRef}>
                     <AccountDetails />
                 </div>         
             </div>
 
-            <div className="dashboard_L1_Analytics">
+            <div className="dashboard_L1_Analytics" ref={dashAnaRef}>
                 <AnalyticsDetails />
             </div>
         </div>
 
-        </animated.div>
+        {/* </animated.div> */}
     </>
     )
 }

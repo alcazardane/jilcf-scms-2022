@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 //Components
 import AttendanceDetails from './dashboard_details/AttendanceDetails'
 
-const Attendance = () => {
+const Attendance = ({dashAttRef}) => {
 
     const [attendances, setAttendance] = useState(null)
 
@@ -34,7 +34,7 @@ const Attendance = () => {
     }
 
     return (
-        <div className="attendance_container">
+        <div className="attendance_container" ref={dashAttRef}>
         <div className="attendance_header">
             <div className="container_labels-b">ATTENDANCE PER CLASSROOM</div>
             <div className="view_attendance"><Link className="link" to={"/attendance"}>View Attendance &#10095;</Link></div>

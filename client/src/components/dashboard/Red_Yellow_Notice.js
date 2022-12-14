@@ -1,11 +1,11 @@
-import { useEffect, useState} from 'react'
+import { useEffect, useState, useRef} from 'react'
 import { Link } from 'react-router-dom'
 //Components
 import RedNoticeDetails from './dashboard_details/Red_NoticeDetails'
 import YellowNoticeDetails from './dashboard_details/Yellow_NoticeDetails'
 
 //Red and Yellow Notice
-const RedYellowNotice = () => {
+const RedYellowNotice = ({dashNoticeRef}) => {
   const [studentAttendances, setStudentAttendance] = useState(null)
   const [studentAttendances_B, setStudentAttendance_B] = useState(null)
 
@@ -42,7 +42,7 @@ const RedYellowNotice = () => {
   }, [])
   
     return (
-        <div className="notice_container">
+        <div className="notice_container" ref={dashNoticeRef}>
           <div className="notice_header">
             <div className="container_labels-c">RED NOTICE</div>
             <span className="view_list_red"><Link className="link" to={"/attendance"}>View Full List &#10095; </Link></span>
