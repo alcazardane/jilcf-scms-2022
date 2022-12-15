@@ -191,7 +191,7 @@ const WindowAttendanceL1 = () => {
 
         root.style.setProperty('--winAtt-ViewStudent-PointerEvents', "all");
         root.style.setProperty('--winAtt-ViewStudent-Opacity', "1");
-        root.style.setProperty('--winAtt-ViewStudent-Transform', "0%");      
+        // root.style.setProperty('--winAtt-ViewStudent-Transform', "0%");      
     }
 
     // if the "back to table" button is clicked, the window attendance will return to the original display
@@ -202,7 +202,7 @@ const WindowAttendanceL1 = () => {
 
         root.style.setProperty('--winAtt-ViewStudent-PointerEvents', "none");
         root.style.setProperty('--winAtt-ViewStudent-Opacity', "0");
-        root.style.setProperty('--winAtt-ViewStudent-Transform', "100%");
+        // root.style.setProperty('--winAtt-ViewStudent-Transform', "100%");
 
         setMultiID([]);
         setSelectedAttRecord([]);
@@ -473,7 +473,7 @@ const WindowAttendanceL1 = () => {
 //======================================================================================================================
     return (
         <>
-        <animated.div className="windowAttendance_draggable_area"
+        {/* <animated.div className="windowAttendance_draggable_area"
         {...bindAttendancePos()} style={{
             x, y      
         }} />
@@ -486,9 +486,8 @@ const WindowAttendanceL1 = () => {
                 <span id="dashboard_minmax" className="material-symbols-outlined" onClick={minmaxAttendance}>web_asset</span>
                 <span id="dashboard_close" className="material-symbols-outlined" onClick={closeAttendance}>close</span>
             </div>
-        </div>
-
-
+        </div> */}
+        <div className="windowAttendance_default_wrap-out">
         <div className="windowAttendance_default_wrap">
             <div className="attendance_top_wrap">
                 <div className="attendance_search_wrap">
@@ -692,8 +691,10 @@ const WindowAttendanceL1 = () => {
                 <button className="editAtt_update_button" onClick={cancelDelete}>No</button>
             </div>
         </div>
+
+        </div>
     
-        </animated.div>
+        {/* </animated.div> */}
         </>
     )
 }

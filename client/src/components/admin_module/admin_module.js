@@ -1,6 +1,6 @@
 import { useDrag } from '@use-gesture/react'
 import { useSpring, animated } from 'react-spring'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 
 // Import Components
@@ -25,7 +25,7 @@ import refresh_icon from "../../images/refresh_FILL1_wght400_GRAD0_opsz48.png"
 
 import useWindowDimensions from '../dashboard/hooks/useWindowDimensions'
 
-export default function AdminModule() {
+export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
 
     var root = document.querySelector(":root");
 
@@ -729,7 +729,7 @@ export default function AdminModule() {
 
     return (
     <>
-        <animated.div className="adminModule_L1_draggable_area"
+        {/* <animated.div className="adminModule_L1_draggable_area"
         {...bindAdminPos()} style={{
           x, y
         }} />
@@ -742,12 +742,12 @@ export default function AdminModule() {
                 <span id="adminModule_L1_minmax" className="material-symbols-outlined" onClick={minmaxAdminModule}>web_asset</span>
                 <span id="adminModule_L1_close" className="material-symbols-outlined" onClick={closeAdminModule}>close</span>
             </div>
-        </div>
+        </div> */}
 
-        <div className="adminModule_L1_Main_Container">
+        <div className="adminModule_L1_Main_Container" id="adminModule_L1_Main_Container">
             <div className="adminModule_Main_Container_wrap">
 
-                <div className="adminModule_L1_Accounts">
+                <div className="adminModule_L1_Accounts" ref={adminAccRef}>
                     <div className="dashboard_L1_Upcoming_label">
                         <span>ACCOUNTS</span>
                     </div>
@@ -863,7 +863,7 @@ export default function AdminModule() {
                 </div>
 
 {/*===================================================================================================================*/}
-                <div className="adminModule_L1_Schedule">
+                <div className="adminModule_L1_Schedule" ref={adminSchedRef}>
                     <div className="dashboard_L1_Upcoming_label">
                         <span>SCHEDULES</span>
                     </div>
@@ -979,7 +979,7 @@ export default function AdminModule() {
                 </div>
 
 {/*====================================================================================================================*/}
-                <div className="adminModule_L1_Announcements_wrap">
+                <div className="adminModule_L1_Announcements_wrap" ref={adminAnnRef}>
                     <div className="adminModule_L1_Announcements">
                         <div className="dashboard_L1_Upcoming_label">
                             <span>ANNOUNCEMENTS</span>
@@ -1015,7 +1015,7 @@ export default function AdminModule() {
                             <div className="winAtt_viewStudent_table_wrap table-admin-wrap">
                                 <table className="winAtt_viewStudent_table table-admin">
                                     <thead>
-                                        <tr className="winAtt_viewStudent_table_header-b schedule-tb-header">
+                                        <tr className="winAtt_viewStudent_table_header-b announce-tb-header">
                                             <td>Type</td>
                                             <td>Title</td>
                                             <td>Date</td>                                      
@@ -1093,7 +1093,7 @@ export default function AdminModule() {
         </div>
 
 
-        </animated.div>
+        {/* </animated.div> */}
     </>
     )
 }

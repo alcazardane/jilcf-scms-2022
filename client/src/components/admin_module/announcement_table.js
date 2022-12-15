@@ -5,7 +5,7 @@ const AnnouncementTable = ({ viewAnnouncement, editAnnounce, checkDeleteAnnounce
 
     return (
         <>
-        <tr className="winAtt_viewStudent_table_body-b">
+        <tr className="winAtt_viewStudent_table_body-b announce-tb-body">
             <td>{viewAnnouncement.announcement_type}</td>
             <td>{viewAnnouncement.announcement_name}</td>
             <td>{viewAnnouncement.announcement_date}</td>

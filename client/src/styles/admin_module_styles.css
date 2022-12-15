@@ -1,4 +1,6 @@
 .adminModule_L1_main_wrap{
+    width: 85%;
+    position: relative;
     display: var(--adminModule_L1_display);
 }
 
@@ -64,10 +66,13 @@
 }
 .adminModule_L1_Main_Container{
     width: 100%;
-    height: calc(100% - 29px);
+    /* height: calc(100% - 29px); */
+    height: 100%;
     display: flex;
     flex-wrap: wrap;
+    /* position: relative; */
     justify-content: space-between;
+    /* justify-content: center; */
     overflow: auto;
 }
 
@@ -80,7 +85,7 @@
 }
 .adminModule_L1_Accounts{
     width: 96%;
-    height: 80%;
+    height: 90%;
     margin-top: 2%;
     overflow: hidden;
     background: white;
@@ -264,7 +269,7 @@
 
 .adminModule_L1_Schedule{
     width: 96%;
-    height: 80%;
+    height: 90%;
     margin-top: 2%;
     overflow: hidden;
     background: white;
@@ -369,4 +374,81 @@
     opacity: var(--ConfirmDelete-Announce-Modal-Admin-Opacity);
     transition: all 200ms ease-in-out;
     z-index: 2;
+}
+
+@media only screen and (max-width: 500px){
+    .adminModule_L1_Accounts{
+        height: 45%;
+        margin-top: 2%;
+        overflow: hidden;
+    }
+    .adminModule_L1_Schedule{
+        height: 45%;
+        overflow: hidden;
+    }
+    .adminModule_L1_Announcements_wrap{
+        height: 50%;
+        overflow: hidden;
+    }
+
+    .schedule-tb-header td:nth-child(1){
+        width: 25%;
+    }
+    .schedule-tb-header td:nth-child(2){
+        display: table-cell;
+    }
+    .schedule-tb-header td:nth-child(4){
+        display: none;
+    }
+    .schedule-tb-header td:nth-child(5){
+        display: none;
+    }
+    .schedule-tb-header td:nth-child(6){
+        display: table-cell;
+    }
+
+    .schedule-tb-body td:nth-child(2){
+        display: table-cell;
+    }
+    .schedule-tb-body td:nth-child(4){
+        display: none;
+    }
+    .schedule-tb-body td:nth-child(5){
+        display: none;
+    }
+    .schedule-tb-body td:nth-child(6){
+        display: table-cell;
+    }
+
+    .announce-tb-header td:nth-child(1){
+        display: table-cell;
+    }
+    .announce-tb-header td:nth-child(4){
+        display: none;
+    }
+    .announce-tb-header td:nth-child(5){
+        display: none;
+    }
+    .announce-tb-header td:nth-child(6){
+        display: table-cell;
+    }
+
+    .announce-tb-body td:nth-child(1){
+        display: table-cell;
+    }
+    .announce-tb-body td:nth-child(4){
+        display: none;
+    }
+    .announce-tb-body td:nth-child(5){
+        display: none;
+    }
+    .announce-tb-body td:nth-child(6){
+        display: table-cell;
+    }
+
+    .adminModule_create_account_con{
+        width: 90%;
+        height: 50%;
+        /* gap: 2%; */
+    }
 }

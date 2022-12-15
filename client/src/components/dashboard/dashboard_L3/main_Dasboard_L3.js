@@ -1,6 +1,6 @@
 import { useDrag } from '@use-gesture/react'
 import { useSpring, animated } from 'react-spring'
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 
 
 //dashboard components
@@ -14,7 +14,7 @@ import '../../../styles/Dashboard_Styles/mainDashboard_styles.css'
 
 import useWindowDimensions from '../hooks/useWindowDimensions'
 
-export default function MainDashboard_L3() {
+export default function MainDashboard_L3({dashAttRef, dashAssessRef, dashAnaRef, dashUpRef, dashActRef, dashAnnRef}) {
 
     var root = document.querySelector(":root");
 
@@ -152,7 +152,7 @@ export default function MainDashboard_L3() {
 
     return (
     <>
-        <animated.div className="dashboard_L1_draggable_area"
+        {/* <animated.div className="dashboard_L1_draggable_area"
         {...bindDashboardPos()} style={{
           x, y
         }} />
@@ -165,17 +165,17 @@ export default function MainDashboard_L3() {
                 <span id="dashboard_L1_minmax" className="material-symbols-outlined" onClick={minmaxDashboard}>web_asset</span>
                 <span id="dashboard_L1_close" className="material-symbols-outlined" onClick={closeDashboard}>close</span>
             </div>
-        </div>
+        </div> */}
 
-        <div className="dashboard_L1_Main_Container">
+        <div className="dashboard_L1_Main_Container" id="dashboard_L3_Main_Container">
 
             <div className="dashboard_L3_top_wrap">
-                <div className="dashboard_L3_container_big">
+                <div className="dashboard_L3_container_big" ref={dashAttRef}>
                     <AttendanceDetails
                     dashboardIsMinimized={dashboardIsMinimized}/>
                 </div>
 
-                <div className="dashboard_L3_container_small">
+                <div className="dashboard_L3_container_small" ref={dashUpRef}>
                     <div className="dashboard_L3_container_label">
                         <span>UPCOMING</span>
                         <span className="view_calendar_L1" id="view_calendar_L1" >View Calendar &#10095;</span>
@@ -190,12 +190,12 @@ export default function MainDashboard_L3() {
             </div>
 
             <div className="dashboard_L3_top_wrap">
-                <div className="dashboard_L3_container_big">                    
+                <div className="dashboard_L3_container_big" ref={dashAssessRef}>                    
                     <AssessmentDetails 
                     dashboardIsMinimized={dashboardIsMinimized}/>
                 </div>
 
-                <div className="dashboard_L3_container_small">
+                <div className="dashboard_L3_container_small" ref={dashActRef}>
                     <div className="dashboard_L3_container_label">
                         <span>ACTIVITIES</span>
                     </div>
@@ -209,7 +209,7 @@ export default function MainDashboard_L3() {
             </div>
 
             <div className="dashboard_L3_top_wrap bottom_wrap">
-                <div className="dashboard_L3_container_big">               
+                <div className="dashboard_L3_container_big" ref={dashAnaRef}>               
                     <div className="dashboard_L3_container_label">
                         <span>ANALYTICS</span>
                         <span className="view_calendar_L1" id="view_calendar_L1" >View Analytics &#10095;</span>
@@ -240,7 +240,7 @@ export default function MainDashboard_L3() {
                             </div>
                         </div>
 
-                        <div className="dashboard_L3_annt_attn annt_attn-b">
+                        {/* <div className="dashboard_L3_annt_attn annt_attn-b">
                         <div className="dashboard_L1_Analytics_label">Assessment</div>
                             <div className="accounts_pie_wrap">
                                 <div className="pie animate no-round" style={{"--p": "92", "--c": "#84DF3C", "--b": "10px"}}>
@@ -251,11 +251,11 @@ export default function MainDashboard_L3() {
                                 </div>
                                 <span className="pie_label">Grades</span>
                             </div>
-                        </div>
+                        </div> */}
                     
                 </div>
 
-                <div className="dashboard_L3_container_small">
+                <div className="dashboard_L3_container_small" ref={dashAnnRef}>
                     <div className="dashboard_L3_container_label">
                         <span>ANNOUNCEMENTS</span>
                     </div>
@@ -270,7 +270,7 @@ export default function MainDashboard_L3() {
 
         </div>
 
-        </animated.div>
+        {/* </animated.div> */}
     </>
     )
 }

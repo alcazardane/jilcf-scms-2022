@@ -1,7 +1,7 @@
 // need to install "@use-gesture/react" and "react-spring" first
 import { useDrag } from '@use-gesture/react'
 import { useSpring, animated } from 'react-spring'
-import { useState } from 'react'
+import { useState, useRef } from 'react'
 
 
 //dashboard components
@@ -18,7 +18,7 @@ import '../../styles/Dashboard_Styles/assessment_styles.css'
 
 import useWindowDimensions from './hooks/useWindowDimensions'
 
-export default function MainDashboard() {
+export default function MainDashboard({dashUpRef, dashNoticeRef, dashAttRef}) {
 
     var root = document.querySelector(":root");
 
@@ -186,7 +186,7 @@ export default function MainDashboard() {
 
     return (
     <>
-        <animated.div className="dashboard_draggable_area"
+        {/* <animated.div className="dashboard_draggable_area"
         {...bindDashboardPos()} style={{
           x, y
         }} />
@@ -199,16 +199,16 @@ export default function MainDashboard() {
                 <span id="dashboard_minmax" className="material-symbols-outlined" onClick={minmaxDashboard}>web_asset</span>
                 <span id="dashboard_close" className="material-symbols-outlined" onClick={closeDashboard}>close</span>
             </div>
-        </div>
-        <div className="main_container" id="main_container">
+        </div> */}
+        <div className="main_container" id="dashbord_L2_main_container">
           <div className="top_wrap">
-            <Upcoming />
-            <RedYellowNotice />
+            <Upcoming dashUpRef={dashUpRef}/>
+            <RedYellowNotice dashNoticeRef={dashNoticeRef}/>
           </div>
-          <Attendance />
-          <Assessment />
+          <Attendance dashAttRef={dashAttRef}/>
+          {/* <Assessment /> */}
         </div>
-        </animated.div>
+        {/* </animated.div> */}
     </>
     )
 }

@@ -139,7 +139,7 @@ const WindowAttendanceL3 = () => {
 //======================================================================================================================
     return (
         <>
-        <animated.div className="windowAttendance_draggable_area"
+        {/* <animated.div className="windowAttendance_draggable_area"
         {...bindAttendancePos()} style={{
             x, y      
         }} />
@@ -152,10 +152,10 @@ const WindowAttendanceL3 = () => {
                 <span id="dashboard_minmax" className="material-symbols-outlined" onClick={minmaxAttendance}>web_asset</span>
                 <span id="dashboard_close" className="material-symbols-outlined" onClick={closeAttendance}>close</span>
             </div>
-        </div>
+        </div> */}
 
 
-        <div className="windowAttendance_default_wrap">
+        <div className="windowAttendance_default_wrap-L3">
             <div className="winAtt_viewStudent_wrap">
                 <div className="winAtt_viewStudent_top_wrap">
                     <div className="winAtt_viewStudent_profile_wrap">
@@ -233,7 +233,7 @@ const WindowAttendanceL3 = () => {
             </div>
         </div>
     
-        </animated.div>
+        {/* </animated.div> */}
         </>
     )
 }
