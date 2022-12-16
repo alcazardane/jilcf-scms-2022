@@ -8,10 +8,6 @@ const dbo = require("../db/conn");
 // This help convert the id from string to ObjectId for the _id.
 const ObjectId = require("mongodb").ObjectId;
 
-// Blocks the user to access the router if not authenticated
-const requireAuth = require('../middleware/requireAuth')
-recordRoutes.use(requireAuth)
-
 // This section will help you get a list of all the assessment_records.
 recordRoutes.route("/teacher_attendance").get(function (req, res) {
  let db_connect = dbo.getDb("clients");

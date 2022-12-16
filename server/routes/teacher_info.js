@@ -5,10 +5,6 @@ const recordRoutes = express.Router();
 // This will help us connect to the database
 const dbo = require("../db/conn");
 
-// Blocks the user to access the router if not authenticated
-const requireAuth = require('../middleware/requireAuth')
-recordRoutes.use(requireAuth)
-
 // This help convert the id from string to ObjectId for the _id.
 const ObjectId = require("mongodb").ObjectId;
 

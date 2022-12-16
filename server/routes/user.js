@@ -4,10 +4,6 @@ const express = require('express')
 const {registerUser, loginUser} = require('../controllers/userController')
 const router = express.Router()
 
-// Blocks the user to access the router if not authenticated
-const requireAuth = require('../middleware/requireAuth')
-router.use(requireAuth)
-
 // login route
 router.post('/login', loginUser)
 

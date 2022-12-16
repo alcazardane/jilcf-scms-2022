@@ -3,10 +3,6 @@ const express = require("express");
 
 const recordRoutes = express.Router();
 
-// Blocks the user to access the router if not authenticated
-const requireAuth = require('../middleware/requireAuth')
-recordRoutes.use(requireAuth)
-
 // This will help us connect to the database
 const dbo = require("../db/conn");
  
