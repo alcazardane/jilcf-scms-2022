@@ -210,16 +210,16 @@ export default function Home_L3() {
                                 onClick={() => scrollDashSection(dashAttRef)}                                  
                                 >Attendance Record
                             </div>
-                            <div 
+                            {/* <div 
                                 className={"sidebar_sub_item sidebar_sub_item_L3 " + (dashUpIsOpen ? "sidebar_sub_item_active" : "")}
                                 onClick={() => scrollDashSection(dashUpRef)}                                  
                                 >Upcoming
-                            </div>
-                            <div 
+                            </div> */}
+                            {/* <div 
                                 className={"sidebar_sub_item sidebar_sub_item_L3 " + (dashAssessIsOpen ? "sidebar_sub_item_active" : "")}
                                 onClick={() => scrollDashSection(dashAssessRef)}
                                 >Assessment Record
-                            </div>
+                            </div> */}
                             <div 
                                 className={"sidebar_sub_item sidebar_sub_item_L3 " + (dashActIsOpen ? "sidebar_sub_item_active" : "")}
                                 onClick={() => scrollDashSection(dashActRef)}
@@ -244,12 +244,12 @@ export default function Home_L3() {
                             <div className="main_window_L1_sidebar_module_label">Attendance</div>
                         </div>
 
-                        <div 
+                        {/* <div 
                             className={"main_window_L1_sidebar_module_wrap " + (analyticsIsOpen ? "sidebar_wrap_active" : "")}
                             onClick={openAnalytics}>
                             <img className="main_window_L1_sidebar_module_icon" src={analytics_icon} alt="Analytics"></img>
                             <div className="main_window_L1_sidebar_module_label">Analytics</div>
-                        </div>
+                        </div> */}
 
                     </div>
                 </div>

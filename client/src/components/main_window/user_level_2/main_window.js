@@ -180,12 +180,12 @@ export default function Home() {
                             <div className="main_window_L1_sidebar_module_label">Attendance</div>
                         </div>
 
-                        <div 
+                        {/* <div 
                             className={"main_window_L1_sidebar_module_wrap " + (analyticsIsOpen ? "sidebar_wrap_active" : "")}
                             onClick={openAnalytics}>
                             <img className="main_window_L1_sidebar_module_icon" src={analytics_icon} alt="Analytics"></img>
                             <div className="main_window_L1_sidebar_module_label">Analytics</div>
-                        </div>
+                        </div> */}
 
                     </div>
                 </div>

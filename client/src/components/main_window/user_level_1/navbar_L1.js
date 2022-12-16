@@ -3,6 +3,7 @@ import React, {useEffect, useState, useRef} from 'react'
 // Import components
 import NavbarViewDateTime from '../user_level_2/Navbar_viewDateTime';
 import CalendarDetails from '../../dashboard/dashboard_details/CalendarDetails';
+import { useAuthContext } from '../../../hooks/useAuthContext';
 
 // Import images
 import notification_icon from "../../../images/notifications_FILL1_wght400_GRAD0_opsz48.png"
@@ -11,6 +12,8 @@ import power_icon from "../../../images/power_settings_new_FILL0_wght400_GRAD0_o
 import calendar_icon from "../../../images/calendar_month_FILL0_wght400_GRAD0_opsz48.png"
 
 const Navbar_L1 = ({openAbout}) => {
+
+    const { user } = useAuthContext();
 
     const [timeState, setTimeState] = useState();
     const [dateState, setDateState] = useState();
@@ -56,6 +59,24 @@ const Navbar_L1 = ({openAbout}) => {
     }, []);
 
 
+
+    // const [userCred, setUserCred] = useState([])
+
+    // // setAdminID("22-0000000")
+    // useEffect(() =>{
+    //     const fetchUser= async () => {
+    //         const response = await fetch('http://localhost:5000/record/user/'+ user.idNumber)
+    //         const json = await response.json()
+
+    //         if (response.ok){
+    //             setUserCred(json)
+    //         }
+    //     }
+    //     fetchUser()
+    // }, [])
+
+
+
   return (
     <>
     <div ref={menuListRef} className={"menulist " + (menuIsOpen ? "openMenuList" : "closeMenuList")}>
@@ -78,7 +99,7 @@ const Navbar_L1 = ({openAbout}) => {
         
         <div className="menulist_navbar">
             <div className="menulist_navbar_items_wrap">
-                <span className="teacher_name">Dela Cruz, Juan</span>
+                <span className="teacher_name">Admin</span>
                 <div className="menulist_navbar_icons_wrap">
                     <img className="menulist_navbar_icons" src={notification_icon} alt="notification_icon" />
                     <img className="menulist_navbar_icons" src={settings_icon} alt="settings_icon" />

@@ -4,7 +4,8 @@ const AccountDetails = () => {
         <>
             <div className="dashboard_L1_Upcoming_label">
                 <span>ACCOUNTS</span>
-                <span className="view_calendar_L1" id="view_calendar_L1" >View Accounts &#10095;</span>
+                {/* <span className="view_calendar_L1" id="view_calendar_L1" >View Accounts &#10095;</span> */}
+                <span className="view_calendar_L1" id="view_calendar_L1" ></span>
             </div>
 
             <div className="accounts_pie_wrap_outside">

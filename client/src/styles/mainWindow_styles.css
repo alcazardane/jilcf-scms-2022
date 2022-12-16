@@ -370,7 +370,7 @@
 }
 .sidebar_sub_wrap_active_L3{
   width: 90%;
-  height: 40%;
+  height: 30%;
   margin-left: 10%;
   /* background: #021a4b; */
   display: flex;
@@ -404,7 +404,7 @@
   opacity: 0.5;
 }
 .sidebar_sub_item_L3{
-  height: 15%;
+  height: 20%;
 }
 .sidebar_sub_item:hover{
   background: rgba(255,255,255, 0.5);

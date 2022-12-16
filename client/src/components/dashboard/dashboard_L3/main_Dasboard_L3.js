@@ -175,7 +175,7 @@ export default function MainDashboard_L3({dashAttRef, dashAssessRef, dashAnaRef,
                     dashboardIsMinimized={dashboardIsMinimized}/>
                 </div>
 
-                <div className="dashboard_L3_container_small" ref={dashUpRef}>
+                {/* <div className="dashboard_L3_container_small" ref={dashUpRef}>
                     <div className="dashboard_L3_container_label">
                         <span>UPCOMING</span>
                         <span className="view_calendar_L1" id="view_calendar_L1" >View Calendar &#10095;</span>
@@ -186,10 +186,21 @@ export default function MainDashboard_L3({dashAttRef, dashAssessRef, dashAnaRef,
                             <UpcomingDetails key={schedules._id} schedules={schedules} />
                         ))}
                     </div>
+                </div> */}
+                <div className="dashboard_L3_container_small" ref={dashActRef}>
+                    <div className="dashboard_L3_container_label">
+                        <span>ACTIVITIES</span>
+                    </div>
+
+                    <div className="dashboard_L3_act_inside_wrap">                    
+                        {activity && activity.map((activities) => (
+                            <ActivityDetails key={activities._id} activities={activities} />
+                        ))}
+                    </div>
                 </div>
             </div>
 
-            <div className="dashboard_L3_top_wrap">
+            {/* <div className="dashboard_L3_top_wrap">
                 <div className="dashboard_L3_container_big" ref={dashAssessRef}>                    
                     <AssessmentDetails 
                     dashboardIsMinimized={dashboardIsMinimized}/>
@@ -206,7 +217,7 @@ export default function MainDashboard_L3({dashAttRef, dashAssessRef, dashAnaRef,
                         ))}
                     </div>
                 </div>
-            </div>
+            </div> */}
 
             <div className="dashboard_L3_top_wrap bottom_wrap">
                 <div className="dashboard_L3_container_big" ref={dashAnaRef}>               
