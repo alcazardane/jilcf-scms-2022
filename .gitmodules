@@ -1,0 +1,3 @@
+[submodule "path_to_submodule"] 
+  path = dist
+  url = git://github.com/alcazardane/jilcf-scms-2022
