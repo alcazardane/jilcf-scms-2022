@@ -22,7 +22,7 @@ import record_icon from "../../images/video_camera_front_FILL0_wght400_GRAD0_ops
 import download_icon from "../../images/cloud_download_FILL0_wght400_GRAD0_opsz48.png"
 import refresh_icon from "../../images/refresh_FILL1_wght400_GRAD0_opsz48.png"
 import notify_icon from "../../images/notifications_active_FILL1_wght400_GRAD0_opsz48.png"
-import { FaceRec } from '../../App'
+// import { FaceRec } from '../../App'
 
 const WindowAttendance = () => {
 
@@ -525,7 +525,7 @@ const WindowAttendance = () => {
                         </div>
                     </div>
                     <div className="attendance_record_attendance_wrap">
-                        <button className="attendance_record_attendance" onClick={FaceRec}>
+                        <button className="attendance_record_attendance">
                             <span className="attendance_button_label">Record<br></br>Attendance</span>
                             <img src={record_icon} alt="record_attendance_button" className="record_attendance_button"></img>
                         </button>

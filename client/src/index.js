@@ -1,28 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import {Loginfunc, HomeL1, HomeL2, HomeL3, CreateUser, App, AssessmentWindow, AttendanceWindow, CalendarWindow, FaceRec} from "./App";
+import App from "./App";
+import {AuthContextProvider} from './context/AuthContext'
 
 import './index.css'
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-    <Router>
-    
-      <Routes>
-        <Route path="/" element={ <App /> }>
-          <Route path="/home/L1" element={<HomeL1 />} />
-          <Route path="/home/L2" element={<HomeL2 />} />
-          <Route path="/home/L3" element={<HomeL3 />} />
-          <Route path="/login" element={<Loginfunc />} />
-          <Route path="/create" element={<CreateUser />} />
-          <Route path="/assessment"  element={<AssessmentWindow/>}/>
-          <Route path="/attendance" element={<AttendanceWindow/>}/>
-          <Route path="/Calendar" element={<CalendarWindow/>}/>
-          <Route path="/facerecog" element={<FaceRec/>}/>
-        </Route>
-      </Routes>
-
-    </Router>
+  <React.StrictMode>
+    <AuthContextProvider>
+      <App />
+    </AuthContextProvider>
+  </React.StrictMode>
 );

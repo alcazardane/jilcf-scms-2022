@@ -1,20 +1,20 @@
 import { useState } from 'react'
-import { useLogin } from '../../hooks/useLogin'
+import { useRegister } from '../../hooks/useRegister'
 
-const Login = () => {
+const Register = () => {
     const [idNumber, setIdNumber] = useState('')
     const [password, setPassword] = useState('')
-    const {login, error, isLoading} = useLogin()
+    const {register, error, isLoading} = useRegister()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
-        await login(idNumber, password)
+        await register(idNumber, password)
     }
 
     return (
-        <form className='login' onSubmit={handleSubmit}>
-            <h3>Login</h3>
+        <form className='register' onSubmit={handleSubmit}>
+            <h3>Create new Account</h3>
 
             <label>IDNumber:</label>
             <input 
@@ -30,10 +30,10 @@ const Login = () => {
                 value={password}
             />
 
-            <button disabled={isLoading}>Login</button>
+            <button disabled={isLoading}>Register</button>
             {error && <div className="error">{error}</div>}
         </form>
     )
 }
 
-export default Login
+export default Register
