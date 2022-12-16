@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react'
-import '../styles/frstyle.css'
+import '../styles/FaceDetection.css'
 import * as faceapi from 'face-api.js'
 
 const FaceRecog = ({ data, available }) => {
@@ -37,12 +37,10 @@ const FaceRecog = ({ data, available }) => {
 
 	const getVideo = () => {
 		navigator.mediaDevices
-      .getUserMedia({ video: { width: 300 } })
-      .then(stream => {
-        let video = videoRef.current;
-        video.srcObject = stream;
-        video.play();
-      })
+			.getUserMedia({ video: dimensions })
+			.then(stream => {
+				videoRef.current.srcObject = stream
+			})
 			.catch(err => {
 				console.error('error:', err)
 			})
@@ -127,12 +125,12 @@ const FaceRecog = ({ data, available }) => {
 	}
 
 	function loadLabeledImages() {
-		const labels = ['Prashant Amoli'] // for WebCam
+		const labels = ['John Daniel Alcazar'] // for WebCam
 		return Promise.all(
 			labels.map(async label => {
 				const descriptions = []
 				for (let i = 1; i < 2; i++) {
-					const img = await faceapi.fetchImage(`../images/${label}/${i}.jpg`)
+					const img = await faceapi.fetchImage(`../faces/${label}/${i}.jpg`)
 					const detections = await faceapi
 						.detectSingleFace(img, new faceapi.TinyFaceDetectorOptions())
 						.withFaceLandmarks(useTiny)
