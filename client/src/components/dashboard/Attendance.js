@@ -37,7 +37,8 @@ const Attendance = ({dashAttRef}) => {
         <div className="attendance_container" ref={dashAttRef}>
         <div className="attendance_header">
             <div className="container_labels-b">ATTENDANCE PER CLASSROOM</div>
-            <div className="view_attendance"><Link className="link" to={"/attendance"}>View Attendance &#10095;</Link></div>
+            {/* <div className="view_attendance"><Link className="link" to={"/attendance"}>View Attendance &#10095;</Link></div> */}
+            <div className="view_attendance"></div>
         </div>
             <div className="slide_buttons_wrap">
                 <div className="slide_button_wrap_left-b">

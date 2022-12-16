@@ -36,6 +36,18 @@ function App(){
             path="/facerecog"
             element={<FaceRecog />}
           />
+          <Route 
+            path="/home/L1"
+            element={<MainWindowL1 />}
+          />
+          <Route 
+            path="/home/L2"
+            element={<MainWindowL2 />}
+          />
+          <Route 
+            path="/home/L3"
+            element={<MainWindowL3 />}
+          />
         </Routes>
       </BrowserRouter>
     </div>

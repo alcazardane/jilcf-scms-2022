@@ -78,7 +78,7 @@ const Navbar = () => {
         
         <div className="menulist_navbar">
             <div className="menulist_navbar_items_wrap">
-                <span className="teacher_name">Dela Cruz, Juan</span>
+                <span className="teacher_name">Ocampo, Maria</span>
                 <div className="menulist_navbar_icons_wrap">
                     <img className="menulist_navbar_icons" src={notification_icon} alt="notification_icon" />
                     <img className="menulist_navbar_icons" src={settings_icon} alt="settings_icon" />

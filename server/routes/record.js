@@ -35,6 +35,19 @@ recordRoutes.route("/record/:id").get(function (req, res) {
      res.json(result);
    });
 });
+
+
+recordRoutes.route("/record/user/:userID").get(function (req, res) {
+  let db_connect = dbo.getDb();
+  let myquery = { userID: req.params.userID }
+  db_connect
+    .collection("records")
+    .find(myquery)
+    .toArray(function (err, result) {
+      if (err) throw err;
+      res.json(result);
+    });
+ });
  
 // This section will help you create a new record.
 recordRoutes.route("/record/add").post(function (req, response) {

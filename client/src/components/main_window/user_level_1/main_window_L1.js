@@ -24,6 +24,7 @@ import attendance_icon from "../../../images/attendance.png"
  * Styles
  */
 import '../../../styles/mainWindow_styles.css'
+import { Link } from "react-router-dom";
 
 export default function Home_L1() {
 
@@ -186,10 +187,13 @@ export default function Home_L1() {
 
                 <div className="main_window_L1_sidebar">
 
+                    
                     <div className="main_window_L1_sidebar_LOGO_wrap">
                         <div className="main_window_L1_sidebar_LOGO">
                             <img className="main_window_L1_sidebar_LOGO_img" src={jilcf_logo} alt="school_logo" />
-                            <span className="main_window_L1_sidebar_LOGO_label">JILCF SCMS</span>
+                            <Link to="/home/L1" className="main_window_L1_sidebar_LOGO_label">
+                                <span>JILCF SCMS</span>
+                            </Link>
                         </div>
                     </div>
 
@@ -250,12 +254,12 @@ export default function Home_L1() {
                             <div className="main_window_L1_sidebar_module_label">Assessment</div>
                         </div> */}
 
-                        <div 
+                        {/* <div 
                             className={"main_window_L1_sidebar_module_wrap " + (analyticsIsOpen ? "sidebar_wrap_active" : "")}
                             onClick={openAnalytics}>
                             <img className="main_window_L1_sidebar_module_icon" src={analytics_icon} alt="Analytics"></img>
                             <div className="main_window_L1_sidebar_module_label">Analytics</div>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
 

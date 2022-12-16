@@ -4,7 +4,8 @@ const AnalyticsDetails = () => {
         <>
             <div className="dashboard_L1_Upcoming_label">
                 <span>ANALYTICS</span>
-                <span className="view_calendar_L1" id="view_calendar_L1" >View Analytics &#10095;</span>
+                {/* <span className="view_calendar_L1" id="view_calendar_L1" >View Analytics &#10095;</span> */}
+                <span className="view_calendar_L1" id="view_calendar_L1" ></span>
             </div>
 
             <div className="dashboard_L1_Analytics_side_wrap">

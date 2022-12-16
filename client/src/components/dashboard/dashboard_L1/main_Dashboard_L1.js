@@ -154,7 +154,8 @@ export default function MainDashboard_L1({dashUpRef, dashAccRef, dashAnaRef}) {
                 <div className="dashboard_L1_Upcoming" ref={dashUpRef}>
                     <div className="dashboard_L1_Upcoming_label">
                         <span>UPCOMING</span>
-                        <span className="view_calendar_L1" id="view_calendar_L1" >View Calendar &#10095;</span>
+                        {/* <span className="view_calendar_L1" id="view_calendar_L1" >View Calendar &#10095;</span> */}
+                        <span className="view_calendar_L1" id="view_calendar_L1" ></span>
                     </div>
                     <div className="dashboard_L1_Upcoming_scheds_wrap">
                         {schedule && schedule.map((schedules) => (
