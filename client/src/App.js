@@ -1,7 +1,8 @@
 import React, { useState } from "react";
  
 // We use Route in order to define the different routes of our application
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+
 
 // We import all the components we need in our app
 // import RecordList from "./components/recordList";
@@ -11,11 +12,7 @@ import Create from "./components/create";
 import MainWindowL1 from "./components/main_window/user_level_1/main_window_L1"
 import MainWindowL2 from "./components/main_window/user_level_2/main_window";
 import MainWindowL3 from "./components/main_window/user_level_3/main_window_L3"
-import Attendance from "./components/attendance_window/attendance_window";
-import Assessment from "./components/assessment_window/assessment_window";
-import Calendar from "./components/calendar_window/calendar_window";
 import FaceRecog from "./components/samplefr";
-import useToken from "./useToken";
 import Login from './components/login/login'
 import Register from './components/admin_module/create_userAccount'
 
@@ -24,6 +21,10 @@ function App(){
     <div className="App">
       <BrowserRouter>
         <Routes>
+        <Route 
+            path="/"
+            element={<Login />}
+          />
           <Route 
             path="/login"
             element={<Login />}
