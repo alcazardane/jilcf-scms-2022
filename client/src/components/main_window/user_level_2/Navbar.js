@@ -67,10 +67,10 @@ const Navbar = () => {
             <button className="menulist_item"></button>
             <span className="menulist_item_label">Calendar</span>
         </div>
-        <div className="menulist_item_wrap">
+        {/* <div className="menulist_item_wrap">
             <button className="menulist_item"></button>
             <span className="menulist_item_label">Notes</span>
-        </div>
+        </div> */}
         <div className="menulist_item_wrap">
             <button className="menulist_item"></button>
             <span className="menulist_item_label">About</span>
