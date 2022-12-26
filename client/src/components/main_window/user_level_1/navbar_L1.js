@@ -1,9 +1,11 @@
 import React, {useEffect, useState, useRef} from 'react'
+import { useNavigate } from 'react-router-dom'
 
 // Import components
 import NavbarViewDateTime from '../user_level_2/Navbar_viewDateTime';
 import CalendarDetails from '../../dashboard/dashboard_details/CalendarDetails';
 import { useAuthContext } from '../../../hooks/useAuthContext';
+import { useLogout } from '../../../hooks/useLogout'
 
 // Import images
 import notification_icon from "../../../images/notifications_FILL1_wght400_GRAD0_opsz48.png"
@@ -14,6 +16,13 @@ import calendar_icon from "../../../images/calendar_month_FILL0_wght400_GRAD0_op
 const Navbar_L1 = ({openAbout}) => {
 
     const { user } = useAuthContext();
+    const { logout } = useLogout();
+    const navigate = useNavigate()
+
+    const handleClick = () => {
+        logout()
+        navigate("/login")
+    }
 
     const [timeState, setTimeState] = useState();
     const [dateState, setDateState] = useState();
@@ -88,10 +97,10 @@ const Navbar_L1 = ({openAbout}) => {
             <button className="menulist_item"></button>
             <span className="menulist_item_label">Calendar</span>
         </div>
-        <div className="menulist_item_wrap">
+        {/* <div className="menulist_item_wrap">
             <button className="menulist_item"></button>
             <span className="menulist_item_label">Notes</span>
-        </div>
+        </div> */}
         <div className="menulist_item_wrap" onClick={openAbout}>
             <button className="menulist_item"></button>
             <span className="menulist_item_label">About</span>
@@ -103,7 +112,7 @@ const Navbar_L1 = ({openAbout}) => {
                 <div className="menulist_navbar_icons_wrap">
                     <img className="menulist_navbar_icons" src={notification_icon} alt="notification_icon" />
                     <img className="menulist_navbar_icons" src={settings_icon} alt="settings_icon" />
-                    <img className="menulist_navbar_icons" src={power_icon} alt="power_icon" />
+                    <img className="menulist_navbar_icons" onClick={ handleClick } src={power_icon} alt="power_icon" />
                 </div>
             </div>
         </div>
