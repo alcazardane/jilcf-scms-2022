@@ -1,5 +1,9 @@
 import React from "react";
 import { useState, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+
+import { useAuthContext } from "../../../hooks/useAuthContext";
+import { useLogout } from "../../../hooks/useLogout";
 
 /**
  * import necessary scripts
@@ -8,13 +12,18 @@ import Navbar from './Navbar'
 import MainDashboard from '../../dashboard/main_Dashboard'
 import WindowAttendance from '../../window_attendance/windowAttendance'
 import WindowAssessment from '../../assessment/assessment_window'
+import AboutWindow from "../../about_module/about_module";
 import useWindowDimensions from "../../dashboard/hooks/useWindowDimensions";
 
 // import images
 import jilcf_logo from "../../../images/jilcf_logo_1.png"
-import dashboard_icon from "../../../images/dashboard.png"
+import dashboard_icon from "../../../images/Dashboard_Icon.png"
 import analytics_icon from "../../../images/analytics.png"
-import attendance_icon from "../../../images/attendance.png"
+import attendance_icon from "../../../images/Attendance_Icon.png"
+import assessment_icon from "../../../images/Assessment_Icon.png"
+import camera_icon from "../../../images/Camera_Icon.png"
+import about_icon from "../../../images/About_Icon.png"
+import calendar_icon from "../../../images/Calendar_Icon.png"
 
 /**
  * Styles
@@ -28,6 +37,10 @@ export default function Home() {
     const [dashboardIsOpen, setDashboardIsOpen] = useState(true);
     const [attendanceIsOpen, setAttendanceIsOpen] = useState(false);
     const [analyticsIsOpen, setAnalyticsIsOpen] = useState(false);
+    const [assessmentIsOpen, setAssessmentIsOpen] = useState(false);
+    const [cameraIsOpen, setCameraIsOpen] = useState(false);
+    const [aboutIsOpen, setAboutIsOpen] = useState(false);
+    const [calendarIsOpen, setCalendarIsOpen] = useState(false);
 
 
 //=======================================================================================================================
@@ -37,11 +50,16 @@ export default function Home() {
 
         root.style.setProperty('--windowDashboard-display', "block")
         root.style.setProperty('--windowAttendance-display', "none")
+        root.style.setProperty('--aboutModule-L1-display', "none")
 
         setDashboardIsOpen(true);
 
         setAttendanceIsOpen(false);
-        setAnalyticsIsOpen(false)
+        setAnalyticsIsOpen(false);
+        setAssessmentIsOpen(false);
+        setCameraIsOpen(false);
+        setCalendarIsOpen(false);
+        setAboutIsOpen(false);
     }
 
     const[dashUpIsOpen, setDashUpIsOpen] = useState(true);
@@ -95,11 +113,16 @@ export default function Home() {
     const openAttendance = () => {
         root.style.setProperty('--windowDashboard-display', "none")
         root.style.setProperty('--windowAttendance-display', "block")
+        root.style.setProperty('--aboutModule-L1-display', "none")
 
         setAttendanceIsOpen(true);
 
         setDashboardIsOpen(false);
-        setAnalyticsIsOpen(false)
+        setAnalyticsIsOpen(false);
+        setAssessmentIsOpen(false);
+        setCameraIsOpen(false);
+        setCalendarIsOpen(false);
+        setAboutIsOpen(false);
     }
 
 
@@ -111,34 +134,90 @@ export default function Home() {
 
         setDashboardIsOpen(false);
         setAttendanceIsOpen(false);
+        setAssessmentIsOpen(false);
+        setCameraIsOpen(false);
+        setCalendarIsOpen(false);
+        setAboutIsOpen(false);
+    }
+
+//=======================================================================================================================
+// ANALYTICS MODULE
+    // For opening the analytics module
+    const openAssessment = () => {
+        setAssessmentIsOpen(true);
+
+        setAnalyticsIsOpen(false);
+        setDashboardIsOpen(false);
+        setAttendanceIsOpen(false);
+        setCameraIsOpen(false);
+        setCalendarIsOpen(false);
+        setAboutIsOpen(false);
+    }
+
+    const openCamera = () => {
+        setCameraIsOpen(true);
+
+        setDashboardIsOpen(false);
+        setAttendanceIsOpen(false);
+        setAnalyticsIsOpen(false);
+        setAssessmentIsOpen(false);
+        setCalendarIsOpen(false);
+        setAboutIsOpen(false);
+    }
+
+    const openCalendar = () => {
+        setCalendarIsOpen(true);
+
+        setDashboardIsOpen(false);
+        setAttendanceIsOpen(false);
+        setAnalyticsIsOpen(false);
+        setAssessmentIsOpen(false);
+        setCameraIsOpen(false);
+        setAboutIsOpen(false);
+    }
+
+    const openAbout = () => {
+        root.style.setProperty('--aboutModule-L1-display', "block")
+        root.style.setProperty('--windowDashboard-display', "none")
+        root.style.setProperty('--windowAttendance-display', "none")
+
+        setAboutIsOpen(true);
+
+        setDashboardIsOpen(false);
+        setAttendanceIsOpen(false);
+        setAnalyticsIsOpen(false);
+        setAssessmentIsOpen(false);
+        setCalendarIsOpen(false);
+        setCameraIsOpen(false);
+    }
+
+//=======================================================================================================================
+// LOGOUT
+    const { user } = useAuthContext();
+    const { logout } = useLogout();
+    const navigate = useNavigate()
+
+    const confirmLogout = () => {
+        root.style.setProperty('--ConfirmLogout-Modal-Admin-PointerEvents', "block")
+        root.style.setProperty('--ConfirmLogout-Modal-Admin-Opacity', "1")
+    }
+    const triggerLogout = () => {
+        logout()
+        navigate("/login")
+        
+        openDashboard();
+        root.style.setProperty('--ConfirmLogout-Modal-Admin-PointerEvents', "none")
+        root.style.setProperty('--ConfirmLogout-Modal-Admin-Opacity', "0")
+    }
+    const cancelLogout = () => {
+        root.style.setProperty('--ConfirmLogout-Modal-Admin-PointerEvents', "none")
+        root.style.setProperty('--ConfirmLogout-Modal-Admin-Opacity', "0")
     }
     
     return (
         <div>
             <div className="main_window_wrap">
-                {/* <div className="logo_wrap">
-                    <div className="jilcf_logo">
-                      <img src={jilcf_logo} alt="school_logo" />
-                    </div>
-                </div>
-                <div className="main_window_button_wrap">
-                    <div className="main_window_button_wrap_in">
-                        <button className="main_window_button" onClick={openDashboard}></button>
-                        <div className="button_label">Dashboard</div>
-                    </div>
-                    <div className="main_window_button_wrap_in">
-                        <button className="main_window_button" onClick={openAttendance}></button>
-                        <div className="button_label" >Attendance</div>
-                    </div>
-                    <div className="main_window_button_wrap_in">
-                        <button className="main_window_button" onClick={openAssessment}></button>
-                        <div className="button_label">Assessment</div>
-                    </div>
-                    <div className="main_window_button_wrap_in">
-                        <button className="main_window_button"></button>
-                        <div className="button_label">Analytics</div>
-                    </div> 
-                </div> */}
+
                 <div className="main_window_L1_sidebar">
 
                     <div className="main_window_L1_sidebar_LOGO_wrap">
@@ -180,14 +259,40 @@ export default function Home() {
                             <div className="main_window_L1_sidebar_module_label">Attendance</div>
                         </div>
 
-                        {/* <div 
-                            className={"main_window_L1_sidebar_module_wrap " + (analyticsIsOpen ? "sidebar_wrap_active" : "")}
-                            onClick={openAnalytics}>
-                            <img className="main_window_L1_sidebar_module_icon" src={analytics_icon} alt="Analytics"></img>
-                            <div className="main_window_L1_sidebar_module_label">Analytics</div>
-                        </div> */}
+                        <div 
+                            className={"main_window_L1_sidebar_module_wrap " + (assessmentIsOpen ? "sidebar_wrap_active" : "")}
+                            onClick={openAssessment}>
+                            <img className="main_window_L1_sidebar_module_icon" src={assessment_icon} alt="Assessment"></img>
+                            <div className="main_window_L1_sidebar_module_label">Assessment</div>
+                        </div>
+
+                        <div className="sidebar_separator"></div>
+
+                        <div 
+                            className={"main_window_L1_sidebar_module_wrap " + (cameraIsOpen ? "sidebar_wrap_active" : "")}
+                            onClick={openCamera}>
+                            <img className="main_window_L1_sidebar_module_icon" src={camera_icon} alt="Camera"></img>
+                            <div className="main_window_L1_sidebar_module_label">Camera</div>
+                        </div>
+
+                        <div 
+                            className={"main_window_L1_sidebar_module_wrap " + (calendarIsOpen ? "sidebar_wrap_active" : "")}
+                            onClick={openCalendar}>
+                            <img className="main_window_L1_sidebar_module_icon" src={calendar_icon} alt="Calendar"></img>
+                            <div className="main_window_L1_sidebar_module_label">Calendar</div>
+                        </div>
+
+                        <div 
+                            className={"main_window_L1_sidebar_module_wrap " + (aboutIsOpen ? "sidebar_wrap_active" : "")}
+                            onClick={openAbout}>
+                            <img className="main_window_L1_sidebar_module_icon" src={about_icon} alt="About"></img>
+                            <div className="main_window_L1_sidebar_module_label">About</div>
+                        </div>
 
                     </div>
+
+                    <Navbar 
+                        confirmLogout={confirmLogout}/>
                 </div>
 
                 <div className="windowDashboard_main_wrap">
@@ -202,8 +307,20 @@ export default function Home() {
                 {/* <div className="windowAssessment_main_wrap">
                   <WindowAssessment />
                 </div> */}
+
+                <div className="aboutModule_L1_main_wrap">
+                    <AboutWindow />
+                </div>
+
+                <div className="confirmLogout_modal_wrap">
+                    <div className="editAtt_Modal_Container">
+                        <div className="editAtt_Modal_label">Are you sure you want<br></br>to Logout?</div>
+                        <button className="editAtt_cancel_button" onClick={triggerLogout}>Yes</button>
+                        <button className="editAtt_update_button" onClick={cancelLogout}>No</button>
+                    </div>
+                </div>
             </div>
-            <Navbar />
+        
         </div>
     )
 }
