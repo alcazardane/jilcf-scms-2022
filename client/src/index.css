@@ -1,4 +1,4 @@
-@import url('http://fonts.cdnfonts.com/css/segoe-ui-variable');
+@import url('https://fonts.cdnfonts.com/css/segoe-ui-variable');
 
 *::before,
 *::after{
@@ -8,8 +8,9 @@
 body{
   margin:0;
   padding:0;
-  background: #03256C;
-  font-family: 'Segoe UI Variable';
+  /* background: #03256C; */
+  background: #E2E1E5;
+  font-family: 'Segoe UI Variable', 'Segoe UI';
   overflow: hidden;
   user-select: none;
 }
@@ -28,6 +29,11 @@ body{
 
   --windowAttendance-L1-display: none;
   --windowAttendance-L3-display: none;
+
+  --aboutModule-L1-display: none;
+
+  --ConfirmLogout-Modal-Admin-PointerEvents: none;
+  --ConfirmLogout-Modal-Admin-Opacity: 0;
 
   --adminModule_L1_display: none;
   --adminModule-L1-window-width: 70%;
