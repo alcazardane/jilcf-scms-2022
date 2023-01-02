@@ -15,6 +15,7 @@ import MainWindowL3 from "./components/main_window/user_level_3/main_window_L3"
 import FaceRecog from "./components/samplefr";
 import Login from './components/login/login'
 import Register from './components/admin_module/create_userAccount'
+import Assessment from './components/assessment/assessment_window'
 
 function App(){
   return(
@@ -48,6 +49,10 @@ function App(){
           <Route 
             path="/home/L3"
             element={<MainWindowL3 />}
+          />
+          <Route 
+            path="/assessment"
+            element={<Assessment />}
           />
         </Routes>
       </BrowserRouter>
