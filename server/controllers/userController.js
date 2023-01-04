@@ -24,10 +24,21 @@ const loginUser = async(req, res) => {
 
 // register user
 const registerUser = async(req, res) => {
-    const { idNumber, password } = req.body
+    const { 
+        idNumber, 
+        password, 
+        fname, 
+        mname, 
+        lname, 
+        suffix,
+        level, 
+        track, 
+        strand, 
+        section 
+    } = req.body
 
     try{
-        const user = await User.register(idNumber, password)
+        const user = await User.register(idNumber, password, fname, mname, lname, suffix, level, track, strand, section)
 
         // create a token
         const token = createToken(user._id)

@@ -1,58 +1,62 @@
-import React, { useState } from "react";
- 
-// We use Route in order to define the different routes of our application
-import { BrowserRouter, Routes, Route, useNavigate } from 'react-router-dom';
+import React from "react";
+import { useAuthContext } from './hooks/useAuthContext'
 
+// We use Route in order to define the different routes of our application
+import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom';
 
 // We import all the components we need in our app
 // import RecordList from "./components/recordList";
 // import Edit from "./components/edit";
-import Create from "./components/create";
+// import Create from "./components/create";
 // import Login from "./components/login/login";
 import MainWindowL1 from "./components/main_window/user_level_1/main_window_L1"
 import MainWindowL2 from "./components/main_window/user_level_2/main_window";
 import MainWindowL3 from "./components/main_window/user_level_3/main_window_L3"
-import FaceRecog from "./components/samplefr";
+// import FaceRecog from "./components/samplefr";
 import Login from './components/login/login'
 import Register from './components/admin_module/create_userAccount'
 import Assessment from './components/assessment/assessment_window'
 
 function App(){
+  const { user } = useAuthContext()
+
   return(
     <div className="App">
       <BrowserRouter>
         <Routes>
         <Route 
             path="/"
-            element={<Login />}
+            element={!user ? <Login /> : <Navigate to="/assessment" />}
           />
           <Route 
             path="/login"
-            element={<Login />}
+            element={!user ? <Login /> : <Navigate to="/assessment" />}
           />
           <Route 
             path="/newUser"
-            element={<Register />}
+            element={!user ? <Register /> : <Navigate to="/assessment" />}
           />
           <Route 
             path="/facerecog"
-            element={<FaceRecog />}
+            element={user ? <userFaceRecog /> : <Navigate to="/login" />}
           />
           <Route 
             path="/home/L1"
-            element={<MainWindowL1 />}
+            element={
+              <MainWindowL1 />
+            }
           />
           <Route 
             path="/home/L2"
-            element={<MainWindowL2 />}
+            element={user ? <MainWindowL2 /> : <Navigate to="/login" />}
           />
           <Route 
             path="/home/L3"
-            element={<MainWindowL3 />}
+            element={user ? <MainWindowL3 /> : <Navigate to="/login" />}
           />
           <Route 
             path="/assessment"
-            element={<Assessment />}
+            element={user ? <Assessment /> : <Navigate to="/login" />}
           />
         </Routes>
       </BrowserRouter>

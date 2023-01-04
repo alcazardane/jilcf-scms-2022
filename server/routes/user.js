@@ -4,6 +4,11 @@ const express = require('express')
 const {registerUser, loginUser} = require('../controllers/userController')
 const router = express.Router()
 
+
+// // require authentication
+// const requireAuth = require('../middleware/requireAuth')
+// router.use(requireAuth)
+
 // login route
 router.post('/login', loginUser)
 

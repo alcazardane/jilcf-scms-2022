@@ -13,11 +13,40 @@ const userSchema = new Schema({
     password: {
         type: String,
         required: true,
-    }
-})
+    },
+    fname: {
+        type: String,
+        required: true,
+    },
+    mname: {
+        type: String,
+    },
+    lname: {
+        type: String,
+        required: true,
+    },
+    suffix: {
+        type: String,
+    },
+    level: {
+        type: String,
+        required: true,
+    },
+    track: {
+        type: String,
+        required: true,
+    },
+    strand: {
+        type: String,
+        required: true,
+    },
+    section: {
+        type: String,
+    },
+}, {strict: true, strictQuery: false})
 
 // static register method
-userSchema.statics.register = async function(idNumber, password) {
+userSchema.statics.register = async function(idNumber, password, fname, mname, lname, suffix, level, track, strand, section) {
 
     // validation
     if(!idNumber || !password){
@@ -36,7 +65,7 @@ userSchema.statics.register = async function(idNumber, password) {
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password, salt)
 
-    const user = await this.create({ idNumber, password: hash })
+    const user = await this.create({ idNumber, password: hash, fname, mname, lname, suffix, level, track, strand, section})
 
     return user
 
