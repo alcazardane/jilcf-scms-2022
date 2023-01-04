@@ -38,6 +38,18 @@ recordRoutes.route("/schedule/:userID").get(function (req, res) {
       });
    });
 
+recordRoutes.route("/schedule/event/:time").get(function (req, res) {
+    let db_connect = dbo.getDb();
+    let myquery = { time: req.params.time }
+    db_connect
+      .collection("schedules")
+      .find(myquery)
+      .toArray(function (err, result) {
+        if (err) throw err;
+        res.json(result);
+      });
+   });
+
 
 recordRoutes.route("/schedule/edit/:id").get(function (req, res) {
     let db_connect = dbo.getDb();

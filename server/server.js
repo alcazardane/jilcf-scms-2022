@@ -10,7 +10,7 @@ const mongoose = require("mongoose")
 // const User = require("./models/user")
 // const { response } = require("express")
 
-//middleware?
+//middleware
 const cors = require("cors");
 app.use(express.json());
 const port = process.env.PORT || 5000;
@@ -31,6 +31,7 @@ app.use(require("./routes/student_activities"));
 app.use(require("./routes/announcements"));
 app.use(require("./routes/teacher_info"));
 app.use(require("./routes/teacher_attendance"))
+app.use('/api/events', require("./routes/events"))
 
 // login routes
 const userRoutes = require('./routes/user')

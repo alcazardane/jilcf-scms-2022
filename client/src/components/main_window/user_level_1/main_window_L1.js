@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useAuthContext } from "../../../hooks/useAuthContext";
@@ -10,12 +10,15 @@ import { useLogout } from "../../../hooks/useLogout";
  */
 import Navbar from './navbar_L1'
 
-// IMPORT MAIN DASHBOARD AND ATTENDANCE MODULE FOR USER LEVEL 1 HERE
+// import Components
 import MainDashboardL1 from '../../dashboard/dashboard_L1/main_Dashboard_L1'
 import WindowAttendanceL1 from "../../window_attendance/window_attendance_L1";
 import AdminModule from "../../admin_module/admin_module";
 import useWindowDimensions from "../../dashboard/hooks/useWindowDimensions";
+import CalendarModule from "../../calendar_module/calendar_module";
 import AboutWindow from "../../about_module/about_module";
+
+import AddScheduleModal from "../../calendar_module/calendar_add_schedule";
 // import WindowAttendance from './../window_attendance/windowAttendance'
 
 // import image
@@ -33,6 +36,11 @@ import calendar_icon from "../../../images/Calendar_Icon.png"
  */
 import '../../../styles/mainWindow_styles.css'
 import { Link } from "react-router-dom";
+
+const sampleEvents = [
+    { name: "Back to school", type: "random", date: new Date(2023, 1, 4) },
+    { name: "Back to suffering", type: "random", date: new Date(2023, 1, 6) }
+]
 
 export default function Home_L1() {
 
@@ -58,6 +66,7 @@ export default function Home_L1() {
         root.style.setProperty('--adminModule_L1_display', "none")
         root.style.setProperty('--windowAttendance-L1-display', "none")
         root.style.setProperty('--aboutModule-L1-display', "none")
+        root.style.setProperty('--calendar-module-display', "none")
         //root.style.setProperty('--display-b', "block")
         setDashboardIsOpen(true);
 
@@ -121,6 +130,7 @@ export default function Home_L1() {
         root.style.setProperty('--windowDashboard-L1-display', "none")
         root.style.setProperty('--windowAttendance-L1-display', "none")
         root.style.setProperty('--aboutModule-L1-display', "none")
+        root.style.setProperty('--calendar-module-display', "none")
         //root.style.setProperty('--adminModule-display-b', "block")
 
         setAdminIsOpen(true);
@@ -182,6 +192,7 @@ export default function Home_L1() {
         root.style.setProperty('--adminModule_L1_display', "none")
         root.style.setProperty('--windowDashboard-L1-display', "none")
         root.style.setProperty('--aboutModule-L1-display', "none")
+        root.style.setProperty('--calendar-module-display', "none")
 
         setAttendanceIsOpen(true);
 
@@ -216,6 +227,12 @@ export default function Home_L1() {
     }
 
     const openCalendar = () => {
+        root.style.setProperty('--calendar-module-display', "block")
+        root.style.setProperty('--windowAttendance-L1-display', "none")
+        root.style.setProperty('--adminModule_L1_display', "none")
+        root.style.setProperty('--windowDashboard-L1-display', "none")
+        root.style.setProperty('--aboutModule-L1-display', "none")
+
         setCalendarIsOpen(true);
 
         setAdminIsOpen(false);
@@ -231,6 +248,7 @@ export default function Home_L1() {
         root.style.setProperty('--windowAttendance-L1-display', "none")
         root.style.setProperty('--adminModule_L1_display', "none")
         root.style.setProperty('--windowDashboard-L1-display', "none")
+        root.style.setProperty('--calendar-module-display', "none")
 
         setAboutIsOpen(true);
 
@@ -263,6 +281,57 @@ export default function Home_L1() {
     const cancelLogout = () => {
         root.style.setProperty('--ConfirmLogout-Modal-Admin-PointerEvents', "none")
         root.style.setProperty('--ConfirmLogout-Modal-Admin-Opacity', "0")
+    }
+
+//=======================================================================================================================
+    const [newEvent, setNewEvent] = useState({ name: "", type: "", date: ""})
+    // const [allEvents, setAllEvents] = useState([]);
+    const [allEvents, setAllEvents] = useState(sampleEvents);
+
+    // useEffect(() => {
+    //     const fetchEvent = async () => {
+    //         const response = await fetch('http://localhost:5000/api/events/')
+    //         const json = await response.json()
+
+    //         if (response.ok){
+    //             setAllEvents(json)
+    //         }
+    //     }
+    //     fetchEvent()
+    // })
+
+    // useEffect(() => {
+    //     console.log(allEvents);
+    // })
+
+    const [clickedDate, setClickedDate] = useState();
+
+    const openAddEvent = (theStringDate, theDate) => {
+        setClickedDate(theStringDate)
+        setNewEvent({...newEvent, date: theDate})
+        root.style.setProperty('--calendarAddSchedule_modal-PointerEvents', "all")
+        root.style.setProperty('--calendarAddSchedule_modal-Opacity', "1")
+    }
+
+    const handleAddEvent = async (e) => {
+        e.preventDefault()
+        setAllEvents([...allEvents, newEvent])
+
+        const response = await fetch('http://localhost:5000/api/events/add', {
+            method: 'POST',
+            body: JSON.stringify(newEvent),
+            headers : {
+                'Content-Type': 'application/json'
+            }
+        })
+        const json = await response.json()
+        
+        if (response.ok) {
+            setNewEvent({ name: "", type: "", date: ""})
+        }
+
+        root.style.setProperty('--calendarAddSchedule_modal-PointerEvents', "none")
+        root.style.setProperty('--calendarAddSchedule_modal-Opacity', "0")
     }
 
 //=======================================================================================================================
@@ -385,6 +454,20 @@ export default function Home_L1() {
                   adminAccRef={adminAccRef}
                   adminSchedRef={adminSchedRef}
                   adminAnnRef={adminAnnRef}/>
+                </div>
+
+                <div className="calendarModule_L1_main_wrap">
+                    <CalendarModule 
+                    allEvents={allEvents}
+                    openAddEvent={openAddEvent}/>
+                </div>
+
+                <div className="calendarAddSchedule_modal_wrap">
+                    <AddScheduleModal
+                    newEvent={newEvent} 
+                    setNewEvent={setNewEvent}
+                    handleAddEvent={handleAddEvent}
+                    clickedDate={clickedDate}/>
                 </div>
 
                 <div className="aboutModule_L1_main_wrap">

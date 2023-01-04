@@ -1,6 +1,6 @@
 import { useState} from 'react'
 
-const weekdaysArr = ['Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa', 'Su'];
+const weekdaysArr = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
 const monthsArr = ['January', 'February', 'March', 'April', 'May', 'June'
 , 'July', 'August', 'September', 'October', 'November', 'December'];
 
@@ -9,6 +9,9 @@ const HookCalendar = (weekdays = weekdaysArr, months = monthsArr) => {
 
     const today = new Date();
     const todayFormatted = `${today.getDate()}-${today.getMonth() + 1}-${today.getFullYear()}`;
+    const currentMonth = today.getMonth() + 1;
+    const currentYear = today.getFullYear();
+
     const daysInWeek = [1, 2, 3, 4, 5, 6, 0];
     const [selectedDate, setSelectedDate] = useState(today);
     const selectedMonthLastDate = new Date(selectedDate.getFullYear(), selectedDate.getMonth() + 1, 0);
@@ -35,6 +38,8 @@ const HookCalendar = (weekdays = weekdaysArr, months = monthsArr) => {
                         classes: 'in-prev-month',
                         date: `${prevMonthStartingPoint}-${selectedDate.getMonth() === 0 ? 12 : selectedDate.getMonth()}-
                         ${selectedDate.getMonth() === 0 ? selectedDate.getFullYear() - 1 : selectedDate.getFullYear()}`,
+                        currentmon: selectedDate.getMonth(),
+                        currentyr: selectedDate.getMonth() === 0 ? selectedDate.getFullYear() - 1 : selectedDate.getFullYear(),
                         value: prevMonthStartingPoint
                     }];
                     prevMonthStartingPoint++;
@@ -43,6 +48,8 @@ const HookCalendar = (weekdays = weekdaysArr, months = monthsArr) => {
                     calendarRows[i] = [...calendarRows[i], {
                         classes: '',
                         date: `${currentMonthCounter}-${selectedDate.getMonth() + 1}-${selectedDate.getFullYear()}`,
+                        currentmon: selectedDate.getMonth() + 1,
+                        currentyr: selectedDate.getFullYear(),
                         value: currentMonthCounter
                     }];
                     currentMonthCounter++;
@@ -52,6 +59,8 @@ const HookCalendar = (weekdays = weekdaysArr, months = monthsArr) => {
                 calendarRows[i] = [...calendarRows[i], {
                     classes: '',
                     date: `${currentMonthCounter}-${selectedDate.getMonth() + 1}-${selectedDate.getFullYear()}`,
+                    currentmon: selectedDate.getMonth() + 1,
+                    currentyr: selectedDate.getFullYear(),
                     value: currentMonthCounter
                 }];
                 currentMonthCounter++;
@@ -61,6 +70,8 @@ const HookCalendar = (weekdays = weekdaysArr, months = monthsArr) => {
                     classes: 'in-next-month',
                     date: `${nextMonthCounter}-${selectedDate.getMonth() + 2 === 13 ? 1 : selectedDate.getMonth() + 2}-
                     ${selectedDate.getMonth() + 2 === 13 ? selectedDate.getFullYear() + 1 : selectedDate.getFullYear()}`,
+                    currentmon: selectedDate.getMonth() + 2,
+                    currentyr: selectedDate.getMonth() + 2 === 13 ? selectedDate.getFullYear() + 1 : selectedDate.getFullYear(),
                     value: nextMonthCounter
                 }];
                 nextMonthCounter++;
@@ -84,6 +95,8 @@ const HookCalendar = (weekdays = weekdaysArr, months = monthsArr) => {
         selectedDate,
         getPrevMonth,
         getNextMonth,
+        currentMonth,
+        currentYear,
     }
 }
 
