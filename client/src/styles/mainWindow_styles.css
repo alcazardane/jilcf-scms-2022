@@ -42,6 +42,7 @@
   padding: 0;
   width: 100%;
   height: 100%;
+  background: #E2E1E5;
   position: absolute;
   display: flex;
 }
@@ -520,8 +521,23 @@
   pointer-events: var(--ConfirmLogout-Modal-Admin-PointerEvents);
   opacity: var(--ConfirmLogout-Modal-Admin-Opacity);
   transition: all 200ms ease-in-out;
+  z-index: 12;
+}
+.calendarAddSchedule_modal_wrap{
+  width: 85%;
+  height: 100%;
+  margin-left: 15%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  position: absolute;
+  justify-content: center;
+  align-items: center;
+  pointer-events: var(--calendarAddSchedule_modal-PointerEvents);
+  opacity: var(--calendarAddSchedule_modal-Opacity);
+  transition: all 200ms ease-in-out;
   z-index: 2;
 }
+
 @keyframes notification_carousel{
   0%{
     transform: translateX(100%);
