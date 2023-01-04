@@ -1,14 +1,8 @@
 require("dotenv").config({ path: "./config.env" });
 
-// express app
 const express = require("express");
 const app = express();
-// const bodyParser = require("body-parser")
 const mongoose = require("mongoose")
-// const jwt = require("jsonwebtoken")
-// const bcrypt = require("bcrypt")
-// const User = require("./models/user")
-// const { response } = require("express")
 
 //middleware
 const cors = require("cors");
@@ -35,6 +29,8 @@ app.use('/api/events', require("./routes/events"))
 
 // login routes
 const userRoutes = require('./routes/user')
+// assessment routes
+const assessmentRoutes = require('./routes/assessment')
 
 // get driver connection
 const dbo = require("./db/conn");
@@ -49,6 +45,7 @@ app.listen(port, () => {
 });
 
 app.use('/api/user', userRoutes)
+app.use('/api/assessment', assessmentRoutes)
 
 app.listen(8080, () => console.log('API is running on http://localhost:8080/login'));
 
