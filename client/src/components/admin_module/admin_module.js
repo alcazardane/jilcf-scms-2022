@@ -5,6 +5,7 @@ import { useState, useEffect, useRef } from 'react'
 
 // Import Components
 import AccountsTable from './accounts_table'
+import Register from './create_userAccount'
 import CreateAccountModal from './create_account_modal'
 import EditAccountModal from './edit_account_modal'
 
@@ -147,6 +148,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
     const [accountTrack, setAccountTrack] = useState("");
     const [accountStrand, setAccountStrand] = useState("");
     const [accountSecAdv, setAccountSecAdv] = useState("");
+
     //const [accountProfilePic, setAccountProfilePic] = useState();
 
     // To open Create account modal
@@ -811,7 +813,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                     </div>
                 </div>
 
-                <div className="adminModule_create_account_modal">
+                {/* <div className="adminModule_create_account_modal">
                     <CreateAccountModal 
                     addAccount={addAccount}
                     resetInputs={resetInputs}
@@ -830,6 +832,9 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                     accountSecAdv={accountSecAdv}
                     accountName={accountName}
                     />
+                </div> */}
+                <div className="adminModule_create_account_modal">
+                    <Register />
                 </div>
 
                 <div className="adminModule_edit_account_modal">
