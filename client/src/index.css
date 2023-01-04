@@ -8,8 +8,8 @@
 body{
   margin:0;
   padding:0;
-  /* background: #03256C; */
-  background: #E2E1E5;
+  background: #03256C;
+  /* background: #E2E1E5; */
   font-family: 'Segoe UI Variable', 'Segoe UI';
   overflow: hidden;
   user-select: none;
@@ -19,47 +19,14 @@ body{
   /* for main windows */
   /*--max-width: 77.5vw;
   --max-width-b: 77.5vw;*/
+
+  /* FOR DASHBOARD */
   --windowDashboard-display: block;
-  /* --windowDashboard-L1-display: none; */
   --windowDashboard-L1-display: block;
   --windowDashboard-L3-display: block;
 
   --dashboard-L1-window-width: 60%;
   --dashboard-L1-window-height: 70%;
-
-  --windowAttendance-L1-display: none;
-  --windowAttendance-L3-display: none;
-
-  --aboutModule-L1-display: none;
-
-  --ConfirmLogout-Modal-Admin-PointerEvents: none;
-  --ConfirmLogout-Modal-Admin-Opacity: 0;
-
-  --adminModule_L1_display: none;
-  --adminModule-L1-window-width: 70%;
-  --adminModule-L1-window-height: 70%;
-  --adminModule-display-b: none;
-  --adminModule-top: 15px;
-  --adminModule-left: 30px;
-  --table-admin-height: 65%;
-  --adminModule_create_modal-pointer-events: none;
-  --adminModule_create_modal-opacity: 0;
-  --adminModule_edit_modal-pointer-events: none;
-  --adminModule_edit_modal-opacity: 0;
-  --ConfirmDelete-Modal-Admin-PointerEvents: none;
-  --ConfirmDelete-Modal-Admin-Opacity: 0;
-  --adminModule_create_sched_modal-pointer-events:none;
-  --adminModule_create_sched_modal-opacity: 0;
-  --adminModule_edit_sched_modal-pointer-events: none;
-  --adminModule_edit_sched_modal-opacity: 0;
-  --ConfirmDelete-Sched-Modal-Admin-PointerEvents: none;
-  --ConfirmDelete-Sched-Modal-Admin-Opacity: 0;
-  --adminModule_create_announce_modal-pointer-events: none;
-  --adminModule_create_announce_modal-opacity: 0;
-  --adminModule_edit_announce_modal-pointer-events: none;
-  --adminModule_edit_announce_modal-opacity: 0;
-  --ConfirmDelete-Announce-Modal-Admin-PointerEvents: none;
-  --ConfirmDelete-Announce-Modal-Admin-Opacity: 0;
 
   --max-width: 77.5vw;
   --max-width-b: 77.5vw;
@@ -74,34 +41,9 @@ body{
   --dashboard-margin-right: 1.46vw;
   --dashboard-bottom-container-width: 73.3vw;
 
-
-  /* for upcoming */
-  /*--upcoming-width: 25vw;*/
-  --upcoming-width: 340px;
-  --upcoming-width-1000: 250px;
-  --upcoming-container-wrap-width: 100%;
-  --upcoming-width-b: 75vw;
-
-  /* for calendar */
-  --calendar-display: none;
-  --view-calendar-display: block;
-
-  --calendar-opacity: 0;
-  --calendar-pointer-events: none;
-
-  /* for assessment and attendance wrappers */
-  --wrappers-width: 68.3vw;
-
-  /* for closing */
-  --display: none;
-  --display-b: none;
-
-  --menu-height: 0;
-  --menu-opacity: 0;
-
-  --view-calendar-height: 0;
-  --view-calendar-opacity: 0;
-
+  /* FOR ATTENDANCE MODULE */
+  --windowAttendance-L1-display: none;
+  --windowAttendance-L3-display: none;
 
   --windowAttendance-display: none;
   --windowAttendance-drag-display: block;
@@ -118,26 +60,6 @@ body{
   --windowAttendance-buttons-height: 3vw;
   --windowAttendance-buttons-font: 0.8vw;
   --windowAttendance-search-width: 30vw;
-
-  /* screen 500px */
-  --windowAttendance-500-button-width: 32vw;
-
-
-  --windowAssessment-display: none;
-  --windowAssessment-drag-display: block;
-  /*--windowAttendance-width: 1060px;*/
-  /*--windowAttendance-height: 565px;*/
-  --windowAssessment-width: 77vw;
-  --windowAssessment-height: 80vh;
-  --windowAssessment-table-height: 45vh;
-  --windowAssessment-top: 20px;
-  --windowAssessment-left: 20px;
-  --windowAssessment-border-radius: 7px;
-  --windowAssessment-td-height: 3vh;
-  --windowAssessment-buttons-width: 8vw;
-  --windowAssessment-buttons-height: 3vw;
-  --windowAssessment-buttons-font: 0.8vw;
-  --windowAssessment-search-width: 30vw;
 
   /* screen 500px */
   --windowAttendance-500-button-width: 32vw;
@@ -169,4 +91,90 @@ body{
   --viewStudent_edit_multiRecord-opacity: 0.5;
 
   --viewStudent_multiEdit_warning-opacity: 1;
+
+  /* FOR CALENDAR MODULE */
+  --calendar-module-display: none;
+  --calendarAddSchedule_modal-PointerEvents: none;
+  --calendarAddSchedule_modal-Opacity: 0;
+
+  /* FOR ABOUT */
+  --aboutModule-L1-display: none;
+
+  /* FOR ADMIN MODULE */
+  --ConfirmLogout-Modal-Admin-PointerEvents: none;
+  --ConfirmLogout-Modal-Admin-Opacity: 0;
+
+  --adminModule_L1_display: none;
+  --adminModule-L1-window-width: 70%;
+  --adminModule-L1-window-height: 70%;
+  --adminModule-display-b: none;
+  --adminModule-top: 15px;
+  --adminModule-left: 30px;
+  --table-admin-height: 65%;
+  --adminModule_create_modal-pointer-events: none;
+  --adminModule_create_modal-opacity: 0;
+  --adminModule_edit_modal-pointer-events: none;
+  --adminModule_edit_modal-opacity: 0;
+  --ConfirmDelete-Modal-Admin-PointerEvents: none;
+  --ConfirmDelete-Modal-Admin-Opacity: 0;
+  --adminModule_create_sched_modal-pointer-events:none;
+  --adminModule_create_sched_modal-opacity: 0;
+  --adminModule_edit_sched_modal-pointer-events: none;
+  --adminModule_edit_sched_modal-opacity: 0;
+  --ConfirmDelete-Sched-Modal-Admin-PointerEvents: none;
+  --ConfirmDelete-Sched-Modal-Admin-Opacity: 0;
+  --adminModule_create_announce_modal-pointer-events: none;
+  --adminModule_create_announce_modal-opacity: 0;
+  --adminModule_edit_announce_modal-pointer-events: none;
+  --adminModule_edit_announce_modal-opacity: 0;
+  --ConfirmDelete-Announce-Modal-Admin-PointerEvents: none;
+  --ConfirmDelete-Announce-Modal-Admin-Opacity: 0;
+
+  /* for upcoming */
+  /*--upcoming-width: 25vw;*/
+  --upcoming-width: 340px;
+  --upcoming-width-1000: 250px;
+  --upcoming-container-wrap-width: 100%;
+  --upcoming-width-b: 75vw;
+
+  /* for calendar */
+  --calendar-display: none;
+  --view-calendar-display: block;
+
+  --calendar-opacity: 0;
+  --calendar-pointer-events: none;
+
+  /* for assessment and attendance wrappers */
+  --wrappers-width: 68.3vw;
+
+  /* for closing */
+  --display: none;
+  --display-b: none;
+
+  --menu-height: 0;
+  --menu-opacity: 0;
+
+  --view-calendar-height: 0;
+  --view-calendar-opacity: 0;
+
+  /* screen 500px */
+  --windowAttendance-500-button-width: 32vw;
+
+
+  --windowAssessment-display: none;
+  --windowAssessment-drag-display: block;
+  /*--windowAttendance-width: 1060px;*/
+  /*--windowAttendance-height: 565px;*/
+  --windowAssessment-width: 77vw;
+  --windowAssessment-height: 80vh;
+  --windowAssessment-table-height: 45vh;
+  --windowAssessment-top: 20px;
+  --windowAssessment-left: 20px;
+  --windowAssessment-border-radius: 7px;
+  --windowAssessment-td-height: 3vh;
+  --windowAssessment-buttons-width: 8vw;
+  --windowAssessment-buttons-height: 3vw;
+  --windowAssessment-buttons-font: 0.8vw;
+  --windowAssessment-search-width: 30vw;
+
 }
