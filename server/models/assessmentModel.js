@@ -56,7 +56,7 @@ assessmentSchema.statics.createRec = async function(recordId, userId, teacherId,
 }
 
 assessmentSchema.statics.readRec = async function(recordId){
-    const record = await this.findOnefindOne({ recordId })
+    const record = await this.findOne({ recordId })
 
     if(!record){
         throw Error("No record exist.")

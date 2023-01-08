@@ -1,5 +1,6 @@
 /* FOR ATTENDANCE WINDOW */
 .windowAssessment_main_wrap{
+    width: 85%;
     display: var(--windowAssessment-display);
 }
   
