@@ -1,5 +1,5 @@
 import React from "react";
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useAuthContext } from "../../../hooks/useAuthContext";
@@ -19,13 +19,11 @@ import CalendarModule from "../../calendar_module/calendar_module";
 import AboutWindow from "../../about_module/about_module";
 
 import AddScheduleModal from "../../calendar_module/calendar_add_schedule";
-// import WindowAttendance from './../window_attendance/windowAttendance'
 
 // import image
 import jilcf_logo from "../../../images/jilcf_logo_1.png"
 import admin_icon from "../../../images/supervisor_account_FILL0_wght400_GRAD0_opsz48.png"
 import dashboard_icon from "../../../images/Dashboard_Icon.png"
-import analytics_icon from "../../../images/analytics.png"
 import attendance_icon from "../../../images/Attendance_Icon.png"
 import camera_icon from "../../../images/Camera_Icon.png"
 import about_icon from "../../../images/About_Icon.png"
@@ -35,7 +33,6 @@ import calendar_icon from "../../../images/Calendar_Icon.png"
  * Styles
  */
 import '../../../styles/mainWindow_styles.css'
-import { Link } from "react-router-dom";
 
 const sampleEvents = [
     { name: "Back to school", type: "random", date: new Date(2023, 1, 4) },
