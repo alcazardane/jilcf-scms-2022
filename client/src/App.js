@@ -48,11 +48,17 @@ function App(){
           />
           <Route 
             path="/home/L2"
-            element={user ? <MainWindowL2 /> : <Navigate to="/login" />}
+            element={
+              <MainWindowL2 />
+            }
+            // element={user ? <MainWindowL2 /> : <Navigate to="/login" />}
           />
           <Route 
             path="/home/L3"
-            element={user ? <MainWindowL3 /> : <Navigate to="/login" />}
+            element={
+              <MainWindowL3 />
+            }
+            // element={user ? <MainWindowL3 /> : <Navigate to="/login" />}
           />
           <Route 
             path="/assessment"
