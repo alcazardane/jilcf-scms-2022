@@ -5,12 +5,23 @@ const createToken = (_id) => {
     return jwt.sign({_id}, process.env.SECRET, { expiresIn: '3d' })
 }
 
+// get all the assessment record
+const allRecords = async(req, res) => {
+    const assessmentRec = await Assessment.find({})
+
+    try{
+        res.status(200).json(assessmentRec)
+    }catch(error) {
+        res.status(400).json({error: error.message})
+    }
+}
+
 const createRecord = async(req, res) => {
-    const { recordId, userId, teacherId, subjectId, date, label, score } = req.body
+    const { recordId, userId, teacherId, subjectId, date, label, score, maxscore } = req.body
 
     try{
         const assessment = Assessment.createRec(
-            recordId, userId, teacherId, subjectId, date, label, score
+            recordId, userId, teacherId, subjectId, date, label, score, maxscore
         )
 
         const token = createToken(assessment._id)
@@ -34,11 +45,11 @@ const readRecord = async(req, res) => {
 }
 
 const updateRecord = async(req, res) => {
-    const { userId, date, label, score } = req.body
+    const { userId, date, label, score, maxscore } = req.body
 
     try{
         Assessment.updateRec(
-            userId, date, label, score
+            userId, date, label, score, maxscore
         )
 
         res.status(200).json({message: "Updated Successfully"})
@@ -47,4 +58,4 @@ const updateRecord = async(req, res) => {
     }
 }
 
-module.exports = {createRecord, readRecord, updateRecord}
+module.exports = {createRecord, readRecord, updateRecord, allRecords}

@@ -1,5 +1,6 @@
 import React from "react";
-import { useState, useRef } from "react";
+// import axios from 'axios';
+import { useState, useRef, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { useAuthContext } from "../../../hooks/useAuthContext";
@@ -12,6 +13,8 @@ import Navbar from './Navbar'
 import MainDashboard from '../../dashboard/main_Dashboard'
 import WindowAttendance from '../../window_attendance/windowAttendance'
 import WindowAssessment from '../../assessment/assessment_window'
+import AssessmentModule from "../../assessment_module/assessment_module";
+import AssessmentModuleSection from "../../assessment_module/assessment_module_section";
 import AboutWindow from "../../about_module/about_module";
 import useWindowDimensions from "../../dashboard/hooks/useWindowDimensions";
 
@@ -51,6 +54,8 @@ export default function Home() {
         root.style.setProperty('--windowDashboard-display', "block")
         root.style.setProperty('--windowAttendance-display', "none")
         root.style.setProperty('--aboutModule-L1-display', "none")
+        root.style.setProperty('--windowAssessment-display', "none")
+        root.style.setProperty('--windowAssessmentSection-display', "none")
 
         setDashboardIsOpen(true);
 
@@ -114,6 +119,8 @@ export default function Home() {
         root.style.setProperty('--windowDashboard-display', "none")
         root.style.setProperty('--windowAttendance-display', "block")
         root.style.setProperty('--aboutModule-L1-display', "none")
+        root.style.setProperty('--windowAssessment-display', "none")
+        root.style.setProperty('--windowAssessmentSection-display', "none")
 
         setAttendanceIsOpen(true);
 
@@ -144,6 +151,12 @@ export default function Home() {
 // ANALYTICS MODULE
     // For opening the analytics module
     const openAssessment = () => {
+        root.style.setProperty('--windowAssessment-display', "block")
+        root.style.setProperty('--aboutModule-L1-display', "none")
+        root.style.setProperty('--windowDashboard-display', "none")
+        root.style.setProperty('--windowAttendance-display', "none")
+        root.style.setProperty('--windowAssessmentSection-display', "none")
+
         setAssessmentIsOpen(true);
 
         setAnalyticsIsOpen(false);
@@ -180,6 +193,8 @@ export default function Home() {
         root.style.setProperty('--aboutModule-L1-display', "block")
         root.style.setProperty('--windowDashboard-display', "none")
         root.style.setProperty('--windowAttendance-display', "none")
+        root.style.setProperty('--windowAssessment-display', "none")
+        root.style.setProperty('--windowAssessmentSection-display', "none")
 
         setAboutIsOpen(true);
 
@@ -213,7 +228,29 @@ export default function Home() {
         root.style.setProperty('--ConfirmLogout-Modal-Admin-PointerEvents', "none")
         root.style.setProperty('--ConfirmLogout-Modal-Admin-Opacity', "0")
     }
-    
+
+//=======================================================================================================================
+// ASSESSMENT MODULE
+
+    // Retrieve all assessment records
+    // const [assessmentRec, setAssessmentRec] = useState([]);
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/api/assessment/allRecords')
+    //       .then(response => response.json())
+    //       .then(data => setAssessmentRec(data));
+    // }, []);
+
+//=======================================================================================================================
+// GET THE LOGGED IN USER
+
+    // Replace the value with the current user idNumber
+    // For now it is hard coded
+    const [idNumber, setIdNumber] = useState('220000022');
+    const [classID, setClassID] = useState('TVL-12-TVL-A');
+    const [classSection, setClassSection] = useState('12 TVL A');
+
+//=======================================================================================================================
+
     return (
         <div>
             <div className="main_window_wrap">
@@ -292,7 +329,8 @@ export default function Home() {
                     </div>
 
                     <Navbar 
-                        confirmLogout={confirmLogout}/>
+                        confirmLogout={confirmLogout}
+                        idNumber={idNumber}/>
                 </div>
 
                 <div className="windowDashboard_main_wrap">
@@ -304,9 +342,19 @@ export default function Home() {
                 <div className="windowAttendance_main_wrap">
                   <WindowAttendance />
                 </div>
-                {/* <div className="windowAssessment_main_wrap">
-                  <WindowAssessment />
-                </div> */}
+
+                <div className="windowAssessment_main_wrap">
+                  <AssessmentModule
+                    setClassID={setClassID}
+                    setClassSection={setClassSection} 
+                    idNumber={idNumber}/>
+                </div>
+
+                <div className="windowAssessmentSection_main_wrap">
+                    <AssessmentModuleSection
+                        classID={classID}
+                        classSection={classSection}/>
+                </div>
 
                 <div className="aboutModule_L1_main_wrap">
                     <AboutWindow />
