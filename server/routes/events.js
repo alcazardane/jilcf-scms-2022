@@ -19,7 +19,9 @@ const dbo = require("../db/conn");
  
 // This help convert the id from string to ObjectId for the _id.
 const ObjectId = require("mongodb").ObjectId;
- 
+
+const requireAuth = require('../middleware/requireAuth')
+recordRoutes.use(requireAuth)
 
 // Get all events
 recordRoutes.get('/', getEvents)

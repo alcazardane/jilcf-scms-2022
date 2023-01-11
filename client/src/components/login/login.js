@@ -1,7 +1,7 @@
 // import axios from 'axios';
 import { useState, useCallback, useEffect } from 'react'
 import { useLogin } from '../../hooks/useLogin'
-import { Link, useNavigate } from 'react-router-dom'
+import { useNavigate } from "react-router-dom"
 
 import "../../styles/login.css"
 import school_logo from "../../images/jilcf_logo_1.png"
@@ -10,30 +10,13 @@ const Login = () => {
     const [idNumber, setIdNumber] = useState('')
     const [password, setPassword] = useState('')
     const {login, error, isLoading} = useLogin()
-
-    const navigate = useNavigate();
+    const navigate = useNavigate()
 
     const handleSubmit = async (e) => {
         e.preventDefault()
 
         await login(idNumber, password)
-    }
 
-    const [redirectLink, setRedirectLink] = useState();
-
-    const redirectPage = () => {
-        if(idNumber === "22-0000000"){
-            setRedirectLink('/home/L1');
-        }
-        else if(idNumber === "22-0000002"){
-            setRedirectLink('/home/L2');
-        }
-        else if(idNumber === "11-0000006"){
-            setRedirectLink('/home/L3');
-        }
-        else {
-            setRedirectLink('/home/L3');
-        }
     }
 
     return (
@@ -65,10 +48,8 @@ const Login = () => {
             </div>
 
             <div className="loginWrap loginconwrap-button">
-            <Link to={redirectLink}>
-                <button className="loginbutton" disabled={isLoading} onClick={redirectPage}>Login</button>
-            </Link>
-            {error && <div className="error">{error}</div>}
+                <button className="loginbutton" disabled={isLoading}>Login</button>
+                {error && <div className="error">{error}</div>}
             </div>
         </form>
         </div>
