@@ -1,5 +1,7 @@
 import { useState } from 'react'
 import { useRegister } from '../../hooks/useRegister'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 const Register = () => {
     const [idNumber, setIdNumber] = useState('')
@@ -14,6 +16,10 @@ const Register = () => {
     const [section, setSection] = useState('')
     const {register, error, isLoading} = useRegister()
 
+    const toast_accountCreated = () => {
+        toast("Account Created")
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault()
 
@@ -22,9 +28,7 @@ const Register = () => {
 
     var root = document.querySelector(":root");
 
-    const cancelRegister = () => {
-        root.style.setProperty('--adminModule_create_modal-pointer-events', "none");
-        root.style.setProperty('--adminModule_create_modal-opacity', "0");
+    const clearForm = () => {
         setIdNumber('');
         setPassword('');
         setFname('');
@@ -37,14 +41,19 @@ const Register = () => {
         setSection('');
     }
 
+    const cancelRegister = () => {
+        clearForm()
+        root.style.setProperty('--adminModule_create_modal-pointer-events', "none");
+        root.style.setProperty('--adminModule_create_modal-opacity', "0");
+    }
+
     return (
-        // <form className='register' onSubmit={handleSubmit}>
         <form className="adminModule_create_account_con" onSubmit={handleSubmit}>
             <h3>Create new Account</h3>
 
             <div className="adminModule_create_input_wrap">
                 <div className="adminModule_create_input_inside-c">
-                    <label className="adminModule_create_label">IDNumber:</label>
+                    <label className="adminModule_create_label">ID Number:</label>
                     <input 
                         type="text"
                         className="create_input"
@@ -151,7 +160,9 @@ const Register = () => {
             </div>
 
             <button className="editAtt_cancel_button" onClick={cancelRegister}>Cancel</button>
-            <button disabled={isLoading} className="editAtt_update_button" >Register</button>
+            <button disabled={isLoading} className="editAtt_update_button">
+                Create
+            </button>
             <div className="register_error_wrap">
                 {error && <div className="register_error">{error}</div>}
             </div>

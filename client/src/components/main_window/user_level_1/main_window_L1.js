@@ -399,21 +399,14 @@ export default function Home_L1() {
                             <div className="main_window_L1_sidebar_module_label">Attendance</div>
                         </div>
 
-                        {/* <div 
-                            className={"main_window_L1_sidebar_module_wrap " + (analyticsIsOpen ? "sidebar_wrap_active" : "")}
-                            onClick={openAnalytics}>
-                            <img className="main_window_L1_sidebar_module_icon" src={analytics_icon} alt="Analytics"></img>
-                            <div className="main_window_L1_sidebar_module_label">Analytics</div>
-                        </div> */}
-
                         <div className="sidebar_separator"></div>
 
-                        <div 
+                        {/* <div 
                             className={"main_window_L1_sidebar_module_wrap " + (cameraIsOpen ? "sidebar_wrap_active" : "")}
                             onClick={openCamera}>
                             <img className="main_window_L1_sidebar_module_icon" src={camera_icon} alt="Camera"></img>
                             <div className="main_window_L1_sidebar_module_label">Camera</div>
-                        </div>
+                        </div> */}
 
                         <div 
                             className={"main_window_L1_sidebar_module_wrap " + (calendarIsOpen ? "sidebar_wrap_active" : "")}

@@ -196,7 +196,6 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
     const keys = ["userID", "name", "level", "track", "strand", "secAdv"]
     //const keys = ["name"]
 
-
 //=====================================================================================================================
     // Editing account record
     const [editAccountValue, setEditAccountValue] = useState([]);
@@ -813,26 +812,6 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                     </div>
                 </div>
 
-                {/* <div className="adminModule_create_account_modal">
-                    <CreateAccountModal 
-                    addAccount={addAccount}
-                    resetInputs={resetInputs}
-                    setAccountName={setAccountName}
-                    setAccountUserID={setAccountUserID}
-                    setAccountPassword={setAccountPassword}
-                    setAccountLevel={setAccountLevel}
-                    setAccountTrack={setAccountTrack}
-                    setAccountStrand={setAccountStrand}
-                    setAccountSecAdv={setAccountSecAdv}
-                    accountUserID={accountUserID}
-                    accountPassword={accountPassword}
-                    accountLevel={accountLevel}
-                    accountTrack={accountTrack}
-                    accountStrand={accountStrand}
-                    accountSecAdv={accountSecAdv}
-                    accountName={accountName}
-                    />
-                </div> */}
                 <div className="adminModule_create_account_modal">
                     <Register />
                 </div>

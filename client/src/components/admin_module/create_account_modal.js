@@ -1,135 +1,169 @@
-const CreateAccountModal = ({ 
-    addAccount,
-    resetInputs,
-    setAccountName,
-    setAccountUserID,
-    setAccountPassword,
-    setAccountLevel,
-    setAccountTrack,
-    setAccountStrand,
-    setAccountSecAdv,
-    accountUserID,
-    accountPassword,
-    accountLevel,
-    accountTrack,
-    accountStrand,
-    accountSecAdv,
-    accountName
-    }) => {
+import { useState } from 'react'
+import { useRegister } from '../../hooks/useRegister'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
-    // if(!openEditIntervention) return null
+const CreateAccountModal = () => {
+
+    const [idNumber, setIdNumber] = useState('')
+    const [password, setPassword] = useState('')
+    const [fname, setFname] = useState('')
+    const [lname, setLname] = useState('')
+    const [mname, setMname] = useState('')
+    const [suffix, setSuffix] = useState('')
+    const [level, setLevel] = useState('')
+    const [track, setTrack] = useState('')
+    const [strand, setStrand] = useState('')
+    const [section, setSection] = useState('')
+    const {register, error, isLoading} = useRegister()
+
+    const toast_accountCreated = () => {
+        toast("Account Created")
+    }
+
+    const handleSubmit = async (e) => {
+        e.preventDefault()
+
+        await register(idNumber, password, fname, mname, lname, suffix, level, track, strand, section)
+    }
 
     var root = document.querySelector(":root");
 
-    const cancelCreate = () => {
+    // const cancelCreate = () => {
+    //     root.style.setProperty('--adminModule_create_modal-pointer-events', "none");
+    //     root.style.setProperty('--adminModule_create_modal-opacity', "0");
+
+    //     resetInputs();
+    // }
+
+    const cancelRegister = () => {
         root.style.setProperty('--adminModule_create_modal-pointer-events', "none");
         root.style.setProperty('--adminModule_create_modal-opacity', "0");
-
-        resetInputs();
+        setIdNumber('');
+        setPassword('');
+        setFname('');
+        setLname('');
+        setMname('');
+        setSuffix('');
+        setLevel('');
+        setTrack('');
+        setStrand('');
+        setSection('');
     }
 
     return (
-        <>
-            <div className="adminModule_create_account_con">
-                <div className="editAtt_Modal_label-b">Create an Account</div>
+        <form className="adminModule_create_account_con" onSubmit={handleSubmit}>
+            <h3>Create new Account</h3>
 
-                <div className="adminModule_create_input_inside-b">
-                    <span className="adminModule_create_label">Name:</span>
+            <div className="adminModule_create_input_wrap">
+                <div className="adminModule_create_input_inside-c">
+                    <label className="adminModule_create_label">ID Number:</label>
                     <input 
-                        type="text" 
-                        className="create_input" 
-                        placeholder="Enter Name"
-                        value={accountName}
-                        onChange={(e) => setAccountName(e.target.value)}>
-                    </input>
+                        type="text"
+                        className="create_input"
+                        onChange={(e) => setIdNumber(e.target.value)}
+                        value={idNumber}
+                    />
                 </div>
 
-                <div className="adminModule_create_input_wrap">
-                    <div className="adminModule_create_input_inside">
-                        <span className="adminModule_create_label">User ID:</span>
-                        <input 
-                            type="text" 
-                            className="create_input" 
-                            placeholder="Enter User ID"
-                            value={accountUserID}
-                            onChange={(e) => setAccountUserID(e.target.value)}>
-                        </input>
-                    </div>
-
-                    <div className="adminModule_create_input_inside">
-                        <span className="adminModule_create_label">Password:</span>
-                        <input 
-                            type="text" 
-                            className="create_input" 
-                            placeholder="Enter Password"
-                            value={accountPassword}
-                            onChange={(e) => setAccountPassword(e.target.value)}>
-                        </input>
-                    </div>
-
-                    <div className="adminModule_create_input_inside">
-                        <span className="adminModule_create_label">Level:</span>
-                        <select
-                            type="text" 
-                            className="create_select" 
-                            placeholder="Enter User Level"
-                            value={accountLevel}
-                            onChange={(e) => setAccountLevel(e.target.value)}>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                        </select>
-                    </div>
+                <div className="adminModule_create_input_inside-c">
+                    <label className="adminModule_create_label">Password:</label>
+                    <input 
+                        type="password"
+                        className="create_input"
+                        onChange={(e) => setPassword(e.target.value)}
+                        value={password}
+                    />
                 </div>
-
-                <div className="adminModule_create_input_wrap">
-                    <div className="adminModule_create_input_inside">
-                        <span className="adminModule_create_label">Track:</span>
-                        <select 
-                            type="text" 
-                            className="create_select" 
-                            placeholder="Enter Track"
-                            value={accountTrack}
-                            onChange={(e) => setAccountTrack(e.target.value)}>
-                                <option value="Admin">Admin</option>
-                                <option value="Academic">Academic</option>
-                                <option value="TVL">TVL</option>
-                        </select>
-                    </div>
-
-                    <div className="adminModule_create_input_inside">
-                        <span className="adminModule_create_label">Strand:</span>
-                        <select 
-                            type="text" 
-                            className="create_select" 
-                            placeholder="Enter Strand"
-                            value={accountStrand}
-                            onChange={(e) => setAccountStrand(e.target.value)}>
-                                <option value="Admin">Admin</option>
-                                <option value="ABM">ABM</option>
-                                <option value="HUMMS">HUMMS</option>
-                                <option value="STEM">STEM</option>
-                                <option value="TVL">TVL</option>
-                        </select>
-                    </div>
-
-                    <div className="adminModule_create_input_inside">
-                        <span className="adminModule_create_label">Section:</span>
-                        <input 
-                            type="text" 
-                            className="create_input" 
-                            placeholder="Enter Section"
-                            value={accountSecAdv}
-                            onChange={(e) => setAccountSecAdv(e.target.value)}>
-                        </input>
-                    </div>
-                </div>
-
-
-                <button className="editAtt_cancel_button" onClick={cancelCreate}>Cancel</button>
-                <button className="editAtt_update_button" onClick={addAccount}>Add</button>
             </div>
-        </>
+            
+            <div className="adminModule_create_input_wrap">
+                <div className="adminModule_create_input_inside">
+                    <label className="adminModule_create_label">First Name:</label>
+                    <input 
+                        type="text"
+                        className="create_input"
+                        onChange={(e) => setFname(e.target.value)}
+                        value={fname}
+                    />
+                </div>
+
+                <div className="adminModule_create_input_inside">
+                    <label className="adminModule_create_label">Middle Name:</label>
+                    <input 
+                        type="text"
+                        className="create_input"
+                        onChange={(e) => setMname(e.target.value)}
+                        value={mname}
+                    />
+                </div>
+
+                <div className="adminModule_create_input_inside">
+                    <label className="adminModule_create_label">Last Name:</label>
+                    <input 
+                        type="text"
+                        className="create_input"
+                        onChange={(e) => setLname(e.target.value)}
+                        value={lname}
+                    />
+                </div>
+            </div>
+
+            <div className="adminModule_create_input_wrap">
+                <div className="adminModule_create_input_inside-c">
+                    <label className="adminModule_create_label">Suffix:</label>
+                    <input 
+                        type="text"
+                        className="create_input"
+                        onChange={(e) => setSuffix(e.target.value)}
+                        value={suffix}
+                    />
+                </div>
+
+                <div className="adminModule_create_input_inside-c">
+                    <label className="adminModule_create_label">Level:</label>
+                    <input 
+                        type="text"
+                        className="create_input"
+                        onChange={(e) => setLevel(e.target.value)}
+                        value={level}
+                    />
+                </div>
+            </div>
+
+            <div className="adminModule_create_input_wrap">
+                <div className="adminModule_create_input_inside">
+                    <label className="adminModule_create_label">Track:</label>
+                    <input 
+                        type="text"
+                        className="create_input"
+                        onChange={(e) => setTrack(e.target.value)}
+                        value={track}
+                    />
+                </div>
+
+                <div className="adminModule_create_input_inside">
+                    <label className="adminModule_create_label">Strand:</label>
+                    <input 
+                        type="text"
+                        className="create_input"
+                        onChange={(e) => setStrand(e.target.value)}
+                        value={strand}
+                    />
+                </div>
+                
+                <div className="adminModule_create_input_inside">
+                    <label className="adminModule_create_label">Section:</label>
+                    <input 
+                        type="text"
+                        className="create_input"
+                        onChange={(e) => setSection(e.target.value)}
+                        value={section}
+                    />
+                </div>
+            </div>
+            
+        </form>
     )
 }
 
