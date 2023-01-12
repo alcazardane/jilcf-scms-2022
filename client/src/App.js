@@ -10,6 +10,7 @@ import MainWindowL3 from "./components/main_window/user_level_3/main_window_L3"
 import Login from './components/login/login'
 import Register from './components/admin_module/create_userAccount'
 import Assessment from './components/assessment/assessment_window'
+import UserFaceRecog from './components/samplefr'
 
 function App(){
   const { user } = useAuthContext()
@@ -52,7 +53,7 @@ function App(){
           />
           <Route 
             path="/facerecog"
-            element={user ? <userFaceRecog /> : <Navigate to="/login" />}
+            element={<UserFaceRecog />}
           />
           <Route 
             path="/home/L1"
