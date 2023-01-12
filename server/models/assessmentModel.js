@@ -28,11 +28,13 @@ const assessmentSchema = new Schema({
         // project, seatwork
         label : String,
         score : Number,
+
+        maxscore: Number,
     }]
 })
 
 assessmentSchema.statics.createRec = async function(recordId, userId, teacherId, subjectId, date, label, score){
-    if(!recordId || !userId || !teacherId || !subjectId || !date || !label || !score){
+    if(!recordId || !userId || !teacherId || !subjectId || !date || !label || !score || !maxscore){
         throw Error('All fields must be filled')
     }
 
@@ -42,14 +44,15 @@ assessmentSchema.statics.createRec = async function(recordId, userId, teacherId,
         throw Error("Record can not be creted. Record may be existing. Try Update.")
     }
 
-    var StudRecord = { date: date, label: label, score: score }
+    var StudRecord = { date: date, label: label, score: score, maxscore: maxscore }
 
     const record = await this.create({ 
         recordId,
         userId,
         teacherId,
         subjectId,
-        studRecord:[date, label, score],
+        // studRecord:[date, label, score],
+        studRecord:[StudRecord],
      })
 
      return record
@@ -68,14 +71,14 @@ assessmentSchema.statics.readRec = async function(recordId){
     return rRecord
 }
 
-assessmentSchema.statics.updateRec = async function(recordId, date, label, score){
+assessmentSchema.statics.updateRec = async function(recordId, date, label, score, maxscore){
     const exists = await this.findOne({recordId})
 
     if(exists){
         throw Error("Record can not be creted. Record may be existing. Try Update.")
     }
 
-    var StudRecord = { date: date, label: label, score: score }
+    var StudRecord = { date: date, label: label, score: score, maxscore: maxscore }
 
     const record = await this.findOneAndUpdate(
         {

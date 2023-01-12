@@ -162,6 +162,7 @@ body{
 
 
   --windowAssessment-display: none;
+  --windowAssessmentSection-display: none;
   --windowAssessment-drag-display: block;
   /*--windowAttendance-width: 1060px;*/
   /*--windowAttendance-height: 565px;*/
