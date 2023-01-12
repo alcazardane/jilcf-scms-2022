@@ -31,8 +31,10 @@ app.use('/api/events', require("./routes/events"))
 const userRoutes = require('./routes/user')
 // assessment routes
 const assessmentRoutes = require('./routes/assessment')
-// admin routes
-const accountRoutes = require('./routes/accounts')
+// subject routes
+const subjectRoutes = require('./routes/subject')
+// class section routes
+const classSectionRoutes = require('./routes/class_section')
 
 // get driver connection
 const dbo = require("./db/conn");
@@ -48,7 +50,8 @@ app.listen(port, () => {
 
 app.use('/api/user', userRoutes)
 app.use('/api/assessment', assessmentRoutes)
-app.use('/api/accounts', accountRoutes)
+app.use('/api/subject', subjectRoutes)
+app.use('/api/class-sections', classSectionRoutes)
 
 app.listen(8080, () => console.log('API is running on http://localhost:8080/login'));
 
