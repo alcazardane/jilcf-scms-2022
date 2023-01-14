@@ -15,8 +15,12 @@ const loginUser = async(req, res) => {
         // create a token
         const token = createToken(user._id)
         const level = user.level
+        const fname = user.fname
+        const mname = user.mname
+        const lname = user.lname
+        const suffix = user.suffix
 
-        res.status(200).json({idNumber, level, token})
+        res.status(200).json({idNumber, level, token, fname, mname, lname, suffix})
     } catch(error) {
         res.status(400).json({error: error.message})
     }

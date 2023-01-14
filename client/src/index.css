@@ -42,10 +42,10 @@ body{
   --dashboard-bottom-container-width: 73.3vw;
 
   /* FOR ATTENDANCE MODULE */
-  --windowAttendance-L1-display: none;
-  --windowAttendance-L3-display: none;
+  --windowAttendance-L1-display: block;
+  --windowAttendance-L3-display: block;
 
-  --windowAttendance-display: none;
+  --windowAttendance-display: block;
   --windowAttendance-drag-display: block;
   /*--windowAttendance-width: 1060px;*/
   /*--windowAttendance-height: 565px;*/
@@ -93,18 +93,18 @@ body{
   --viewStudent_multiEdit_warning-opacity: 1;
 
   /* FOR CALENDAR MODULE */
-  --calendar-module-display: none;
+  --calendar-module-display: block;
   --calendarAddSchedule_modal-PointerEvents: none;
   --calendarAddSchedule_modal-Opacity: 0;
 
   /* FOR ABOUT */
-  --aboutModule-L1-display: none;
+  --aboutModule-L1-display: block;
 
   /* FOR ADMIN MODULE */
   --ConfirmLogout-Modal-Admin-PointerEvents: none;
   --ConfirmLogout-Modal-Admin-Opacity: 0;
 
-  --adminModule_L1_display: none;
+  --adminModule_L1_display: block;
   --adminModule-L1-window-width: 70%;
   --adminModule-L1-window-height: 70%;
   --adminModule-display-b: none;
@@ -161,7 +161,7 @@ body{
   --windowAttendance-500-button-width: 32vw;
 
 
-  --windowAssessment-display: none;
+  --windowAssessment-display: block;
   --windowAssessmentSection-display: none;
   --windowAssessment-drag-display: block;
   /*--windowAttendance-width: 1060px;*/
