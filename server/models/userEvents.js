@@ -7,12 +7,24 @@ const eventsSchema = new Schema({
         type: String,
         required: true
     },
+    decription: {
+        type: String,
+        required: true
+    },
     type: {
         type: String,
         required: true
     },
     date: {
         type: Date,
+        required: true
+    },
+    time: {
+        type: String,
+        required: true
+    },
+    place: {
+        type: String,
         required: true
     }
 })

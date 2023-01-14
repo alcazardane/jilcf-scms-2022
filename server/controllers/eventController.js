@@ -6,11 +6,6 @@ const getEvents = async (req, res) => {
     const events = await Event.find({})
 
     res.status(200).json(events) 
-    // try{
-    //     res.status(200).json(events) 
-    // }catch(error){
-    //     res.status(400).json({error: error.message})
-    // }
 }
 
 // get single Events
@@ -31,16 +26,24 @@ const getSingleEvent = async (req, res) => {
 
 // create new Event
 const createEvent = async (req, res) => {
-    const {name, type} = req.body
+    // const {name, description, type, time, place} = req.body
 
-    const rawdate = req.body.date
-    const date = new Date(rawdate)
+    // const rawdate = req.body.date
+    // const date = new Date(rawdate)
+
+    // try {
+    //     const event = await Event.create({name, description, type, date, time, place})
+    //     res.status(200).json(event)
+    // } catch (error) {
+    //     res.status(400).json({error: error.message})
+    // }
 
     try {
-        const event = await Event.create({name, type, date})
-        res.status(200).json(event)
-    } catch (error) {
-        res.status(400).json({error: error.message})
+        const event = new Event(req.body);
+        const savedEvent = Event.save();
+        res.status(201).send(savedEvent);
+      } catch (error) {
+        res.status(500).send(error);
     }
 }
 

@@ -25,7 +25,6 @@ app.use(require("./routes/student_activities"));
 app.use(require("./routes/announcements"));
 app.use(require("./routes/teacher_info"));
 app.use(require("./routes/teacher_attendance"))
-app.use('/api/events', require("./routes/events"))
 
 // login routes
 const userRoutes = require('./routes/user')
@@ -35,6 +34,10 @@ const assessmentRoutes = require('./routes/assessment')
 const subjectRoutes = require('./routes/subject')
 // class section routes
 const classSectionRoutes = require('./routes/class_section')
+// event routes
+const eventRoutes = require('./routes/events')
+// announcement routes
+const announceRoutes = require('./routes/announcement_route')
 
 // get driver connection
 const dbo = require("./db/conn");
@@ -52,6 +55,8 @@ app.use('/api/user', userRoutes)
 app.use('/api/assessment', assessmentRoutes)
 app.use('/api/subject', subjectRoutes)
 app.use('/api/class-sections', classSectionRoutes)
+app.use('/api/shed-events', eventRoutes)
+app.use('/api/announcements', announceRoutes)
 
 app.listen(8080, () => console.log('API is running on http://localhost:8080/login'));
 

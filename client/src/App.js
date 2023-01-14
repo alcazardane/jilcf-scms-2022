@@ -20,6 +20,7 @@ import UserCalendarModule from "./components/calendar_module/userCalendarModule"
 import UserAboutModule from "./components/about_module/userAboutModule";
 import UserAssessmentModule from "./components/assessment_module/userAssessmentModule";
 import UserCameraModule from "./components/camera_module/userCameraModule";
+import UserNotificationModule from "./components/notification_module/userNotificationModule";
 
 function App(){
   const { user } = useAuthContext()
@@ -136,6 +137,19 @@ function App(){
           <Route 
             path="/home/L2/camera"
             element={user ? <UserCameraModule /> : <Navigate to="/login" />}
+          />
+
+          <Route 
+            path="/home/L1/notification"
+            element={user ? <UserNotificationModule /> : <Navigate to="/login" />}
+          />
+          <Route 
+            path="/home/L2/notification"
+            element={user ? <UserNotificationModule /> : <Navigate to="/login" />}
+          />
+          <Route 
+            path="/home/L3/notification"
+            element={user ? <UserNotificationModule /> : <Navigate to="/login" />}
           />
 
         </Routes>
