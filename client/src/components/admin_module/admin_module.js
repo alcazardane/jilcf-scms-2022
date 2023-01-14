@@ -12,10 +12,13 @@ import EditAccountModal from './edit_account_modal'
 import ScheduleTable from './schedule_table'
 import CreateSchedModal from './create_schedule_modal'
 import EditScheduleModal from './edit_schedule_modal'
+import CreateSchedule from '../ADMIN/schedule/createSchedule'
 
 import AnnouncementTable from './announcement_table'
 import CreateAnnounceModal from './create_announcement_modal'
 import EditAnnounceModal from './edit_announce_modal'
+
+
 
 import '../../styles/admin_module_styles.css'
 
@@ -556,6 +559,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
             }
         }
         fetchAnnouncement()
+        console.log(viewAnnouncements)
     }, [])
 
     // For searching
@@ -794,10 +798,19 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                                 </tr>
                             </thead>
                             <tbody className="adminModule_table_body">
-                                {viewAccounts && viewAccounts.filter
+                                {/* {viewAccounts && viewAccounts.filter
                                     (viewAccount=>
                                         keys.some(key=>viewAccount[key].toLowerCase().includes(accountQuery))
                                     ).map((viewAccount) => (
+                                        <AccountsTable 
+                                            key={viewAccount._id}
+                                            viewAccount={viewAccount}
+                                            editAccount={editAccount} 
+                                            checkDeleteAccount={checkDeleteAccount}
+                                        />
+                                    ))
+                                } */}
+                                {viewAccounts && viewAccounts.map((viewAccount) => (
                                         <AccountsTable 
                                             key={viewAccount._id}
                                             viewAccount={viewAccount}
@@ -893,10 +906,19 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                                     </tr>
                                 </thead>
                                 <tbody className="adminModule_table_body">
-                                    {viewSchedules && viewSchedules.filter
+                                    {/* {viewSchedules && viewSchedules.filter
                                         (viewSchedule=>
                                             schedKeys.some(key=>viewSchedule[key].toLowerCase().includes(scheduleQuery))
                                         ).map((viewSchedule) => (
+                                            <ScheduleTable 
+                                                key={viewSchedule._id}
+                                                viewSchedule={viewSchedule}
+                                                editSchedule={editSchedule}
+                                                checkDeleteSched={checkDeleteSched}
+                                            />
+                                        ))
+                                    } */}
+                                    {viewSchedules && viewSchedules.map((viewSchedule) => (
                                             <ScheduleTable 
                                                 key={viewSchedule._id}
                                                 viewSchedule={viewSchedule}
@@ -912,7 +934,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                 </div>
 
                 <div className="adminModule_create_sched_modal">
-                    <CreateSchedModal 
+                   {/*<CreateSchedModal 
                     addSchedule={addSchedule}
                     resetSchedInputs={resetSchedInputs}
                     setSchedUserID={setSchedUserID}
@@ -929,7 +951,8 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                     schedClass={schedClass}
                     schedRoom={schedRoom}
                     schedRepeat={schedRepeat}
-                    />
+                    />*/}
+                    <CreateSchedule/>
                 </div>
 
                 <div className="adminModule_edit_sched_modal">
@@ -1009,10 +1032,21 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                                         </tr>
                                     </thead>
                                     <tbody className="adminModule_table_body">
-                                        {viewAnnouncements && viewAnnouncements.filter
+                                        {/* {viewAnnouncements && viewAnnouncements.filter
                                             (viewAnnouncement=>
                                                 announceKeys.some(key=>viewAnnouncement[key].toLowerCase().includes(announceQuery))
                                             ).map((viewAnnouncement) => (
+                                                <AnnouncementTable 
+                                                    key={viewAnnouncement._id}
+                                                    viewAnnouncement={viewAnnouncement}
+                                                    editAnnounce={editAnnounce}
+                                                    checkDeleteAnnounce={checkDeleteAnnounce}
+                                                    // editSchedule={editSchedule}
+                                                    // checkDeleteSched={checkDeleteSched}
+                                                />
+                                            ))
+                                        } */}
+                                        {viewAnnouncements && viewAnnouncements.map((viewAnnouncement) => (
                                                 <AnnouncementTable 
                                                     key={viewAnnouncement._id}
                                                     viewAnnouncement={viewAnnouncement}
