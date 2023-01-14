@@ -12,10 +12,13 @@ import EditAccountModal from './edit_account_modal'
 import ScheduleTable from './schedule_table'
 import CreateSchedModal from './create_schedule_modal'
 import EditScheduleModal from './edit_schedule_modal'
+import CreateSchedule from '../ADMIN/schedule/createSchedule'
 
 import AnnouncementTable from './announcement_table'
 import CreateAnnounceModal from './create_announcement_modal'
 import EditAnnounceModal from './edit_announce_modal'
+
+
 
 import '../../styles/admin_module_styles.css'
 
@@ -556,6 +559,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
             }
         }
         fetchAnnouncement()
+        console.log(viewAnnouncements)
     }, [])
 
     // For searching
@@ -930,7 +934,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                 </div>
 
                 <div className="adminModule_create_sched_modal">
-                    <CreateSchedModal 
+                   {/*<CreateSchedModal 
                     addSchedule={addSchedule}
                     resetSchedInputs={resetSchedInputs}
                     setSchedUserID={setSchedUserID}
@@ -947,7 +951,8 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                     schedClass={schedClass}
                     schedRoom={schedRoom}
                     schedRepeat={schedRepeat}
-                    />
+                    />*/}
+                    <CreateSchedule/>
                 </div>
 
                 <div className="adminModule_edit_sched_modal">
