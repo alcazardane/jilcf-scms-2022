@@ -195,6 +195,7 @@ const FaceRecog = ({ data, available }) => {
 			<div className="students">
 				<h2>Students Present</h2>
 				<div>{Present[0]}</div>
+				<div>{List()}</div>
 			</div>
 		</section>
 	)

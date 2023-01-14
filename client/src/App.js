@@ -61,16 +61,14 @@ function App(){
           <Route 
             path="/home/L2"
             element={
-              <MainWindowL2 />
+              user ? <MainWindowL2 /> : navigateUser()
             }
-            // element={user ? <MainWindowL2 /> : <Navigate to="/login" />}
           />
           <Route 
             path="/home/L3"
             element={
-              <MainWindowL3 />
+              user ? <MainWindowL3 /> : navigateUser()
             }
-            // element={user ? <MainWindowL3 /> : <Navigate to="/login" />}
           />
           <Route 
             path="/assessment"
@@ -83,78 +81,3 @@ function App(){
 }
 
 export default App;
-
-// export function Loginfunc(){
-//   return(
-//     <Login />
-//   )
-// }
-
-// export function HomeL1(){
-//   return(
-//     <MainWindowL1 />
-//   )
-// }
-
-// export function HomeL2(){
-//   return(
-//     <MainWindowL2 />
-//   )
-// }
-
-// export function HomeL3(){
-//   return(
-//     <MainWindowL3 />
-//   )
-// }
-
-// export function FaceRec(){
-//   return(
-//     <FaceRecog/>
-//   )
-// }
-
-// export function CreateUser(){
-//   return(
-//     <Create />
-//   )
-// }
-
-// function setToken(userToken) {
-//   sessionStorage.setItem('token', JSON.stringify(userToken));
-// }
-
-// function getToken() {
-//   const tokenString = sessionStorage.getItem('token');
-//   const userToken = JSON.parse(tokenString);
-//   return userToken?.token
-// }
-
-// export function App(){
-//   const { token, setToken } = useToken();
-
-//   if(!token) {
-//     return <Login setToken={setToken} />
-//   }
-
-//   return (
-//     <Outlet />
-//   );
-// }
-
-// export function AssessmentWindow(){
-//   return(
-//     <Assessment/>
-//   )
-// }
-// export function AttendanceWindow(){
-//   return(
-//     <Attendance/>
-//   )
-// }
-
-// export function CalendarWindow(){
-//   return(
-//     <Calendar/>
-//   )
-// };
