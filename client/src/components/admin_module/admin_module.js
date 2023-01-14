@@ -794,10 +794,19 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                                 </tr>
                             </thead>
                             <tbody className="adminModule_table_body">
-                                {viewAccounts && viewAccounts.filter
+                                {/* {viewAccounts && viewAccounts.filter
                                     (viewAccount=>
                                         keys.some(key=>viewAccount[key].toLowerCase().includes(accountQuery))
                                     ).map((viewAccount) => (
+                                        <AccountsTable 
+                                            key={viewAccount._id}
+                                            viewAccount={viewAccount}
+                                            editAccount={editAccount} 
+                                            checkDeleteAccount={checkDeleteAccount}
+                                        />
+                                    ))
+                                } */}
+                                {viewAccounts && viewAccounts.map((viewAccount) => (
                                         <AccountsTable 
                                             key={viewAccount._id}
                                             viewAccount={viewAccount}
@@ -893,10 +902,19 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                                     </tr>
                                 </thead>
                                 <tbody className="adminModule_table_body">
-                                    {viewSchedules && viewSchedules.filter
+                                    {/* {viewSchedules && viewSchedules.filter
                                         (viewSchedule=>
                                             schedKeys.some(key=>viewSchedule[key].toLowerCase().includes(scheduleQuery))
                                         ).map((viewSchedule) => (
+                                            <ScheduleTable 
+                                                key={viewSchedule._id}
+                                                viewSchedule={viewSchedule}
+                                                editSchedule={editSchedule}
+                                                checkDeleteSched={checkDeleteSched}
+                                            />
+                                        ))
+                                    } */}
+                                    {viewSchedules && viewSchedules.map((viewSchedule) => (
                                             <ScheduleTable 
                                                 key={viewSchedule._id}
                                                 viewSchedule={viewSchedule}
@@ -1009,10 +1027,21 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                                         </tr>
                                     </thead>
                                     <tbody className="adminModule_table_body">
-                                        {viewAnnouncements && viewAnnouncements.filter
+                                        {/* {viewAnnouncements && viewAnnouncements.filter
                                             (viewAnnouncement=>
                                                 announceKeys.some(key=>viewAnnouncement[key].toLowerCase().includes(announceQuery))
                                             ).map((viewAnnouncement) => (
+                                                <AnnouncementTable 
+                                                    key={viewAnnouncement._id}
+                                                    viewAnnouncement={viewAnnouncement}
+                                                    editAnnounce={editAnnounce}
+                                                    checkDeleteAnnounce={checkDeleteAnnounce}
+                                                    // editSchedule={editSchedule}
+                                                    // checkDeleteSched={checkDeleteSched}
+                                                />
+                                            ))
+                                        } */}
+                                        {viewAnnouncements && viewAnnouncements.map((viewAnnouncement) => (
                                                 <AnnouncementTable 
                                                     key={viewAnnouncement._id}
                                                     viewAnnouncement={viewAnnouncement}

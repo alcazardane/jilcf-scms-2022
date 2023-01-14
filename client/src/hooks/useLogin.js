@@ -29,13 +29,13 @@ export const useLogin = () => {
             const cred = JSON.parse(localStorage.getItem('user'))
             
             if(cred.level === "1"){
-                navigate("/home/l1")
+                navigate("/home/L1/user_dashboard")
             }
             else if(cred.level === "2"){
-                navigate("/home/l2")
+                navigate("/home/L2/user_dashboard")
             }
             else if(cred.level === "3"){
-                navigate("/home/l3")
+                navigate("/home/L3/user_dashboard")
             }
 
             // update the auth context
