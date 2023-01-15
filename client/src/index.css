@@ -181,4 +181,7 @@ body{
 
   --notification_preview-display: none;
 
+  --windowAnalyticsSection-display: none;
+  --windowAnalytics-display: block;
+
 }

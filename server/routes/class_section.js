@@ -16,15 +16,13 @@ router.put('/:id', classSectionController.updateClassSection);
 router.delete('/:id', classSectionController.deleteClassSection);
 
 // Get a class section by ID
-// router.get('/:class_id', classSectionController.getClassSectionById);
 router.get('/:class_id', classSectionController.getClassSectionFieldsByClassId);
 
-// router.get('/students/:class_id', classSectionController.getStudentsByClassId);
-// router.get('/students/:class_id', classSectionController.getStudentFieldsByClassId);
-// router.get('/students/:class_id', classSectionController.getStudentsByClassId);
-
-// router.get('/students/:class_id/:subject_id', classSectionController.getStudentRecordsByClassIdAndSubjectId);
 router.get('/students/:class_id/:subject_id', classSectionController.getStudentAssessment)
+
+router.get('/class/:class_id/subject/:subject_id', classSectionController.getClassSubjectSummary);
+
+router.get('/least-performers/:class_id/:subject_id', classSectionController.getClassSubjectLeastPerformers);
 
 module.exports = router;
 

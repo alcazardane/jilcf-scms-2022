@@ -2,26 +2,25 @@ import { useRef, useState } from "react"
 import Sidebar from "../SIDEBAR/sidebar"
 import { useAuthContext } from "../../hooks/useAuthContext"
 
-import AssessmentModule from "./assessment_module"
-import AssessmentModuleSection from "./assessment_module_section"
+import AnalyticsModule from "./analytics_module"
+import AnalyticsModuleSection from "./analytics_module_section"
 
-const UserAssessmentModule = ({
+const UserAnalyticsModule = ({
     idNumber,
     setClassID,
     setClassSection,
     setSubjectID,
     classID,
     classSection,
-    subjectID
-}) => {
+    subjectID }) => {
 
     const { user } = useAuthContext()
 
     const [dashboardIsOpen, setDashboardIsOpen] = useState(false);
     const [adminIsOpen, setAdminIsOpen] = useState(false);
     const [attendanceIsOpen, setAttendanceIsOpen] = useState(false);
-    const [assessmentIsOpen, setAssessmentIsOpen] = useState(true);
-    const [analyticsIsOpen, setAnalyticsIsOpen] = useState(false);
+    const [assessmentIsOpen, setAssessmentIsOpen] = useState(false);
+    const [analyticsIsOpen, setAnalyticsIsOpen] = useState(true);
     const [cameraIsOpen, setCameraIsOpen] = useState(false);
     const [aboutIsOpen, setAboutIsOpen] = useState(false);
     const [calendarIsOpen, setCalendarIsOpen] = useState(false);
@@ -31,43 +30,12 @@ const UserAssessmentModule = ({
     // const [classSection, setClassSection] = useState('12 STEM A');
     // const [subjectID, setSubjectID] = useState('GM-001');
 
-
-    let assessmentByUser;
-    if (user.level === '2'){
-        assessmentByUser = 
-            <>
-                <div className="windowAssessment_main_wrap">
-                  <AssessmentModule
-                    setClassID={setClassID}
-                    setClassSection={setClassSection}
-                    setSubjectID={setSubjectID} 
-                    idNumber={idNumber}/>
-                </div>
-
-                <div className="windowAssessmentSection_main_wrap">
-                    <AssessmentModuleSection
-                        classID={classID}
-                        classSection={classSection}
-                        subjectID={subjectID}/>
-                </div>
-            </>    
-    }
-    else if (user.level === '3'){
-        assessmentByUser = 
-            <div className="windowAssessment_main_wrap">
-                <div>ASSESSMENT FOR L3</div>
-            </div>
-    }
-    else{
-        assessmentByUser = <div>Unknown User</div>
-    }
-
     return (
       <>
       <div>
             <div className="main_window_wrap l1_background">
             <Sidebar 
-                user={user} 
+                user={user}
 
                 adminIsOpen={adminIsOpen}
                 dashboardIsOpen={dashboardIsOpen}
@@ -79,11 +47,25 @@ const UserAssessmentModule = ({
                 assessmentIsOpen={assessmentIsOpen}
             />
 
-            {assessmentByUser}
+            <div className="windowAnalytics_main_wrap">
+                <AnalyticsModule 
+                    setClassID={setClassID}
+                    setClassSection={setClassSection}
+                    setSubjectID={setSubjectID} 
+                    idNumber={idNumber}/>
+            </div>
+
+            <div className="windowAnalyticsSection_main_wrap">
+                <AnalyticsModuleSection
+                    classID={classID}
+                    subjectID={subjectID}
+                    classSection={classSection}/>
+            </div>
+
         </div>
       </div>
       </>
     )
   }
   
-  export default UserAssessmentModule
+  export default UserAnalyticsModule

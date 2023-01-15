@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react"
-import { Link } from "react-router-dom"
 
-import AssessmentModuleSection from "./assessment_module_section"
+import AnalyticsModuleSection from "./analytics_module_section"
 // import images
 import search_icon from "../../images/search_FILL0_wght400_GRAD0_opsz48.png"
 import abm_image from "../../images/abm_strand_image.jpg"
@@ -9,13 +8,13 @@ import tvl_image from "../../images/tvl_strand_image.jpg"
 import stem_image from "../../images/stem_strand_image.jpg"
 import humms_image from "../../images/humms_strand_image.jpg"
 
-const AssessmentModule = ({ idNumber, setClassID, setClassSection, setSubjectID }) => {
+const AnalyticsModule = ({ idNumber, setClassID, setClassSection, setSubjectID }) => {
 
     var root = document.querySelector(":root");
 
-    const openAssessmentSection = () => {
-        root.style.setProperty('--windowAssessment-display', "none")
-        root.style.setProperty('--windowAssessmentSection-display', "block")
+    const openAnalyticsSection = () => {
+        root.style.setProperty('--windowAnalyticsSection-display', "block")
+        root.style.setProperty('--windowAnalytics-display', "none")
     }
 
     const [classData, setClassData] = useState([]);
@@ -50,7 +49,7 @@ const AssessmentModule = ({ idNumber, setClassID, setClassSection, setSubjectID 
         <div className="assessment_module_main_wrap">
             <div className="assessment_module_topwrap">
                 <div className="assessment_module_topwrap_text">
-                    ASSESSMENT
+                    ANALYTICS
                 </div>
                 <div className="assessment_module_search_wrap">
                     <img src={search_icon} alt="search" className="assessment_module_search_icon"/>
@@ -63,12 +62,13 @@ const AssessmentModule = ({ idNumber, setClassID, setClassSection, setSubjectID 
             </div>
 
             <div className="assessment_module_subjcards_wrap">
+                {/* make this a map later that generate subject*/}
                 {classData && classData.map(classdata => (
                     <div 
-                        key={classdata.class_id+classdata.subject_id} 
+                        key={classdata.class_id+classdata.subject_id+"-ana"} 
                         className="assessment_module_subjcards"
                         onClick={() => {
-                            openAssessmentSection();
+                            openAnalyticsSection();
                             setClassID(classdata.class_id);
                             setSubjectID(classdata.subject_id);
                             setClassSection(classdata.class_glvl + " " + classdata.class_strand + " " + classdata.class_section)
@@ -91,4 +91,4 @@ const AssessmentModule = ({ idNumber, setClassID, setClassSection, setSubjectID 
   )
 }
 
-export default AssessmentModule
+export default AnalyticsModule

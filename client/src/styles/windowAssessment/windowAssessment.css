@@ -8,7 +8,17 @@
     width: 85%;
     display: var(--windowAssessmentSection-display);
 }
-  
+
+.windowAnalytics_main_wrap{
+    width: 85%;
+    display: var(--windowAnalytics-display);
+}
+
+.windowAnalyticsSection_main_wrap{
+    width: 85%;
+    display: var(--windowAnalyticsSection-display);
+}
+
 .assessment_window{
     margin: 0;
     padding: 0;
@@ -74,6 +84,7 @@
 .assessment_module_topwrap{
     width: 100%;
     height: 10%;
+    padding: 0 2%;
     /* background: #03256C; */
     /* background: #FFD056; */
     background: #E2E1E5;
@@ -81,6 +92,11 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+    z-index: 2;
+}
+.assessment_module_topwrap_text{
+    font-size: 25px;
+    font-weight: 600;
 }
 .assessment_module_search_wrap{
     width: 35%;
@@ -253,4 +269,89 @@
 .assessment_module_students_body td{
     height: 20px;
     font-size: 12px;
+}
+
+.assessment_module_bottomwrap{
+    width: 100%;
+    height: 90%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-start;
+    overflow: auto;
+    z-index: 1;
+}
+.analytics_module_overall_container{
+    margin: 1% 0;
+    width: 94%;
+    padding: 1%;
+    height: 80%;
+    background: white;
+    border-radius: 10px;
+}
+.analytics_module_overall_text_wrap{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.analytics_module_overall_text{
+    font-size: 20px;
+    font-weight: 600;
+}
+.analytics_module_overall_text-b{
+    font-size: 15px;
+    font-weight: 600;
+    color: black;
+    cursor: pointer;
+}
+.analytics_module_record_container{
+    width: 30%;
+    height: 100%;
+    border-radius: 10px;
+    box-shadow: 2px 2px 3px 3px rgba(0, 0, 0, 0.25);
+    background: white;
+}
+.analytics_module_record_title_wrap{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+}
+.analytics_module_record_title{
+    width: 100%;
+    height: 15%;
+    margin: 0 5%;
+    display: flex;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 600;
+}
+.analytics_module_record_title-b{
+    width: 100%;
+    margin: 5% 2% 0 2%;
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 600;
+}
+.analytics_module_record_separator{
+    width: 100%;
+    height: 2px;
+    background: #F14668;
+}
+.analytics_module_record_separator-b{
+    width: 100%;
+    height: 2px;
+    background: #84DF3C;
+}
+.analytics_module_record_text{
+    font-size: 14px;
+    font-weight: 500;
+    margin: 3%;
+}
+.analytics_module_record_wrap{
+    margin-top: 2%;
+    width: 100%;
+    height: 40%;
+    display: flex;
+    justify-content: space-around;
 }

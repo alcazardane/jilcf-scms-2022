@@ -144,4 +144,152 @@ exports.getStudentAssessment = async (req, res) => {
     res.status(500).send(error);
   }
 };
-  
+
+exports.getClassSubjectSummary = async (req, res) => {
+  try {
+    const { class_id, subject_id } = req.params;
+    // Find class section by class_id
+    const classSection = await ClassSection.findOne({ class_id });
+    if (!classSection) return res.status(404).json({ message: 'Class section not found' });
+    // Get all student_id from class section
+    const students = classSection.students;
+
+    // Initialize object to store result
+    let result = {};
+
+    // Initialize object to store total score per label
+    let totalScores = {};
+
+    // Initialize object to store top students per label
+    let topStudents = {};
+
+    for (let i = 0; i < students.length; i++) {
+      // Find user by student_id
+      const student = await User.findOne({ idNumber: students[i].student_id });
+      if (!student) continue;
+
+      // Find assessment by student_id and subject_id
+      const assessment = await Assessment.findOne({
+        userId: students[i].student_id,
+        subjectId: subject_id
+      });
+      if (!assessment) continue;
+
+      // Iterate through each studRecord
+      for (let j = 0; j < assessment.studRecord.length; j++) {
+        let { label, score } = assessment.studRecord[j];
+
+        // Initialize array for each label if it does not exist yet
+        if (!topStudents[label]) topStudents[label] = [];
+
+        // Add student to top students array for each label
+        topStudents[label].push({
+          student_id: students[i].student_id,
+          fullname: `${student.lname}, ${student.fname}`,
+          score
+        });
+
+        // Check if label exists in totalScores object
+        if (totalScores[label]) {
+          // If label exists, add score
+          totalScores[label] += score;
+        } else {
+          // If label does not exist, initialize it with score
+          totalScores[label] = score;
+        }
+      }
+    }
+
+    // Iterate through totalScores object and compute average
+    for (let label in totalScores) {
+      totalScores[label] = totalScores[label] / students.length;
+    }
+
+    // Iterate through topStudents object and sort by score
+    for (let label in topStudents) {
+      topStudents[label].sort((a, b) => b.score - a.score);
+    }
+
+    // Iterate through topStudents object and get the top 3 students
+    for (let label in topStudents) {
+      for (let i = 0; i < 3; i++) {
+        let student = topStudents[label][i];
+        if (student) {
+          result[`${label}_top_${i+1}`] = student.fullname;
+        }
+      }
+    }
+
+    // Assign totalScores object to result
+    result = { ...result, ...totalScores };
+
+    return res.status(200).json([result]);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
+
+
+exports.getClassSubjectLeastPerformers = async (req, res) => {
+  try {
+    const { class_id, subject_id } = req.params;
+    // Find class section by class_id
+    const classSection = await ClassSection.findOne({ class_id });
+    if (!classSection) return res.status(404).json({ message: 'Class section not found' });
+    // Get all student_id from class section
+    const students = classSection.students;
+
+    // Initialize object to store result
+    let result = {};
+
+    // Initialize object to store top students per label
+    let topStudents = {};
+
+    for (let i = 0; i < students.length; i++) {
+      // Find user by student_id
+      const student = await User.findOne({ idNumber: students[i].student_id });
+      if (!student) continue;
+
+      // Find assessment by student_id and subject_id
+      const assessment = await Assessment.findOne({
+        userId: students[i].student_id,
+        subjectId: subject_id
+      });
+      if (!assessment) continue;
+
+      // Iterate through each studRecord
+      for (let j = 0; j < assessment.studRecord.length; j++) {
+        let { label, score } = assessment.studRecord[j];
+
+        // Initialize array for each label if it does not exist yet
+        if (!topStudents[label]) topStudents[label] = [];
+
+        // Add student to top students array for each label
+        topStudents[label].push({
+          student_id: students[i].student_id,
+          fullname: `${student.lname}, ${student.fname}`,
+          score
+        });
+      }
+    }
+
+    // Iterate through topStudents object and sort by score
+    for (let label in topStudents) {
+      topStudents[label].sort((a, b) => a.score - b.score);
+    }
+
+    // Iterate through topStudents object and get the top 5 least performers
+    for (let label in topStudents) {
+      for (let i = 0; i < 5; i++) {
+        let student = topStudents[label][i];
+        if (student) {
+          result[`${label}_least_performer_${i+1}`] = student.fullname;
+        }
+      }
+    }
+
+    return res.status(200).json([result]);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};

@@ -25,6 +25,7 @@ import jilcf_logo from "../../images/jilcf_logo_1.png"
 import admin_icon from "../../images/supervisor_account_FILL0_wght400_GRAD0_opsz48.png"
 import dashboard_icon from "../../images/Dashboard_Icon.png"
 import attendance_icon from "../../images/Attendance_Icon.png"
+import analytics_icon from "../../images/Analytics_Icon.png"
 import assessment_icon from "../../images/Assessment_Icon.png"
 import camera_icon from "../../images/Camera_Icon.png"
 import about_icon from "../../images/About_Icon.png"
@@ -330,6 +331,7 @@ const Sidebar = ({ user,
     let userAboutModule;
     let userAssessmentModule;
     let userCameraModule;
+    let userAnalyticsModule;
 
     if (user.level === '1'){
         adminModule = 
@@ -453,6 +455,15 @@ const Sidebar = ({ user,
                     className={"main_window_L1_sidebar_module_wrap " + (assessmentIsOpen ? "sidebar_wrap_active" : "")}>
                     <img className="main_window_L1_sidebar_module_icon" src={assessment_icon} alt="Assessment"></img>
                     <div className="main_window_L1_sidebar_module_label">Assessment</div>
+                </div>
+            </Link>
+
+        userAnalyticsModule = 
+            <Link to="/home/L2/analytics" style={{ textDecoration: 'none' }}>
+                <div 
+                    className={"main_window_L1_sidebar_module_wrap " + (analyticsIsOpen ? "sidebar_wrap_active" : "")}>
+                    <img className="main_window_L1_sidebar_module_icon" src={analytics_icon} alt="Assessment"></img>
+                    <div className="main_window_L1_sidebar_module_label">Analytics</div>
                 </div>
             </Link>
 
@@ -585,6 +596,8 @@ const Sidebar = ({ user,
                         {userAttendanceModule}
 
                         {userAssessmentModule}
+
+                        {userAnalyticsModule}
 
                         <div className="sidebar_separator"></div>
 
