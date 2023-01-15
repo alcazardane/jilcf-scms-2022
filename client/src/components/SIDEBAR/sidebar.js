@@ -30,8 +30,13 @@ import camera_icon from "../../images/Camera_Icon.png"
 import about_icon from "../../images/About_Icon.png"
 import calendar_icon from "../../images/Calendar_Icon.png"
 import logout_icon from "../../images/logout_FILL0_wght400_GRAD0_opsz48.png"
-import UserAdminModule from '../ADMIN/userAdminModule'
-import UserAboutModule from '../about_module/userAboutModule'
+import notification_icon from "../../images/notifications_FILL1_wght400_GRAD0_opsz48.png"
+
+import NotificationPreview from '../notification_module/notification_preview_module'
+
+
+// import UserAdminModule from '../ADMIN/userAdminModule'
+// import UserAboutModule from '../about_module/userAboutModule'
 
 
 const Sidebar = ({ user,  
@@ -53,7 +58,8 @@ const Sidebar = ({ user,
     dashAttRef,
     dashAssessRef,
     dashActRef,
-    dashAnnRef }) => {
+    dashAnnRef,
+    notifIsOpen }) => {
 
     var root = document.querySelector(":root");
     const { height, width } = useWindowDimensions();
@@ -283,27 +289,39 @@ const Sidebar = ({ user,
 
 //=======================================================================================================================
 // LOGOUT
-const { logout } = useLogout();
-const navigate = useNavigate()
+    const { logout } = useLogout();
+    const navigate = useNavigate()
 
-const confirmLogout = () => {
-    root.style.setProperty('--ConfirmLogout-Modal-Admin-PointerEvents', "block")
-    root.style.setProperty('--ConfirmLogout-Modal-Admin-Opacity', "1")
-}
-const triggerLogout = () => {
-    logout()
-    navigate("/login")
-    
-    // openDashboard();
-    root.style.setProperty('--ConfirmLogout-Modal-Admin-PointerEvents', "none")
-    root.style.setProperty('--ConfirmLogout-Modal-Admin-Opacity', "0")
-}
-const cancelLogout = () => {
-    root.style.setProperty('--ConfirmLogout-Modal-Admin-PointerEvents', "none")
-    root.style.setProperty('--ConfirmLogout-Modal-Admin-Opacity', "0")
-}
+    const confirmLogout = () => {
+        root.style.setProperty('--ConfirmLogout-Modal-Admin-PointerEvents', "block")
+        root.style.setProperty('--ConfirmLogout-Modal-Admin-Opacity', "1")
+    }
+    const triggerLogout = () => {
+        logout()
+        navigate("/login")
+
+        root.style.setProperty('--ConfirmLogout-Modal-Admin-PointerEvents', "none")
+        root.style.setProperty('--ConfirmLogout-Modal-Admin-Opacity', "0")
+    }
+    const cancelLogout = () => {
+        root.style.setProperty('--ConfirmLogout-Modal-Admin-PointerEvents', "none")
+        root.style.setProperty('--ConfirmLogout-Modal-Admin-Opacity', "0")
+    }
 
 //=======================================================================================================================
+// NOTIFICATION
+    const [notifClicked, setNotifCliked] = useState(false);
+    const previewNotif = () => {
+        if (!notifClicked || notifIsOpen){
+            setNotifCliked(true)
+            root.style.setProperty('--notification_preview-display', "block")
+        }
+        if (notifClicked){
+            root.style.setProperty('--notification_preview-display', "none")
+            setNotifCliked(false)
+        } 
+    }
+
 
     let adminModule;
     let userDashboard;
@@ -584,7 +602,17 @@ const cancelLogout = () => {
                                 <div className="sidebar_Navbar_userPosition">{getLevelString(user.level)}</div>
                             </div>
                             <div className="sidebar_Navbar_name_wrap_2">
-                                <img className="sidebar_Navbar_icons" onClick={ confirmLogout } src={logout_icon} alt="logout_icon" />
+                                <img 
+                                    className="sidebar_Navbar_icons" 
+                                    onClick={ previewNotif } 
+                                    src={notification_icon} 
+                                    alt="notification_icon" />
+
+                                <img 
+                                    className="sidebar_Navbar_icons" 
+                                    onClick={ confirmLogout } 
+                                    src={logout_icon} 
+                                    alt="logout_icon" />
                             </div>
                         </div>
                     </div>
@@ -597,6 +625,10 @@ const cancelLogout = () => {
                         <button className="editAtt_cancel_button" onClick={triggerLogout}>Yes</button>
                         <button className="editAtt_update_button" onClick={cancelLogout}>No</button>
                     </div>
+                </div>
+
+                <div className="notification_preview_container">
+                    <NotificationPreview />
                 </div>
             </>
         )

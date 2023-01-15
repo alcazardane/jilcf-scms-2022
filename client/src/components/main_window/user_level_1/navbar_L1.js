@@ -30,7 +30,6 @@ const Navbar_L1 = ({ confirmLogout }) => {
     <>
     <div className="sidebar_Navbar">
         <div className="sidebar_Navbar_sub_wrap">
-            {/* <div className="sidebar_Navbar_profile"></div> */}
             <div className="sidebar_Navbar_name_wrap">
                 <div className="sidebar_Navbar_username">Juan Dela Cruz</div>
                 <div className="sidebar_Navbar_userPosition">Admin</div>

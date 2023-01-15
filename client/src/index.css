@@ -178,4 +178,7 @@ body{
   --windowAssessment-buttons-font: 0.8vw;
   --windowAssessment-search-width: 30vw;
 
+
+  --notification_preview-display: none;
+
 }
