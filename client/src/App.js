@@ -27,7 +27,6 @@ import UserAnalyticsModule from "./components/analytics_module/userAnalyticsModu
 function App(){
   const { user } = useAuthContext()
 
-  const [idNumber, setIdNumber] = useState(user.idNumber);
   const [classID, setClassID] = useState('ACADEMIC-12-STEM-A');
   const [classSection, setClassSection] = useState('12 STEM A');
   const [subjectID, setSubjectID] = useState('GM-001');
@@ -137,7 +136,7 @@ function App(){
             element={
               user ? 
               <UserAssessmentModule  
-                idNumber={idNumber}
+                // idNumber={idNumber}
                 setClassID={setClassID}
                 setClassSection={setClassSection}
                 setSubjectID={setSubjectID}
@@ -173,7 +172,7 @@ function App(){
             element={
               user ? 
               <UserAnalyticsModule 
-                idNumber={idNumber}
+                // idNumber={idNumber}
                 setClassID={setClassID}
                 setClassSection={setClassSection}
                 setSubjectID={setSubjectID}

@@ -6,7 +6,6 @@ import AnalyticsModule from "./analytics_module"
 import AnalyticsModuleSection from "./analytics_module_section"
 
 const UserAnalyticsModule = ({
-    idNumber,
     setClassID,
     setClassSection,
     setSubjectID,
@@ -25,7 +24,7 @@ const UserAnalyticsModule = ({
     const [aboutIsOpen, setAboutIsOpen] = useState(false);
     const [calendarIsOpen, setCalendarIsOpen] = useState(false);
 
-    // const [idNumber, setIdNumber] = useState(user.idNumber);
+    const [idNumber, setIdNumber] = useState(user.idNumber);
     // const [classID, setClassID] = useState('ACADEMIC-12-STEM-A');
     // const [classSection, setClassSection] = useState('12 STEM A');
     // const [subjectID, setSubjectID] = useState('GM-001');
