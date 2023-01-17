@@ -13,7 +13,7 @@
  *  DASHBOARD, ATTENDANCE, ASSESSMENT, CALENDAR, ABOUT, USERNAME, LOGOUT
  */
 
-import { useState, useRef} from 'react'
+import { useState, useRef, useEffect} from 'react'
 import { useNavigate, Navigate, Link } from 'react-router-dom'
 import { useLogout } from '../../hooks/useLogout'
 import useWindowDimensions from '../dashboard/hooks/useWindowDimensions'
@@ -59,8 +59,7 @@ const Sidebar = ({ user,
     dashAttRef,
     dashAssessRef,
     dashActRef,
-    dashAnnRef,
-    notifIsOpen }) => {
+    dashAnnRef }) => {
 
     var root = document.querySelector(":root");
     const { height, width } = useWindowDimensions();
@@ -311,17 +310,19 @@ const Sidebar = ({ user,
 
 //=======================================================================================================================
 // NOTIFICATION
-    const [notifClicked, setNotifCliked] = useState(false);
-    const previewNotif = () => {
-        if (!notifClicked || notifIsOpen){
-            setNotifCliked(true)
-            root.style.setProperty('--notification_preview-display', "block")
-        }
-        if (notifClicked){
-            root.style.setProperty('--notification_preview-display', "none")
-            setNotifCliked(false)
-        } 
-    }
+    let notifPreviewRef = useRef();
+    let notifButtonRef = useRef();
+    const [notificationIsOpen, setNotificationIsOpen] = useState(false);
+
+    useEffect(() => {
+        const closeNotifPreview = (e)=> {
+            if (!notifPreviewRef.current.contains(e.target) && !notifButtonRef.current.contains(e.target)){
+                setNotificationIsOpen(false);
+            }
+        };
+        document.body.addEventListener('mousedown', closeNotifPreview);
+        return () => document.body.removeEventListener('mousedown', closeNotifPreview);
+    }, [])
 
 
     let adminModule;
@@ -384,14 +385,14 @@ const Sidebar = ({ user,
                 </div>
             </>
         
-        userAttendanceModule = 
-            <Link to="/home/L1/attendance" style={{ textDecoration: 'none' }}>
-                <div 
-                    className={"main_window_L1_sidebar_module_wrap " + (attendanceIsOpen ? "sidebar_wrap_active" : "")}>
-                    <img className="main_window_L1_sidebar_module_icon" src={attendance_icon} alt="Attendance"></img>
-                    <div className="main_window_L1_sidebar_module_label">Attendance</div>
-                </div>
-            </Link>
+        // userAttendanceModule = 
+        //     <Link to="/home/L1/attendance" style={{ textDecoration: 'none' }}>
+        //         <div 
+        //             className={"main_window_L1_sidebar_module_wrap " + (attendanceIsOpen ? "sidebar_wrap_active" : "")}>
+        //             <img className="main_window_L1_sidebar_module_icon" src={attendance_icon} alt="Attendance"></img>
+        //             <div className="main_window_L1_sidebar_module_label">Attendance</div>
+        //         </div>
+        //     </Link>
 
         userCalendarModule =
             <Link to="/home/L1/calendar" style={{ textDecoration: 'none' }}>
@@ -520,16 +521,16 @@ const Sidebar = ({ user,
                         onClick={() => scrollDashSection3(dashAssessRef)}
                         >Assessment Record
                     </div>
-                    <div 
+                    {/* <div 
                         className={"sidebar_sub_item sidebar_sub_item_L3 " + (dashActIsOpen ? "sidebar_sub_item_active" : "")}
                         onClick={() => scrollDashSection3(dashActRef)}
                         >Activities
-                    </div>
-                    <div 
+                    </div> */}
+                    {/* <div 
                         className={"sidebar_sub_item sidebar_sub_item_L3 " + (dashAnaIsOpen ? "sidebar_sub_item_active" : "")}
                         onClick={() => scrollDashSection3(dashAnaRef)}
                         >Analytics
-                    </div>
+                    </div> */}
                     <div 
                         className={"sidebar_sub_item sidebar_sub_item_L3 " + (dashAnnIsOpen ? "sidebar_sub_item_active" : "")}
                         onClick={() => scrollDashSection3(dashAnnRef)}
@@ -615,9 +616,10 @@ const Sidebar = ({ user,
                                 <div className="sidebar_Navbar_userPosition">{getLevelString(user.level)}</div>
                             </div>
                             <div className="sidebar_Navbar_name_wrap_2">
-                                <img 
+                                <img
+                                    ref={notifButtonRef} 
                                     className="sidebar_Navbar_icons" 
-                                    onClick={ previewNotif } 
+                                    onClick={() => setNotificationIsOpen(prev => !prev)} 
                                     src={notification_icon} 
                                     alt="notification_icon" />
 
@@ -640,8 +642,11 @@ const Sidebar = ({ user,
                     </div>
                 </div>
 
-                <div className="notification_preview_container">
-                    <NotificationPreview />
+                <div 
+                    ref={notifPreviewRef}
+                    className={"notification_preview_container " + (notificationIsOpen ? "notification_preview_open" : "notification_preview_closed")}>
+                    <NotificationPreview 
+                        notificationIsOpen={notificationIsOpen}/>
                 </div>
             </>
         )

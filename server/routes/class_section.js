@@ -24,5 +24,10 @@ router.get('/class/:class_id/subject/:subject_id', classSectionController.getCla
 
 router.get('/least-performers/:class_id/:subject_id', classSectionController.getClassSubjectLeastPerformers);
 
+router.get('/subjects/:student_id', classSectionController.getStudentSubjects); 
+
+router.get('/records/:student_id/:subject_id', classSectionController.getStudentAssessmentRecords); 
+
+
 module.exports = router;
 

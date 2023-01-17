@@ -37,6 +37,7 @@ const UserAssessmentModule = ({
             <>
                 <div className="windowAssessment_main_wrap">
                   <AssessmentModule
+                    user={user}
                     setClassID={setClassID}
                     setClassSection={setClassSection}
                     setSubjectID={setSubjectID} 
@@ -45,6 +46,7 @@ const UserAssessmentModule = ({
 
                 <div className="windowAssessmentSection_main_wrap">
                     <AssessmentModuleSection
+                        user={user}
                         classID={classID}
                         classSection={classSection}
                         subjectID={subjectID}/>
@@ -52,10 +54,26 @@ const UserAssessmentModule = ({
             </>    
     }
     else if (user.level === '3'){
-        assessmentByUser = 
-            <div className="windowAssessment_main_wrap">
-                <div>ASSESSMENT FOR L3</div>
-            </div>
+        assessmentByUser =
+            <>
+                <div className="windowAssessment_main_wrap">
+                  <AssessmentModule
+                    user={user}
+                    setClassID={setClassID}
+                    setClassSection={setClassSection}
+                    setSubjectID={setSubjectID} 
+                    idNumber={idNumber}/>
+                </div>
+
+                <div className="windowAssessmentSection_main_wrap">
+                    <AssessmentModuleSection
+                        user={user}
+                        classID={classID}
+                        classSection={classSection}
+                        subjectID={subjectID}
+                        idNumber={idNumber}/>
+                </div>
+            </> 
     }
     else{
         assessmentByUser = <div>Unknown User</div>

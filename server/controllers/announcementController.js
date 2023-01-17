@@ -6,8 +6,11 @@ exports.createAnnouncement  = async (req, res) => {
       name: req.body.name,
       description: req.body.description,
       type: req.body.type,
-      date: req.body.date,
-      time: req.body.time,
+      ann_year: req.body.ann_year,
+      ann_month: req.body.ann_month,
+      ann_day: req.body.ann_day,
+      start_time: req.body.start_time,
+      end_time: req.body.end_time,
       place: req.body.place,
     });
     const announcement = await newAnnouncement.save();
@@ -41,11 +44,13 @@ exports.getAnnouncementById = async (req, res) => {
 
 exports.updateAnnouncement = async (req, res) => {
   try {
+    req.body.date = req.body.ann_year + "-" + req.body.ann_month + "-" + req.body.ann_day;
+    req.body.time = req.body.start_time + " - " + req.body.end_time;
     const announcement = await Announcement.findByIdAndUpdate(req.params.id, req.body, { new: true });
     if (!announcement) {
       res.status(404).json({ message: 'Event not found' });
     } else {
-      res.json(event);
+      res.json(announcement);
     }
   } catch (err) {
     res.status(400).json({ message: 'Failed to update event', error: err });

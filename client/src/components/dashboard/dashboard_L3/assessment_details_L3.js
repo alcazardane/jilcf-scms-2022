@@ -4,34 +4,18 @@ import arrow_prev from "../../../images/arrow_circle_left_FILL1_wght400_GRAD0_op
 
 import useWindowDimensions from "../hooks/useWindowDimensions"
 
-const AssessmentDetails = ({dashboardIsMinimized}) => {
+const AssessmentDetails = () => {
 
     const { width } = useWindowDimensions();
 
-    let scrollValue = 0;
+    let scrollValue = width * .68 * .96;
 
     // For the sliders
     const slideRight = () =>{
-
-        if (dashboardIsMinimized === true){
-            scrollValue = width * .60 * .68 * .96;
-        }
-        else{
-            scrollValue = width * .68 * .96;
-        }
-
         var slider = document.getElementById("dashboard_L3_assess_inside_wrap");
         slider.scrollLeft = slider.scrollLeft + scrollValue;
     }
     const slideLeft = () =>{
-
-        if (dashboardIsMinimized === true){
-            scrollValue = width * .60 * .68 * .96;
-        }
-        else{
-            scrollValue = width * .68 * .96;
-        }
-
         var slider = document.getElementById("dashboard_L3_assess_inside_wrap");
         slider.scrollLeft = slider.scrollLeft - scrollValue;
     }

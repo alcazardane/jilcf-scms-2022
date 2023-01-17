@@ -17,6 +17,8 @@ import CreateSchedule from '../ADMIN/schedule/createSchedule'
 import AnnouncementTable from './announcement_table'
 import CreateAnnounceModal from './create_announcement_modal'
 import EditAnnounceModal from './edit_announce_modal'
+import CreateAnnouncement from '../ADMIN/announcment/createAnnouncement'
+import EditAnnouncement from '../ADMIN/announcment/editAnnouncement'
 
 
 
@@ -551,15 +553,14 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
 
     useEffect(() =>{
         const fetchAnnouncement= async () => {
-            const response = await fetch('http://localhost:5000/announcements')
+            const response = await fetch('http://localhost:5000/api/announcements')
             const json = await response.json()
-
             if (response.ok){
                 setViewAnnouncements(json)
             }
         }
         fetchAnnouncement()
-        console.log(viewAnnouncements)
+        // console.log(viewAnnouncements)
     }, [])
 
     // For searching
@@ -580,99 +581,24 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
         root.style.setProperty('--adminModule_create_announce_modal-opacity', "1");
     }
 
-    // Will add the inputs to the database
-    const addAnnounce = () => {
-
-        refreshAnnounceTable();
-        let databody = {
-            "announcement_type": announceType,
-            "announcement_name": announceName,
-            "announcement_date": announceDate,
-            "announcement_time": announceTime,
-            "announcement_place": announcePlace
-        }
-        fetch('http://localhost:5000/announcement/add', {
-            method: 'POST',
-            body: JSON.stringify(databody),
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        })
-        .then(response => response.json());
-
-
-        root.style.setProperty('--adminModule_create_announce_modal-pointer-events', "none");
-        root.style.setProperty('--adminModule_create_announce_modal-opacity', "0");
-        resetAnnounceInputs();
-        refreshAnnounceTable();
-    }
-
 //======================================================================================================================
 
-    // Editing account record
-    const [editAnnounceValue, setEditAnnounceValue] = useState([]);
-    const [editAnnounceID, setEditAnnounceID] = useState([]);
-
-    useEffect (() => {
-        setEditAnnounceID(editAnnounceValue._id);
-        setAnnounceType(editAnnounceValue.announcement_type);
-        setAnnounceName(editAnnounceValue.announcement_name);
-        setAnnounceDate(editAnnounceValue.announcement_date);
-        setAnnounceTime(editAnnounceValue.announcement_time);
-        setAnnouncePlace(editAnnounceValue.announcement_place);
-    }, [editAnnounceValue])
-
+    const [announcementID, setAnnouncementID] = useState([]);
 
     const editAnnounce = (e, editID) => {
-
-        fetch('http://localhost:5000/announcement/edit/' + editID).then(res => res.json()).then(result => {
-            setEditAnnounceValue(result)
-        })
-
+        setAnnouncementID(editID)
         root.style.setProperty('--adminModule_edit_announce_modal-pointer-events', "all");
         root.style.setProperty('--adminModule_edit_announce_modal-opacity', "1");
-    }
-
-    const updateAnnounce = (e) => {
-        //e.preventDefault();
-        refreshAnnounceTable();
-
-        let databody = {
-            "announcement_type": announceType,
-            "announcement_name": announceName,
-            "announcement_date": announceDate,
-            "announcement_time": announceTime,
-            "announcement_place": announcePlace
-        }
-        fetch('http://localhost:5000/announcement/update/' + editAnnounceID, {
-            method: 'POST',
-            body: JSON.stringify(databody),
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        })
-        .then(response => response.json());
-
-        root.style.setProperty('--adminModule_edit_announce_modal-pointer-events', "none");
-        root.style.setProperty('--adminModule_edit_announce_modal-opacity', "0");
-
-        resetAnnounceInputs();
-        refreshAnnounceTable();
     }
 
 //======================================================================================================================
     // Deleting account record
     const [announceToDelete, setAnnounceToDelete] = useState([])
-    const [announceToDeleteID, setAnnounceToDeleteID] = useState([])
+    const [announceToDeleteID, setAnnounceToDeleteID] = useState()
 
     const checkDeleteAnnounce = (e, deleteID) => {
 
-        setAnnounceToDeleteID(deleteID)
-
-        fetch('http://localhost:5000/announcement/edit/' + deleteID).then(res => res.json()).then(result => {
-            setAnnounceToDelete(result)
-        })
-        
+        setAnnounceToDeleteID(deleteID) 
         root.style.setProperty('--ConfirmDelete-Announce-Modal-Admin-PointerEvents', "all");
         root.style.setProperty('--ConfirmDelete-Announce-Modal-Admin-Opacity', "1");
     }
@@ -680,39 +606,23 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
     const cancelDeleteAnnounce = () => {
         root.style.setProperty('--ConfirmDelete-Announce-Modal-Admin-PointerEvents', "none");
         root.style.setProperty('--ConfirmDelete-Announce-Modal-Admin-Opacity', "0");
-        setAnnounceToDelete([]);
     }
 
-    const confirmDeleteAnnounce = () => {
+    const confirmDeleteAnnounce = async (e) => {
+
         refreshAnnounceTable();
 
-        let databody = {
-            "announcement_type": announceToDelete.announcement_type,
-            "announcement_name": announceToDelete.announcement_name,
-            "announcement_date": announceToDelete.announcement_date,
-            "announcement_time": announceToDelete.announcement_time,
-            "announcement_place": announceToDelete.announcement_place
+        try {
+            const response = await fetch(`http://localhost:5000/api/announcements/${announceToDeleteID}`, {
+              method: 'DELETE',
+            });
+            const data = await response.json();
+          } catch (err) {
+            console.log(err);
         }
-
-        fetch('http://localhost:5000/deleted_records/announcements', {
-            method: 'POST',
-            body: JSON.stringify(databody),
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        })
-        .then(response => response.json());
-
-        fetch('http://localhost:5000/announcement/delete/' + announceToDeleteID, {
-            method: 'DELETE'
-        })
-        .then(response => response.json());
 
         root.style.setProperty('--ConfirmDelete-Announce-Modal-Admin-PointerEvents', "none");
         root.style.setProperty('--ConfirmDelete-Announce-Modal-Admin-Opacity', "0");
-
-        setAnnounceToDelete([]);
-        setAnnounceToDeleteID([]);
         refreshAnnounceTable();
     }
 
@@ -727,7 +637,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
     }
 
     const refreshAnnounceTable = () => {
-        fetch('http://localhost:5000/announcements').then(res => res.json()).then(result => {
+        fetch('http://localhost:5000/api/announcements').then(res => res.json()).then(result => {
             setViewAnnouncements(result)
         })
     }
@@ -1064,7 +974,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                     </div>
                 </div>
 
-                <div className="adminModule_create_announce_modal">
+                {/* <div className="adminModule_create_announce_modal">
                     <CreateAnnounceModal 
                     addAnnounce={addAnnounce}
                     resetAnnounceInputs={resetAnnounceInputs}
@@ -1079,9 +989,13 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                     announceTime={announceTime}
                     announcePlace={announcePlace}
                     />
+                </div> */}
+                <div className="adminModule_create_announce_modal">
+                    <CreateAnnouncement 
+                        refreshAnnounceTable={refreshAnnounceTable}/>
                 </div>
 
-                <div className="adminModule_edit_announce_modal">
+                {/* <div className="adminModule_edit_announce_modal">
                     <EditAnnounceModal
                     // editSchedValue={editSchedValue}
                     updateAnnounce={updateAnnounce}
@@ -1097,6 +1011,12 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                     announceTime={announceTime}
                     announcePlace={announcePlace}
                     />
+                </div> */}
+
+                <div className="adminModule_edit_announce_modal">
+                    <EditAnnouncement 
+                        announcementID={announcementID}
+                        refreshAnnounceTable={refreshAnnounceTable}/>
                 </div>
 
                 <div className="confirmDelete_announce_modal_wrap-admin">
