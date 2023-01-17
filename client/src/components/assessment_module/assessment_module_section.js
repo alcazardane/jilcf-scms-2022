@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import search_icon from "../../images/search_FILL0_wght400_GRAD0_opsz48.png"
 import back_icon from "../../images/arrow_back_FILL0_wght400_GRAD0_opsz48.png"
 
-const AssessmentModuleSection = ({ classID, classSection }) => {
+const AssessmentModuleSection = ({ classID, classSection, subjectID }) => {
 
     var root = document.querySelector(":root");
 
@@ -12,25 +12,15 @@ const AssessmentModuleSection = ({ classID, classSection }) => {
     }
 
     const [handledStudents, setHandledStudents] = useState([]);
-    const [subjID, setSubjID] = useState('GM-001')
-
-    // useEffect(() => {
-    //     async function fetchStudents() {
-    //       const response = await fetch(`http://localhost:5000/api/class-sections/students/${classID}`);
-    //       const data = await response.json();
-    //       setHandledStudents(data);
-    //     }
-    //     fetchStudents();
-    //   }, [classID]);
 
     useEffect(() => {
         async function fetchStudents() {
-          const response = await fetch(`http://localhost:5000/api/class-sections/students/${classID}/${subjID}`);
+          const response = await fetch(`http://localhost:5000/api/class-sections/students/${classID}/${subjectID}`);
           const data = await response.json();
           setHandledStudents(data);
         }
         fetchStudents();
-    }, [classID, subjID]);
+    }, [classID, subjectID]);
 
     const getMiddleInitial = (initial) => {
         if(!initial){

@@ -1,4 +1,5 @@
 import React from "react";
+import { useState } from "react";
 import { useAuthContext } from './hooks/useAuthContext'
 
 // We use Route in order to define the different routes of our application
@@ -21,9 +22,14 @@ import UserAboutModule from "./components/about_module/userAboutModule";
 import UserAssessmentModule from "./components/assessment_module/userAssessmentModule";
 import UserCameraModule from "./components/camera_module/userCameraModule";
 import UserNotificationModule from "./components/notification_module/userNotificationModule";
+import UserAnalyticsModule from "./components/analytics_module/userAnalyticsModule";
 
 function App(){
   const { user } = useAuthContext()
+
+  const [classID, setClassID] = useState('ACADEMIC-12-STEM-A');
+  const [classSection, setClassSection] = useState('12 STEM A');
+  const [subjectID, setSubjectID] = useState('GM-001');
 
   const navigateUser = () => {
     if (!user){
@@ -127,7 +133,16 @@ function App(){
 
           <Route 
             path="/home/L2/assessment"
-            element={user ? <UserAssessmentModule /> : <Navigate to="/login" />}
+            element={
+              user ? 
+              <UserAssessmentModule  
+                // idNumber={idNumber}
+                setClassID={setClassID}
+                setClassSection={setClassSection}
+                setSubjectID={setSubjectID}
+                classID={classID}
+                classSection={classSection}
+                subjectID={subjectID}/> : <Navigate to="/login" />}
           />
           <Route 
             path="/home/L3/assessment"
@@ -150,6 +165,20 @@ function App(){
           <Route 
             path="/home/L3/notification"
             element={user ? <UserNotificationModule /> : <Navigate to="/login" />}
+          />
+
+          <Route 
+            path="/home/L2/analytics"
+            element={
+              user ? 
+              <UserAnalyticsModule 
+                // idNumber={idNumber}
+                setClassID={setClassID}
+                setClassSection={setClassSection}
+                setSubjectID={setSubjectID}
+                classID={classID}
+                classSection={classSection}
+                subjectID={subjectID}/> : <Navigate to="/login" />}
           />
 
         </Routes>
