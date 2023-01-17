@@ -73,12 +73,13 @@
     flex-wrap: wrap;
     justify-content: center;
 }
-.assessment_module_main_wrap_b{
+.assessment_module_main_wrap_c{
     width: 100%;
     height: 100%;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    overflow: auto;
     background: white;
 }
 .assessment_module_topwrap{
@@ -217,6 +218,17 @@
     background: white;
     margin-left: 1.5%;
 }
+.assessment_module_search_wrap-c{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    border: 2px solid #B3B3B3;
+    border-radius: 100px;
+    background: white;
+    margin-left: 1.5%;
+}
 .upload_assessment{
     width: 20%;
     height: 50%;
@@ -241,7 +253,7 @@
 
 .assessment_module_students_table_wrap{
     width: 100%;
-    height: 85%;
+    height: 90%;
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -354,4 +366,8 @@
     height: 40%;
     display: flex;
     justify-content: space-around;
+}
+.assessment_module_studscores{
+    width: 100%;
+    height: 100%;
 }

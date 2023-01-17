@@ -2,6 +2,8 @@ import { useRef, useState, useEffect } from "react"
 import Sidebar from "../SIDEBAR/sidebar"
 import { useAuthContext } from "../../hooks/useAuthContext"
 
+import NotificationModule from "./notification_module"
+
 const UserNotificationModule = () => {
 
     const { user } = useAuthContext()
@@ -24,7 +26,6 @@ const UserNotificationModule = () => {
         .catch(err => console.log(err));
     }, []);
 
-    const [notifIsOpen, setNotifIsOpen] = useState(false);
 
     return (
       <>
@@ -41,20 +42,10 @@ const UserNotificationModule = () => {
                 aboutIsOpen={aboutIsOpen}
                 calendarIsOpen={calendarIsOpen}
                 assessmentIsOpen={assessmentIsOpen}
-                notifIsOpen={notifIsOpen}
             />
 
             <div className="adminModule_L1_main_wrap">
-                {announcements && announcements.map(announce => (
-                    <div key={announce._id} className="notification_preview_item_container">
-                        <div>{announce.name}</div>
-                        <div>{announce.description}</div>
-                        <div>Type: {announce.type}</div>
-                        <div>Date: {announce.date}</div>
-                        <div>Time: {announce.time}</div>
-                        <div>Place: {announce.place}</div>
-                    </div>
-                ))}
+                <NotificationModule />
             </div>
         </div>
       </div>

@@ -9,6 +9,10 @@ const getDateObj = (day, month, year) => {
     return new Date(year, month, day);
 }
 
+const convertDate = (dateString) => {
+    return new Date(dateString);
+}
+
 const istheDateSame = (first, second) => {
     return ( 
         first.getFullYear() === second.getFullYear() &&
@@ -29,21 +33,19 @@ const CalendarModule = ({ allEvents, openAddEvent }) => {
 
     var root = document.querySelector(":root");
 
-    // const [newEvent, setNewEvent] = useState({ name: "", type: "", date: "", time: "", location: ""})
-    // const [allEvents, setAllEvents] = useState(sampleEvents);
+    const [allAnnouncements, setAllAnnouncements] = useState([]);
 
-    // useEffect(() => {
-    //     // console.log(viewSchedules);
-    //     // console.log(calendarRows)
-    // })
-    
-    // const openAddSchedule = (clickedDate) => {
-    //     //console.log(clickedDate);
-        
-    //     root.style.setProperty('--calendarAddSchedule_modal-PointerEvents', "all")
-    //     root.style.setProperty('--calendarAddSchedule_modal-Opacity', "1")
-    // }
-
+    useEffect(() =>{
+        const fetchAnnouncement= async () => {
+            const response = await fetch('http://localhost:5000/api/announcements')
+            const json = await response.json()
+            if (response.ok){
+                setAllAnnouncements(json)
+            }
+        }
+        fetchAnnouncement()
+        // console.log(viewAnnouncements)
+    }, [])
 
     return (
         <>
@@ -74,8 +76,9 @@ const CalendarModule = ({ allEvents, openAddEvent }) => {
                                         col.date === todayFormatted
                                         ?
                                         <div className="calendar_module_days_box"  key={col.date}
-                                            onClick={() => openAddEvent(months[col.currentmon] + " " + col.value + ", " + col.currentyr,
-                                                getDateObj(col.value, col.currentmon, col.currentyr))}>
+                                            // onClick={() => openAddEvent(months[col.currentmon] + " " + col.value + ", " + col.currentyr,
+                                            //     getDateObj(col.value, col.currentmon, col.currentyr))}
+                                            >
                                             <div className="calendar_module_days_topwrap">
                                                 <div id="calendar_module_days" className={`${col.classes} calendar_module_days_today`}>
                                                     {col.value}
@@ -83,16 +86,17 @@ const CalendarModule = ({ allEvents, openAddEvent }) => {
                                                 <img className="calendar_module_add_btn" src={AddIcon} alt="Add_Schedule"></img>
                                             </div>
                                             <div className="calendar_module_days_eventswrap">
-                                                {allEvents && allEvents.map((ev) => (
-                                                    istheDateSame(getDateObj(col.value, col.currentmon, col.currentyr), ev.date) &&
+                                                {allAnnouncements && allAnnouncements.map((ev) => (
+                                                    istheDateSame(getDateObj(col.value, col.currentmon - 1, col.currentyr), convertDate(ev.date)) &&
                                                     <div key={ev._id} className="calendar_module_events">{ev.name}</div>
                                                 ))}
                                             </div>
                                         </div>
 
                                         : <div className="calendar_module_days_box" key={col.date}
-                                                onClick={() => openAddEvent(months[col.currentmon]  + " " + col.value + ", " + col.currentyr,
-                                                    getDateObj(col.value, col.currentmon, col.currentyr))}>
+                                                // onClick={() => openAddEvent(months[col.currentmon]  + " " + col.value + ", " + col.currentyr,
+                                                //     getDateObj(col.value, col.currentmon, col.currentyr))}
+                                            >
                                             <div className="calendar_module_days_topwrap">
                                                 <div id="calendar_module_days" className={col.classes}>
                                                     {col.value}
@@ -100,8 +104,8 @@ const CalendarModule = ({ allEvents, openAddEvent }) => {
                                                 <img className="calendar_module_add_btn" src={AddIcon} alt="Add_Schedule"></img>
                                             </div>
                                             <div className="calendar_module_days_eventswrap">
-                                                {allEvents && allEvents.map((ev) => (
-                                                    istheDateSame(getDateObj(col.value, col.currentmon, col.currentyr), ev.date) &&
+                                                {allAnnouncements && allAnnouncements.map((ev) => (
+                                                    istheDateSame(getDateObj(col.value, col.currentmon - 1, col.currentyr), convertDate(ev.date)) &&
                                                     <div key={ev._id} className="calendar_module_events">{ev.name}</div>
                                                 ))}
                                             </div>

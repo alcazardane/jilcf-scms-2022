@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import search_icon from "../../images/search_FILL0_wght400_GRAD0_opsz48.png"
 import back_icon from "../../images/arrow_back_FILL0_wght400_GRAD0_opsz48.png"
 
-const AssessmentModuleSection = ({ classID, classSection, subjectID }) => {
+const AssessmentModuleSection = ({ user, idNumber, classID, classSection, subjectID }) => {
 
     var root = document.querySelector(":root");
 
@@ -12,7 +12,6 @@ const AssessmentModuleSection = ({ classID, classSection, subjectID }) => {
     }
 
     const [handledStudents, setHandledStudents] = useState([]);
-
     useEffect(() => {
         async function fetchStudents() {
           const response = await fetch(`http://localhost:5000/api/class-sections/students/${classID}/${subjectID}`);
@@ -21,6 +20,16 @@ const AssessmentModuleSection = ({ classID, classSection, subjectID }) => {
         }
         fetchStudents();
     }, [classID, subjectID]);
+
+    const [studAssessment, setStudAssessment] = useState([]);
+    useEffect(() => {
+        async function fetchStudents() {
+          const response = await fetch(`http://localhost:5000/api/class-sections/records/${idNumber}/${subjectID}`);
+          const data = await response.json();
+          setStudAssessment(data);
+        }
+        fetchStudents();
+    }, [idNumber, subjectID]);
 
     const getMiddleInitial = (initial) => {
         if(!initial){
@@ -31,20 +40,11 @@ const AssessmentModuleSection = ({ classID, classSection, subjectID }) => {
         }
     }
 
-  return (
-    <>
-        <div className="assessment_module_main_wrap_b">
-            <div className="assessment_module_topwrap">
-                <div className="assessment_module_back_wrap">
-                    <img 
-                        src={back_icon} alt="back" 
-                        className="assessment_module_back_icon" 
-                        onClick={backtoAssessment}/>
-
-                    {/* Insert selected section here */}
-                    <span className="assessment_module_section_text">{classSection}</span>
-                </div>
-
+    let assessment_top;
+    let assessment_content;
+    if (user.level === '2'){
+        assessment_top =
+            <>
                 <div className="assessment_module_searchDLUP_wrap">
                     <div className="assessment_module_search_wrap-b">
                         <img src={search_icon} alt="search" className="assessment_module_search_icon"/>
@@ -57,9 +57,10 @@ const AssessmentModuleSection = ({ classID, classSection, subjectID }) => {
                     <button className="upload_assessment">Upload</button>
                     <button className="download_assessment">Download</button>
                 </div>
-            </div>
-
-            <div className="assessment_module_students_table_wrap">
+            </>
+        
+        assessment_content =
+            <>
                 <table className="assessment_module_students_table">
                     <thead>
                         <tr className="assessment_module_students_header">
@@ -87,6 +88,112 @@ const AssessmentModuleSection = ({ classID, classSection, subjectID }) => {
                         }
                     </tbody>
                 </table>
+            </>
+    }
+    else if (user.level === '3'){
+        assessment_top = 
+            <>
+                <div className="assessment_module_searchDLUP_wrap">
+                    <div className="assessment_module_search_wrap-c">
+                        <img src={search_icon} alt="search" className="assessment_module_search_icon"/>
+                        <input 
+                            type="text" 
+                            className="assessment_module_search_input"
+                            placeholder="Search a record"
+                        />
+                    </div>
+                </div>
+            </>
+
+        assessment_content = 
+            <>
+                {studAssessment && studAssessment.map(studscores => (
+                    <div 
+                        key={"key-" + studscores.quiz_score + "-" + studscores.seatwork_score}
+                        className="assessment_module_studscores">
+                        <div className="analytics_module_record_wrap">
+                            <div className="analytics_module_record_container">
+                                <div className="analytics_module_record_title">Quiz</div>
+                                <div className="analytics_module_record_separator-b"></div>
+                                <div className="analytics_module_record_text">{"Date: " + studscores.quiz_date}</div>
+                                <div className="analytics_module_record_text">
+                                    {"Score: " + studscores.quiz_score + "/" + studscores.quiz_maxscore}
+                                </div>
+                            </div>
+
+                            <div className="analytics_module_record_container">
+                                <div className="analytics_module_record_title">Seatwork</div>
+                                <div className="analytics_module_record_separator-b"></div>
+                                <div className="analytics_module_record_text">{"Date: " + studscores.seatwork_date}</div>
+                                <div className="analytics_module_record_text">
+                                    {"Score: " + studscores.seatwork_score + "/" + studscores.seatwork_maxscore}
+                                </div>
+                            </div>
+
+                            <div className="analytics_module_record_container">
+                                <div className="analytics_module_record_title">Recitation</div>
+                                <div className="analytics_module_record_separator-b"></div>
+                                <div className="analytics_module_record_text">{"Date: " + studscores.recitation_date}</div>
+                                <div className="analytics_module_record_text">
+                                    {"Score: " + studscores.recitation_score + "/" + studscores.recitation_maxscore}
+                                </div>
+                            </div>
+                        </div>
+
+                        <div className="analytics_module_record_wrap">
+                            <div className="analytics_module_record_container">
+                                <div className="analytics_module_record_title">Exam</div>
+                                <div className="analytics_module_record_separator-b"></div>
+                                <div className="analytics_module_record_text">{"Date: " + studscores.exam_date}</div>
+                                <div className="analytics_module_record_text">
+                                    {"Score: " + studscores.exam_score + "/" + studscores.exam_maxscore}
+                                </div>
+                            </div>
+
+                            <div className="analytics_module_record_container">
+                                <div className="analytics_module_record_title">Project</div>
+                                <div className="analytics_module_record_separator-b"></div>
+                                <div className="analytics_module_record_text">{"Date: " + studscores.project_date}</div>
+                                <div className="analytics_module_record_text">
+                                    {"Score: " + studscores.project_score + "/" + studscores.project_maxscore}
+                                </div>
+                            </div>
+
+                            <div className="analytics_module_record_container">
+                                <div className="analytics_module_record_title">Attendance</div>
+                                <div className="analytics_module_record_separator-b"></div>
+                                <div className="analytics_module_record_text">{"Date: " + studscores.attendance_date}</div>
+                                <div className="analytics_module_record_text">
+                                    {"Score: " + studscores.attendance_score + "/" + studscores.attendance_maxscore}
+                                </div>
+                            </div>
+                        </div>
+                    </div>                   
+                ))}
+            </>
+    }
+    else{
+        return
+    }
+
+  return (
+    <>
+        <div className="assessment_module_main_wrap">
+            <div className="assessment_module_topwrap">
+                <div className="assessment_module_back_wrap">
+                    <img 
+                        src={back_icon} alt="back" 
+                        className="assessment_module_back_icon" 
+                        onClick={backtoAssessment}/>
+
+                    <span className="assessment_module_section_text">{classSection}</span>
+                </div>
+
+                {assessment_top}
+            </div>
+
+            <div className="assessment_module_students_table_wrap">
+                {assessment_content}
             </div>
         </div>
     </>

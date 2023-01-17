@@ -6,11 +6,11 @@ const AnnouncementTable = ({ viewAnnouncement, editAnnounce, checkDeleteAnnounce
     return (
         <>
         <tr className="winAtt_viewStudent_table_body-b announce-tb-body">
-            <td>{viewAnnouncement.announcement_type}</td>
-            <td>{viewAnnouncement.announcement_name}</td>
-            <td>{viewAnnouncement.announcement_date}</td>
-            <td>{viewAnnouncement.announcement_time}</td>
-            <td>{viewAnnouncement.announcement_place}</td>
+            <td>{viewAnnouncement.type}</td>
+            <td>{viewAnnouncement.name}</td>
+            <td>{viewAnnouncement.date}</td>
+            <td>{viewAnnouncement.time}</td>
+            <td>{viewAnnouncement.place}</td>
             <td>
                 <button className="windowAttendance_notify">
                     <img src={edit_icon} alt="edit" 

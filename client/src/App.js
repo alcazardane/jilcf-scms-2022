@@ -136,7 +136,6 @@ function App(){
             element={
               user ? 
               <UserAssessmentModule  
-                // idNumber={idNumber}
                 setClassID={setClassID}
                 setClassSection={setClassSection}
                 setSubjectID={setSubjectID}
@@ -146,7 +145,15 @@ function App(){
           />
           <Route 
             path="/home/L3/assessment"
-            element={user ? <UserAssessmentModule /> : <Navigate to="/login" />}
+            element={
+                user ? 
+                <UserAssessmentModule 
+                  setClassID={setClassID}
+                  setClassSection={setClassSection}
+                  setSubjectID={setSubjectID}
+                  classID={classID}
+                  classSection={classSection}
+                  subjectID={subjectID}/> : <Navigate to="/login" />}
           />
 
           <Route 
@@ -172,7 +179,6 @@ function App(){
             element={
               user ? 
               <UserAnalyticsModule 
-                // idNumber={idNumber}
                 setClassID={setClassID}
                 setClassSection={setClassSection}
                 setSubjectID={setSubjectID}

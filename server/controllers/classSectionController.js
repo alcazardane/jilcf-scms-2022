@@ -1,6 +1,7 @@
 const ClassSection = require('../models/classSectionModel');
 const User = require('../models/userModel');
 const Assessment = require('../models/assessmentModel');
+const Subject = require('../models/subjectModel')
 
 // Create a new class section
 exports.createClassSection = (req, res) => {
@@ -291,5 +292,80 @@ exports.getClassSubjectLeastPerformers = async (req, res) => {
     return res.status(200).json([result]);
   } catch (err) {
     res.status(500).send(err);
+  }
+};
+
+
+exports.getStudentSubjects = async (req, res) => {
+  try {
+    const { student_id } = req.params;
+
+    // Find class section by student_id
+    const classSection = await ClassSection.findOne({ "students.student_id": student_id });
+    if (!classSection) return res.status(404).json({ message: 'Student not found' });
+
+    // Get class_id of student
+    const class_id = classSection.class_id;
+
+    // Find subject by class_id
+    const subject = await Subject.find({ "teachers.class_ids": class_id });
+    if (!subject) return res.status(404).json({ message: 'Subject not found' });
+
+    // Initialize array to store result
+    const result = [];
+
+    for (let i = 0; i < subject.length; i++) {
+      let subjectData = {
+        class_id: class_id,
+        subject_id: subject[i].subject_id,
+        subject_name: subject[i].subject_name
+      };
+
+      // Iterate through teachers
+      for (let j = 0; j < subject[i].teachers.length; j++) {
+        let { teacher_id, class_ids } = subject[i].teachers[j];
+
+        // Check if class_id exists in class_ids
+        if (class_ids.includes(class_id)) {
+          subjectData.teacher_id = teacher_id;
+          // Find user by teacher_id
+          const teacher = await User.findOne({ idNumber: teacher_id });
+          if (!teacher) continue;
+
+          subjectData.teacher_fname = teacher.fname;
+          subjectData.teacher_mname = teacher.mname;
+          subjectData.teacher_lname = teacher.lname;
+        }
+      }
+      result.push(subjectData);
+    }
+
+    return res.status(200).json(result);
+  } catch (err) {
+    res.status(500).send(err);
+  }
+};
+
+exports.getStudentAssessmentRecords = async (req, res) => {
+  try {
+    const { student_id, subject_id } = req.params;
+
+    // Find assessment by student_id and subject_id
+    const assessment = await Assessment.findOne({
+        userId: student_id,
+        subjectId: subject_id
+    });
+    if (!assessment) return res.status(404).json({ message: 'Assessment records not found' });
+    //initialize an object
+    let studRecord = {};
+    for (let i = 0; i < assessment.studRecord.length; i++) {
+        let { date, label, score, maxscore } = assessment.studRecord[i];
+        studRecord[`${label}_score`] = score;
+        studRecord[`${label}_maxscore`] = maxscore;
+        studRecord[`${label}_date`] = date;
+    }
+    res.json([studRecord]);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
   }
 };

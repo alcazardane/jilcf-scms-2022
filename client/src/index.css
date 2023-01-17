@@ -179,7 +179,7 @@ body{
   --windowAssessment-search-width: 30vw;
 
 
-  --notification_preview-display: none;
+  --notification_preview-display: block;
 
   --windowAnalyticsSection-display: none;
   --windowAnalytics-display: block;
