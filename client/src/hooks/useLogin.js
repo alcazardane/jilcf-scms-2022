@@ -16,8 +16,8 @@ export const useLogin = () => {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
-                "Access-Control-Allow-Origin" : "*", 
-                "Access-Control-Allow-Credentials" : true 
+                'Access-Control-Allow-Origin' : '*', 
+                'Access-Control-Allow-Credentials' : true 
             },
             body: JSON.stringify({idNumber, password})
         })
