@@ -21,7 +21,7 @@ const AnalyticsModule = ({ idNumber, setClassID, setClassSection, setSubjectID }
 
     useEffect(() => {
         const fetchClassData = async () => {
-        const response = await fetch(`http://localhost:5000/api/subject/teacher/${idNumber}`);
+        const response = await fetch(`/api/subject/teacher/${idNumber}`);
         const data = await response.json();
         setClassData(data);
         };

@@ -37,7 +37,7 @@ const CalendarModule = ({ allEvents, openAddEvent }) => {
 
     useEffect(() =>{
         const fetchAnnouncement= async () => {
-            const response = await fetch('http://localhost:5000/api/announcements')
+            const response = await fetch('/api/announcements')
             const json = await response.json()
             if (response.ok){
                 setAllAnnouncements(json)

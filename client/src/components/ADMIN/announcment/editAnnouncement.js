@@ -145,7 +145,7 @@ const EditAnnouncement = ({ announcementID, refreshAnnounceTable }) => {
     useEffect(() => {
         const fetchData = async () => {
           try {
-            const res = await fetch(`http://localhost:5000/api/announcements/${announcementID}`);
+            const res = await fetch(`/api/announcements/${announcementID}`);
             const data = await res.json();
             setAnnouncement(data);
             setAnnounceName(data.name);
@@ -189,7 +189,7 @@ const EditAnnouncement = ({ announcementID, refreshAnnounceTable }) => {
         }
 
         try {
-        const res = await fetch(`http://localhost:5000/api/announcements/${announcementID}`, {
+        const res = await fetch(`/api/announcements/${announcementID}`, {
             method: 'PATCH',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(databody),
