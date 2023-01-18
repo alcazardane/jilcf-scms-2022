@@ -22,15 +22,15 @@ export const useLogin = () => {
             body: JSON.stringify({idNumber, password})
         })
 
-        const json = await response.json()
+        // const json = await response.json()
 
         if (!response.ok) {
             setIsLoading(false)
-            setError(json.error)
+            setError(response.json().error)
         }
         if (response.ok){
             // save the user to local storage
-            localStorage.setItem('user', JSON.stringify(json))
+            localStorage.setItem('user', JSON.stringify(response.json()))
             const cred = JSON.parse(localStorage.getItem('user'))
             
             if(cred.level === "1"){
@@ -44,7 +44,7 @@ export const useLogin = () => {
             }
 
             // update the auth context
-            dispatch({type: 'LOGIN', payload: json})
+            dispatch({type: 'LOGIN', payload: response.json()})
 
             setIsLoading(false)
         }
