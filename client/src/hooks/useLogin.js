@@ -12,6 +12,11 @@ export const useLogin = () => {
         setIsLoading(true)
         setError(null)
 
+        let databody = {
+            "idNumber": idNumber,
+            "password": password
+        }
+
         const response = await fetch('/api/user/login', {
             method: 'POST',
             headers: {
@@ -19,7 +24,7 @@ export const useLogin = () => {
                 'Access-Control-Allow-Origin' : '*', 
                 'Access-Control-Allow-Credentials' : true 
             },
-            body: JSON.stringify({idNumber, password})
+            body: JSON.stringify(databody)
         })
 
         // const json = await response.json()
