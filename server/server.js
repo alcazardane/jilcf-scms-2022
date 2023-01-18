@@ -1,8 +1,12 @@
-require("dotenv").config({ path: "./config.env" });
+if (process.env.NODE_ENV !== 'production') {
+  require("dotenv").config({ path: "./config.env" });
+}
+
 
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose")
+const path = require('path');
 
 //middleware
 const cors = require("cors");
@@ -66,3 +70,11 @@ mongoose.connect(process.env.ATLAS_URI)
       console.log('connected to db')
     })
   })
+
+// static files (build of your frontend)
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static(path.join(__dirname, '../frontend', 'build')));
+  app.get('/*', (req, res) => {
+    res.sendFile(path.join(__dirname, '../frontend', 'build', 'index.html'));
+  })
+}
