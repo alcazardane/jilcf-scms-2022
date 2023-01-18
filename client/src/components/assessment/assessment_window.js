@@ -13,7 +13,7 @@ const AssessmentWindow = () => {
 
     useEffect(() =>{
         const fetchAssessment = async () => {
-            const response = await fetch('/assessment_record')
+            const response = await fetch('http://localhost:5000/assessment_record')
             const json = await response.json()
 
             if (response.ok){
