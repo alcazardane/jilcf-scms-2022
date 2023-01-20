@@ -469,7 +469,7 @@ const Sidebar = ({ user,
             </Link>
 
         userCameraModule = 
-            <Link to="/home/L2/camera" style={{ textDecoration: 'none' }}>
+            <Link to="/facerecog" style={{ textDecoration: 'none' }}>
                 <div 
                     className={"main_window_L1_sidebar_module_wrap " + (cameraIsOpen ? "sidebar_wrap_active" : "")}>
                     <img className="main_window_L1_sidebar_module_icon" src={camera_icon} alt="Camera"></img>

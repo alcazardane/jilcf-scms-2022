@@ -75,7 +75,7 @@ function App(){
           />
           <Route 
             path="/home/L1/user_dashboard"
-            element={<HomeUserDashboard/>}
+            element={user ? <HomeUserDashboard /> : navigateUser()}
             />
           <Route 
             path="/home/L2/user_dashboard"

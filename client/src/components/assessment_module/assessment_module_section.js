@@ -43,7 +43,7 @@ const AssessmentModuleSection = ({ user, idNumber, classID, classSection, subjec
 
     let assessment_top;
     let assessment_content;
-    if (user.level === '2'){
+    if (user.level === '2' && handledStudents){
         assessment_top =
             <>
                 <div className="assessment_module_searchDLUP_wrap">
@@ -91,6 +91,46 @@ const AssessmentModuleSection = ({ user, idNumber, classID, classSection, subjec
                                 </tr>
                             ))
                         }
+                    </tbody>
+                </table>
+            </>
+    }
+    else if (user.level === '2' && !handledStudents){
+        assessment_top =
+            <>
+                <div className="assessment_module_searchDLUP_wrap">
+                    <div className="assessment_module_search_wrap-b">
+                        <img src={search_icon} alt="search" className="assessment_module_search_icon"/>
+                        <input 
+                            type="text" 
+                            className="assessment_module_search_input"
+                            placeholder="Search a student"
+                        />
+                    </div>
+                    <button className="upload_assessment" disabled>Upload</button>
+                    <button className="download_assessment" disabled>Download</button>
+                </div>
+            </>
+        
+        assessment_content =
+            <>
+                <table className="assessment_module_students_table">
+                    <thead>
+                        <tr className="assessment_module_students_header">
+                            <td>Student Name</td>
+                            <td>Exam</td>
+                            <td>Recitation</td>
+                            <td>Quiz</td>
+                            <td>Seatwork</td>
+                            <td>Project</td>
+                            <td>Attendance</td>
+                            <td>Actions</td>
+                        </tr>
+                    </thead>
+                    <tbody className="assessment_module_students_body">                   
+                        <tr>
+                            <td>No Students Data Available</td>
+                        </tr>
                     </tbody>
                 </table>
             </>
