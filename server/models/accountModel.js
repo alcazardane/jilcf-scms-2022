@@ -3,14 +3,10 @@ const Schema = mongoose.Schema
 
 
 const accountSchema = new Schema({
-    idNumber: {
+    idnumber: {
         type: String,
         required: true,
         unique: true
-    },
-    password: {
-        type: String,
-        required: true,
     },
     fname: {
         type: String,
@@ -30,6 +26,10 @@ const accountSchema = new Schema({
         type: String,
         required: true,
     },
+    grade: {
+        type: String,
+        required: true,
+    },
     track: {
         type: String,
         required: true,
@@ -40,30 +40,35 @@ const accountSchema = new Schema({
     },
     section: {
         type: String,
+        required: true,
+    },
+    img: {
+        type: String,
+    },
+    password: {
+        type: String,
+        required: true,
     },
 }, {strict: true, strictQuery: false})
 
 // static register method
-accountSchema.statics.register = async function(idNumber, password, fname, mname, lname, suffix, level, track, strand, section) {
+accountSchema.statics.createAcc = async function(idnumber, fname, mname, lname, suffix, level, grade, track, strand, section, img, password) {
 
     // validation
-    if(!idNumber || !password){
+    if(!idnumber || !fname || !mname || !lname || !suffix || !level || !grade || !track || !strand || !section || !img || !password){
         throw Error('All fields must be filled')
     }
-    if(!validator.isStrongPassword(password)){
-        throw Error('Password is not strong enough')
-    }
 
-    const exists = await this.findOne({ idNumber })
+    const exists = await this.findOne({ idnumber : idnumber })
 
     if(exists){
-        throw Error("Id Number is already registered")
+        throw Error(`User ${idnumber} is already existing.`)
     }
 
     const salt = await bcrypt.genSalt(10)
     const hash = await bcrypt.hash(password, salt)
 
-    const user = await this.create({ idNumber, password: hash, fname, mname, lname, suffix, level, track, strand, section})
+    const user = await this.create({ idnumber, fname, mname, lname, suffix, level, grade, track, strand, section, img, password: hash})
 
     return user
 

@@ -7,8 +7,8 @@ import "../../styles/login.css"
 import school_logo from "../../images/jilcf_logo_1.png"
 
 const Login = () => {
-    const [idNumber, setIdNumber] = useState('')
-    const [password, setPassword] = useState('')
+    const [idNumber, setIdNumber] = useState("")
+    const [password, setPassword] = useState("")
     const {login, error, isLoading} = useLogin()
     const navigate = useNavigate()
 

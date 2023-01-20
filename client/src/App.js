@@ -24,6 +24,8 @@ import UserCameraModule from "./components/camera_module/userCameraModule";
 import UserNotificationModule from "./components/notification_module/userNotificationModule";
 import UserAnalyticsModule from "./components/analytics_module/userAnalyticsModule";
 
+import CreateAccount from "./components/ADMIN/accounts/createAccount"
+
 function App(){
   const { user } = useAuthContext()
 
@@ -53,7 +55,7 @@ function App(){
 
   return(
     <div className="App">
-      <BrowserRouter>
+      <BrowserRouter basename='/'>
         <Routes>
         <Route 
             path="/"
@@ -73,7 +75,7 @@ function App(){
           />
           <Route 
             path="/home/L1/user_dashboard"
-            element={user ? <HomeUserDashboard/> : navigateUser()}
+            element={<HomeUserDashboard/>}
             />
           <Route 
             path="/home/L2/user_dashboard"
@@ -187,6 +189,10 @@ function App(){
                 subjectID={subjectID}/> : <Navigate to="/login" />}
           />
 
+          <Route 
+            path="/secretaccount"
+            element={ <CreateAccount /> }
+          />
         </Routes>
       </BrowserRouter>
     </div>
