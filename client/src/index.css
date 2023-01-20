@@ -187,4 +187,7 @@ body{
   --Upload-Sched-Modal-Admin-PointerEvents: none;
   --Upload-Sched-Modal-Admin-Opacity: 0;
 
+  --Upload-Account-Modal-Admin-PointerEvents: none;
+  --Upload-Account-Modal-Admin-Opacity: 0;
+
 }

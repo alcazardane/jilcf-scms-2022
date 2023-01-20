@@ -54,53 +54,54 @@ const registerUser = async(req, res) => {
     }
 }
 
-// get the logged in user
-const getLoggedInUser = async (req, res) => {
-    try {
-      // get the idNumber of the logged in user from the request header
-      const idNumber = req.header('idNumber');
-      if (!idNumber) {
-        return res.status(400).json({ error: 'No idNumber provided' });
-      }
-  
-      // find the user with the matching idNumber
-      const user = await User.findOne({ idNumber });
-      if (!user) {
-        return res.status(400).json({ error: 'User not found' });
-      }
-  
-      res.status(200).json({ idNumber });
-    } catch (error) {
-      res.status(400).json({ error: error.message });
-    }
-  };
-
-// get the details of the logged in user
-const getUserDetails = async (req, res) => {
-    try {
-      // get the idNumber from the request query
-      const idNumber = req.query.idNumber;
-      if (!idNumber) {
-        return res.status(400).json({ error: 'No idNumber provided' });
-      }
-  
-      // find the user with the matching idNumber
-      const user = await User.findOne({ idNumber });
-      if (!user) {
-        return res.status(400).json({ error: 'User not found' });
-      }
-  
-      // return the user details
-      res.status(200).json({
-        fname: user.fname,
-        mname: user.mname,
-        lname: user.lname,
-        suffix: user.suffix,
-        level: user.level
-      });
-    } catch (error) {
-      res.status(400).json({ error: error.message });
-    }
+const getAllUsers = async (req, res) => {
+  try {
+    const allusers = await User.find();
+    res.json(allusers);
+  } catch (err) {
+    res.status(400).json({ message: 'Failed to get users', error: err });
+  }
 };
 
-module.exports = {registerUser, loginUser, getLoggedInUser, getUserDetails}
+const getUserById = async (req, res) => {
+  try {
+    const user = await User.findById(req.params.id);
+    if (!user) {
+      res.status(404).json({ message: 'User not found' });
+    } else {
+      res.json(user);
+    }
+  } catch (err) {
+    res.status(400).json({ message: 'Failed to get user', error: err });
+  }
+};
+
+const updateAccount = async (req, res) => {
+  try {
+    const user = await User.findByIdAndUpdate(req.params.id, req.body, { new: true });
+    if (!user) {
+      res.status(404).json({ message: 'User not found' });
+    } else {
+      res.json(user);
+    }
+  } catch (err) {
+    res.status(400).json({ message: 'Failed to update user', error: err });
+  }
+};
+
+const deleteAccount = async (req, res) => {
+  try {
+    const user = await User.findByIdAndDelete(req.params.id);
+    if (!user) {
+      res.status(404).json({ message: 'Event not found' });
+    } else {
+      res.json({ message: 'Successfully deleted event' });
+    }
+  } catch (err) {
+    res.status(400).json({ message: 'Failed to delete event', error: err });
+  }
+};
+
+
+
+module.exports = {registerUser, loginUser, getAllUsers, getUserById, updateAccount, deleteAccount}

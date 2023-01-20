@@ -52,7 +52,7 @@ const announceRoutes = require('./routes/announcement_route')
 // schedules routes
 const schedulesRoutes = require('./routes/classScheduleRoute')
 
-const accountRoutes = require('./routes/accounts')
+// const accountRoutes = require('./routes/accounts')
 
 // get driver connection
 const dbo = require("./db/conn");

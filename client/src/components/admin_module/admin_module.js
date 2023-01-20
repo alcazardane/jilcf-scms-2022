@@ -5,9 +5,11 @@ import { useState, useEffect, useRef } from 'react'
 
 // Import Components
 import AccountsTable from './accounts_table'
-import Register from './create_userAccount'
+import Register from '../ADMIN/accounts/createAccount'
 import CreateAccountModal from './create_account_modal'
 import EditAccountModal from './edit_account_modal'
+import UploadAccount from '../ADMIN/accounts/uploadAccount'
+import EditAccount from '../ADMIN/accounts/editAccount'
 
 import ScheduleTable from './schedule_table'
 import CreateSchedModal from './create_schedule_modal'
@@ -47,7 +49,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
 
     useEffect(() =>{
         const fetchRecord= async () => {
-            const response = await fetch('http://localhost:5000/record')
+            const response = await fetch('http://localhost:5000/api/user')
             const json = await response.json()
 
             if (response.ok){
@@ -109,6 +111,11 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
         refreshTable();
     }
 
+    const uploadAccount = () => {
+        root.style.setProperty('--Upload-Account-Modal-Admin-PointerEvents', "all");
+        root.style.setProperty('--Upload-Account-Modal-Admin-Opacity', "1");
+    }
+
     // For searching
     const [accountQuery, setAccountQuery] = useState("");
     const keys = ["userID", "name", "level", "track", "strand", "secAdv"]
@@ -119,22 +126,23 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
     const [editAccountValue, setEditAccountValue] = useState([]);
     const [editAccountID, setEditAccountID] = useState([]);
 
-    useEffect (() => {
-        setEditAccountID(editAccountValue._id)
-        setAccountName(editAccountValue.name);
-        setAccountUserID(editAccountValue.userID);
-        setAccountPassword(editAccountValue.password);
-        setAccountLevel(editAccountValue.level);
-        setAccountTrack(editAccountValue.track);
-        setAccountStrand(editAccountValue.strand);
-        setAccountSecAdv(editAccountValue.secAdv);
-    }, [editAccountValue])
+    // useEffect (() => {
+    //     setEditAccountID(editAccountValue._id)
+    //     setAccountName(editAccountValue.name);
+    //     setAccountUserID(editAccountValue.userID);
+    //     setAccountPassword(editAccountValue.password);
+    //     setAccountLevel(editAccountValue.level);
+    //     setAccountTrack(editAccountValue.track);
+    //     setAccountStrand(editAccountValue.strand);
+    //     setAccountSecAdv(editAccountValue.secAdv);
+    // }, [editAccountValue])
 
     const editAccount = (e, editID) => {
 
-        fetch('http://localhost:5000/record/' + editID).then(res => res.json()).then(result => {
-            setEditAccountValue(result)
-        })
+        // fetch('http://localhost:5000/record/' + editID).then(res => res.json()).then(result => {
+        //     setEditAccountValue(result)
+        // })
+        setEditAccountID(editID);
 
         root.style.setProperty('--adminModule_edit_modal-pointer-events', "all");
         root.style.setProperty('--adminModule_edit_modal-opacity', "1");
@@ -174,15 +182,15 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
 //======================================================================================================================
     // Deleting account record
     const [accountToDelete, setAccountToDelete] = useState([])
-    const [accountToDeleteID, setAccountToDeleteID] = useState([])
+    const [accountToDeleteID, setAccountToDeleteID] = useState()
 
     const checkDeleteAccount = (e, deleteID) => {
 
         setAccountToDeleteID(deleteID)
 
-        fetch('http://localhost:5000/record/' + deleteID).then(res => res.json()).then(result => {
-            setAccountToDelete(result)
-        })
+        // fetch('http://localhost:5000/record/' + deleteID).then(res => res.json()).then(result => {
+        //     setAccountToDelete(result)
+        // })
         
         root.style.setProperty('--ConfirmDelete-Modal-Admin-PointerEvents', "all");
         root.style.setProperty('--ConfirmDelete-Modal-Admin-Opacity', "1");
@@ -191,33 +199,13 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
     const cancelDelete = () => {
         root.style.setProperty('--ConfirmDelete-Modal-Admin-PointerEvents', "none");
         root.style.setProperty('--ConfirmDelete-Modal-Admin-Opacity', "0");
-        setAccountToDelete([]);
+        // setAccountToDelete([]);
     }
 
     const confirmDelete = () => {
         refreshTable();
 
-        let databody = {
-            "userID": accountToDelete.userID,
-            "password": accountToDelete.password,
-            "level": accountToDelete.level,
-            "track": accountToDelete.track,
-            "strand": accountToDelete.strand,
-            "secAdv": accountToDelete.secAdv,
-            "name": accountToDelete.name,
-            "profilePic": "Name.png",
-        }
-
-        fetch('http://localhost:5000/deleted_records/accounts', {
-            method: 'POST',
-            body: JSON.stringify(databody),
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        })
-        .then(response => response.json());
-
-        fetch('http://localhost:5000/' + accountToDeleteID, {
+        fetch('http://localhost:5000/api/user/' + accountToDeleteID, {
             method: 'DELETE'
         })
         .then(response => response.json());
@@ -225,8 +213,8 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
         root.style.setProperty('--ConfirmDelete-Modal-Admin-PointerEvents', "none");
         root.style.setProperty('--ConfirmDelete-Modal-Admin-Opacity', "0");
 
-        setAccountToDelete([]);
-        setAccountToDeleteID([]);
+        // setAccountToDelete([]);
+        setAccountToDeleteID();
         refreshTable();
     }
 
@@ -243,7 +231,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
 
     // Refresh Accounts table
     const refreshTable = () => {
-        fetch('http://localhost:5000/record').then(res => res.json()).then(result => {
+        fetch('http://localhost:5000/api/user').then(res => res.json()).then(result => {
             setViewAccounts(result)
         })
     }
@@ -573,6 +561,11 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                                 className="adminModule_create_button"
                                 onClick={createAccount}> Add Account
                             </button>
+
+                            <button 
+                                className="adminModule_create_button"
+                                onClick={uploadAccount}> Upload Account
+                            </button>
                         </div>
                     </div>
 
@@ -582,7 +575,6 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                             <thead>
                                 <tr className="winAtt_viewStudent_table_header-b">
                                     <td>User ID</td>
-                                    <td>Password</td>
                                     <td>Level</td>
                                     <td>Name</td>
                                     <td>Track</td>
@@ -619,29 +611,18 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                 </div>
 
                 <div className="adminModule_create_account_modal">
-                    <Register />
+                    <Register 
+                        refreshTable={refreshTable}/>
                 </div>
 
                 <div className="adminModule_edit_account_modal">
-                    <EditAccountModal
-                    editAccountValue={editAccountValue}
-                    updateAccount={updateAccount} 
-                    resetInputs={resetInputs}
-                    setAccountName={setAccountName}
-                    setAccountUserID={setAccountUserID}
-                    setAccountPassword={setAccountPassword}
-                    setAccountLevel={setAccountLevel}
-                    setAccountTrack={setAccountTrack}
-                    setAccountStrand={setAccountStrand}
-                    setAccountSecAdv={setAccountSecAdv}
-                    accountUserID={accountUserID}
-                    accountPassword={accountPassword}
-                    accountLevel={accountLevel}
-                    accountTrack={accountTrack}
-                    accountStrand={accountStrand}
-                    accountSecAdv={accountSecAdv}
-                    accountName={accountName}
-                    />
+                    <EditAccount 
+                        editAccountID={editAccountID}
+                        refreshTable={refreshTable}/>
+                </div>
+
+                <div className="adminModule_upload_account_modal">
+                    <UploadAccount />
                 </div>
 
                 <div className="confirmDelete_modal_wrap-admin">
