@@ -221,6 +221,14 @@
     font-size: 14px;
     padding: 5px;
 }
+.create_input-b{
+    width: 100%;
+    height: 30px;
+    border: 2px solid #B3B3B3;
+    border-radius: 10px;
+    font-size: 14px;
+    padding: 5px;
+}
 .create_select{
     width: 100%;
     height: 44px;
@@ -324,6 +332,24 @@
     opacity: var(--Upload-Sched-Modal-Admin-Opacity);
     transition: all 200ms ease-in-out;
     z-index: 2;
+}
+
+.adminModule_upload_account_modal{
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    position: absolute;
+    justify-content: center;
+    align-items: center;
+    pointer-events: var(--Upload-Account-Modal-Admin-PointerEvents);
+    opacity: var(--Upload-Account-Modal-Admin-Opacity);
+    transition: all 200ms ease-in-out;
+    z-index: 2;
+}
+.upload_csv{
+    width: 100%;
+    height: 20%;
 }
 
 .adminModule_L1_Schedule{

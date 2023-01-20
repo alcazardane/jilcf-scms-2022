@@ -24,7 +24,7 @@ import UserCameraModule from "./components/camera_module/userCameraModule";
 import UserNotificationModule from "./components/notification_module/userNotificationModule";
 import UserAnalyticsModule from "./components/analytics_module/userAnalyticsModule";
 
-import CreateAccount from "./components/ADMIN/accounts/createAccount"
+import UploadAccount from "./components/ADMIN/accounts/uploadAccount"
 
 function App(){
   const { user } = useAuthContext()
@@ -189,10 +189,10 @@ function App(){
                 subjectID={subjectID}/> : <Navigate to="/login" />}
           />
 
-          <Route 
+          {/* <Route 
             path="/secretaccount"
             element={ <CreateAccount /> }
-          />
+          /> */}
         </Routes>
       </BrowserRouter>
     </div>
