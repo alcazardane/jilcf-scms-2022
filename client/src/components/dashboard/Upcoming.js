@@ -12,7 +12,7 @@ const Upcoming = ({ dashUpRef }) => {
     // Fetching the data from the collection "upcoming_sched" in the database
     useEffect(() =>{
         const fetchUpcoming = async () => {
-            const response = await fetch('/upcoming_sched')
+            const response = await fetch('http://localhost:5000/upcoming_sched')
             const json = await response.json()
 
             if (response.ok){

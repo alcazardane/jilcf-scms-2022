@@ -23,7 +23,7 @@ export default function MainDashboard_L3({dashAttRef, dashAssessRef, dashAnaRef,
     const [schedule, setSchedule] = useState([])
     useEffect(() =>{
         const fetchSchedule= async () => {
-            const response = await fetch('/schedule/11-0000006')
+            const response = await fetch('http://localhost:5000/schedule/11-0000006')
             const json = await response.json()
 
             if (response.ok){
@@ -37,7 +37,7 @@ export default function MainDashboard_L3({dashAttRef, dashAssessRef, dashAnaRef,
     const [announcement, setAnnouncement] = useState([])
     useEffect(() =>{
         const fetchAnnouncement= async () => {
-            const response = await fetch('/api/announcements')
+            const response = await fetch('http://localhost:5000/api/announcements')
             const json = await response.json()
             if (response.ok){
                 setAnnouncement(json)

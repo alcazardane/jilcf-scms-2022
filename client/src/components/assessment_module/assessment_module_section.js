@@ -15,7 +15,7 @@ const AssessmentModuleSection = ({ user, idNumber, classID, classSection, subjec
     const [handledStudents, setHandledStudents] = useState([]);
     useEffect(() => {
         async function fetchStudents() {
-          const response = await fetch(`/api/class-sections/students/${classID}/${subjectID}`);
+          const response = await fetch(`http://localhost:5000/api/class-sections/students/${classID}/${subjectID}`);
           const data = await response.json();
           setHandledStudents(data);
         }
@@ -25,7 +25,7 @@ const AssessmentModuleSection = ({ user, idNumber, classID, classSection, subjec
     const [studAssessment, setStudAssessment] = useState([]);
     useEffect(() => {
         async function fetchStudents() {
-          const response = await fetch(`/api/class-sections/records/${idNumber}/${subjectID}`);
+          const response = await fetch(`http://localhost:5000/api/class-sections/records/${idNumber}/${subjectID}`);
           const data = await response.json();
           setStudAssessment(data);
         }

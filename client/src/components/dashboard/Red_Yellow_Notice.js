@@ -14,7 +14,7 @@ const RedYellowNotice = ({dashNoticeRef}) => {
   // for the student that has more than 10 absences
   useEffect(() =>{
     const fetchAssessment = async () => {
-        const response = await fetch('/red')
+        const response = await fetch('http://localhost:5000/red')
         const json = await response.json()
 
         if (response.ok){
@@ -30,7 +30,7 @@ const RedYellowNotice = ({dashNoticeRef}) => {
   // for the student that has more than 5 absences but less than 10
   useEffect(() =>{
     const fetchAssessment = async () => {
-        const response = await fetch('/yellow')
+        const response = await fetch('http://localhost:5000/yellow')
         const json = await response.json()
 
         if (response.ok){

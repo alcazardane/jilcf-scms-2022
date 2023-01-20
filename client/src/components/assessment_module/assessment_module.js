@@ -22,7 +22,7 @@ const AssessmentModule = ({ user, idNumber, setClassID, setClassSection, setSubj
     const [classData, setClassData] = useState([]);
     useEffect(() => {
         const fetchClassData = async () => {
-        const response = await fetch(`/api/subject/teacher/${idNumber}`);
+        const response = await fetch(`http://localhost:5000/api/subject/teacher/${idNumber}`);
         const data = await response.json();
         setClassData(data);
         };
@@ -48,7 +48,7 @@ const AssessmentModule = ({ user, idNumber, setClassID, setClassSection, setSubj
     const [subjectData, setSubjectData] = useState([]);
     useEffect(() => {
         const fetchClassData = async () => {
-        const response = await fetch(`/api/class-sections/subjects/${idNumber}`);
+        const response = await fetch(`http://localhost:5000/api/class-sections/subjects/${idNumber}`);
         const data = await response.json();
         setSubjectData(data);
         };

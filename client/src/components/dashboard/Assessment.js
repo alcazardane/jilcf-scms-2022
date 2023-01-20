@@ -10,7 +10,7 @@ const Assessment = () => {
     // Fetching the data from the collection "assessmet_record" in the database
     useEffect(() =>{
         const fetchAssessment = async () => {
-            const response = await fetch('/assessment_record')
+            const response = await fetch('http://localhost:5000/assessment_record')
             const json = await response.json()
 
             if (response.ok){

@@ -17,7 +17,7 @@ const AnalyticsModuleSection = ({ classID, classSection, subjectID }) => {
     const [sectionAnalytics, setSectionAnalytics] = useState([]);
     useEffect(() => {
         async function fetchStudents() {
-          const response = await fetch(`/api/class-sections/class/${classID}/subject/${subjectID}`);
+          const response = await fetch(`http://localhost:5000/api/class-sections/class/${classID}/subject/${subjectID}`);
           const data = await response.json();
           setSectionAnalytics(data);
         }
@@ -28,7 +28,7 @@ const AnalyticsModuleSection = ({ classID, classSection, subjectID }) => {
     const [sectionLeast, setSectionLeast] = useState([]);
     useEffect(() => {
         async function fetchStudents() {
-          const response = await fetch(`/api/class-sections/least-performers/${classID}/${subjectID}`);
+          const response = await fetch(`http://localhost:5000/api/class-sections/least-performers/${classID}/${subjectID}`);
           const data = await response.json();
           setSectionLeast(data);
         }
