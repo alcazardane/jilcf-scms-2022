@@ -26,7 +26,7 @@ const AssessmentDetails = () => {
     // setAdminID("22-0000000")
     useEffect(() =>{
         const fetchGrade= async () => {
-            const response = await fetch('http://localhost:5000/student_grades/sg-11-0000006')
+            const response = await fetch('/student_grades/sg-11-0000006')
             const json = await response.json()
 
             if (response.ok){

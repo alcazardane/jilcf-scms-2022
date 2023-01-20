@@ -15,7 +15,7 @@ const Navbar = ({ confirmLogout, idNumber }) => {
   useEffect(() => {
     const fetchUserDetails = async () => {
       try {
-        const res = await fetch(`http://localhost:5000/api/user/get-user-details?idNumber=${idNumber}`);
+        const res = await fetch(`/api/user/get-user-details?idNumber=${idNumber}`);
         const data = await res.json();
         setUserDetails(data);
       } catch (error) {

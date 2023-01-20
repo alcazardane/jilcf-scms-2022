@@ -47,7 +47,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
 
     useEffect(() =>{
         const fetchRecord= async () => {
-            const response = await fetch('http://localhost:5000/record')
+            const response = await fetch('/record')
             const json = await response.json()
 
             if (response.ok){
@@ -93,7 +93,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
             "name": accountName,
             "profilePic": "Name.png",
         }
-        fetch('http://localhost:5000/record/add', {
+        fetch('/record/add', {
             method: 'POST',
             body: JSON.stringify(databody),
             headers: {
@@ -132,7 +132,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
 
     const editAccount = (e, editID) => {
 
-        fetch('http://localhost:5000/record/' + editID).then(res => res.json()).then(result => {
+        fetch('/record/' + editID).then(res => res.json()).then(result => {
             setEditAccountValue(result)
         })
 
@@ -154,7 +154,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
             "name": accountName,
             "profilePic": "Name.png",
         }
-        fetch('http://localhost:5000/update/' + editAccountID, {
+        fetch('/update/' + editAccountID, {
             method: 'POST',
             body: JSON.stringify(databody),
             headers: {
@@ -180,7 +180,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
 
         setAccountToDeleteID(deleteID)
 
-        fetch('http://localhost:5000/record/' + deleteID).then(res => res.json()).then(result => {
+        fetch('/record/' + deleteID).then(res => res.json()).then(result => {
             setAccountToDelete(result)
         })
         
@@ -208,7 +208,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
             "profilePic": "Name.png",
         }
 
-        fetch('http://localhost:5000/deleted_records/accounts', {
+        fetch('/deleted_records/accounts', {
             method: 'POST',
             body: JSON.stringify(databody),
             headers: {
@@ -217,7 +217,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
         })
         .then(response => response.json());
 
-        fetch('http://localhost:5000/' + accountToDeleteID, {
+        fetch('/' + accountToDeleteID, {
             method: 'DELETE'
         })
         .then(response => response.json());
@@ -243,7 +243,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
 
     // Refresh Accounts table
     const refreshTable = () => {
-        fetch('http://localhost:5000/record').then(res => res.json()).then(result => {
+        fetch('/record').then(res => res.json()).then(result => {
             setViewAccounts(result)
         })
     }
@@ -259,7 +259,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
 
     useEffect(() =>{
         const fetchSchedule= async () => {
-            const response = await fetch('http://localhost:5000/api/upcoming-schedules/get-all')
+            const response = await fetch('/api/upcoming-schedules/get-all')
             const json = await response.json()
 
             if (response.ok){
@@ -308,7 +308,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
             "room": schedRoom,
             "repeat": schedRepeat,
         }
-        fetch('http://localhost:5000/schedule/add', {
+        fetch('/schedule/add', {
             method: 'POST',
             body: JSON.stringify(databody),
             headers: {
@@ -366,7 +366,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
             "room": schedRoom,
             "repeat": [schedRepeat]
         }
-        fetch('http://localhost:5000/schedule/update/' + editSchedID, {
+        fetch('/schedule/update/' + editSchedID, {
             method: 'POST',
             body: JSON.stringify(databody),
             headers: {
@@ -408,7 +408,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
     const confirmDeleteSched = () => {
         refreshSchedTable();
 
-        fetch('http://localhost:5000/api/upcoming-schedules/' + schedToDeleteID, {
+        fetch('/api/upcoming-schedules/' + schedToDeleteID, {
             method: 'DELETE'
         })
         .then(response => response.json());
@@ -435,7 +435,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
 
     // Refresh Accounts table
     const refreshSchedTable = () => {
-        fetch('http://localhost:5000/api/upcoming-schedules/get-all').then(res => res.json()).then(result => {
+        fetch('/api/upcoming-schedules/get-all').then(res => res.json()).then(result => {
             setViewSchedules(result)
         })
     }
@@ -451,7 +451,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
 
     useEffect(() =>{
         const fetchAnnouncement= async () => {
-            const response = await fetch('http://localhost:5000/api/announcements')
+            const response = await fetch('/api/announcements')
             const json = await response.json()
             if (response.ok){
                 setViewAnnouncements(json)
@@ -511,7 +511,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
         refreshAnnounceTable();
 
         try {
-            const response = await fetch(`http://localhost:5000/api/announcements/${announceToDeleteID}`, {
+            const response = await fetch(`/api/announcements/${announceToDeleteID}`, {
               method: 'DELETE',
             });
             const data = await response.json();
@@ -535,7 +535,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
     }
 
     const refreshAnnounceTable = () => {
-        fetch('http://localhost:5000/api/announcements').then(res => res.json()).then(result => {
+        fetch('/api/announcements').then(res => res.json()).then(result => {
             setViewAnnouncements(result)
         })
     }

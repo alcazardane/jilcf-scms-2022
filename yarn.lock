@@ -4214,6 +4214,11 @@
   dependencies:
     "glob" "^7.1.3"
 
+"rimraf@^4.1.1":
+  "integrity" "sha512-Z4Y81w8atcvaJuJuBB88VpADRH66okZAuEm+Jtaufa+s7rZmIz+Hik2G53kGaNytE7lsfXyWktTmfVz0H9xuDg=="
+  "resolved" "https://registry.npmjs.org/rimraf/-/rimraf-4.1.1.tgz"
+  "version" "4.1.1"
+
 "rimraf@~2.2.6":
   "integrity" "sha512-R5KMKHnPAQaZMqLOsyuyUmcIjSeDm+73eoqQpaXA7AZ22BL+6C+1mcUscgOsNd8WVlJuvlgAPsegcx7pjlV0Dg=="
   "resolved" "https://registry.npmjs.org/rimraf/-/rimraf-2.2.8.tgz"

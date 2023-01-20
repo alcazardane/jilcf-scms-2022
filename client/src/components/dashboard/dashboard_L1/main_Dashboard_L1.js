@@ -112,7 +112,7 @@ export default function MainDashboard_L1({dashUpRef, dashAccRef, dashAnaRef}) {
     // setAdminID("22-0000000")
     useEffect(() =>{
         const fetchSchedule= async () => {
-            const response = await fetch('http://localhost:5000/schedule/22-0000000')
+            const response = await fetch('/schedule/22-0000000')
             const json = await response.json()
 
             if (response.ok){

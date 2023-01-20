@@ -11,7 +11,7 @@ const Attendance = ({dashAttRef}) => {
     // Fetching the data from the collection "attendance_per_classroom" in the database
     useEffect(() =>{
         const fetchAttendance = async () => {
-            const response = await fetch('http://localhost:5000/attendance_per_classroom')
+            const response = await fetch('/attendance_per_classroom')
             const json = await response.json()
 
             if (response.ok){

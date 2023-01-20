@@ -314,7 +314,7 @@ export default function Home_L1() {
         e.preventDefault()
         setAllEvents([...allEvents, newEvent])
 
-        const response = await fetch('http://localhost:5000/api/events/add', {
+        const response = await fetch('/api/events/add', {
             method: 'POST',
             body: JSON.stringify(newEvent),
             headers : {

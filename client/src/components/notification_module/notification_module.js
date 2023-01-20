@@ -10,7 +10,7 @@ const NotificationModule = () => {
     const [announcements, setAnnouncements] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/api/announcements/')
+        fetch('/api/announcements/')
         .then(res => res.json())
         .then(data => setAnnouncements(data))
         .catch(err => console.log(err));
