@@ -72,7 +72,7 @@ const AssessmentModuleSection = ({ user, idNumber, classID, classSection, subjec
                             <td>Seatwork</td>
                             <td>Project</td>
                             <td>Attendance</td>
-                            <td>Actions</td>
+                            <td>Intervention</td>
                         </tr>
                     </thead>
                     <tbody className="assessment_module_students_body">                   
@@ -85,9 +85,7 @@ const AssessmentModuleSection = ({ user, idNumber, classID, classSection, subjec
                                     <td>{hStudents.seatwork_score + "/" + hStudents.seatwork_maxscore}</td>
                                     <td>{hStudents.project_score + "/" + hStudents.project_maxscore}</td>
                                     <td>{hStudents.attendance_score + "/" + hStudents.attendance_maxscore}</td>
-                                    <button className="windowAttendance_view">
-                                        <img src={view_icon} alt="view"></img>
-                                    </button>
+                                    <td>{hStudents.intervention}</td>
                                 </tr>
                             ))
                         }

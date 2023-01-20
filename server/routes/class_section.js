@@ -18,7 +18,7 @@ router.delete('/:id', classSectionController.deleteClassSection);
 // Get a class section by ID
 router.get('/:class_id', classSectionController.getClassSectionFieldsByClassId);
 
-router.get('/students/:class_id/:subject_id', classSectionController.getStudentAssessment)
+router.get('/students/:class_id/:subject_id', classSectionController.getStudentAssessments)
 
 router.get('/class/:class_id/subject/:subject_id', classSectionController.getClassSubjectSummary);
 
@@ -27,6 +27,8 @@ router.get('/least-performers/:class_id/:subject_id', classSectionController.get
 router.get('/subjects/:student_id', classSectionController.getStudentSubjects); 
 
 router.get('/records/:student_id/:subject_id', classSectionController.getStudentAssessmentRecords); 
+
+router.get('/records/:student_id/:class_id/:subject_id', classSectionController.getStudentAssessmentRecordsB); 
 
 
 module.exports = router;

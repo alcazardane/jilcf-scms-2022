@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { useRegister } from '../../../hooks/useRegister'
 import { toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
-const Register = ({ refreshTable }) => {
+const EditAccount = ({ editAccountID, refreshTable }) => {
     const [idNumber, setIdNumber] = useState('')
     const [password, setPassword] = useState('')
     const [fname, setFname] = useState('')
@@ -21,13 +21,64 @@ const Register = ({ refreshTable }) => {
     }
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
+        e.preventDefault();
         refreshTable();
-        await register(idNumber, password, fname, mname, lname, suffix, level, track, strand, section)
+
+        let databody = {
+            "idNumber": idNumber,
+            "password": password,
+            "fname": fname,
+            "lname": lname,
+            "mname": mname,
+            "suffix": suffix,
+            "level": level,
+            "track": track,
+            "strand": strand,
+            "section": section
+        }
+
+        try {
+        const res = await fetch(`http://localhost:5000/api/user/${editAccountID}`, {
+            method: 'PATCH',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(databody),
+        });
+        const data = await res.json();
+        console.log(data);
+        } catch (err) {
+        console.error(err);
+        }
+
         refreshTable();
+        root.style.setProperty('--adminModule_edit_modal-pointer-events', "none");
+        root.style.setProperty('--adminModule_edit_modal-opacity', "0");
     }
 
     var root = document.querySelector(":root");
+
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const res = await fetch(`http://localhost:5000/api/user/${editAccountID}`);
+            const data = await res.json();
+                setIdNumber(data.idNumber);
+                setPassword(data.password);
+                setFname(data.fname);
+                setLname(data.lname);
+                setMname(data.mname);
+                setSuffix(data.suffix);
+                setLevel(data.level);
+                setTrack(data.track);
+                setStrand(data.strand);
+                setSection(data.section);
+          } catch (err) {
+            console.error(err);
+          }
+        };
+        fetchData();
+    }, [editAccountID]);
+
+
 
     const clearForm = () => {
         setIdNumber('');
@@ -45,13 +96,13 @@ const Register = ({ refreshTable }) => {
     const cancelRegister = (e) => {
         e.preventDefault();
         clearForm()
-        root.style.setProperty('--adminModule_create_modal-pointer-events', "none");
-        root.style.setProperty('--adminModule_create_modal-opacity', "0");
+        root.style.setProperty('--adminModule_edit_modal-pointer-events', "none");
+        root.style.setProperty('--adminModule_edit_modal-opacity', "0");
     }
 
     return (
         <form className="adminModule_create_account_con" onSubmit={handleSubmit}>
-            <div className="editAtt_Modal_label-b">Create New Account</div>
+            <div className="editAtt_Modal_label-b">Edit Account</div>
 
             <div className="adminModule_create_input_wrap">
                 <div className="adminModule_create_input_inside">
@@ -171,4 +222,4 @@ const Register = ({ refreshTable }) => {
     )
 }
 
-export default Register
+export default EditAccount

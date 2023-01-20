@@ -106,7 +106,8 @@ const AssessmentModule = ({ user, idNumber, setClassID, setClassSection, setSubj
                             onClick={() => {
                                 openAssessmentSection();
                                 setClassSection(subjdata.subject_name);
-                                setSubjectID(subjdata.subject_id)
+                                setSubjectID(subjdata.subject_id);
+                                setClassID(subjdata.class_id);
                             }}>
                             <div className="assessment_module_subjcards_cover"></div>
                             <img className="assessment_module_subjcards_img" src={getSubjImage(subjdata.subject_id)} alt="course_image" />
