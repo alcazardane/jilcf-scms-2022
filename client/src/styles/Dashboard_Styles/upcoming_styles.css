@@ -7,7 +7,7 @@
   margin-top: var(--dashboard-margin-top);
   margin-left: var(--dashboard-margin-left);
   /*min-width: 334px;*/
-  width: var(--upcoming-width);
+  width: 35%;
   /*width: 340px;*/
   /* min-width: 300px; */
   border-radius: 5px;
