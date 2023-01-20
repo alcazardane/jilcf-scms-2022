@@ -8,6 +8,13 @@ const app = express();
 const mongoose = require("mongoose")
 const path = require('path');
 
+const bodyParser = require('body-parser');
+
+app.post('/upload');
+
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
 //middleware
 const cors = require("cors");
 app.use(express.json());
@@ -43,6 +50,8 @@ const eventRoutes = require('./routes/events')
 // announcement routes
 const announceRoutes = require('./routes/announcement_route')
 
+const accountRoutes = require('./routes/accounts')
+
 // get driver connection
 const dbo = require("./db/conn");
  
@@ -61,6 +70,7 @@ app.use('/api/subject', subjectRoutes)
 app.use('/api/class-sections', classSectionRoutes)
 app.use('/api/shed-events', eventRoutes)
 app.use('/api/announcements', announceRoutes)
+app.use('/api/accounts', accountRoutes);
 
 app.listen(8080, () => console.log('API is running on http://localhost:8080/login'));
 
