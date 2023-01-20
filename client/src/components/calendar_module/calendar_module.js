@@ -83,7 +83,7 @@ const CalendarModule = ({ allEvents, openAddEvent }) => {
                                                 <div id="calendar_module_days" className={`${col.classes} calendar_module_days_today`}>
                                                     {col.value}
                                                 </div>
-                                                <img className="calendar_module_add_btn" src={AddIcon} alt="Add_Schedule"></img>
+                                                {/* <img className="calendar_module_add_btn" src={AddIcon} alt="Add_Schedule"></img> */}
                                             </div>
                                             <div className="calendar_module_days_eventswrap">
                                                 {allAnnouncements && allAnnouncements.map((ev) => (
@@ -101,7 +101,7 @@ const CalendarModule = ({ allEvents, openAddEvent }) => {
                                                 <div id="calendar_module_days" className={col.classes}>
                                                     {col.value}
                                                 </div>
-                                                <img className="calendar_module_add_btn" src={AddIcon} alt="Add_Schedule"></img>
+                                                {/* <img className="calendar_module_add_btn" src={AddIcon} alt="Add_Schedule"></img> */}
                                             </div>
                                             <div className="calendar_module_days_eventswrap">
                                                 {allAnnouncements && allAnnouncements.map((ev) => (

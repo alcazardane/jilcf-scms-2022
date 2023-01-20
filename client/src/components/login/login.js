@@ -16,7 +16,6 @@ const Login = () => {
         e.preventDefault()
 
         await login(idNumber, password)
-
     }
 
     return (

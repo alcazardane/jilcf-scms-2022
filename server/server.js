@@ -49,6 +49,8 @@ const classSectionRoutes = require('./routes/class_section')
 const eventRoutes = require('./routes/events')
 // announcement routes
 const announceRoutes = require('./routes/announcement_route')
+// schedules routes
+const schedulesRoutes = require('./routes/classScheduleRoute')
 
 const accountRoutes = require('./routes/accounts')
 
@@ -70,7 +72,7 @@ app.use('/api/subject', subjectRoutes)
 app.use('/api/class-sections', classSectionRoutes)
 app.use('/api/shed-events', eventRoutes)
 app.use('/api/announcements', announceRoutes)
-app.use('/api/accounts', accountRoutes);
+app.use('/api/upcoming-schedules', schedulesRoutes)
 
 app.listen(8080, () => console.log('API is running on http://localhost:8080/login'));
 

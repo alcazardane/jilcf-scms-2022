@@ -1,5 +1,5 @@
-import { useState } from "react";
-const CreateSchedule =({ refreshSchedTable }) => {
+import { useState, useEffect } from "react";
+const EditSchedule =({ editSchedID }) => {
 
     var root = document.querySelector(":root");
 
@@ -18,14 +18,36 @@ const CreateSchedule =({ refreshSchedTable }) => {
 
     const handleCancel = (e) => {
         e.preventDefault()
-        root.style.setProperty('--adminModule_create_sched_modal-pointer-events', "none");
-        root.style.setProperty('--adminModule_create_sched_modal-opacity', "0");
+        root.style.setProperty('--adminModule_edit_sched_modal-pointer-events', "none");
+        root.style.setProperty('--adminModule_edit_sched_modal-opacity', "0");
     }
+
+    useEffect(() => {
+        const fetchData = async () => {
+          try {
+            const res = await fetch(`http://localhost:5000/api/upcoming-schedules/get-by-id/${editSchedID}`);
+            const data = await res.json();
+            setSchedClassSecID(data.class_id);
+            setSchedType(data.class_type);
+            setSchedStartTimeH(data.class_start_hh);
+            setSchedStartTimeM(data.class_start_mm);
+            setSchedStartTimeS(data.class_start_pa);
+            setSchedEndTimeH(data.class_end_hh);
+            setSchedEndTimeM(data.class_end_mm);
+            setSchedEndTimeS(data.class_end_pa);
+            setSchedDay(data.class_day);
+            setSchedRoom(data.class_room);
+            setSchedSubject(data.subject_name);
+          } catch (err) {
+            console.error(err);
+          }
+        };
+        fetchData();
+    }, [editSchedID]);
 
     
     const handleSubmit = async (e) => {
         e.preventDefault();
-        refreshSchedTable();
 
         let databody = {
             "class_id": schedClassSecID,
@@ -42,7 +64,7 @@ const CreateSchedule =({ refreshSchedTable }) => {
         }
 
         try {
-            const res = await fetch('http://localhost:5000/api/upcoming-schedules/create', {
+            const res = await fetch('http://localhost:5000/api/schedules/', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(databody),
@@ -56,7 +78,6 @@ const CreateSchedule =({ refreshSchedTable }) => {
         root.style.setProperty('--adminModule_create_sched_modal-pointer-events', "none");
         root.style.setProperty('--adminModule_create_sched_modal-opacity', "0");
         resetData();
-        refreshSchedTable();
     }
 
     const resetData = () => {
@@ -341,5 +362,5 @@ const CreateSchedule =({ refreshSchedTable }) => {
         </>
     )
 }
-export default CreateSchedule
+export default EditSchedule
 

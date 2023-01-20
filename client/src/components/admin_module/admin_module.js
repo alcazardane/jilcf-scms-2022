@@ -13,6 +13,8 @@ import ScheduleTable from './schedule_table'
 import CreateSchedModal from './create_schedule_modal'
 import EditScheduleModal from './edit_schedule_modal'
 import CreateSchedule from '../ADMIN/schedule/createSchedule'
+import CSVUploadSchedule from '../ADMIN/schedule/uploadSchedule'
+import EditSchedule from '../ADMIN/schedule/editSchedule'
 
 import AnnouncementTable from './announcement_table'
 import CreateAnnounceModal from './create_announcement_modal'
@@ -34,95 +36,6 @@ import useWindowDimensions from '../dashboard/hooks/useWindowDimensions'
 export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
 
     var root = document.querySelector(":root");
-
-    // For window snapping
-    const { height, width } = useWindowDimensions();
-    var rightBound = width - (width * 0.60) - 38 + 4;
-    var bottomBound = height - (height * 0.70) - 18 - 50 + 4;
-    var leftBound = 30;
-    var topBound = 15;
-
-    // Get the x and y values to use it for maximizing the window
-    var xVal = 0;
-    var yVal = 0;
-
-    // For Dragging
-    const [{ x, y }, adminPos] = useSpring(() => ({ x: 0, y: 0 }));
-    const bindAdminPos = useDrag((state) => {
-        xVal = state.offset[0];
-        yVal = state.offset[1];
-        adminPos.set({
-            x: xVal,
-            y: yVal
-        });
-        // console.log("x: " + xVal + ", y: " + yVal);
-    }, {
-        from: () => {
-            return [x.get(), y.get()];
-        },
-        bounds: () => {
-            return {left: -leftBound, right: rightBound, top: -topBound, bottom: bottomBound};
-        },
-    });
-
-
-    // For minimize and maximize button
-    const [adminModuleIsMinimized,  setAdminModuleIsMininimized] = useState(true);
-    const minmaxAdminModule = () => {
-
-      if(adminModuleIsMinimized === true){
-
-        root.style.setProperty('--adminModule-L1-window-width', "calc(100% - 4px)")
-        root.style.setProperty('--adminModule-L1-window-height', "calc(100% - 49px)")
-
-        root.style.setProperty('--border-radius', "0")
-        root.style.setProperty('--border-radius-b', "0")
-
-        root.style.setProperty('--adminModule-top', `${-yVal}px`)
-        root.style.setProperty('--adminModule-left', `${-xVal}px`)
-
-        root.style.setProperty('--adminModule-display-b', "none")
-
-          adminPos.set({
-            x: xVal,
-            y: yVal
-          });
-
-          setAdminModuleIsMininimized(false)
-      }
-      else{
-
-        root.style.setProperty('--adminModule-L1-window-width', "70%")
-        root.style.setProperty('--adminModule-L1-window-height', "70%")
-
-        root.style.setProperty('--border-radius', "7px")
-        root.style.setProperty('--border-radius-b', "7px 7px 0 0")
-
-        root.style.setProperty('--adminModule-top', "15px")
-        root.style.setProperty('--adminModule-left', "30px")
-
-        root.style.setProperty('--adminModule-display-b', "block")
-
-        setAdminModuleIsMininimized(true)
-      }
-    }
-
-    // For close or exit button
-    const closeAdminModule = () => {
-      root.style.setProperty('--adminModule-L1-window-width', "70%")
-      root.style.setProperty('--adminModule-L1-window-height', "70%")
-
-      root.style.setProperty('--adminModule_L1_display', "none")
-      root.style.setProperty('--adminModule-display-b', "none")
-
-      root.style.setProperty('--border-radius', "7px")
-      root.style.setProperty('--border-radius-b', "7px 7px 0 0")
-
-      root.style.setProperty('--adminModule-top', "15px")
-      root.style.setProperty('--adminModule-left', "30px")
-
-    setAdminModuleIsMininimized(true)
-    }
 
 
 //======================================================================================================================
@@ -346,7 +259,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
 
     useEffect(() =>{
         const fetchSchedule= async () => {
-            const response = await fetch('http://localhost:5000/schedule')
+            const response = await fetch('http://localhost:5000/api/upcoming-schedules/get-all')
             const json = await response.json()
 
             if (response.ok){
@@ -358,7 +271,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
 
     // For searching
     const [scheduleQuery, setScheduleQuery] = useState('')
-    const schedKeys = ["userID", "subj_id", "task", "sched_class", "room"]
+    const schedKeys = ["subject_name", "class_id", "class_type", "class_day", "class_room"]
 
 //======================================================================================================================
     // getting and setting credentials
@@ -376,8 +289,10 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
         root.style.setProperty('--adminModule_create_sched_modal-pointer-events', "all");
         root.style.setProperty('--adminModule_create_sched_modal-opacity', "1");
 
-        //resetInputs();
-        //refreshTable();
+    }
+    const uploadSchedule = () => {
+        root.style.setProperty('--Upload-Sched-Modal-Admin-PointerEvents', "all");
+        root.style.setProperty('--Upload-Sched-Modal-Admin-Opacity', "1");
     }
 
     // Will add the inputs to the database
@@ -414,23 +329,25 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
     const [editSchedValue, setEditSchedValue] = useState([]);
     const [editSchedID, setEditSchedID] = useState([]);
 
-    useEffect (() => {
-        setEditSchedID(editSchedValue._id);
-        setSchedUserID(editSchedValue.userID);
-        setSchedTask(editSchedValue.task);
-        setSchedTime(editSchedValue.time);
-        setSchedSubjID(editSchedValue.subj_id);
-        setSchedClass(editSchedValue.sched_class);
-        setSchedRoom(editSchedValue.room);
-        setSchedRepeat(editSchedValue.repeat);
-    }, [editSchedValue])
+    // useEffect (() => {
+    //     setEditSchedID(editSchedValue._id);
+    //     setSchedUserID(editSchedValue.userID);
+    //     setSchedTask(editSchedValue.task);
+    //     setSchedTime(editSchedValue.time);
+    //     setSchedSubjID(editSchedValue.subj_id);
+    //     setSchedClass(editSchedValue.sched_class);
+    //     setSchedRoom(editSchedValue.room);
+    //     setSchedRepeat(editSchedValue.repeat);
+    // }, [editSchedValue])
 
 
     const editSchedule = (e, editID) => {
 
-        fetch('http://localhost:5000/schedule/edit/' + editID).then(res => res.json()).then(result => {
-            setEditSchedValue(result)
-        })
+        // fetch('http://localhost:5000/schedule/edit/' + editID).then(res => res.json()).then(result => {
+        //     setEditSchedValue(result)
+        // })
+
+        setEditSchedID(editID);
 
         root.style.setProperty('--adminModule_edit_sched_modal-pointer-events', "all");
         root.style.setProperty('--adminModule_edit_sched_modal-opacity', "1");
@@ -474,9 +391,9 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
 
         setSchedToDeleteID(deleteID)
 
-        fetch('http://localhost:5000/schedule/edit/' + deleteID).then(res => res.json()).then(result => {
-            setSchedToDelete(result)
-        })
+        // fetch('http://localhost:5000/schedule/edit/' + deleteID).then(res => res.json()).then(result => {
+        //     setSchedToDelete(result)
+        // })
         
         root.style.setProperty('--ConfirmDelete-Sched-Modal-Admin-PointerEvents', "all");
         root.style.setProperty('--ConfirmDelete-Sched-Modal-Admin-Opacity', "1");
@@ -485,32 +402,13 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
     const cancelDeleteSched = () => {
         root.style.setProperty('--ConfirmDelete-Sched-Modal-Admin-PointerEvents', "none");
         root.style.setProperty('--ConfirmDelete-Sched-Modal-Admin-Opacity', "0");
-        setSchedToDelete([]);
+        // setSchedToDelete([]);
     }
 
     const confirmDeleteSched = () => {
         refreshSchedTable();
 
-        let databody = {
-            "userID": schedToDelete.userID,
-            "task": schedToDelete.task,
-            "time": schedToDelete.time,
-            "subj_id": schedToDelete.subj_id,
-            "sched_class": schedToDelete.sched_class,
-            "room": schedToDelete.room,
-            "repeat": [schedToDelete.repeat]
-        }
-
-        fetch('http://localhost:5000/deleted_records/schedules', {
-            method: 'POST',
-            body: JSON.stringify(databody),
-            headers: {
-                'Content-Type': 'application/json'
-            },
-        })
-        .then(response => response.json());
-
-        fetch('http://localhost:5000/schedule/delete/' + schedToDeleteID, {
+        fetch('http://localhost:5000/api/upcoming-schedules/' + schedToDeleteID, {
             method: 'DELETE'
         })
         .then(response => response.json());
@@ -518,8 +416,8 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
         root.style.setProperty('--ConfirmDelete-Sched-Modal-Admin-PointerEvents', "none");
         root.style.setProperty('--ConfirmDelete-Sched-Modal-Admin-Opacity', "0");
 
-        setSchedToDelete([]);
-        setSchedToDeleteID([]);
+        // setSchedToDelete([]);
+        // setSchedToDeleteID([]);
         refreshSchedTable();
     }
 
@@ -537,7 +435,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
 
     // Refresh Accounts table
     const refreshSchedTable = () => {
-        fetch('http://localhost:5000/schedule').then(res => res.json()).then(result => {
+        fetch('http://localhost:5000/api/upcoming-schedules/get-all').then(res => res.json()).then(result => {
             setViewSchedules(result)
         })
     }
@@ -565,7 +463,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
 
     // For searching
     const [announceQuery, setAnnounceQuery] = useState('')
-    const announceKeys = ["announcement_type", "announcement_name", "announcement_date", "announcement_time", "announcement_place"]
+    const announceKeys = ["name", "description", "type"]
 
 //======================================================================================================================
     // getting and setting credentials
@@ -644,21 +542,6 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
 
     return (
     <>
-        {/* <animated.div className="adminModule_L1_draggable_area"
-        {...bindAdminPos()} style={{
-          x, y
-        }} />
-        <animated.div className="adminModule_L1_window" id="adminModule_L1_window"
-        style={{
-          x, y
-        }}>
-        <div className="adminModule_L1_window_topbar" id="adminModule_L1_window_topbar">Admin
-            <div>
-                <span id="adminModule_L1_minmax" className="material-symbols-outlined" onClick={minmaxAdminModule}>web_asset</span>
-                <span id="adminModule_L1_close" className="material-symbols-outlined" onClick={closeAdminModule}>close</span>
-            </div>
-        </div> */}
-
         <div className="adminModule_L1_Main_Container" id="adminModule_L1_Main_Container">
             <div className="adminModule_Main_Container_wrap">
 
@@ -798,6 +681,11 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                                 className="adminModule_create_button"
                                 onClick={createSchedule}> Add Schedule
                             </button>
+
+                            <button 
+                                className="adminModule_create_button"
+                                onClick={uploadSchedule}> Upload Schedule
+                            </button>
                         </div>
                     </div>
 
@@ -806,12 +694,11 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                             <table className="winAtt_viewStudent_table table-admin">
                                 <thead>
                                     <tr className="winAtt_viewStudent_table_header-b schedule-tb-header">
-                                        <td>User ID</td>
+                                        <td>Class</td>
                                         <td>Task</td>
                                         <td>Time</td>                                      
                                         <td>Scheduled Class</td>
                                         <td>Room</td>
-                                        {/* <td>Repeat</td> */}
                                         <td>Actions</td>
                                     </tr>
                                 </thead>
@@ -844,47 +731,19 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                 </div>
 
                 <div className="adminModule_create_sched_modal">
-                   {/*<CreateSchedModal 
-                    addSchedule={addSchedule}
-                    resetSchedInputs={resetSchedInputs}
-                    setSchedUserID={setSchedUserID}
-                    setSchedTask={setSchedTask}
-                    setSchedTime={setSchedTime}
-                    setSchedSubjID={setSchedSubjID}
-                    setSchedClass={setSchedClass}
-                    setSchedRoom={setSchedRoom}
-                    setSchedRepeat={setSchedRepeat}
-                    schedUserID={schedUserID}
-                    schedTask={schedTask}
-                    schedTime={schedTime}
-                    schedSubjID={schedSubjID}
-                    schedClass={schedClass}
-                    schedRoom={schedRoom}
-                    schedRepeat={schedRepeat}
-                    />*/}
-                    <CreateSchedule/>
+                    <CreateSchedule
+                        refreshSchedTable={refreshSchedTable}/>
+                </div>
+
+                <div className="adminModule_upload_sched_modal">
+                    <CSVUploadSchedule 
+                        refreshSchedTable={refreshSchedTable}/>
                 </div>
 
                 <div className="adminModule_edit_sched_modal">
-                    <EditScheduleModal
-                    editSchedValue={editSchedValue}
-                    updateSchedule={updateSchedule}
-                    resetSchedInputs={resetSchedInputs}
-                    setSchedUserID={setSchedUserID}
-                    setSchedTask={setSchedTask}
-                    setSchedTime={setSchedTime}
-                    setSchedSubjID={setSchedSubjID}
-                    setSchedClass={setSchedClass}
-                    setSchedRoom={setSchedRoom}
-                    setSchedRepeat={setSchedRepeat}
-                    schedUserID={schedUserID}
-                    schedTask={schedTask}
-                    schedTime={schedTime}
-                    schedSubjID={schedSubjID}
-                    schedClass={schedClass}
-                    schedRoom={schedRoom}
-                    schedRepeat={schedRepeat}
-                    />
+                    <EditSchedule 
+                        editSchedID={editSchedID}
+                        refreshSchedTable={refreshSchedTable}/>
                 </div>
 
                 <div className="confirmDelete_sched_modal_wrap-admin">
@@ -942,7 +801,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                                         </tr>
                                     </thead>
                                     <tbody className="adminModule_table_body">
-                                        {/* {viewAnnouncements && viewAnnouncements.filter
+                                        {viewAnnouncements && viewAnnouncements.filter
                                             (viewAnnouncement=>
                                                 announceKeys.some(key=>viewAnnouncement[key].toLowerCase().includes(announceQuery))
                                             ).map((viewAnnouncement) => (
@@ -951,19 +810,6 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                                                     viewAnnouncement={viewAnnouncement}
                                                     editAnnounce={editAnnounce}
                                                     checkDeleteAnnounce={checkDeleteAnnounce}
-                                                    // editSchedule={editSchedule}
-                                                    // checkDeleteSched={checkDeleteSched}
-                                                />
-                                            ))
-                                        } */}
-                                        {viewAnnouncements && viewAnnouncements.map((viewAnnouncement) => (
-                                                <AnnouncementTable 
-                                                    key={viewAnnouncement._id}
-                                                    viewAnnouncement={viewAnnouncement}
-                                                    editAnnounce={editAnnounce}
-                                                    checkDeleteAnnounce={checkDeleteAnnounce}
-                                                    // editSchedule={editSchedule}
-                                                    // checkDeleteSched={checkDeleteSched}
                                                 />
                                             ))
                                         }
@@ -974,44 +820,10 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                     </div>
                 </div>
 
-                {/* <div className="adminModule_create_announce_modal">
-                    <CreateAnnounceModal 
-                    addAnnounce={addAnnounce}
-                    resetAnnounceInputs={resetAnnounceInputs}
-                    setAnnounceType={setAnnounceType}
-                    setAnnounceName={setAnnounceName}
-                    setAnnounceDate={setAnnounceDate}
-                    setAnnounceTime={setAnnounceTime}
-                    setAnnouncePlace={setAnnouncePlace}
-                    announceType={announceType}
-                    announceName={announceName}
-                    announceDate={announceDate}
-                    announceTime={announceTime}
-                    announcePlace={announcePlace}
-                    />
-                </div> */}
                 <div className="adminModule_create_announce_modal">
                     <CreateAnnouncement 
                         refreshAnnounceTable={refreshAnnounceTable}/>
                 </div>
-
-                {/* <div className="adminModule_edit_announce_modal">
-                    <EditAnnounceModal
-                    // editSchedValue={editSchedValue}
-                    updateAnnounce={updateAnnounce}
-                    resetAnnounceInputs={resetAnnounceInputs}
-                    setAnnounceType={setAnnounceType}
-                    setAnnounceName={setAnnounceName}
-                    setAnnounceDate={setAnnounceDate}
-                    setAnnounceTime={setAnnounceTime}
-                    setAnnouncePlace={setAnnouncePlace}
-                    announceType={announceType}
-                    announceName={announceName}
-                    announceDate={announceDate}
-                    announceTime={announceTime}
-                    announcePlace={announcePlace}
-                    />
-                </div> */}
 
                 <div className="adminModule_edit_announce_modal">
                     <EditAnnouncement 
