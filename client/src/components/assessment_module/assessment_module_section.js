@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import search_icon from "../../images/search_FILL0_wght400_GRAD0_opsz48.png"
 import back_icon from "../../images/arrow_back_FILL0_wght400_GRAD0_opsz48.png"
+import view_icon from "../../images/visibility_FILL1_wght400_GRAD0_opsz48.png"
 
 const AssessmentModuleSection = ({ user, idNumber, classID, classSection, subjectID }) => {
 
@@ -71,6 +72,7 @@ const AssessmentModuleSection = ({ user, idNumber, classID, classSection, subjec
                             <td>Seatwork</td>
                             <td>Project</td>
                             <td>Attendance</td>
+                            <td>Actions</td>
                         </tr>
                     </thead>
                     <tbody className="assessment_module_students_body">                   
@@ -83,6 +85,9 @@ const AssessmentModuleSection = ({ user, idNumber, classID, classSection, subjec
                                     <td>{hStudents.seatwork_score + "/" + hStudents.seatwork_maxscore}</td>
                                     <td>{hStudents.project_score + "/" + hStudents.project_maxscore}</td>
                                     <td>{hStudents.attendance_score + "/" + hStudents.attendance_maxscore}</td>
+                                    <button className="windowAttendance_view">
+                                        <img src={view_icon} alt="view"></img>
+                                    </button>
                                 </tr>
                             ))
                         }

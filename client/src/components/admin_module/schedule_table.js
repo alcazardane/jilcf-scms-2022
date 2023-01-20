@@ -6,11 +6,12 @@ const ScheduleTable = ({ viewSchedule, editSchedule, checkDeleteSched }) => {
     return (
         <>
         <tr className="winAtt_viewStudent_table_body-b schedule-tb-body">
-            <td>{viewSchedule.userID}</td>
-            <td>{viewSchedule.task}</td>
-            <td>{viewSchedule.time}</td>
-            <td>{viewSchedule.subj_id + " - " + viewSchedule.sched_class}</td>
-            <td>{viewSchedule.room}</td>
+            <td>{viewSchedule.class_id}</td>
+            <td>{viewSchedule.class_type}</td>
+            <td>{viewSchedule.class_start_hh + ":" + viewSchedule.class_start_mm + " " + viewSchedule.class_start_pa
+            + " - " + viewSchedule.class_end_hh + ":" + viewSchedule.class_end_mm + " " + viewSchedule.class_end_pa}</td>
+            <td>{viewSchedule.subject_name}</td>
+            <td>{viewSchedule.class_room}</td>
             {/* <td>{viewSchedule.repeat.substring(0,1)}</td> */}
             <td>
                 <button className="windowAttendance_notify">
