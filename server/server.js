@@ -2,11 +2,11 @@ if (process.env.NODE_ENV !== 'production') {
   require("dotenv").config({ path: "./config.env" });
 }
 
-
 const express = require("express");
 const app = express();
 const mongoose = require("mongoose")
 const path = require('path');
+const nodemailer = require('nodemailer');
 
 const bodyParser = require('body-parser');
 
@@ -14,6 +14,8 @@ app.post('/upload');
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+
+
 
 //middleware
 const cors = require("cors");
@@ -73,6 +75,33 @@ app.use('/api/class-sections', classSectionRoutes)
 app.use('/api/shed-events', eventRoutes)
 app.use('/api/announcements', announceRoutes)
 app.use('/api/upcoming-schedules', schedulesRoutes)
+
+
+
+// EMAIL SENDER
+app.post('/api/send-email', async (req, res) => {
+  try {
+    const { name, email, message } = req.body;
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: 'sti.groupsevencapstone@gmail.com',
+        pass: 'urxsopbjjegmcglf',
+      },
+    });
+    const info = await transporter.sendMail({
+      from: '"Do Not Reply" sti.groupsevencapstone@gmail.com',
+      to: email,
+      subject: `Message from ${name}`,
+      text: message,
+    });
+    console.log('Email sent:', info.messageId);
+    res.send('Email sent');
+  } catch (err) {
+    console.error(err);
+    res.status(500).send('Server error');
+  }
+});
 
 app.listen(8080, () => console.log('API is running on http://localhost:8080/login'));
 

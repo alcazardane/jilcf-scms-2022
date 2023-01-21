@@ -23,6 +23,7 @@ import UserAssessmentModule from "./components/assessment_module/userAssessmentM
 import UserCameraModule from "./components/camera_module/userCameraModule";
 import UserNotificationModule from "./components/notification_module/userNotificationModule";
 import UserAnalyticsModule from "./components/analytics_module/userAnalyticsModule";
+import UserInfoForm from "./components/sendemail"
 
 import UploadAccount from "./components/ADMIN/accounts/uploadAccount"
 
@@ -57,6 +58,9 @@ function App(){
     <div className="App">
       <BrowserRouter basename='/'>
         <Routes>
+
+        <Route path="/emailyarn" element={<UserInfoForm />}/>
+        
         <Route 
             path="/"
             element={!user ? <Login /> : navigateUser()}
