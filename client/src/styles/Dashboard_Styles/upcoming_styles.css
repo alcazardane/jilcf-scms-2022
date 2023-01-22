@@ -2,20 +2,21 @@
 .upcoming_container{
   background: white;
   /*width: 48vw;*/
-  height: 460px;
+  /* height: 460px; */
+  height: 80%;
   /*margin: 2vw 0  0 1.25vw;*/
   margin-top: var(--dashboard-margin-top);
   margin-left: var(--dashboard-margin-left);
   /*min-width: 334px;*/
-  width: 35%;
+  width: 30%;
   /*width: 340px;*/
   /* min-width: 300px; */
   border-radius: 5px;
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
-  overflow: none;
-  position: relative;
+  overflow: auto;
+  /* position: relative; */
   z-index: 2;
   transition: all 200ms ease-in-out;
 }
@@ -56,8 +57,10 @@
 .class_scheds_wrap{
   margin: 0;
   padding: 0;
-  display: grid;
-  width: var(--upcoming-container-wrap-width);
+  display: flex;
+  flex-wrap: wrap;
+  /* width: var(--upcoming-container-wrap-width); */
+  width: 100%;
   justify-content: center;
   gap: 5%;
 }
@@ -65,7 +68,10 @@
 .class_scheds{
   /*width: 21.2vw;*/
   /*width: 290px;*/
-  width: 95%;
+  width: 90%;
+  max-width: none;
+  min-width: none;
+  margin-bottom: 4%;
   /*min-width: 240px;*/
   /*min-width: 292.5px;*/
   /*height: 5.5vw;*/
@@ -75,11 +81,11 @@
   /*margin: 0 0 23px 0;*/
   /*margin-bottom: 1.7vw;
   margin-left: 1.45vw;*/
-  box-shadow: 4px 4px 10px rgba(0, 0, 0, 0.25);
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
   border-left: 5px solid #03256C;
   display: flex;
   flex-wrap: nowrap;
-  overflow: auto;
+  /* overflow: auto; */
   justify-content: space-between;
 }
 
@@ -109,8 +115,9 @@
 .class_scheds_wrap_2{
   margin:0;
   padding:0;
-  width: 17.5vw;
-  min-width: 180px;
+  /* width: 17.5vw;
+  min-width: 180px; */
+  width: 100%;
   white-space: nowrap;
   /*width: 240px;*/
 }

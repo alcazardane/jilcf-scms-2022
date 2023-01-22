@@ -10,6 +10,7 @@ import ActivityDetails from './activities_details_L3'
 import AnnouncementDetails from './announcement_details_L3'
 import UpcomingDetails from './upcoming_details_L3'
 import '../../../styles/Dashboard_Styles/mainDashboard_styles.css'
+import { useAuthContext } from '../../../hooks/useAuthContext'
 
 
 import useWindowDimensions from '../hooks/useWindowDimensions'
@@ -17,21 +18,21 @@ import useWindowDimensions from '../hooks/useWindowDimensions'
 export default function MainDashboard_L3({dashAttRef, dashAssessRef, dashAnaRef, dashUpRef, dashActRef, dashAnnRef}) {
 
     var root = document.querySelector(":root");
-
+    const { user } = useAuthContext()
 
     // Getting the schedule of the student
-    const [schedule, setSchedule] = useState([])
-    useEffect(() =>{
-        const fetchSchedule= async () => {
-            const response = await fetch('http://localhost:5000/schedule/11-0000006')
-            const json = await response.json()
+    const weekdays = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-            if (response.ok){
-                setSchedule(json)
-            }
-        }
-        fetchSchedule()
-    }, [])
+    const [schedule, setSchedule] = useState([])
+    const [idNumber, setIdNumber] = useState(user.idNumber);
+    const [weekday, setWeekday] = useState(weekdays[new Date().getDay()]);
+
+    useEffect(() => {
+        fetch(`http://localhost:5000/api/upcoming-schedules/student-schedule/${idNumber}/${weekday}`)
+          .then(res => res.json())
+          .then(data => setSchedule(data))
+          .catch(err => console.log(err));
+      }, [idNumber, weekday]);
 
     // Getting all the announcements
     const [announcement, setAnnouncement] = useState([])

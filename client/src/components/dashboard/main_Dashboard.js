@@ -30,7 +30,7 @@ export default function MainDashboard({dashUpRef, dashNoticeRef, dashAttRef}) {
             <Upcoming dashUpRef={dashUpRef}/>
             <RedYellowNotice dashNoticeRef={dashNoticeRef}/>
           </div>
-          <Attendance dashAttRef={dashAttRef}/>
+          {/* <Attendance dashAttRef={dashAttRef}/> */}
           {/* <Assessment /> */}
         </div>
     </>
