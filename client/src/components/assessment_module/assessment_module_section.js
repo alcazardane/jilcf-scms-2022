@@ -32,6 +32,11 @@ const AssessmentModuleSection = ({ user, idNumber, classID, classSection, subjec
         fetchStudents();
     }, [idNumber, subjectID]);
 
+    const openUpload = () => {
+        root.style.setProperty('--Upload-Assess-Modal-Admin-PointerEvents', "all");
+        root.style.setProperty('--Upload-Assess-Modal-Admin-Opacity', "1");
+    }
+
     const getMiddleInitial = (initial) => {
         if(!initial){
           return
@@ -55,8 +60,8 @@ const AssessmentModuleSection = ({ user, idNumber, classID, classSection, subjec
                             placeholder="Search a student"
                         />
                     </div>
-                    <button className="upload_assessment">Upload</button>
-                    <button className="download_assessment">Download</button>
+                    <button className="upload_assessment" onClick={openUpload}>Upload</button>
+                    {/* <button className="download_assessment">Download</button> */}
                 </div>
             </>
         

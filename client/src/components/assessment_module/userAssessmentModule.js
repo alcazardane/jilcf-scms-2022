@@ -4,6 +4,7 @@ import { useAuthContext } from "../../hooks/useAuthContext"
 
 import AssessmentModule from "./assessment_module"
 import AssessmentModuleSection from "./assessment_module_section"
+import CSVUploadAssessment from "./uploadAssessment"
 
 const UserAssessmentModule = ({
     setClassID,
@@ -51,6 +52,11 @@ const UserAssessmentModule = ({
                         classSection={classSection}
                         subjectID={subjectID}/>
                 </div>
+
+                <div className="upload_assessment_modal">
+                    <CSVUploadAssessment />
+                </div>
+
             </>    
     }
     else if (user.level === '3'){

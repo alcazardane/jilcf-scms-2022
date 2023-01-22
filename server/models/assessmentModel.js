@@ -33,7 +33,7 @@ const assessmentSchema = new Schema({
     }]
 })
 
-assessmentSchema.statics.createRec = async function(recordId, userId, teacherId, subjectId, date, label, score){
+assessmentSchema.statics.createRec = async function(recordId, userId, teacherId, subjectId, date, label, score, maxscore){
     if(!recordId || !userId || !teacherId || !subjectId || !date || !label || !score || !maxscore){
         throw Error('All fields must be filled')
     }

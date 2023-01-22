@@ -601,6 +601,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                                             viewAccount={viewAccount}
                                             editAccount={editAccount} 
                                             checkDeleteAccount={checkDeleteAccount}
+                                            
                                         />
                                     ))
                                 }
@@ -622,7 +623,8 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                 </div>
 
                 <div className="adminModule_upload_account_modal">
-                    <UploadAccount />
+                    <UploadAccount
+                        refreshTable={refreshTable} />
                 </div>
 
                 <div className="confirmDelete_modal_wrap-admin">
