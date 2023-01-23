@@ -13,6 +13,7 @@ const Register = ({ refreshTable }) => {
     const [level, setLevel] = useState('')
     const [track, setTrack] = useState('')
     const [strand, setStrand] = useState('')
+    const [glvl, setGlvl] = useState('')
     const [section, setSection] = useState('')
     const {register, error, isLoading} = useRegister()
 
@@ -24,11 +25,13 @@ const Register = ({ refreshTable }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        refreshTable();
 
-        await register(idNumber, password, fname, mname, lname, suffix, level, track, strand, section)
+        await register(idNumber, password, fname, mname, lname, suffix, level, track, strand, glvl, section)
         root.style.setProperty('--adminModule_create_modal-pointer-events', "none");
         root.style.setProperty('--adminModule_create_modal-opacity', "0");
         refreshTable();
+        clearForm();
     }
 
 
@@ -138,6 +141,8 @@ const Register = ({ refreshTable }) => {
                         className="create_select"
                         value={track} 
                         onChange={(e) => setTrack(e.target.value)}>
+                            <option value="admin">Admin</option>
+                            <option value="Teacher">Teacher</option>
                             <option value="ACADEMIC">ACADEMIC</option>
                             <option value="TVL">TVL</option>
                     </select>
@@ -149,10 +154,25 @@ const Register = ({ refreshTable }) => {
                         className="create_select"
                         value={strand} 
                         onChange={(e) => setStrand(e.target.value)}>
+                            <option value="admin">Admin</option>
+                            <option value="Teacher">Teacher</option>
                             <option value="ABM">ABM</option>
                             <option value="HUMMS">HUMMS</option>
                             <option value="STEM">STEM</option>
                             <option value="TVL">TVL</option>
+                    </select>
+                </div>
+
+                <div className="adminModule_create_input_inside">
+                    <label className="adminModule_create_label">Grade Level:</label>
+                    <select
+                        className="create_select"
+                        value={glvl} 
+                        onChange={(e) => setGlvl(e.target.value)}>
+                            <option value="admin">Admin</option>
+                            <option value="Teacher">Teacher</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
                     </select>
                 </div>
                 
@@ -162,6 +182,8 @@ const Register = ({ refreshTable }) => {
                         className="create_select"
                         value={section} 
                         onChange={(e) => setSection(e.target.value)}>
+                            <option value="admin">Admin</option>
+                            <option value="Teacher">Teacher</option>
                             <option value="A">A</option>
                             <option value="B">B</option>
                             <option value="C">C</option>
@@ -171,7 +193,7 @@ const Register = ({ refreshTable }) => {
             </div>
 
             <button className="editAtt_cancel_button" onClick={cancelRegister}>Cancel</button>
-            <button disabled={isLoading} className="editAtt_update_button" onClick={handleSubmit}>
+            <button className="editAtt_update_button" onClick={handleSubmit}>
                 Create
             </button>
             <div className="register_error_wrap">

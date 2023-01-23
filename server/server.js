@@ -76,6 +76,8 @@ app.use('/api/shed-events', eventRoutes)
 app.use('/api/announcements', announceRoutes)
 app.use('/api/upcoming-schedules', schedulesRoutes)
 
+app.use('/csv_templates', express.static(path.join(__dirname, '../client/src/csv_templates')));
+
 
 
 // EMAIL SENDER

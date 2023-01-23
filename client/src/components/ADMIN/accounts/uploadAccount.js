@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
 import Papa from 'papaparse';
-// import ClassSchedule from '../../../../../server/models/classScheduleModel'
-// import ClassSchedule from './classScheduleModel';
+import { useRegister } from '../../../hooks/useRegister';
 
 const UploadAccount = ({ refreshTable }) => {
     var root = document.querySelector(":root");
+    const {register, error, isLoading} = useRegister()
     // let user = JSON.parse(localStorage.getItem('user'));
     // const token = user.token;
 
@@ -22,27 +22,28 @@ const UploadAccount = ({ refreshTable }) => {
     const handleSubmit = async (e) => {
         e.preventDefault();
         refreshTable();
+        
         if(file) {
             Papa.parse(file, {
                 header: true,
                 complete: (results) => {
                     const data = results.data;
                     data.forEach(async (row) => {
-                        try {
-                            const response = await fetch('http://localhost:5000/api/user/register', {
-                                method: 'POST',
-                                headers: { 
-                                    'Content-Type': 'application/json',
-                                },
-                                body: JSON.stringify(row)
-                            });
-                            if (!response.ok) {
-                                throw new Error(response.statusText);
-                            }
-                            else throw console.log('Successfully addedd')
-                        } catch (error) {
-                            console.error(error);
-                        }
+                        e.preventDefault();
+
+                        let idNumber = row.idNumber;
+                        let password = row.password;
+                        let fname = row.fname;
+                        let mname = row.mname;
+                        let lname = row.lname;
+                        let suffix = row.suffix;
+                        let level = row.level;
+                        let track = row.track;
+                        let strand = row.strand;
+                        let glvl = row.glvl;
+                        let section = row.section;
+                        
+                        await register(idNumber, password, fname, mname, lname, suffix, level, track, strand, glvl, section)
                     });
                 }
             });

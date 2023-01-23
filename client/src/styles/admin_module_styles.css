@@ -139,6 +139,18 @@
     box-shadow: 2px 2px 5px rgba(0 , 0, 0, 0.25);
     cursor: pointer;
 }
+.adminModule_create_button-b{
+    width: 120px;
+    height: 35px;
+    background: #F14668;
+    font-size: 14px;
+    font-weight: 600;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 2px 2px 5px rgba(0 , 0, 0, 0.25);
+    cursor: pointer;
+}
 .adminModule_table_main_wrap{
     width: 100%;
     height: var(--table-admin-height);

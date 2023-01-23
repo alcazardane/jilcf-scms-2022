@@ -46,6 +46,23 @@ const AssessmentModuleSection = ({ user, idNumber, classID, classSection, subjec
         }
     }
 
+    const [downloadingTemp, setDownloadingTemp] = useState(false);
+    const templateDownload = () => {
+        setDownloadingTemp(true);
+      
+          // Get the file located in the src folder
+        const url = 'http://localhost:5000/csv_templates/assessment_template.csv';
+        fetch(url)
+            .then(response => response.blob())
+            .then(blob => {
+              const link = document.createElement('a');
+              link.href = URL.createObjectURL(blob);
+              link.download = 'assessment_template.csv';
+              link.click();
+              setDownloadingTemp(false);
+        });
+    };
+
     let assessment_top;
     let assessment_content;
     if (user.level === '2' && handledStudents){
@@ -60,6 +77,14 @@ const AssessmentModuleSection = ({ user, idNumber, classID, classSection, subjec
                             placeholder="Search a student"
                         />
                     </div>
+
+                    <button 
+                        className="adminModule_create_button-b" 
+                        onClick={templateDownload} 
+                        disabled={downloadingTemp}>
+                        {downloadingTemp ? 'Downloading...' : 'Download Template'}
+                    </button>
+
                     <button className="upload_assessment" onClick={openUpload}>Upload</button>
                     {/* <button className="download_assessment">Download</button> */}
                 </div>
@@ -110,8 +135,14 @@ const AssessmentModuleSection = ({ user, idNumber, classID, classSection, subjec
                             placeholder="Search a student"
                         />
                     </div>
-                    <button className="upload_assessment" disabled>Upload</button>
-                    <button className="download_assessment" disabled>Download</button>
+                    <button 
+                        className="adminModule_create_button-b" 
+                        onClick={templateDownload} 
+                        disabled={downloadingTemp}>
+                        {downloadingTemp ? 'Downloading...' : 'Download Template'}
+                    </button>
+
+                    <button className="upload_assessment" onClick={openUpload}>Upload</button>
                 </div>
             </>
         
