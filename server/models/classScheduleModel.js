@@ -8,31 +8,31 @@ const classScheduleSchema = new Schema({
     },
     class_start_hh: {
         type: String,
-        required: true
+        // required: true
     },
     class_start_mm: {
         type: String,
-        required: true
+        // required: true
     },
     class_start_pa: {
         type: String,
-        required: true
+        // required: true
     },
     class_end_hh: {
         type: String,
-        required: true
+        // required: true
     },
     class_end_mm: {
         type: String,
-        required: true
+        // required: true
     },
     class_end_pa: {
         type: String,
-        required: true
+        // required: true
     },
     class_day: {
         type: [String],
-        required: true
+        // required: true
     },
     // subject_id: {
     //     type: String,
@@ -40,15 +40,15 @@ const classScheduleSchema = new Schema({
     // },
     subject_name: {
         type: String,
-        required: true
+        // required: true
     },
     class_type: {
         type: String,
-        required: true
+        // required: true
     },
     class_room: {
         type: String,
-        required: true
+        // required: true
     },
     class_start_time: {
         type: String,

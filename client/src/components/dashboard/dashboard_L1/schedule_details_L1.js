@@ -5,13 +5,16 @@ const ScheduleDetails = ({ schedules }) => {
         <div className="dashboard_L1_Upcoming_scheds">
             <div className="dashboard_L1_Upcoming_scheds_inside">
                 <div className="l1_scheds_time">
-                    <span>{schedules.task + ", " + schedules.time}</span>
+                    <span>{schedules.class_type + ", " + 
+                        schedules.class_start_hh + ":" + schedules.class_start_mm + " " + schedules.class_start_pa +
+                        " - " + 
+                        schedules.class_end_hh + ":" + schedules.class_end_mm + " " + schedules.class_end_pa}</span>
                 </div>
                 <div className="l1_scheds_room">
-                    <span>{schedules.sched_class}</span>
+                    <span>{schedules.subject_name}</span>
                 </div>
                 <div className="l1_scheds_room">
-                    <span>{schedules.room}</span>
+                    <span>{schedules.class_room}</span>
                 </div>
             </div>
 

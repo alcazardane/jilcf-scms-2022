@@ -3,17 +3,17 @@ const CreateSchedule =({ refreshSchedTable }) => {
 
     var root = document.querySelector(":root");
 
-    const [schedClassSecID, setSchedClassSecID] = useState("");
-    const [schedType, setSchedType] = useState("");
-    const [schedStartTimeH, setSchedStartTimeH] = useState("");
-    const [schedStartTimeM, setSchedStartTimeM] = useState("");
-    const [schedStartTimeS, setSchedStartTimeS] = useState("");
-    const [schedEndTimeH, setSchedEndTimeH] = useState("");
-    const [schedEndTimeM, setSchedEndTimeM] = useState("");
-    const [schedEndTimeS, setSchedEndTimeS] = useState("");
-    const [schedDay, setSchedDay] = useState("");
-    const [schedRoom, setSchedRoom] = useState("");
-    const [schedSubject, setSchedSubject] = useState("");
+    const [schedClassSecID, setSchedClassSecID] = useState("ADMIN");
+    const [schedType, setSchedType] = useState("Meeting");
+    const [schedStartTimeH, setSchedStartTimeH] = useState("01");
+    const [schedStartTimeM, setSchedStartTimeM] = useState("00");
+    const [schedStartTimeS, setSchedStartTimeS] = useState("AM");
+    const [schedEndTimeH, setSchedEndTimeH] = useState("01");
+    const [schedEndTimeM, setSchedEndTimeM] = useState("00");
+    const [schedEndTimeS, setSchedEndTimeS] = useState("AM");
+    const [schedDay, setSchedDay] = useState("Monday");
+    const [schedRoom, setSchedRoom] = useState("BLDG A - RM503");
+    const [schedSubject, setSchedSubject] = useState("General Mathematics");
 
 
     const handleCancel = (e) => {
@@ -85,6 +85,7 @@ const CreateSchedule =({ refreshSchedTable }) => {
                             className="create_select"
                             value={schedClassSecID} 
                             onChange={(e) => setSchedClassSecID(e.target.value)}>
+                                <option value="ADMIN">ADMIN</option>
                                 <option value="ACADEMIC-12-STEM-A">12 STEM A</option>
                                 <option value="ACADEMIC-12-STEM-B">12 STEM B</option>
                                 <option value="ACADEMIC-12-STEM-C">12 STEM C</option>
@@ -331,6 +332,7 @@ const CreateSchedule =({ refreshSchedTable }) => {
                                 <option value="General Mathematics">General Mathematics</option>
                                 <option value="Oral Communications">Oral Communications</option>
                                 <option value="Computer Programming">Computer Programming</option>
+                                <option value="Faculty Meeting">Faculty Meeting</option>
                         </select>
                     </div>
                 </div>

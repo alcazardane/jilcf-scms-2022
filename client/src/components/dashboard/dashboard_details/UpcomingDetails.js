@@ -1,12 +1,12 @@
 const UpcomingDetails = ({ upcoming }) => {
 
     // Changing the border-left based on the grade level and other schedule type
-    const sideBorder = (grade_level) => {
+    const sideBorder = (class_type) => {
     
-        if(grade_level.toString() === "11"){
+        if(class_type === "Class"){
            return "#FFD056"
         }
-        else if(grade_level.toString() === "12"){
+        else if(class_type === "Meeting"){
             return "#03256C"
         }
         // For now, it will default to MEETING color which is purple
@@ -16,20 +16,25 @@ const UpcomingDetails = ({ upcoming }) => {
     return (
         <>
         <div className="class_scheds"
-            style={{ borderLeftColor: sideBorder(upcoming.upcoming_grade_level)}}
+            style={{ borderLeftColor: sideBorder(upcoming.class_type)}}
         >
             <div className="class_scheds_wrap_2">
                 <div className="class_scheds_time">
-                    <span>{upcoming.upcoming_type + ", " + upcoming.upcoming_start_time + " - " + upcoming.upcoming_end_time}</span>
+                    <span>
+                        {upcoming.class_type + ", " + 
+                        upcoming.class_start_hh + ":" + upcoming.class_start_mm + " " + upcoming.class_start_pa +
+                        " - " + 
+                        upcoming.class_end_hh + ":" + upcoming.class_end_mm + " " + upcoming.class_end_pa}
+                    </span>
                 </div>
                 <div className="class_scheds_section">
-                    <span>{upcoming.upcoming_subject + " - " + upcoming.upcoming_grade_level + " " + upcoming.upcoming_section}</span>
+                    <span>{upcoming.subject_name}</span>
                 </div>
                 <div className="class_scheds_room">
-                    <span>{upcoming.upcoming_room}</span>
+                    <span>{upcoming.class_room}</span>
                 </div>
             </div>
-                <li className="arrow_forward">&#10095;</li>
+                {/* <li className="arrow_forward">&#10095;</li> */}
         </div>
         </>
     )
