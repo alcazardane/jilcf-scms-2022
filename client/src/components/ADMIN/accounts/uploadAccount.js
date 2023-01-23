@@ -3,7 +3,7 @@ import Papa from 'papaparse';
 // import ClassSchedule from '../../../../../server/models/classScheduleModel'
 // import ClassSchedule from './classScheduleModel';
 
-const UploadAccount = () => {
+const UploadAccount = ({ refreshTable }) => {
     var root = document.querySelector(":root");
     // let user = JSON.parse(localStorage.getItem('user'));
     // const token = user.token;
@@ -21,6 +21,7 @@ const UploadAccount = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        refreshTable();
         if(file) {
             Papa.parse(file, {
                 header: true,
@@ -49,6 +50,7 @@ const UploadAccount = () => {
 
         root.style.setProperty('--Upload-Account-Modal-Admin-PointerEvents', "none");
         root.style.setProperty('--Upload-Account-Modal-Admin-Opacity', "0");
+        refreshTable();
     }
 
     return (

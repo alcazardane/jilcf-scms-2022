@@ -16,18 +16,21 @@ const Register = ({ refreshTable }) => {
     const [section, setSection] = useState('')
     const {register, error, isLoading} = useRegister()
 
+    var root = document.querySelector(":root");
+
     const toast_accountCreated = () => {
         toast("Account Created")
     }
 
     const handleSubmit = async (e) => {
-        e.preventDefault()
-        refreshTable();
+        e.preventDefault();
+
         await register(idNumber, password, fname, mname, lname, suffix, level, track, strand, section)
+        root.style.setProperty('--adminModule_create_modal-pointer-events', "none");
+        root.style.setProperty('--adminModule_create_modal-opacity', "0");
         refreshTable();
     }
 
-    var root = document.querySelector(":root");
 
     const clearForm = () => {
         setIdNumber('');
@@ -44,7 +47,7 @@ const Register = ({ refreshTable }) => {
 
     const cancelRegister = (e) => {
         e.preventDefault();
-        clearForm()
+        clearForm();
         root.style.setProperty('--adminModule_create_modal-pointer-events', "none");
         root.style.setProperty('--adminModule_create_modal-opacity', "0");
     }
@@ -131,37 +134,44 @@ const Register = ({ refreshTable }) => {
             <div className="adminModule_create_input_wrap">
                 <div className="adminModule_create_input_inside">
                     <label className="adminModule_create_label">Track:</label>
-                    <input 
-                        type="text"
-                        className="create_input"
-                        onChange={(e) => setTrack(e.target.value)}
-                        value={track}
-                    />
+                    <select
+                        className="create_select"
+                        value={track} 
+                        onChange={(e) => setTrack(e.target.value)}>
+                            <option value="ACADEMIC">ACADEMIC</option>
+                            <option value="TVL">TVL</option>
+                    </select>
                 </div>
 
                 <div className="adminModule_create_input_inside">
                     <label className="adminModule_create_label">Strand:</label>
-                    <input 
-                        type="text"
-                        className="create_input"
-                        onChange={(e) => setStrand(e.target.value)}
-                        value={strand}
-                    />
+                    <select
+                        className="create_select"
+                        value={strand} 
+                        onChange={(e) => setStrand(e.target.value)}>
+                            <option value="ABM">ABM</option>
+                            <option value="HUMMS">HUMMS</option>
+                            <option value="STEM">STEM</option>
+                            <option value="TVL">TVL</option>
+                    </select>
                 </div>
                 
                 <div className="adminModule_create_input_inside">
                     <label className="adminModule_create_label">Section:</label>
-                    <input 
-                        type="text"
-                        className="create_input"
-                        onChange={(e) => setSection(e.target.value)}
-                        value={section}
-                    />
+                    <select
+                        className="create_select"
+                        value={section} 
+                        onChange={(e) => setSection(e.target.value)}>
+                            <option value="A">A</option>
+                            <option value="B">B</option>
+                            <option value="C">C</option>
+                            <option value="D">D</option>
+                    </select>
                 </div>
             </div>
 
             <button className="editAtt_cancel_button" onClick={cancelRegister}>Cancel</button>
-            <button disabled={isLoading} className="editAtt_update_button">
+            <button disabled={isLoading} className="editAtt_update_button" onClick={handleSubmit}>
                 Create
             </button>
             <div className="register_error_wrap">
