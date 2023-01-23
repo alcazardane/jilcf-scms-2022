@@ -104,5 +104,18 @@ const deleteAccount = async (req, res) => {
 };
 
 
+const countAccounts = async (req, res) => {
+  try {
+      const totalAccounts = await User.countDocuments()
+      const teacherAccounts = await User.countDocuments({ level: '2' })
+      const studentAccounts = await User.countDocuments({ level: '3' })
 
-module.exports = {registerUser, loginUser, getAllUsers, getUserById, updateAccount, deleteAccount}
+      res.status(200).json({ total_accounts: totalAccounts, teacher_accounts: teacherAccounts, students_accounts: studentAccounts })
+  } catch (error) {
+      res.status(500).json({ message: error.message })
+  }
+}
+
+
+
+module.exports = {registerUser, loginUser, getAllUsers, getUserById, updateAccount, deleteAccount, countAccounts}

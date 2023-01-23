@@ -143,10 +143,10 @@ const Sidebar = ({ user,
         }
     }
 
-    const[dashAttIsOpen3, setDashAttIsOpen3] = useState(true);
+    const[dashAttIsOpen3, setDashAttIsOpen3] = useState(false);
     const[dashAssessIsOpen, setDashAssessIsOpen] = useState(false);
     const[dashAnaIsOpen, setDashAnaIsOpen] = useState(false);
-    const[dashUpIsOpen3, setDashUpIsOpen3] = useState(false);
+    const[dashUpIsOpen3, setDashUpIsOpen3] = useState(true);
     const[dashActIsOpen, setDashActIsOpen] = useState(false);
     const[dashAnnIsOpen, setDashAnnIsOpen] = useState(false);
 
@@ -422,7 +422,7 @@ const Sidebar = ({ user,
                         <div className="main_window_L1_sidebar_module_label">Dashboard</div>
                     </div>
                 </Link>
-                <div className={(dashboardIsOpen ? "sidebar_sub_wrap_active" : "sidebar_sub_wrap_inactive")}>
+                {/* <div className={(dashboardIsOpen ? "sidebar_sub_wrap_active" : "sidebar_sub_wrap_inactive")}>
                     <div 
                         className={"sidebar_sub_item " + (dashUpIsOpen ? "sidebar_sub_item_active" : "")}
                         onClick={() => scrollDashSection2(dashUpRef)}                                  
@@ -438,7 +438,7 @@ const Sidebar = ({ user,
                         onClick={() => scrollDashSection2(dashAttRef)}
                         >Attendence per Classroom
                     </div>
-                </div>
+                </div> */}
             </>
 
         userAttendanceModule = 
@@ -506,15 +506,20 @@ const Sidebar = ({ user,
                     </div>
                 </Link>
                 <div className={(dashboardIsOpen ? "sidebar_sub_wrap_active_L3" : "sidebar_sub_wrap_inactive")}>
-                    <div 
+                    {/* <div 
                         className={"sidebar_sub_item sidebar_sub_item_L3 " + (dashAttIsOpen3 ? "sidebar_sub_item_active" : "")}
                         onClick={() => scrollDashSection3(dashAttRef)}                                  
                         >Attendance Record
-                    </div>
+                    </div> */}
                     <div 
                         className={"sidebar_sub_item sidebar_sub_item_L3 " + (dashUpIsOpen3 ? "sidebar_sub_item_active" : "")}
                         onClick={() => scrollDashSection3(dashUpRef)}                                  
                         >Upcoming
+                    </div>
+                    <div 
+                        className={"sidebar_sub_item sidebar_sub_item_L3 " + (dashAnnIsOpen ? "sidebar_sub_item_active" : "")}
+                        onClick={() => scrollDashSection3(dashAnnRef)}
+                        >Announcements
                     </div>
                     <div 
                         className={"sidebar_sub_item sidebar_sub_item_L3 " + (dashAssessIsOpen ? "sidebar_sub_item_active" : "")}
@@ -531,11 +536,6 @@ const Sidebar = ({ user,
                         onClick={() => scrollDashSection3(dashAnaRef)}
                         >Analytics
                     </div> */}
-                    <div 
-                        className={"sidebar_sub_item sidebar_sub_item_L3 " + (dashAnnIsOpen ? "sidebar_sub_item_active" : "")}
-                        onClick={() => scrollDashSection3(dashAnnRef)}
-                        >Announcements
-                    </div>
                 </div>
             </>
 

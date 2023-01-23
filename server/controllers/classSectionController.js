@@ -98,6 +98,30 @@ exports.getClassSectionFieldsByClassId = (req, res) => {
 //     .catch(err => res.status(400).json({ message: 'Error fetching ClassSection: ' + err }));
 // };
 
+exports.getStudentAssessmentRecords = async (req, res) => {
+  try {
+    const { student_id, subject_id } = req.params;
+
+    // Find assessment by student_id and subject_id
+    const assessment = await Assessment.findOne({
+        userId: student_id,
+        subjectId: subject_id
+    });
+    if (!assessment) return res.status(404).json({ message: 'Assessment records not found' });
+    //initialize an object
+    let studRecord = {};
+    for (let i = 0; i < assessment.studRecord.length; i++) {
+        let { date, label, score, maxscore } = assessment.studRecord[i];
+        studRecord[`${label}_score`] = score;
+        studRecord[`${label}_maxscore`] = maxscore;
+        studRecord[`${label}_date`] = date;
+    }
+    res.json([studRecord]);
+  } catch (err) {
+    res.status(500).json({ message: err.message });
+  }
+};
+
 
 // will get the class_id and subject_id to return the students and their assessments
 exports.getStudentAssessment = async (req, res) => {
@@ -146,6 +170,7 @@ exports.getStudentAssessment = async (req, res) => {
   }
 };
 
+
 exports.getClassSubjectSummary = async (req, res) => {
   try {
     const { class_id, subject_id } = req.params;
@@ -180,7 +205,7 @@ exports.getClassSubjectSummary = async (req, res) => {
       for (let j = 0; j < assessment.studRecord.length; j++) {
         let { label, score } = assessment.studRecord[j];
 
-        // Initialize array for each label if it does not exist yet
+        // Initialize array for each label
         if (!topStudents[label]) topStudents[label] = [];
 
         // Add student to top students array for each label
@@ -216,7 +241,8 @@ exports.getClassSubjectSummary = async (req, res) => {
       for (let i = 0; i < 3; i++) {
         let student = topStudents[label][i];
         if (student) {
-          result[`${label}_top_${i+1}`] = student.fullname;
+          result[`${label}_top_${i+1}_name`] = student.fullname;
+          result[`${label}_top_${i+1}_score`] = student.score;
         }
       }
     }
@@ -280,11 +306,20 @@ exports.getClassSubjectLeastPerformers = async (req, res) => {
     }
 
     // Iterate through topStudents object and get the top 5 least performers
+    // for (let label in topStudents) {
+    //   for (let i = 0; i < 5; i++) {
+    //     let student = topStudents[label][i];
+    //     if (student) {
+    //       result[`${label}_least_performer_${i+1}`] = student.fullname;
+    //     }
+    //   }
+    // }
     for (let label in topStudents) {
       for (let i = 0; i < 5; i++) {
         let student = topStudents[label][i];
         if (student) {
-          result[`${label}_least_performer_${i+1}`] = student.fullname;
+          result[`${label}_least_performer_${i+1}_name`] = student.fullname;
+          result[`${label}_least_performer_${i+1}_score`] = student.score;
         }
       }
     }
@@ -357,16 +392,6 @@ exports.getStudentAssessments = async (req, res) => {
 
     // Initialize array to store result
     const result = [];
-
-    // Initialize object to store total score per label
-    let totalScores = {};
-
-    // Initialize object to store top students per label
-    let topStudents = {};
-
-    // Initialize object to store least students per label
-    let leastStudents = {};
-
     for (let i = 0; i < students.length; i++) {
       // Find user by student_id
       const student = await User.findOne({ idNumber: students[i].student_id });
@@ -378,7 +403,6 @@ exports.getStudentAssessments = async (req, res) => {
         subjectId: subject_id
       });
       if (!assessment) continue;
-
       //initialize an object
       let studentData = {
         student_id: students[i].student_id,
@@ -388,80 +412,31 @@ exports.getStudentAssessments = async (req, res) => {
         suffix: student.suffix
       };
 
-      // Iterate through each studRecord
+      // Initialize variable to store total percentage
+      let totalPercentage = 0;
+      // Iterate through each studRecord and add it to studentData object.
       for (let j = 0; j < assessment.studRecord.length; j++) {
         let { date, label, score, maxscore } = assessment.studRecord[j];
-
-        // Initialize array for each label if it does not exist yet
-        if (!topStudents[label]) topStudents[label] = [];
-        if (!leastStudents[label]) leastStudents[label] = [];
-
-        // Add student to top students array for each label
-        topStudents[label].push({
-          student_id: students[i].student_id,
-          fullname: `${student.lname}, ${student.fname}`,
-          score
-        });
-
-        // Add student to least students array for each label
-        leastStudents[label].push({
-          student_id: students[i].student_id,
-          fullname: `${student.lname}, ${student.fname}`,
-          score
-        });
-
-        // Check if label exists in totalScores object
-        if (totalScores[label]) {
-          // If label exists, add score
-          totalScores[label] += score;
-        } else {
-          // If label does not exist, initialize it with score
-          totalScores[label] = score;
-        }
-
         studentData[`${label}_date`] = date;
         studentData[`${label}_score`] = score;
         studentData[`${label}_maxscore`] = maxscore;
+        totalPercentage += (score / maxscore) * 100;
       }
-
-      // Initialize variable to store top 1 count
-      let top1Count = 0;
-
-      // Initialize variable to store least 1 count
-      let least1Count = 0;
-
-      // Iterate through topStudents object and sort by score
-      for (let label in topStudents) {
-        topStudents[label].sort((a, b) => b.score - a.score);
-        if (topStudents[label][0].student_id === studentData.student_id) {
-          top1Count++;
-        }
-      }
-
-      // Iterate through leastStudents object and sort by score
-      for (let label in leastStudents) {
-        leastStudents[label].sort((a, b) => a.score - b.score);
-        if (leastStudents[label][0].student_id === studentData.student_id) {
-          least1Count++;
-        }
-      }
-
-      // Determine intervention based on top 1 count and least 1 count
+      let averagePercentage = totalPercentage / assessment.studRecord.length;
       let intervention;
-      if (top1Count > 3) {
-        intervention = "Reward the Student";
-      } else if (top1Count > 0 && top1Count <= 3) {
-        intervention = "Praise the Student";
-      } else if (least1Count > 0 && least1Count <= 3) {
-        intervention = "Warn the Student";
-      } else if (least1Count > 1) {
-        intervention = "Contact the Parent or Guardian";
-      } else if (least1Count >= assessment.studRecord.length) {
-        intervention = "Consider Counseling";
+      if (averagePercentage < 60) {
+        intervention = "Consider counseling";
+      } else if (averagePercentage >= 60 && averagePercentage <= 69) {
+        intervention = "Contact the parent/guardian";
+      } else if (averagePercentage >= 70 && averagePercentage <= 74) {
+        intervention = "Warn the student";
+      } else if (averagePercentage >= 75 && averagePercentage <= 80) {
+        intervention = "Set achievable goals";
+      } else if (averagePercentage >= 81 && averagePercentage <= 89) {
+        intervention = "Give enrichment activities";
       } else {
-        intervention = "No Intervention Applied";
+        intervention = "Ask to help those who are failing";
       }
-
       studentData["intervention"] = intervention;
       result.push(studentData);
     }

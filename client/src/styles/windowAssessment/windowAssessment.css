@@ -131,7 +131,7 @@
     height: 90%;
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
     overflow: auto;
     /* background: #FFD056; */
 }
@@ -373,6 +373,8 @@
     font-size: 14px;
     font-weight: 500;
     margin: 3%;
+    display: flex;
+    justify-content: space-between;
 }
 .analytics_module_record_wrap{
     margin-top: 2%;

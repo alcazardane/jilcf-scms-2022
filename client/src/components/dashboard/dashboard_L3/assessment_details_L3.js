@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react"
+import { Link } from "react-router-dom"
 import arrow_next from "../../../images/arrow_circle_right_FILL1_wght400_GRAD0_opsz48.png"
 import arrow_prev from "../../../images/arrow_circle_left_FILL1_wght400_GRAD0_opsz48.png"
 
@@ -8,7 +9,7 @@ const AssessmentDetails = () => {
 
     const { width } = useWindowDimensions();
 
-    let scrollValue = width * .68 * .96;
+    let scrollValue = width * .98;
 
     // For the sliders
     const slideRight = () =>{
@@ -61,7 +62,9 @@ const AssessmentDetails = () => {
         <>
             <div className="dashboard_L3_container_label">
                 <span>ASSESSMENT RECORD</span>
-                <span className="view_calendar_L1" id="view_calendar_L1" >View Assessment &#10095;</span>
+                <Link to="/home/L3/assessment"style={{ textDecoration: 'none' }}> 
+                    <span className="view_calendar_L1" id="view_calendar_L1" >view assessment &#10095;</span>
+                </Link>
             </div>
 
             <div className="dashboard_L3_container_arrow">
