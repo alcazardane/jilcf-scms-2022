@@ -65,12 +65,35 @@ const AssessmentModule = ({ user, idNumber, setClassID, setClassSection, setSubj
         }
     }
 
+    const [classQuery, setClassQuery] = useState('')
+    const classKeys = ["class_glvl", "class_strand", "class_section", "subject_name"]
+
+    const [subjectQuery, setSubjectQuery] = useState('')
+    const subjKeys = ["subject_name"]
+
     let subject_cards;
+    let search_bar;
     if (user.level === '2'){
+        search_bar =
+            <>
+                <div className="assessment_module_search_wrap">
+                    <img src={search_icon} alt="search" className="assessment_module_search_icon"/>
+                    <input 
+                        type="text" 
+                        className="assessment_module_search_input"
+                        placeholder="Search Class and Section"
+                        onChange={e=> setClassQuery(e.target.value)}
+                    />
+                </div>
+            </>
+
         subject_cards =
             <>
                 <div className="assessment_module_subjcards_wrap">
-                    {classData && classData.map(classdata => (
+                    {classData && classData.filter
+                            (classdata=>
+                                classKeys.some(key=> classdata[key].toLowerCase().includes(classQuery.toLowerCase()))
+                            ).map(classdata => (
                         <div 
                             key={classdata.class_id+classdata.subject_id} 
                             className="assessment_module_subjcards"
@@ -96,10 +119,26 @@ const AssessmentModule = ({ user, idNumber, setClassID, setClassSection, setSubj
             </>
     }
     else if (user.level === '3'){
+        search_bar =
+            <>
+                <div className="assessment_module_search_wrap">
+                    <img src={search_icon} alt="search" className="assessment_module_search_icon"/>
+                    <input 
+                        type="text" 
+                        className="assessment_module_search_input"
+                        placeholder="Search Class and Section"
+                        onChange={e=> setSubjectQuery(e.target.value)}
+                    />
+                </div>
+            </>
+
         subject_cards =
             <>
                 <div className="assessment_module_subjcards_wrap">
-                    {subjectData && subjectData.map(subjdata => (
+                    {subjectData && subjectData.filter
+                            (subjdata=>
+                                subjKeys.some(key=> subjdata[key].toLowerCase().includes(subjectQuery.toLowerCase()))
+                            ).map(subjdata => (
                         <div 
                             key={subjdata.subject_id}
                             className="assessment_module_subjcards"
@@ -135,14 +174,7 @@ const AssessmentModule = ({ user, idNumber, setClassID, setClassSection, setSubj
                 <div className="assessment_module_topwrap_text">
                     ASSESSMENT
                 </div>
-                <div className="assessment_module_search_wrap">
-                    <img src={search_icon} alt="search" className="assessment_module_search_icon"/>
-                    <input 
-                        type="text" 
-                        className="assessment_module_search_input"
-                        placeholder="Search Class and Section"
-                    />
-                </div>
+                {search_bar}
             </div>
 
             {subject_cards}

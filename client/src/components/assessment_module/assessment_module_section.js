@@ -46,6 +46,9 @@ const AssessmentModuleSection = ({ user, idNumber, classID, classSection, subjec
         }
     }
 
+    const [studentQuery, setStudentQuery] = useState('')
+    const studKeys = ["lname", "fname"]
+
     const [downloadingTemp, setDownloadingTemp] = useState(false);
     const templateDownload = () => {
         setDownloadingTemp(true);
@@ -75,6 +78,7 @@ const AssessmentModuleSection = ({ user, idNumber, classID, classSection, subjec
                             type="text" 
                             className="assessment_module_search_input"
                             placeholder="Search a student"
+                            onChange={e=> setStudentQuery(e.target.value)}
                         />
                     </div>
 
@@ -106,7 +110,10 @@ const AssessmentModuleSection = ({ user, idNumber, classID, classSection, subjec
                         </tr>
                     </thead>
                     <tbody className="assessment_module_students_body">                   
-                        {handledStudents && handledStudents.map((hStudents) => (
+                        {handledStudents && handledStudents.filter
+                                (hStudents=>
+                                    studKeys.some(key=> hStudents[key].toLowerCase().includes(studentQuery.toLowerCase()))
+                                ).map((hStudents) => (
                                 <tr key={hStudents._id}>
                                     <td>{hStudents.lname + ", " + hStudents.fname + " " + getMiddleInitial(hStudents.mname) + "."}</td>
                                     <td>{hStudents.exam_score + "/" + hStudents.exam_maxscore}</td>
@@ -172,7 +179,7 @@ const AssessmentModuleSection = ({ user, idNumber, classID, classSection, subjec
     else if (user.level === '3'){
         assessment_top = 
             <>
-                <div className="assessment_module_searchDLUP_wrap">
+                {/* <div className="assessment_module_searchDLUP_wrap">
                     <div className="assessment_module_search_wrap-c">
                         <img src={search_icon} alt="search" className="assessment_module_search_icon"/>
                         <input 
@@ -181,7 +188,7 @@ const AssessmentModuleSection = ({ user, idNumber, classID, classSection, subjec
                             placeholder="Search a record"
                         />
                     </div>
-                </div>
+                </div> */}
             </>
 
         assessment_content = 

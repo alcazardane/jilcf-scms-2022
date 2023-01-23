@@ -53,14 +53,14 @@ export default function MainDashboard_L3({dashAttRef, dashAssessRef, dashAnaRef,
         <div className="dashboard_L1_Main_Container" id="dashboard_L3_Main_Container">
 
             <div className="dashboard_L3_top_wrap">
-                <div className="dashboard_L3_container_big" ref={dashAttRef}>
+                {/* <div className="dashboard_L3_container_big" ref={dashAttRef}>
                     <AttendanceDetails />
-                </div>
+                </div> */}
 
                 <div className="dashboard_L3_container_small" ref={dashUpRef}>
                     <div className="dashboard_L3_container_label">
                         <span>UPCOMING</span>
-                        <span className="view_calendar_L1" id="view_calendar_L1" >View Calendar &#10095;</span>
+                        {/* <span className="view_calendar_L1" id="view_calendar_L1" >View Calendar &#10095;</span> */}
                     </div>
 
                     <div className="dashboard_L3_act_inside_wrap">                  
@@ -68,12 +68,6 @@ export default function MainDashboard_L3({dashAttRef, dashAssessRef, dashAnaRef,
                             <UpcomingDetails key={schedules._id} schedules={schedules} />
                         ))}
                     </div>
-                </div>
-            </div>
-
-            <div className="dashboard_L3_top_wrap">
-                <div className="dashboard_L3_container_big" ref={dashAssessRef}>                    
-                    <AssessmentDetails />
                 </div>
 
                 <div className="dashboard_L3_container_small" ref={dashAnnRef}>
@@ -86,6 +80,13 @@ export default function MainDashboard_L3({dashAttRef, dashAssessRef, dashAnaRef,
                             <AnnouncementDetails key={announcements._id} announcements={announcements} />
                         ))}
                     </div>
+                </div>
+
+            </div>
+
+            <div className="dashboard_L3_top_wrap">
+                <div className="dashboard_L3_container_big" ref={dashAssessRef}>                    
+                    <AssessmentDetails />
                 </div>
             </div>
         </div>

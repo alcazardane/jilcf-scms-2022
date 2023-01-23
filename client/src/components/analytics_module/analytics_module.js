@@ -42,6 +42,9 @@ const AnalyticsModule = ({ idNumber, setClassID, setClassSection, setSubjectID }
             return tvl_image
         }
     }
+
+    const [classQuery, setClassQuery] = useState('')
+    const classKeys = ["class_glvl", "class_strand", "class_section", "subject_name"]
     
 
   return (
@@ -57,13 +60,17 @@ const AnalyticsModule = ({ idNumber, setClassID, setClassSection, setSubjectID }
                         type="text" 
                         className="assessment_module_search_input"
                         placeholder="Search Class and Section"
+                        onChange={e=> setClassQuery(e.target.value)}
                     />
                 </div>
             </div>
 
             <div className="assessment_module_subjcards_wrap">
                 {/* make this a map later that generate subject*/}
-                {classData && classData.map(classdata => (
+                {classData && classData.filter
+                        (classdata=>
+                            classKeys.some(key=> classdata[key].toLowerCase().includes(classQuery.toLowerCase()))
+                        ).map(classdata => (
                     <div 
                         key={classdata.class_id+classdata.subject_id+"-ana"} 
                         className="assessment_module_subjcards"

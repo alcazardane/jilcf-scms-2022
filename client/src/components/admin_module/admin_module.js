@@ -117,7 +117,7 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
 
     // For searching
     const [accountQuery, setAccountQuery] = useState("");
-    const keys = ["userID", "name", "level", "track", "strand", "secAdv"]
+    const keys = ["idNumber", "strand", "level", "track", "strand", "glvl", "section", "lname", "fname"]
     //const keys = ["name"]
 
 //=====================================================================================================================
@@ -639,7 +639,10 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                                         />
                                     ))
                                 } */}
-                                {viewAccounts && viewAccounts.map((viewAccount) => (
+                                {viewAccounts && viewAccounts.filter
+                                    (viewAccount=>
+                                        keys.some(key=>viewAccount[key].toLowerCase().includes(accountQuery.toLowerCase()))
+                                    ).map((viewAccount) => (
                                         <AccountsTable 
                                             key={viewAccount._id}
                                             viewAccount={viewAccount}
