@@ -32,7 +32,6 @@ import '../../styles/admin_module_styles.css'
 import search_icon from "../../images/search_FILL0_wght400_GRAD0_opsz48.png";
 import refresh_icon from "../../images/refresh_FILL1_wght400_GRAD0_opsz48.png"
 
-
 import useWindowDimensions from '../dashboard/hooks/useWindowDimensions'
 
 export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
@@ -259,7 +258,8 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
 
     // For searching
     const [scheduleQuery, setScheduleQuery] = useState('')
-    const schedKeys = ["subject_name", "class_id", "class_type", "class_day", "class_room"]
+    const schedKeys = ["class_id", "subject_name", "class_type", "class_room"]
+    // const schedKeysB = ["class_id", "class_day"]
 
 //======================================================================================================================
     // getting and setting credentials
@@ -528,6 +528,43 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
         })
     }
 
+//======================================================================================================================
+    const [downloadingAccTemp, setDownloadingAccTemp] = useState(false);
+    const accountsTemplateDownload = () => {
+        setDownloadingAccTemp(true);
+      
+          // Get the file located in the src folder
+        const url = 'http://localhost:5000/csv_templates/user_accounts_template.csv';
+        fetch(url)
+            .then(response => response.blob())
+            .then(blob => {
+              const link = document.createElement('a');
+              link.href = URL.createObjectURL(blob);
+              link.download = 'user_accounts_template.csv';
+              link.click();
+              setDownloadingAccTemp(false);
+        });
+    };
+
+    const [downloadingSchedTemp, setDownloadingSchedTemp] = useState(false);
+    const schedTemplateDownload = () => {
+        setDownloadingSchedTemp(true);
+      
+          // Get the file located in the src folder
+        const url = 'http://localhost:5000/csv_templates/schedule_template.csv';
+        fetch(url)
+            .then(response => response.blob())
+            .then(blob => {
+              const link = document.createElement('a');
+              link.href = URL.createObjectURL(blob);
+              link.download = 'schedule_template.csv';
+              link.click();
+              setDownloadingSchedTemp(false);
+        });
+    };
+
+//======================================================================================================================
+
     return (
     <>
         <div className="adminModule_L1_Main_Container" id="adminModule_L1_Main_Container">
@@ -555,6 +592,13 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                                 <img src={refresh_icon}
                                     alt="refresh" 
                                     className="winAtt_viewStudent_refdelIcon"/>
+                            </button>
+
+                            <button 
+                                className="adminModule_create_button-b" 
+                                onClick={accountsTemplateDownload} 
+                                disabled={downloadingAccTemp}>
+                                {downloadingAccTemp ? 'Downloading...' : 'Download Template'}
                             </button>
 
                             <button 
@@ -661,6 +705,13 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                             </button>
 
                             <button 
+                                className="adminModule_create_button-b" 
+                                onClick={schedTemplateDownload} 
+                                disabled={downloadingSchedTemp}>
+                                {downloadingSchedTemp ? 'Downloading...' : 'Download Template'}
+                            </button>
+
+                            <button 
                                 className="adminModule_create_button"
                                 onClick={createSchedule}> Add Schedule
                             </button>
@@ -698,7 +749,10 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                                             />
                                         ))
                                     } */}
-                                    {viewSchedules && viewSchedules.map((viewSchedule) => (
+                                    {viewSchedules && viewSchedules.filter
+                                        (viewSchedule=>
+                                            schedKeys.some(key=> viewSchedule[key].toLowerCase().includes(scheduleQuery.toLowerCase()))
+                                        ).map((viewSchedule) => (
                                             <ScheduleTable 
                                                 key={viewSchedule._id}
                                                 viewSchedule={viewSchedule}

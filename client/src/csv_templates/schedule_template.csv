@@ -1,0 +1,2 @@
+class_id,class_start_hh,class_start_mm,class_start_pa,class_end_hh,class_end_mm,class_end_pa,class_day,class_day.1,class_day.2,class_day.3,class_day.4,class_day.5,class_day.6,subject_name,class_type,class_room
+ADMIN,03,00,PM,04,00,PM,Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday,Faculty Meeting,Meeting,BLDG A - Discipline's Office

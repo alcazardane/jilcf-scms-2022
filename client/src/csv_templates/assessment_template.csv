@@ -1,0 +1,2 @@
+recordId,userId,teacherId,subjectId,date,label,score,maxscore,dateB,labelB,scoreB,maxscoreB,dateC,labelC,scoreC,maxscoreC,dateD,labelD,scoreD,maxscoreD,dateE,labelE,scoreE,maxscoreE,dateF,labelF,scoreF,maxscoreF
+13-09-E1-G4-032444,120000402,220000022,GM-001,1/2/2023,quiz,30,40,1/2/2023,seatwork,30,40,1/2/2023,recitation,15,20,1/2/2023,exam,45,50,1/2/2023,project,90,100,1/2/2023,attendance,90,25
