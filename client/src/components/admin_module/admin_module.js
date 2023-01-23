@@ -1,6 +1,8 @@
 import { useDrag } from '@use-gesture/react'
 import { useSpring, animated } from 'react-spring'
 import { useState, useEffect, useRef } from 'react'
+import { ToastContainer, toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 
 
 // Import Components
@@ -23,7 +25,6 @@ import CreateAnnounceModal from './create_announcement_modal'
 import EditAnnounceModal from './edit_announce_modal'
 import CreateAnnouncement from '../ADMIN/announcment/createAnnouncement'
 import EditAnnouncement from '../ADMIN/announcment/editAnnouncement'
-
 
 
 import '../../styles/admin_module_styles.css'
@@ -657,6 +658,8 @@ export default function AdminModule({adminAccRef, adminSchedRef, adminAnnRef}) {
                     </div>
                     </div>
                 </div>
+
+                <ToastContainer/>
 
                 <div className="adminModule_create_account_modal">
                     <Register 
