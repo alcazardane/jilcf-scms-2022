@@ -1,8 +1,9 @@
 import { useState } from 'react'
 
 export const useRegister = () => {
-    const [error, setError] = useState(null)
+    const [error, setError] = useState("")
     const [isLoading, setIsLoading] = useState(null)
+    const [isOk, setIsOk] = useState("")
 
     const register = async (idNumber, password, fname, mname, lname, suffix, level, track, strand, glvl, section) => {
         setIsLoading(true)
@@ -18,8 +19,12 @@ export const useRegister = () => {
         if (!response.ok) {
             setIsLoading(false)
             setError(json.error)
+            setIsOk("No")
+        }
+        else{
+            setIsOk("Yes")
         }
     }
 
-    return { register, isLoading, error }
+    return { register, isLoading, error, isOk}
 }

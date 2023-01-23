@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { useRegister } from '../../../hooks/useRegister'
-import { toast } from 'react-toastify'
+import { ToastContainer, toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
 
 const Register = ({ refreshTable }) => {
@@ -15,7 +15,7 @@ const Register = ({ refreshTable }) => {
     const [strand, setStrand] = useState('')
     const [glvl, setGlvl] = useState('')
     const [section, setSection] = useState('')
-    const {register, error, isLoading} = useRegister()
+    const {register, error, isLoading, isOk} = useRegister()
 
     var root = document.querySelector(":root");
 
@@ -23,15 +23,34 @@ const Register = ({ refreshTable }) => {
         toast("Account Created")
     }
 
+    const showSuccess = () => {
+        toast.success('Success !', {
+            position: toast.POSITION.TOP_RIGHT
+        });
+    }
+
+    const showError = () => {
+        toast.error('Unsuccessful !', {
+            position: toast.POSITION.TOP_RIGHT
+        });
+    }
+
     const handleSubmit = async (e) => {
         e.preventDefault();
         refreshTable();
 
         await register(idNumber, password, fname, mname, lname, suffix, level, track, strand, glvl, section)
-        root.style.setProperty('--adminModule_create_modal-pointer-events', "none");
-        root.style.setProperty('--adminModule_create_modal-opacity', "0");
-        refreshTable();
-        clearForm();
+
+        if (isOk === "Yes"){
+            showSuccess();
+            root.style.setProperty('--adminModule_create_modal-pointer-events', "none");
+            root.style.setProperty('--adminModule_create_modal-opacity', "0");
+            refreshTable();
+            clearForm();
+        }
+        if (isOk=== "No"){
+            showError();
+        }
     }
 
 
@@ -196,6 +215,7 @@ const Register = ({ refreshTable }) => {
             <button className="editAtt_update_button" onClick={handleSubmit}>
                 Create
             </button>
+            <ToastContainer />
             <div className="register_error_wrap">
                 {error && <div className="register_error">{error}</div>}
             </div>
