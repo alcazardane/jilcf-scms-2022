@@ -369,20 +369,20 @@ const Sidebar = ({ user,
                         <div className="main_window_L1_sidebar_module_label">Dashboard</div>
                     </div>
                 </Link>
-                <div className={(dashboardIsOpen ? "sidebar_sub_wrap_active" : "sidebar_sub_wrap_inactive")}>
+                {/* <div className={(dashboardIsOpen ? "sidebar_sub_wrap_active-c" : "sidebar_sub_wrap_inactive")}>
                     <div 
-                        className={"sidebar_sub_item " + (dashUpcomingIsOpen ? "sidebar_sub_item_active" : "")}
+                        className={"sidebar_sub_item-c " + (dashUpcomingIsOpen ? "sidebar_sub_item_active" : "")}
                         onClick={() => scrollDashSection(dashUpRef)}                                  
                         >Upcoming</div>
                     <div 
-                        className={"sidebar_sub_item " + (dashAccountsIsOpen ? "sidebar_sub_item_active" : "")}
+                        className={"sidebar_sub_item-c " + (dashAccountsIsOpen ? "sidebar_sub_item_active" : "")}
                         onClick={() => scrollDashSection(dashAccRef)}
                         >Accounts</div>
                     <div 
-                        className={"sidebar_sub_item " + (dashAnalyticsIsOpen ? "sidebar_sub_item_active" : "")}
+                        className={"sidebar_sub_item-c " + (dashAnalyticsIsOpen ? "sidebar_sub_item_active" : "")}
                         onClick={() => scrollDashSection(dashAnaRef)}
                         >Analytics</div>
-                </div>
+                </div> */}
             </>
         
         // userAttendanceModule = 
@@ -441,14 +441,14 @@ const Sidebar = ({ user,
                 </div> */}
             </>
 
-        userAttendanceModule = 
-            <Link to="/home/L2/attendance" style={{ textDecoration: 'none' }}>
-                <div 
-                    className={"main_window_L1_sidebar_module_wrap " + (attendanceIsOpen ? "sidebar_wrap_active" : "")}>
-                    <img className="main_window_L1_sidebar_module_icon" src={attendance_icon} alt="Attendance"></img>
-                    <div className="main_window_L1_sidebar_module_label">Attendance</div>
-                </div>
-            </Link>
+        // userAttendanceModule = 
+        //     <Link to="/home/L2/attendance" style={{ textDecoration: 'none' }}>
+        //         <div 
+        //             className={"main_window_L1_sidebar_module_wrap " + (attendanceIsOpen ? "sidebar_wrap_active" : "")}>
+        //             <img className="main_window_L1_sidebar_module_icon" src={attendance_icon} alt="Attendance"></img>
+        //             <div className="main_window_L1_sidebar_module_label">Attendance</div>
+        //         </div>
+        //     </Link>
 
         userAssessmentModule = 
             <Link to="/home/L2/assessment" style={{ textDecoration: 'none' }}>
@@ -521,11 +521,11 @@ const Sidebar = ({ user,
                         onClick={() => scrollDashSection3(dashAnnRef)}
                         >Announcements
                     </div>
-                    <div 
+                    {/* <div 
                         className={"sidebar_sub_item sidebar_sub_item_L3 " + (dashAssessIsOpen ? "sidebar_sub_item_active" : "")}
                         onClick={() => scrollDashSection3(dashAssessRef)}
                         >Assessment Record
-                    </div>
+                    </div> */}
                     {/* <div 
                         className={"sidebar_sub_item sidebar_sub_item_L3 " + (dashActIsOpen ? "sidebar_sub_item_active" : "")}
                         onClick={() => scrollDashSection3(dashActRef)}
@@ -539,14 +539,14 @@ const Sidebar = ({ user,
                 </div>
             </>
 
-        userAttendanceModule = 
-            <Link to="/home/L3/attendance" style={{ textDecoration: 'none' }}>
-                <div 
-                    className={"main_window_L1_sidebar_module_wrap " + (attendanceIsOpen ? "sidebar_wrap_active" : "")}>
-                    <img className="main_window_L1_sidebar_module_icon" src={attendance_icon} alt="Attendance"></img>
-                    <div className="main_window_L1_sidebar_module_label">Attendance</div>
-                </div>
-            </Link>
+        // userAttendanceModule = 
+        //     <Link to="/home/L3/attendance" style={{ textDecoration: 'none' }}>
+        //         <div 
+        //             className={"main_window_L1_sidebar_module_wrap " + (attendanceIsOpen ? "sidebar_wrap_active" : "")}>
+        //             <img className="main_window_L1_sidebar_module_icon" src={attendance_icon} alt="Attendance"></img>
+        //             <div className="main_window_L1_sidebar_module_label">Attendance</div>
+        //         </div>
+        //     </Link>
 
         userAssessmentModule = 
             <Link to="/home/L3/assessment" style={{ textDecoration: 'none' }}>

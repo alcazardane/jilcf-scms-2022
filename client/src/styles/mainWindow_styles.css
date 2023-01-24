@@ -371,6 +371,19 @@
   overflow: hidden;
   transition: all 200ms ease-in-out;
 }
+.sidebar_sub_wrap_active-c{
+  width: 90%;
+  height: 15%;
+  margin-left: 10%;
+  /* background: #021a4b; */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5%;
+  pointer-events: all;
+  opacity: 1;
+  overflow: hidden;
+  transition: all 200ms ease-in-out;
+}
 .sidebar_sub_wrap_active_L3{
   width: 90%;
   height: 22%;
@@ -397,6 +410,19 @@
   width: 100%;
   padding-left: 10%;
   height: 30%;
+  border-radius: 5px 0 0 5px;
+  background: #031a4d;
+  font-size: 14px;
+  color: white;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  opacity: 0.5;
+}
+.sidebar_sub_item-c{
+  width: 100%;
+  padding-left: 10%;
+  height: 45%;
   border-radius: 5px 0 0 5px;
   background: #031a4d;
   font-size: 14px;

@@ -8,14 +8,14 @@
   margin-top: var(--dashboard-margin-top);
   margin-left: var(--dashboard-margin-left);
   /*min-width: 334px;*/
-  width: 30%;
+  width: 96%;
   /*width: 340px;*/
   /* min-width: 300px; */
   border-radius: 5px;
   display: flex;
   flex-wrap: wrap;
   align-content: flex-start;
-  overflow: auto;
+  /* overflow: auto; */
   /* position: relative; */
   z-index: 2;
   transition: all 200ms ease-in-out;
@@ -62,13 +62,14 @@
   /* width: var(--upcoming-container-wrap-width); */
   width: 100%;
   justify-content: center;
+  overflow: auto;
   gap: 5%;
 }
 
 .class_scheds{
   /*width: 21.2vw;*/
   /*width: 290px;*/
-  width: 90%;
+  width: 45%;
   max-width: none;
   min-width: none;
   margin-bottom: 4%;

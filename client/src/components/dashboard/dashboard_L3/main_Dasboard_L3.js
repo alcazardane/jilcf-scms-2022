@@ -84,11 +84,11 @@ export default function MainDashboard_L3({dashAttRef, dashAssessRef, dashAnaRef,
 
             </div>
 
-            <div className="dashboard_L3_top_wrap">
+            {/* <div className="dashboard_L3_top_wrap">
                 <div className="dashboard_L3_container_big" ref={dashAssessRef}>                    
                     <AssessmentDetails />
                 </div>
-            </div>
+            </div> */}
         </div>
     </>
     )

@@ -97,9 +97,9 @@ export default function MainDashboard_L1({dashUpRef, dashAccRef, dashAnaRef}) {
                 </div>         
             </div>
 
-            <div className="dashboard_L1_Analytics" ref={dashAnaRef}>
+            {/* <div className="dashboard_L1_Analytics" ref={dashAnaRef}>
                 <AnalyticsDetails />
-            </div>
+            </div> */}
         </div>
 
         {/* </animated.div> */}

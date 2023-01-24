@@ -28,7 +28,7 @@ export default function MainDashboard({dashUpRef, dashNoticeRef, dashAttRef}) {
         <div className="main_container" id="dashbord_L2_main_container">
           <div className="top_wrap">
             <Upcoming dashUpRef={dashUpRef}/>
-            <RedYellowNotice dashNoticeRef={dashNoticeRef}/>
+            {/* <RedYellowNotice dashNoticeRef={dashNoticeRef}/> */}
           </div>
           {/* <Attendance dashAttRef={dashAttRef}/> */}
           {/* <Assessment /> */}
